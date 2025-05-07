@@ -1,0 +1,39 @@
+{
+  "Home": {
+    "title": "SK NextJS i18n",
+    "headerTitle": "...",
+
+    "headerAbout": "O nás",
+    "tradeRules": "Obchodné podmienky",
+    "headerContact": "Kontakt",
+    "headerGdpr": "GDPR",
+    "home": "Domov",
+
+    "heroTitle1": "...",
+    "heroTitle2": "...",
+
+    "cookiesText": "Táto stránka nezhromažďuje žiadne údaje.",
+    "cookiesAgree": "Pokračovať",
+    "cookiesDisagree": "Nesúhlasím",
+
+    "back": "Naspäť",
+
+    "contactMessageSuccess": "Správa úspešne odoslaná",
+    "contactTitle": "Kontakt",
+    "contactName": "Vaše Meno",
+    "contactEmail": "Váš e-mail",
+    "contactSubject": "Predmet",
+    "contactPhone": "Telefón",
+    "contactMessage": "Vaša správa",
+    "contactAgree": "Súhlasím so",
+    "contactGdpr": "spracovaním údajov",
+
+    "contactSend": "Poslať",
+    "contactError2": "Neodoslané! Napíšte nám na náš email, prosím.",
+    "contactError": "Chyba! Napíšte nám na orchester.technik@stuba.sk, prosím.",
+    "contactSuccess": "Vaša správa bola úspešne odoslaná!",
+
+    "contactGdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
+    "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu."
+  }
+}

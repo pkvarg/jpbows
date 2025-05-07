@@ -1,0 +1,35 @@
+{
+  "Home": {
+    "title": "EN NextJS i18n",
+    "headerTitle": "...",
+    "headerAbout": "About",
+    "tradeRules": "Trade Rules",
+    "headerContact": "Contact",
+    "headerGdpr": "GDPR",
+    "home": "Home",
+
+    "cookiesText": "This site does not collect any information.",
+    "cookiesAgree": "Continue",
+    "cookiesDisagree": "Decline",
+
+    "back": "Back",
+
+    "contactMessageSuccess": "Message sent successfully",
+    "contactTitle": "Contact",
+    "contactName": "Name",
+    "contactSubject": "Subject",
+    "contactEmail": "Your e-mail",
+    "contactPhone": "Phone",
+    "contactMessage": "Your message",
+    "contactAgree": "I agree to",
+    "contactGdpr": "process my data",
+
+    "contactSend": "Send",
+    "contactError2": "Not sent! Contact via our email, please.",
+    "contactError": "Error! Write to orchester.technik@stuba.sk, please.",
+    "contactSuccess": "Message successfully sent!",
+
+    "contactGdpr1": "We do not store the data provided by you in any database.",
+    "contactGdpr2": "The email will only be used to respond to your message."
+  }
+}
