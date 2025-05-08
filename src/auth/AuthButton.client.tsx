@@ -14,10 +14,11 @@ export default function AuthButton() {
         await signOut() // Redirect to /sk after sign-out
         router.push('/')
       }}
+      className="cursor-pointer"
     >
-      {session.data?.user?.name} : Sign Out
+      {session.data?.user?.name} : Odhlásiť sa
     </Button>
   ) : (
-    <Button onClick={async () => await signIn()}>Sign In</Button>
+    <Button onClick={async () => await signIn()}>Prihlásiť sa</Button>
   )
 }

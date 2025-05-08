@@ -1,8 +1,10 @@
 // app/api/visitors/route.ts
 import { NextResponse, NextRequest } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '../../../../prisma/generated/prisma'
 
 const prisma = new PrismaClient()
+
+const visitorId = '681ca9fc34a1a7d5d624e53e'
 
 // get the single table that has the count records of all visits
 export async function GET() {
@@ -10,7 +12,7 @@ export async function GET() {
     // Create visitor
     const visitor = await prisma.visitor.findFirst({
       where: {
-        id: '6806919cea18590661802a65',
+        id: visitorId,
       },
     })
     // Return successful response
@@ -82,7 +84,7 @@ export async function PATCH() {
   try {
     const visitor = await prisma.visitor.findFirst({
       where: {
-        id: '6806919cea18590661802a65',
+        id: visitorId,
       },
     })
 
@@ -91,7 +93,7 @@ export async function PATCH() {
 
     // Update visitor
     const updatedVisitor = await prisma.visitor.update({
-      where: { id: '6806919cea18590661802a65' },
+      where: { id: visitorId },
       data: {
         count: newCount,
         updatedAt: new Date(),

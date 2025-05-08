@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef, ChangeEvent } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import React from 'react'
 import Image from 'next/image'
 
@@ -98,7 +98,7 @@ const FileUpload = () => {
   }
   return (
     <div className="footer-gradient py-8 px-6">
-      <Link href={'/sk/admin'} className="text-white text-[30px] text-center cursor-pointer">
+      <Link href={'/admin'} className="text-white text-[30px] text-center cursor-pointer">
         Naspäť
       </Link>
       <h1 className="text-2xl text-center font-bold mb-6 title-color">File Upload</h1>

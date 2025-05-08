@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import LangSwitcher from './LangSwitcher'
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false)
@@ -135,6 +136,13 @@ const Navbar = () => {
                 {/* Desktop dropdown (hover-based) */}
                 <div className="invisible absolute z-50 w-max flex-col bg-black px-4 py-1 text-white shadow-xl group-hover:visible md:flex hidden">
                   <Link
+                    href={'/blog'}
+                    className="block cursor-pointer hover:text-[#e6c78c] py-2"
+                    onClick={handleLinkClick}
+                  >
+                    Blog
+                  </Link>
+                  <Link
                     href={'/about'}
                     className="cursor-pointer hover:text-[#e6c78c] py-2"
                     onClick={handleLinkClick}
@@ -184,6 +192,13 @@ const Navbar = () => {
                     aboutDropdownOpen ? 'block' : 'hidden'
                   } md:hidden pl-4 mt-2 border-l-2 border-[#e6c78c]/30`}
                 >
+                  <Link
+                    href={'/blog'}
+                    className="block cursor-pointer hover:text-[#e6c78c] py-2"
+                    onClick={handleLinkClick}
+                  >
+                    Blog
+                  </Link>
                   <Link
                     href={'/about'}
                     className="block cursor-pointer hover:text-[#e6c78c] py-2"
@@ -320,6 +335,7 @@ const Navbar = () => {
                   Kontakt
                 </Link>
               </li>
+              <LangSwitcher />
             </ul>
           </div>
         </div>

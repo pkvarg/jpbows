@@ -10,6 +10,7 @@ export default function VisitorCounter() {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
+  // uncomment at setup only
   // const createVisitor = async () => {
   //   try {
   //     setLoading(true)
@@ -70,8 +71,6 @@ export default function VisitorCounter() {
 
   return (
     <div className="p-6 border rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-4">Visitor Counter Test</h2>
-
       <div className="mb-4">
         <p className="text-2xl font-bold mt-2">Visitors Count: {count}</p>
         <p className="text-2xl font-bold mt-2">Last visit: {lastUpdate}</p>

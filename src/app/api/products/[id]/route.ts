@@ -1,9 +1,11 @@
 // app/api/products/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import db from '@/db/db'
+import { PrismaClient } from '../../../../../prisma/generated/prisma'
 import { unlink } from 'fs/promises'
 import { join } from 'path'
 import { existsSync } from 'fs'
+
+const prisma = new PrismaClient()
 
 // Helper function to remove file if it exists
 async function removeImageIfExists(imageUrl: string) {
@@ -25,7 +27,7 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
   try {
     const { id } = params
 
-    const product = await db.product.findUnique({
+    const product = await prisma.product.findUnique({
       where: { id },
     })
 
@@ -43,11 +45,11 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
 // eslint-disable-next-line
 export async function PUT(request: NextRequest, { params }: { params: any }) {
   try {
-    const { id } = params
+    const { id } = await params
     const body = await request.json()
 
     // Check if product exists
-    const existingProduct = await db.product.findUnique({
+    const existingProduct = await prisma.product.findUnique({
       where: { id },
     })
 
@@ -64,7 +66,7 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
     }
 
     // Update product
-    const updatedProduct = await db.product.update({
+    const updatedProduct = await prisma.product.update({
       where: { id },
       data: {
         name: body.name,
@@ -88,7 +90,7 @@ export async function DELETE(request: NextRequest, { params }: { params: any }) 
     const { id } = params
 
     // Get product first to get image URL
-    const product = await db.product.findUnique({
+    const product = await prisma.product.findUnique({
       where: { id },
     })
 
@@ -97,7 +99,7 @@ export async function DELETE(request: NextRequest, { params }: { params: any }) 
     }
 
     // Delete the product
-    await db.product.delete({
+    await prisma.product.delete({
       where: { id },
     })
 

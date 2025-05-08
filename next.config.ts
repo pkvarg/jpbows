@@ -12,6 +12,22 @@ const nextConfig = {
       },
     ]
   },
+  images: {
+    domains: ['picsum.photos'],
+    remotePatterns: [
+      {
+        protocol: 'https' as 'https',
+        hostname: 'hono-api.pictusweb.com',
+        pathname: '/api/upload/jpbows/**',
+      },
+      {
+        protocol: 'http' as 'http',
+        hostname: 'localhost',
+        port: '3013',
+        pathname: '/api/upload/jpbows/**',
+      },
+    ],
+  },
 }
 
 export default withNextIntl(nextConfig)

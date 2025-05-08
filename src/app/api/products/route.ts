@@ -1,14 +1,16 @@
 // app/api/products/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import db from '@/db/db' // Import your singleton db client
+import { PrismaClient } from '../../../../prisma/generated/prisma'
+
+const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest) {
   try {
     // Parse request body
     const body = await request.json()
 
-    // Create product using your singleton db client
-    const product = await db.product.create({
+    // Create product using your singleton prisma client
+    const product = await prisma.product.create({
       data: {
         name: body.name,
         description: body.description,
@@ -42,7 +44,7 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   try {
     // Fetch all products
-    const products = await db.product.findMany()
+    const products = await prisma.product.findMany()
 
     // Return successful response
     return NextResponse.json(products)

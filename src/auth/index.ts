@@ -17,17 +17,17 @@ const authOptions: NextAuthConfig = {
         const users = [
           {
             id: 'test-user-1',
-            userName: 'test1',
-            name: 'Test 1',
+            userName: 'Peto Admin',
+            name: 'Peto Admin',
             password: 'pass',
             email: process.env.ADMIN_EMAIL,
           },
           {
             id: 'test-user-2',
-            userName: 'test2',
-            name: 'Test 2',
+            userName: 'Jano Admin',
+            name: 'Jano Admin',
             password: 'pass',
-            email: 'test2@donotreply.com',
+            email: process.env.ADMIN_EMAIL2,
           },
         ]
         const user = users.find(

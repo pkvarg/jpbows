@@ -1,6 +1,6 @@
 // app/api/test-visitor/route.ts
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '../../../../prisma/generated/prisma'
 
 export async function POST() {
   try {

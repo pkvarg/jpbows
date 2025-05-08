@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Visitor {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  count     Int
+  updatedAt DateTime
+}
+
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl    String
+  name        String
+  description String
+  available   String
+  createdAt   DateTime
+  updatedAt   DateTime
+}
+
+model Slider {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl    String
+  title       String
+  subtitle    String
+  description String
+  active      Boolean
+  createdAt   DateTime
+  updatedAt   DateTime
+}
+
+model Blog {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl    String
+  title       String
+  subtitle    String
+  description String
+  blogtext    String
+  template    String
+  active      Boolean
+  createdAt   DateTime
+  updatedAt   DateTime
+}
