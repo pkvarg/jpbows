@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+//import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 
 const Footer = () => {

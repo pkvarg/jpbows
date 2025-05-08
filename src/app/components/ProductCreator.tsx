@@ -35,9 +35,6 @@ export default function ProductManager() {
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [file, setFile] = useState<File | null>(null)
-  const [filePreview, setFilePreview] = useState<string | null>(null)
-  const [uploadedFileUrl, setUploadedFileUrl] = useState<string | null>(null)
 
   const resetForm = () => {
     setFormData({
