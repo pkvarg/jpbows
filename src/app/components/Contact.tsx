@@ -65,6 +65,39 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
     setCheckBox((current) => !current)
   }
 
+  const increaseBots = async () => {
+    const apiUrl = 'https://hono-api.pictusweb.com/api/bots/jpbows/increase'
+    //const apiUrl = 'http://localhost:3013/api/bots/jpbows/increase'
+    try {
+      await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      //console.log('data bots', data)
+    } catch (error) {
+      console.error('Error increasing bots:', error)
+    }
+  }
+
+  const increaseEmails = async () => {
+    const apiUrl = 'https://hono-api.pictusweb.com/api/emails/jpbows/increase'
+    //const apiUrl = 'http://localhost:3013/api/emails/jpbows/increase'
+    try {
+      await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      //console.log('data email', data)
+    } catch (error) {
+      console.error('Error increasing emails:', error)
+    }
+  }
+
   const form = useRef<HTMLFormElement>(null)
   const x = process.env.EMAIL_EXTRA_ONE
   const y = process.env.EMAIL_EXTRA_TWO
@@ -77,9 +110,9 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
     const origin = 'JPBOWS'
     const subjectTranslations = {
-      en: 'Message from Technik Chamber Orchestra',
-      de: 'Nachricht vom Technik Kammerorchester',
-      sk: 'Správa z Komorného orchestra Technik',
+      en: 'Message from JP Bows',
+
+      sk: 'Správa od JP Bows',
     }
 
     const subject =
@@ -91,6 +124,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       setEmail('')
       setPhone('')
       setMailMessage('')
+      increaseBots()
 
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
     } else {
@@ -112,10 +146,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           subject,
         }
 
-        // const apiUrl =
-        //   process.env.NODE_ENV === 'development'
-        //     ? 'http://localhost:3013/api/contact'
-        //     : process.env.NEXT_PUBLIC_API_URL!
+        //const apiUrl = 'http://localhost:3013/api/contact'
 
         const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
 
@@ -145,6 +176,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
         setEmail('')
         setMailMessage('')
         setMessageSuccess(contactSuccess)
+        increaseEmails()
 
         return {
           success: true,
