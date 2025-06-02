@@ -7,34 +7,34 @@ import LangSwitcher from './LangSwitcher'
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false)
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
-  const [galleryDropdownOpen, setGalleryDropdownOpen] = useState(false)
+  // const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
+  // const [galleryDropdownOpen, setGalleryDropdownOpen] = useState(false)
   const router = useRouter()
 
   // Function to close everything when a link is clicked
   const handleLinkClick = () => {
     setNavbar(false)
-    setAboutDropdownOpen(false)
-    setGalleryDropdownOpen(false)
+    //setAboutDropdownOpen(false)
+    //setGalleryDropdownOpen(false)
   }
 
   // Toggle dropdown states for mobile
-  const toggleAboutDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault()
-    setAboutDropdownOpen(!aboutDropdownOpen)
-    // Close the other dropdown when opening this one
-    if (!aboutDropdownOpen) setGalleryDropdownOpen(false)
-  }
+  // const toggleAboutDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  //   e.preventDefault()
+  //   setAboutDropdownOpen(!aboutDropdownOpen)
+  //   // Close the other dropdown when opening this one
+  //   if (!aboutDropdownOpen) setGalleryDropdownOpen(false)
+  // }
 
-  const toggleGalleryDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault()
-    setGalleryDropdownOpen(!galleryDropdownOpen)
-    // Close the other dropdown when opening this one
-    if (!galleryDropdownOpen) setAboutDropdownOpen(false)
-  }
+  // const toggleGalleryDropdown = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  //   e.preventDefault()
+  //   setGalleryDropdownOpen(!galleryDropdownOpen)
+  //   // Close the other dropdown when opening this one
+  //   if (!galleryDropdownOpen) setAboutDropdownOpen(false)
+  // }
 
   return (
-    <nav className="w-full bg-tra nav-font font-bold text-white ">
+    <nav className="w-full bg-[#111828] nav-font font-bold text-[#fee081]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
@@ -96,18 +96,32 @@ const Navbar = () => {
             }`}
           >
             <ul className="space-y-2 text-[20px] md:flex md:space-x-6 md:space-y-0 lg:space-y-0 lg:text-[20px]">
-              <li className="py-2 md:py-0">
-                <Link
-                  href={'/'}
-                  className="cursor-pointer hover:text-[#e6c78c]"
-                  onClick={handleLinkClick}
-                >
-                  Domov
-                </Link>
-              </li>
+              <Link
+                href={'/'}
+                className="cursor-pointer hover:text-[#e6c78c]"
+                onClick={handleLinkClick}
+              >
+                Domov
+              </Link>
+
+              <Link
+                href={'/bows'}
+                className="cursor-pointer hover:text-[#e6c78c]"
+                onClick={handleLinkClick}
+              >
+                Výroba sláčikov
+              </Link>
+
+              <Link
+                href={'/bass'}
+                className="cursor-pointer hover:text-[#e6c78c]"
+                onClick={handleLinkClick}
+              >
+                Kontabasy
+              </Link>
 
               {/* O nás dropdown - desktop uses hover, mobile uses click */}
-              <li className="group relative cursor-pointer py-2 md:py-0">
+              {/* <li className="group relative cursor-pointer py-2 md:py-0">
                 <div className="flex items-center justify-between">
                   <a
                     className="menu-hover hover:text-[#e6c78c] flex items-center justify-between w-full"
@@ -133,7 +147,7 @@ const Navbar = () => {
                   </a>
                 </div>
 
-                {/* Desktop dropdown (hover-based) */}
+                
                 <div className="invisible absolute z-50 w-max flex-col bg-black px-4 py-1 text-white shadow-xl group-hover:visible md:flex hidden">
                   <Link
                     href={'/blog'}
@@ -186,7 +200,7 @@ const Navbar = () => {
                   </Link>
                 </div>
 
-                {/* Mobile dropdown (click-based) */}
+               
                 <div
                   className={`${
                     aboutDropdownOpen ? 'block' : 'hidden'
@@ -242,10 +256,10 @@ const Navbar = () => {
                     História
                   </Link>
                 </div>
-              </li>
+              </li> */}
 
               {/* Galéria dropdown - desktop uses hover, mobile uses click */}
-              <li className="group relative cursor-pointer py-2 md:py-0">
+              {/* <li className="group relative cursor-pointer py-2 md:py-0">
                 <div className="flex items-center justify-between">
                   <a
                     className="menu-hover hover:text-[#e6c78c] flex items-center justify-between w-full"
@@ -271,7 +285,7 @@ const Navbar = () => {
                   </a>
                 </div>
 
-                {/* Desktop dropdown (hover-based) */}
+                
                 <div className="invisible absolute z-50 w-max flex-col bg-black px-4 py-1 text-white shadow-xl group-hover:visible md:flex hidden">
                   <Link
                     href={'/gallery'}
@@ -296,7 +310,7 @@ const Navbar = () => {
                   </Link>
                 </div>
 
-                {/* Mobile dropdown (click-based) */}
+           
                 <div
                   className={`${
                     galleryDropdownOpen ? 'block' : 'hidden'
@@ -324,7 +338,7 @@ const Navbar = () => {
                     Video
                   </Link>
                 </div>
-              </li>
+              </li> */}
 
               <li className="py-2 md:py-0">
                 <Link

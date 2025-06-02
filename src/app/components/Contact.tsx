@@ -193,7 +193,10 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
   return (
     <>
-      <div className="footer-gradient scroll-mt-14" id="contact">
+      <div
+        className="bg-gradient-to-br from-gray-900 via-slate-900 to-black scroll-mt-14"
+        id="contact"
+      >
         <div className="px-6 py-16 text-white lg:px-[15%]">
           {/* Section Header with decorative elements */}
           <div className="relative mb-12">
@@ -339,7 +342,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
             {/* Decorative Side Element */}
             <div className="hidden lg:block lg:w-1/3">
-              <div className="bg-amber-900/40 p-6 rounded-lg  h-full">
+              <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black p-6 rounded-lg  h-full">
                 <h3 className="text-2xl font-semibold text-amber-200 mb-4">Kontaktujte nás</h3>
                 <p className="text-lg mb-4">
                   Máte otázky alebo chcete získať viac informácií? Neváhajte nás kontaktovať

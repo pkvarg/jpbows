@@ -1,7 +1,7 @@
 import ContactComponent from '@/app/components/Contact'
 import React from 'react'
 import { useTranslations } from 'next-intl'
-import PagesNavbarServer from '@/app/components/translationServerComponents/PagesNavbarServer'
+//import PagesNavbarServer from '@/app/components/translationServerComponents/PagesNavbarServer'
 
 const Contact = () => {
   const t = useTranslations('Home')
@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <div>
-      <PagesNavbarServer />
+      {/* <PagesNavbarServer /> */}
       <ContactComponent translations={contactTranslations} />
     </div>
   )

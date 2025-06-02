@@ -10,7 +10,7 @@ import { Link } from '@/i18n/routing'
 const Admin = async () => {
   const session = await auth()
   return (
-    <div className="bg-[#3B3A3A]">
+    <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
       <div className="container mx-auto py-8 space-y-8">
         <AuthButton key={session?.user ? 'signed-in' : 'signed-out'} />
         <h1 className="text-center text-[32px]">Ahoj admin</h1>

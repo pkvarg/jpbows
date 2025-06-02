@@ -204,30 +204,32 @@ export default function BlogPostPage() {
   )
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <div className="mb-4">
-        <Link href="/blog" className="text-blue-600 hover:underline flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Späť na blogy
-        </Link>
-      </div>
+    <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+      <div className="container mx-auto py-10 px-4">
+        <div className="mb-4">
+          <Link href="/blog" className="text-white hover:underline flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            Späť na blogy
+          </Link>
+        </div>
 
-      {blog.template === 'classic' && <ClassicTemplate />}
-      {blog.template === 'modern' && <ModernTemplate />}
-      {blog.template === 'minimal' && <MinimalTemplate />}
+        {blog.template === 'classic' && <ClassicTemplate />}
+        {blog.template === 'modern' && <ModernTemplate />}
+        {blog.template === 'minimal' && <MinimalTemplate />}
+      </div>
     </div>
   )
 }

@@ -180,25 +180,27 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold text-center mb-2">Náš blog</h1>
-      <p className="text-gray-600 text-center mb-10">Najnovšie príspevky a zaujímavosti</p>
+    <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+      <div className="container mx-auto py-10 px-4 ">
+        <h1 className="text-3xl font-bold text-center mb-2">Blog</h1>
+        <p className="text-gray-600 text-center mb-10">Najnovšie príspevky a zaujímavosti</p>
 
-      {/* Featured blog - most recent one */}
-      {blogs.length > 0 && (
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Najnovší príspevok</h2>
-          <div className="max-w-4xl mx-auto">{getBlogCard(blogs[0])}</div>
-        </div>
-      )}
+        {/* Featured blog - most recent one */}
+        {blogs.length > 0 && (
+          <div className="mb-16">
+            <h2 className="text-2xl font-bold mb-6">Najnovší príspevok</h2>
+            <div className="max-w-4xl mx-auto">{getBlogCard(blogs[0])}</div>
+          </div>
+        )}
 
-      {/* All other blogs */}
-      <div className="mb-10">
-        <h2 className="text-2xl font-bold mb-6">Všetky príspevky</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
-            <div key={blog.id}>{getBlogCard(blog)}</div>
-          ))}
+        {/* All other blogs */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold mb-6">Všetky príspevky</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogs.map((blog) => (
+              <div key={blog.id}>{getBlogCard(blog)}</div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
