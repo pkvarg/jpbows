@@ -15,10 +15,11 @@ const Admin = async () => {
         <AuthButton key={session?.user ? 'signed-in' : 'signed-out'} />
         <h1 className="text-center text-[32px]">Ahoj admin</h1>
         <div className="flex flex-col gap4">
-          <Link href={`/admin/file-upload`}>File Upload</Link>
-          <Link href={`/admin/product`}>Produkt</Link>
-          <Link href={`/admin/slider`}>Slider</Link>
-          <Link href={`/admin/blog`}>Blog</Link>
+          {/* <Link href={`/admin/file-upload`}>File Upload</Link> */}
+          <Link href={`/admin/bass`}>Basses</Link>
+          <Link href={`/admin/bow`}>Bows</Link>
+          <Link href={`/admin/slider`}>Sliders</Link>
+          <Link href={`/admin/blog`}>Blogs</Link>
         </div>
 
         <VisitorCounter />

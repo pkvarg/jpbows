@@ -21,12 +21,24 @@ model Visitor {
   updatedAt DateTime
  }
 
-model Product {
-  id  String @id @default(auto()) @map("_id") @db.ObjectId
-  imageUrl String
+model Bows {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId 
+  images String[]  
   name String
   description String
   available String
+  price String
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model Bass {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  images String[] 
+  name String
+  description String
+  available String
+  price String
   createdAt DateTime
   updatedAt DateTime
 }
@@ -50,6 +62,7 @@ model Blog {
   description String
   blogtext String
   template String
+  english Boolean @default(false)
   active Boolean
   createdAt DateTime
   updatedAt DateTime

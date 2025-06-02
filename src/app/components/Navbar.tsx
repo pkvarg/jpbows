@@ -117,7 +117,7 @@ const Navbar = () => {
                 className="cursor-pointer hover:text-[#e6c78c]"
                 onClick={handleLinkClick}
               >
-                Kontabasy
+                Kontrabasy
               </Link>
               <Link
                 href={'/blog'}

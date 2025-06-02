@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { Link } from '@/i18n/routing'
 
 const DoubleBassHero = () => {
   const fadeInUp = {
@@ -72,6 +73,26 @@ const DoubleBassHero = () => {
               </p>
             </motion.div>
 
+            {/* Right Content MOBILE ONLY - Image */}
+            <motion.div className="flex lg:hidden relative" initial="initial" animate="animate">
+              {/* Main Double Bass Image */}
+              <motion.div
+                className="relative z-10"
+                variants={slideInRight}
+                animate={floatingAnimation}
+              >
+                <div className="bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl p-4 shadow-2xl">
+                  <Image
+                    src="/foto1.jpg"
+                    alt="Ján Prievozník"
+                    width={500}
+                    height={500}
+                    className="w-full h-[500px] object-cover rounded-2xl shadow-lg"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+
             {/* Services Grid */}
             <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div
@@ -116,7 +137,10 @@ const DoubleBassHero = () => {
             </motion.div>
 
             {/* CTA Buttons */}
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 pt-4">
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 pt-4 justify-center items-center"
+            >
               <motion.button
                 className="bg-[#fee081] hover:bg-transparent hover:text-[#fee081] border-2 hover:border-[#fee081] text-black px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
                 whileHover={{ scale: 1.05 }}
@@ -130,20 +154,24 @@ const DoubleBassHero = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Kontakt
+                <Link href={'/contact'}> Kontakt</Link>
               </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Images */}
-          <motion.div className="relative" initial="initial" animate="animate">
+          {/* Right Content Desktop ONLY - Image */}
+          <motion.div
+            className="hidden lg:flex relative ml-auto"
+            initial="initial"
+            animate="animate"
+          >
             {/* Main Double Bass Image */}
             <motion.div
               className="relative z-10"
               variants={slideInRight}
               animate={floatingAnimation}
             >
-              <div className="bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl p-8 shadow-2xl">
+              <div className="bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl p-6 shadow-2xl">
                 <Image
                   src="/foto1.jpg"
                   alt="Ján Prievozník"
@@ -153,56 +181,12 @@ const DoubleBassHero = () => {
                 />
               </div>
             </motion.div>
-
-            {/* Floating Bow Image */}
-            <motion.div
-              className="absolute -top-12 -left-12 z-20"
-              variants={slideInLeft}
-              animate={{
-                y: [0, -15, 0],
-                rotate: [0, 2, 0],
-                transition: {
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                },
-              }}
-            ></motion.div>
-
-            {/* Floating Workshop Image */}
-            <motion.div
-              className="absolute -bottom-8 -right-8 z-20"
-              variants={slideInRight}
-              animate={{
-                y: [0, 10, 0],
-                rotate: [0, -1, 0],
-                transition: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                },
-              }}
-            ></motion.div>
-
-            {/* Decorative Elements */}
-            <motion.div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-amber-600/10 to-orange-600/10 rounded-full blur-3xl -z-10"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.2, 0.4, 0.2],
-                transition: {
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                },
-              }}
-            />
           </motion.div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{
           y: [0, 10, 0],
@@ -216,7 +200,7 @@ const DoubleBassHero = () => {
         <div className="w-6 h-10 border-2 border-[#fee081] rounded-full flex justify-center">
           <div className="w-1 h-3 bg-[#fee081] rounded-full mt-2"></div>
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   )
 }

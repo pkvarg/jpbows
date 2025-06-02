@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'JP Bows',
-  description: 'jp bows',
+  description: 'Double Basses and bows.',
 }
 
 export async function generateStaticParams() {

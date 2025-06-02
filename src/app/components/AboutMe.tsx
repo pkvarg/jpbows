@@ -83,7 +83,7 @@ const AboutMe = () => {
 
                 <p>
                   Absolvent Akadémie umení v Banskej Bystrici, aktívny člen prestížnych súborov ako
-                  <span className="text-[#fee081] font-semibold">Musica Aeterna</span>,{' '}
+                  <span className="text-[#fee081] font-semibold ml-1">Musica Aeterna</span>,{' '}
                   <span className="text-[#fee081] font-semibold">Wiener Akademie</span> a{' '}
                   <span className="text-[#fee081] font-semibold">Il pomo d&apos;oro</span>.
                 </p>
@@ -116,7 +116,7 @@ const AboutMe = () => {
               </motion.div>
 
               {/* CTA Button */}
-              <motion.div variants={fadeInUp} className="pt-6">
+              <motion.div variants={fadeInUp} className="pt-6 flex justify-center items-center">
                 <motion.button
                   className="bg-[#fee081] hover:bg-transparent hover:text-[#fee081] border-2 hover:border-[#fee081] text-black px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05 }}

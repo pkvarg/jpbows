@@ -119,12 +119,24 @@ exports.Prisma.VisitorScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ProductScalarFieldEnum = {
+exports.Prisma.BowsScalarFieldEnum = {
   id: 'id',
-  imageUrl: 'imageUrl',
+  images: 'images',
   name: 'name',
   description: 'description',
   available: 'available',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BassScalarFieldEnum = {
+  id: 'id',
+  images: 'images',
+  name: 'name',
+  description: 'description',
+  available: 'available',
+  price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -148,6 +160,7 @@ exports.Prisma.BlogScalarFieldEnum = {
   description: 'description',
   blogtext: 'blogtext',
   template: 'template',
+  english: 'english',
   active: 'active',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -166,7 +179,8 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   Visitor: 'Visitor',
-  Product: 'Product',
+  Bows: 'Bows',
+  Bass: 'Bass',
   Slider: 'Slider',
   Blog: 'Blog'
 };

@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing'
 import React from 'react'
-import ProductCreator from '@/app/components/ProductCreator'
+import BassManager from '@/app/components/BassManager'
 
 const AdminProduct = () => {
   return (
@@ -8,7 +8,7 @@ const AdminProduct = () => {
       <Link href={'/admin'} className="text-white text-[30px] text-center cursor-pointer">
         Naspäť
       </Link>
-      <ProductCreator />
+      <BassManager />
     </main>
   )
 }
