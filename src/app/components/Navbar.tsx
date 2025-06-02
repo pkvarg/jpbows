@@ -119,6 +119,13 @@ const Navbar = () => {
               >
                 Kontabasy
               </Link>
+              <Link
+                href={'/blog'}
+                className="cursor-pointer hover:text-[#e6c78c]"
+                onClick={handleLinkClick}
+              >
+                Blog
+              </Link>
 
               {/* O nás dropdown - desktop uses hover, mobile uses click */}
               {/* <li className="group relative cursor-pointer py-2 md:py-0">

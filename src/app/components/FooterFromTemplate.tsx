@@ -44,7 +44,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       <CookieConsent
         location="bottom"
         style={{
-          background: '#834daf',
+          background: '#0f1729',
           color: '#ffffff',
           fontSize: '19px',
           textAlign: 'start',
