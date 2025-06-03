@@ -120,7 +120,8 @@ export default function BlogCreator() {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+        const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
+        // const apiUrl = 'http://localhost:3013/api/upload/jpbows'
 
         const response = await fetch(apiUrl, {
           method: 'POST',
