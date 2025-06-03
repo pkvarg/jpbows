@@ -9,6 +9,7 @@ interface BassFormData {
   images: string[]
   available: string
   price: string
+  published: boolean
 }
 
 interface Bass {
@@ -18,6 +19,7 @@ interface Bass {
   description: string
   available: string
   price: string
+  published: boolean
   createdAt: Date
   updatedAt: Date
 }
@@ -29,6 +31,7 @@ export default function BassManager() {
     images: [],
     available: 'áno',
     price: '',
+    published: false,
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -46,6 +49,7 @@ export default function BassManager() {
       images: [],
       available: 'áno',
       price: '',
+      published: false,
     })
     setImageFiles([])
     setImagePreviews([])
@@ -126,7 +130,6 @@ export default function BassManager() {
           const formData = new FormData()
           formData.append('file', file)
 
-          //const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
           const apiUrl = 'http://localhost:3013/api/upload/jpbows'
 
           const response = await fetch(apiUrl, {
@@ -152,6 +155,7 @@ export default function BassManager() {
         images: uploadedImageUrls,
         available: formData.available,
         price: formData.price,
+        published: formData.published,
       }
 
       // Determine if we're creating or updating
@@ -218,6 +222,7 @@ export default function BassManager() {
       images: bass.images || [],
       available: bass.available,
       price: bass.price || '',
+      published: bass.published || false,
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -306,7 +311,7 @@ export default function BassManager() {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
-            placeholder="napr. 5000"
+            placeholder="napr. €1500"
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
         </div>
@@ -375,6 +380,29 @@ export default function BassManager() {
           </select>
         </div>
 
+        <div>
+          <label htmlFor="published" className="block text-sm font-medium text-gray-400">
+            Publikovaný
+          </label>
+          <div className="mt-1">
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                id="published"
+                name="published"
+                checked={formData.published}
+                onChange={(e) => setFormData((prev) => ({ ...prev, published: e.target.checked }))}
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <span className="ml-3 text-sm font-medium text-gray-300">
+                {formData.published ? 'Áno' : 'Nie'}
+              </span>
+            </label>
+            <p className="text-xs text-gray-500 mt-1">Zobrazí sa na webstránke</p>
+          </div>
+        </div>
+
         <div className="flex gap-2">
           <button
             type="submit"
@@ -424,17 +452,24 @@ export default function BassManager() {
               <div key={bass.id} className="p-3 border rounded">
                 <div className="flex justify-between">
                   <h4 className="font-bold text-white">{bass.name}</h4>
-                  <span
-                    className={`text-xs px-2 py-1 rounded ${
-                      bass.available === 'áno'
-                        ? 'bg-green-100 text-green-800'
-                        : bass.available === 'obmedzená'
-                        ? 'bg-yellow-100 text-yellow-800'
-                        : 'bg-red-100 text-red-800'
-                    }`}
-                  >
-                    {bass.available}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {!bass.published && (
+                      <span className="text-xs px-2 py-1 rounded bg-gray-600 text-gray-300">
+                        Nepublikovaný
+                      </span>
+                    )}
+                    <span
+                      className={`text-xs px-2 py-1 rounded ${
+                        bass.available === 'áno'
+                          ? 'bg-green-100 text-green-800'
+                          : bass.available === 'obmedzená'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-red-100 text-red-800'
+                      }`}
+                    >
+                      {bass.available}
+                    </span>
+                  </div>
                 </div>
                 <p className="text-md text-white mt-1">{bass.description}</p>
                 {bass.price && <p className="text-sm text-gray-300 mt-1">Cena: {bass.price}</p>}

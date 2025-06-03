@@ -27,6 +27,7 @@ model Bows {
   name String
   description String
   available String
+  published Boolean
   price String
   createdAt DateTime
   updatedAt DateTime
@@ -38,6 +39,7 @@ model Bass {
   name String
   description String
   available String
+  published Boolean
   price String
   createdAt DateTime
   updatedAt DateTime
