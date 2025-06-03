@@ -14,7 +14,7 @@ export default function AuthButton() {
         await signOut() // Redirect to /sk after sign-out
         router.push('/')
       }}
-      className="cursor-pointer"
+      className="cursor-pointer text-2xl"
     >
       {session.data?.user?.name} : Odhlásiť sa
     </Button>

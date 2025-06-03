@@ -146,19 +146,6 @@ const BassItem = ({ bass }: { bass: Bass }) => {
           <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-lg">
             {bass.images.length > 0 ? (
               <>
-                {/* <div
-                  className="relative h-full cursor-pointer"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  <Image
-                    src={bass.images[currentImageIndex]}
-                    alt={`${bass.name} - Image ${currentImageIndex + 1}`}
-                    fill
-                    className="object-contain hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div> */}
-
                 <div
                   className="relative h-full cursor-pointer group"
                   onClick={() => setIsModalOpen(true)}

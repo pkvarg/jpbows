@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState, useRef, ChangeEvent } from 'react'
 
-interface BassFormData {
+interface BowFormData {
   name: string
   description: string
   images: string[]
@@ -12,7 +12,7 @@ interface BassFormData {
   published: boolean
 }
 
-interface Bass {
+interface Bow {
   id: string
   images: string[]
   name: string
@@ -24,8 +24,8 @@ interface Bass {
   updatedAt: Date
 }
 
-export default function BassManager() {
-  const [formData, setFormData] = useState<BassFormData>({
+export default function BowManager() {
+  const [formData, setFormData] = useState<BowFormData>({
     name: '',
     description: '',
     images: [],
@@ -37,7 +37,7 @@ export default function BassManager() {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
-  const [basses, setBasses] = useState<Bass[]>([])
+  const [bows, setBows] = useState<Bow[]>([])
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [imagePreviews, setImagePreviews] = useState<string[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -150,7 +150,7 @@ export default function BassManager() {
         uploadedImageUrls = [...uploadedImageUrls, ...newImageUrls]
       }
 
-      const bassData = {
+      const bowData = {
         name: formData.name,
         description: formData.description,
         images: uploadedImageUrls,
@@ -160,7 +160,7 @@ export default function BassManager() {
       }
 
       // Determine if we're creating or updating
-      const url = editingId ? `/api/basses/${editingId}` : '/api/basses'
+      const url = editingId ? `/api/bows/${editingId}` : '/api/bows'
       const method = editingId ? 'PUT' : 'POST'
 
       const response = await fetch(url, {
@@ -168,23 +168,23 @@ export default function BassManager() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(bassData),
+        body: JSON.stringify(bowData),
       })
 
       if (!response.ok) {
-        throw new Error(`Failed to ${editingId ? 'update' : 'create'} bass`)
+        throw new Error(`Failed to ${editingId ? 'update' : 'create'} bow`)
       }
 
-      const resultBass = await response.json()
+      const resultBow = await response.json()
 
       if (editingId) {
-        // Update basses list with edited bass
-        setBasses(basses.map((b) => (b.id === editingId ? resultBass : b)))
+        // Update bows list with edited bow
+        setBows(bows.map((b) => (b.id === editingId ? resultBow : b)))
         setSuccessMessage('Product updated successfully!')
       } else {
         // Add new product to list
-        setBasses([...basses, resultBass])
-        setSuccessMessage('Bass created successfully!')
+        setBows([...bows, resultBow])
+        setSuccessMessage('Bow created successfully!')
       }
 
       // Reset the form
@@ -196,19 +196,19 @@ export default function BassManager() {
     }
   }
 
-  const fetchBasses = async () => {
+  const fetchBows = async () => {
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch('/api/basses')
+      const response = await fetch('/api/bows')
 
       if (!response.ok) {
-        throw new Error('Failed to fetch basses')
+        throw new Error('Failed to fetch bows')
       }
 
       const data = await response.json()
-      setBasses(data)
+      setBows(data)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred')
     } finally {
@@ -216,39 +216,39 @@ export default function BassManager() {
     }
   }
 
-  const handleEdit = (bass: Bass) => {
+  const handleEdit = (bow: Bow) => {
     setFormData({
-      name: bass.name,
-      description: bass.description,
-      images: bass.images || [],
-      available: bass.available,
-      price: bass.price || '',
-      published: bass.published || false,
+      name: bow.name,
+      description: bow.description,
+      images: bow.images || [],
+      available: bow.available,
+      price: bow.price || '',
+      published: bow.published || false,
     })
-    setEditingId(bass.id)
-    setImagePreviews(bass.images || [])
+    setEditingId(bow.id)
+    setImagePreviews(bow.images || [])
     setImageFiles([])
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this bass?')) return
+    if (!confirm('Are you sure you want to delete this bow?')) return
 
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(`/api/basses/${id}`, {
+      const response = await fetch(`/api/bows/${id}`, {
         method: 'DELETE',
       })
 
       if (!response.ok) {
-        throw new Error('Failed to delete bass')
+        throw new Error('Failed to delete bow')
       }
 
       // Remove from products list
-      setBasses(basses.filter((b) => b.id !== id))
-      setSuccessMessage('Bass deleted successfully!')
+      setBows(bows.filter((b) => b.id !== id))
+      setSuccessMessage('Bow deleted successfully!')
 
       // Reset form if we were editing the deleted product
       if (editingId === id) {
@@ -266,9 +266,9 @@ export default function BassManager() {
   }
 
   return (
-    <div className="px-6 py-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
+    <div className="p-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
       <h2 className="text-xl text-white font-bold mb-4">
-        {editingId ? 'Upraviť kontrabas' : 'Vytvoriť kontrabas'}
+        {editingId ? 'Upraviť sláčik' : 'Vytvoriť sláčik'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -410,7 +410,7 @@ export default function BassManager() {
             disabled={loading}
             className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50"
           >
-            {loading ? 'Ukladám...' : editingId ? 'Upraviť kontrabas' : 'Vytvoriť kontrabas'}
+            {loading ? 'Ukladám...' : editingId ? 'Upraviť sláčik' : 'Vytvoriť sláčik'}
           </button>
 
           {editingId && (
@@ -439,50 +439,50 @@ export default function BassManager() {
 
       <div className="mt-6">
         <button
-          onClick={fetchBasses}
+          onClick={fetchBows}
           disabled={loading}
           className="w-full bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded disabled:opacity-50"
         >
-          {loading ? 'Načítavam...' : 'Všetky kontrabasy'}
+          {loading ? 'Načítavam...' : 'Všetky sláčiky'}
         </button>
 
-        {basses.length > 0 && (
+        {bows.length > 0 && (
           <div className="mt-4 space-y-4">
-            <h3 className="text-lg font-medium text-yellow-500">Produkty ({basses.length})</h3>
-            {basses.map((bass) => (
-              <div key={bass.id} className="p-3 border rounded">
+            <h3 className="text-lg font-medium text-yellow-500">Produkty ({bows.length})</h3>
+            {bows.map((bow) => (
+              <div key={bow.id} className="p-3 border rounded">
                 <div className="flex justify-between">
-                  <h4 className="font-bold text-white">{bass.name}</h4>
+                  <h4 className="font-bold text-white">{bow.name}</h4>
                   <div className="flex items-center gap-2">
-                    {!bass.published && (
+                    {!bow.published && (
                       <span className="text-xs px-2 py-1 rounded bg-gray-600 text-gray-300">
                         Nepublikovaný
                       </span>
                     )}
                     <span
                       className={`text-xs px-2 py-1 rounded ${
-                        bass.available === 'áno'
+                        bow.available === 'áno'
                           ? 'bg-green-100 text-green-800'
-                          : bass.available === 'obmedzená'
+                          : bow.available === 'obmedzená'
                           ? 'bg-yellow-100 text-yellow-800'
                           : 'bg-red-100 text-red-800'
                       }`}
                     >
-                      {bass.available}
+                      {bow.available}
                     </span>
                   </div>
                 </div>
-                <p className="text-md text-white mt-1">{bass.description}</p>
-                {bass.price && <p className="text-sm text-gray-300 mt-1">Cena: {bass.price}</p>}
+                <p className="text-md text-white mt-1">{bow.description}</p>
+                {bow.price && <p className="text-sm text-gray-300 mt-1">Cena: {bow.price}</p>}
 
-                {bass.images && bass.images.length > 0 && (
+                {bow.images && bow.images.length > 0 && (
                   <div className="mt-2">
                     <div className="flex gap-2 overflow-x-auto">
-                      {bass.images.map((imageUrl, index) => (
+                      {bow.images.map((imageUrl, index) => (
                         <div key={index} className="relative h-32 w-32 flex-shrink-0">
                           <Image
                             src={imageUrl}
-                            alt={`${bass.name} - ${index + 1}`}
+                            alt={`${bow.name} - ${index + 1}`}
                             width={128}
                             height={128}
                             style={{ objectFit: 'cover' }}
@@ -496,13 +496,13 @@ export default function BassManager() {
 
                 <div className="mt-3 flex gap-2">
                   <button
-                    onClick={() => handleEdit(bass)}
+                    onClick={() => handleEdit(bow)}
                     className="flex-1 bg-yellow-900 hover:bg-yellow-600 text-white py-1 px-2 rounded text-sm"
                   >
                     Upraviť
                   </button>
                   <button
-                    onClick={() => handleDelete(bass.id)}
+                    onClick={() => handleDelete(bow.id)}
                     className="flex-1 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded text-sm"
                   >
                     Vymazať

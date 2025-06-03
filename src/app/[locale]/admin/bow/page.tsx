@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/routing'
 import React from 'react'
-import BassManager from '@/app/components/BassManager'
+import BowManager from '@/app/components/BowManager'
 
 const AdminProduct = () => {
   return (
@@ -9,7 +9,7 @@ const AdminProduct = () => {
         Naspäť
       </Link>
       <div className="pb-12">
-        <BassManager />
+        <BowManager />
       </div>
     </main>
   )
