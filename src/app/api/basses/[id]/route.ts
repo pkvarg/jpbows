@@ -2,6 +2,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
 
+interface ResolvedParams {
+  id: string
+}
+
 // GET all basses
 export async function GET() {
   try {
@@ -17,10 +21,11 @@ export async function GET() {
 }
 
 // EDIT a bass by id
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
   try {
     const body = await request.json()
-    const { id } = await params
+    const resolvedParams = await params
+    const id = resolvedParams.id
 
     console.log('id', id)
 
