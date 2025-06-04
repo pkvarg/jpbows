@@ -14,6 +14,7 @@ interface BlogFormData {
   imageUrl: string
   active: boolean
   template: BlogTemplate
+  metadata: string
 }
 
 interface Blog {
@@ -25,6 +26,7 @@ interface Blog {
   blogtext: string
   active: boolean
   template: BlogTemplate
+  metadata: string
   createdAt: Date
   updatedAt: Date
 }
@@ -38,6 +40,7 @@ export default function BlogCreator() {
     imageUrl: '',
     active: true,
     template: 'classic',
+    metadata: '',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -58,6 +61,7 @@ export default function BlogCreator() {
       imageUrl: '',
       active: true,
       template: 'classic',
+      metadata: '',
     })
     setImageFile(null)
     setImagePreview(null)
@@ -117,15 +121,15 @@ export default function BlogCreator() {
 
       // If there's a file to upload, upload it first
       if (imageFile) {
-        const formData = new FormData()
-        formData.append('file', imageFile)
+        const uploadFormData = new FormData()
+        uploadFormData.append('file', imageFile)
 
         const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
         // const apiUrl = 'http://localhost:3013/api/upload/jpbows'
 
         const response = await fetch(apiUrl, {
           method: 'POST',
-          body: formData,
+          body: uploadFormData,
         })
 
         if (!response.ok) {
@@ -137,8 +141,14 @@ export default function BlogCreator() {
       }
 
       const blogData = {
-        ...formData,
-        imageUrl: finalImageUrl, // Use the uploaded image URL or existing one
+        title: formData.title,
+        subtitle: formData.subtitle,
+        description: formData.description,
+        blogtext: formData.blogtext,
+        imageUrl: finalImageUrl,
+        active: formData.active,
+        template: formData.template,
+        metadata: formData.metadata,
       }
 
       // Determine if we're creating or updating
@@ -207,6 +217,7 @@ export default function BlogCreator() {
       imageUrl: blog.imageUrl,
       active: blog.active,
       template: blog.template,
+      metadata: blog.metadata || '',
     })
     setEditingId(blog.id)
     setImagePreview(blog.imageUrl)
@@ -505,6 +516,22 @@ export default function BlogCreator() {
             <label htmlFor="active" className="ml-2 block text-sm text-gray-400">
               Publikovaný
             </label>
+          </div>
+
+          <div>
+            <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
+              Metadata
+            </label>
+            <textarea
+              id="metadata"
+              name="metadata"
+              value={formData.metadata}
+              onChange={handleInputChange}
+              rows={2}
+              placeholder="JSON metadata alebo doplňujúce informácie"
+              className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+            />
+            <p className="text-xs text-gray-500 mt-1">Doplňujúce údaje vo formáte JSON</p>
           </div>
 
           <div className="flex gap-2">

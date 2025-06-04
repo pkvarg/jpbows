@@ -15,6 +15,9 @@ export async function POST(request: NextRequest) {
         images: body.images || [], // Handle array of images
         available: body.available,
         published: body.published,
+        english: body.english,
+        new: body.new,
+        metadata: body.metadata,
         price: body.price || '',
         createdAt: new Date(),
         updatedAt: new Date(),

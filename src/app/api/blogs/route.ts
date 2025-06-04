@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
         blogtext: body.blogtext,
         imageUrl: body.imageUrl,
         active: body.active,
+        metadata: body.metadata,
         template: body.template || 'classic', // Default to classic if not provided
         createdAt: new Date(),
         updatedAt: new Date(),

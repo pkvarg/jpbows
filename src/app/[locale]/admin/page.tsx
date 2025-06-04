@@ -19,7 +19,7 @@ const Admin = async () => {
             {/* <Link href={`/admin/file-upload`}>File Upload</Link> */}
             <Link href={`/admin/bass`}>Basses</Link>
             <Link href={`/admin/bow`}>Bows</Link>
-            <Link href={`/admin/slider`}>Sliders</Link>
+            {/* <Link href={`/admin/slider`}>Sliders</Link> */}
             <Link href={`/admin/blog`}>Blogs</Link>
           </div>
 

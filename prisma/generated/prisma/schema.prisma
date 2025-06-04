@@ -27,6 +27,9 @@ model Bows {
   description String
   available   String
   published   Boolean
+  english     Boolean
+  new         Boolean
+  metadata    String?
   price       String
   createdAt   DateTime
   updatedAt   DateTime
@@ -39,6 +42,9 @@ model Bass {
   description String
   available   String
   published   Boolean
+  english     Boolean
+  new         Boolean
+  metadata    String?
   price       String
   createdAt   DateTime
   updatedAt   DateTime
@@ -65,6 +71,7 @@ model Blog {
   template    String
   english     Boolean  @default(false)
   active      Boolean
+  metadata    String?
   createdAt   DateTime
   updatedAt   DateTime
 }

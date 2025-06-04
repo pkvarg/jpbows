@@ -47,6 +47,7 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
         blogtext: body.blogtext,
         imageUrl: body.imageUrl,
         active: body.active,
+        metadata: body.metadata,
         template: body.template || 'classic', // Default to classic if not provided
         updatedAt: new Date(),
       },

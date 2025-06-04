@@ -10,6 +10,9 @@ interface BassFormData {
   available: string
   price: string
   published: boolean
+  english: boolean
+  new: boolean
+  metadata: string
 }
 
 interface Bass {
@@ -20,6 +23,9 @@ interface Bass {
   available: string
   price: string
   published: boolean
+  english: boolean
+  new: boolean
+  metadata: string
   createdAt: Date
   updatedAt: Date
 }
@@ -32,6 +38,9 @@ export default function BassManager() {
     available: 'áno',
     price: '',
     published: false,
+    english: false,
+    new: false,
+    metadata: '',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -50,6 +59,9 @@ export default function BassManager() {
       available: 'áno',
       price: '',
       published: false,
+      english: false,
+      new: false,
+      metadata: '',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -157,6 +169,9 @@ export default function BassManager() {
         available: formData.available,
         price: formData.price,
         published: formData.published,
+        english: formData.english,
+        new: formData.new,
+        metadata: formData.metadata,
       }
 
       // Determine if we're creating or updating
@@ -224,6 +239,9 @@ export default function BassManager() {
       available: bass.available,
       price: bass.price || '',
       published: bass.published || false,
+      english: bass.english || false,
+      new: bass.new || false,
+      metadata: bass.metadata || '',
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -404,6 +422,68 @@ export default function BassManager() {
           </div>
         </div>
 
+        <div>
+          <label htmlFor="english" className="block text-sm font-medium text-gray-400">
+            Anglická verzia
+          </label>
+          <div className="mt-1">
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                id="english"
+                name="english"
+                checked={formData.english}
+                onChange={(e) => setFormData((prev) => ({ ...prev, english: e.target.checked }))}
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <span className="ml-3 text-sm font-medium text-gray-300">
+                {formData.english ? 'Áno' : 'Nie'}
+              </span>
+            </label>
+            <p className="text-xs text-gray-500 mt-1">Zobrazí sa v anglickej verzii</p>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="new" className="block text-sm font-medium text-gray-400">
+            Nový produkt
+          </label>
+          <div className="mt-1">
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                id="new"
+                name="new"
+                checked={formData.new}
+                onChange={(e) => setFormData((prev) => ({ ...prev, new: e.target.checked }))}
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <span className="ml-3 text-sm font-medium text-gray-300">
+                {formData.new ? 'Áno' : 'Nie'}
+              </span>
+            </label>
+            <p className="text-xs text-gray-500 mt-1">Označí produkt ako nový</p>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
+            Metadata
+          </label>
+          <textarea
+            id="metadata"
+            name="metadata"
+            value={formData.metadata}
+            onChange={handleInputChange}
+            rows={2}
+            placeholder="JSON metadata alebo doplňujúce informácie"
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+          <p className="text-xs text-gray-500 mt-1">Doplňujúce údaje vo formáte JSON</p>
+        </div>
+
         <div className="flex gap-2">
           <button
             type="submit"
@@ -454,6 +534,14 @@ export default function BassManager() {
                 <div className="flex justify-between">
                   <h4 className="font-bold text-white">{bass.name}</h4>
                   <div className="flex items-center gap-2">
+                    {bass.new && (
+                      <span className="text-xs px-2 py-1 rounded bg-green-600 text-white">
+                        Nový
+                      </span>
+                    )}
+                    {bass.english && (
+                      <span className="text-xs px-2 py-1 rounded bg-blue-600 text-white">EN</span>
+                    )}
                     {!bass.published && (
                       <span className="text-xs px-2 py-1 rounded bg-gray-600 text-gray-300">
                         Nepublikovaný

@@ -126,6 +126,9 @@ exports.Prisma.BowsScalarFieldEnum = {
   description: 'description',
   available: 'available',
   published: 'published',
+  english: 'english',
+  new: 'new',
+  metadata: 'metadata',
   price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -138,6 +141,9 @@ exports.Prisma.BassScalarFieldEnum = {
   description: 'description',
   available: 'available',
   published: 'published',
+  english: 'english',
+  new: 'new',
+  metadata: 'metadata',
   price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -164,6 +170,7 @@ exports.Prisma.BlogScalarFieldEnum = {
   template: 'template',
   english: 'english',
   active: 'active',
+  metadata: 'metadata',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

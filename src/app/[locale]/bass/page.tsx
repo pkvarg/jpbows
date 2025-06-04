@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 interface Bass {
   id: string
@@ -11,6 +12,8 @@ interface Bass {
   available: string
   price: string
   published: boolean
+  english: boolean
+  new: boolean
   createdAt: string
   updatedAt: string
 }
@@ -121,7 +124,7 @@ const ImageModal = ({
 }
 
 // Bass Item Component
-const BassItem = ({ bass }: { bass: Bass }) => {
+const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const hasMultipleImages = bass.images.length > 1
@@ -273,8 +276,18 @@ const BassItem = ({ bass }: { bass: Bass }) => {
         {/* Content Section - Right Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">{bass.name}</h2>
-            <span
+            <div className="flex items-start gap-4 mb-2">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white">{bass.name}</h2>
+              {bass.new && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
+                  <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  {isEnglish ? 'NEW' : 'NOVINKA'}
+                </span>
+              )}
+            </div>
+            {/* <span
               className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium ${
                 bass.available === 'áno'
                   ? 'bg-green-500/10 text-green-400 ring-1 ring-green-500/30'
@@ -283,12 +296,18 @@ const BassItem = ({ bass }: { bass: Bass }) => {
                   : 'bg-red-500/10 text-red-400 ring-1 ring-red-500/30'
               }`}
             >
-              {bass.available === 'áno'
+              {isEnglish
+                ? bass.available === 'áno'
+                  ? 'Available'
+                  : bass.available === 'obmedzená'
+                  ? 'Limited availability'
+                  : 'Not available'
+                : bass.available === 'áno'
                 ? 'Dostupný'
                 : bass.available === 'obmedzená'
                 ? 'Obmedzená dostupnosť'
                 : 'Nedostupný'}
-            </span>
+            </span> */}
           </div>
 
           <p className="text-gray-300 text-lg leading-relaxed">{bass.description}</p>
@@ -319,10 +338,14 @@ const Bass = () => {
   const [basses, setBasses] = useState<Bass[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const pathname = usePathname()
+
+  // Determine if we're on the English version based on URL
+  const isEnglish = pathname.includes('/en/')
 
   useEffect(() => {
     fetchBasses()
-  }, [])
+  })
 
   const fetchBasses = async () => {
     try {
@@ -334,9 +357,20 @@ const Bass = () => {
       }
 
       const data = await response.json()
-      // Filter only published basses
-      const publishedBasses = data.filter((bass: Bass) => bass.published === true)
-      setBasses(publishedBasses)
+      // Filter based on published status AND language
+      const filteredBasses = data.filter((bass: Bass) => {
+        // Must be published
+        if (!bass.published) return false
+
+        // Filter by language
+        if (isEnglish) {
+          return bass.english === true
+        } else {
+          return bass.english === false
+        }
+      })
+
+      setBasses(filteredBasses)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
@@ -393,7 +427,7 @@ const Bass = () => {
             </p>
           </div>
         ) : (
-          basses.map((bass) => <BassItem key={bass.id} bass={bass} />)
+          basses.map((bass) => <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />)
         )}
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 interface Bow {
   id: string
@@ -11,6 +12,9 @@ interface Bow {
   available: string
   price: string
   published: boolean
+  english: boolean
+  new: boolean
+  metadata: string
   createdAt: string
   updatedAt: string
 }
@@ -273,22 +277,17 @@ const BowItem = ({ bow }: { bow: Bow }) => {
         {/* Content Section - Right Side */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">{bow.name}</h2>
-            <span
-              className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium ${
-                bow.available === 'áno'
-                  ? 'bg-green-500/10 text-green-400 ring-1 ring-green-500/30'
-                  : bow.available === 'obmedzená'
-                  ? 'bg-yellow-500/10 text-yellow-400 ring-1 ring-yellow-500/30'
-                  : 'bg-red-500/10 text-red-400 ring-1 ring-red-500/30'
-              }`}
-            >
-              {bow.available === 'áno'
-                ? 'Dostupný'
-                : bow.available === 'obmedzená'
-                ? 'Obmedzená dostupnosť'
-                : 'Nedostupný'}
-            </span>
+            <div className="flex items-start gap-4 mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white">{bow.name}</h2>
+              {bow.new && (
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
+                  <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  NOVÝ
+                </span>
+              )}
+            </div>
           </div>
 
           <p className="text-gray-300 text-lg leading-relaxed">{bow.description}</p>
@@ -319,10 +318,14 @@ const Bow = () => {
   const [bows, setBows] = useState<Bow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const pathname = usePathname()
+
+  // Determine if we're on the English version based on URL
+  const isEnglish = pathname.includes('/en/')
 
   useEffect(() => {
     fetchBows()
-  }, [])
+  })
 
   const fetchBows = async () => {
     try {
@@ -334,9 +337,20 @@ const Bow = () => {
       }
 
       const data = await response.json()
-      // Filter only published bows
-      const publishedBows = data.filter((bow: Bow) => bow.published === true)
-      setBows(publishedBows)
+      // Filter based on published status AND language
+      const filteredBows = data.filter((bow: Bow) => {
+        // Must be published
+        if (!bow.published) return false
+
+        // Filter by language
+        if (isEnglish) {
+          return bow.english === true
+        } else {
+          return bow.english === false
+        }
+      })
+
+      setBows(filteredBows)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
@@ -378,9 +392,7 @@ const Bow = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">Sláčiky</h1>
-          <p className="text-xl text-gray-300">
-            Kvalitné majstrovské sláčiky pre náročných hudobníkov
-          </p>
+          <p className="text-xl text-gray-300">Kvalitné majstrovské sláčiky pre kontrabas...</p>
         </div>
       </div>
 
