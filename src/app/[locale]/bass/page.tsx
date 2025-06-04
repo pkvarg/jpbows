@@ -343,9 +343,10 @@ const Bass = () => {
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchBasses()
-  })
+  }, [])
 
   const fetchBasses = async () => {
     try {

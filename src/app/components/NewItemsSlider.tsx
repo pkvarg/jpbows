@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
+import { usePathname } from 'next/navigation'
 
 interface BassData {
   id: string
@@ -54,6 +55,10 @@ const NewItemsSlider = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [loading, setLoading] = useState(true)
+  const pathname = usePathname()
+
+  // Determine if we're on the English version based on URL
+  const isEnglish = pathname.includes('/en')
 
   useEffect(() => {
     fetchNewProducts()
@@ -79,16 +84,16 @@ const NewItemsSlider = () => {
       console.log('BData', bassesData)
       console.log('BowData', bowsData)
 
-      // Filter only new and published products
+      // Filter only new and published products based on language
       const newBasses = bassesData
-        .filter((bass: BassData) => bass.published && bass.new)
+        .filter((bass: BassData) => bass.published && bass.new && bass.english === isEnglish)
         .map((bass: BassData) => ({
           ...bass,
           type: 'bass' as const,
         }))
 
       const newBows = bowsData
-        .filter((bow: BowData) => bow.published && bow.new)
+        .filter((bow: BowData) => bow.published && bow.new && bow.english === isEnglish)
         .map((bow: BowData) => ({
           ...bow,
           type: 'bow' as const,
