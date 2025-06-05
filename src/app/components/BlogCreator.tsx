@@ -8,9 +8,13 @@ type BlogTemplate = 'classic' | 'modern' | 'minimal'
 
 interface BlogFormData {
   title: string
+  enTitle: string
   subtitle: string
+  enSubtitle: string
   description: string
+  enDescription: string
   blogtext: string
+  enBlogtext: string
   imageUrl: string
   active: boolean
   template: BlogTemplate
@@ -21,9 +25,13 @@ interface Blog {
   id: string
   imageUrl: string
   title: string
+  enTitle: string
   subtitle: string
+  enSubtitle: string
   description: string
+  enDescription: string
   blogtext: string
+  enBlogtext: string
   active: boolean
   template: BlogTemplate
   metadata: string
@@ -34,9 +42,13 @@ interface Blog {
 export default function BlogCreator() {
   const [formData, setFormData] = useState<BlogFormData>({
     title: '',
+    enTitle: '',
     subtitle: '',
+    enSubtitle: '',
     description: '',
+    enDescription: '',
     blogtext: '',
+    enBlogtext: '',
     imageUrl: '',
     active: true,
     template: 'classic',
@@ -50,14 +62,19 @@ export default function BlogCreator() {
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [previewTemplate, setPreviewTemplate] = useState<boolean>(false)
+  const [previewLanguage, setPreviewLanguage] = useState<'sk' | 'en'>('sk')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const resetForm = () => {
     setFormData({
       title: '',
+      enTitle: '',
       subtitle: '',
+      enSubtitle: '',
       description: '',
+      enDescription: '',
       blogtext: '',
+      enBlogtext: '',
       imageUrl: '',
       active: true,
       template: 'classic',
@@ -67,6 +84,7 @@ export default function BlogCreator() {
     setImagePreview(null)
     setEditingId(null)
     setPreviewTemplate(false)
+    setPreviewLanguage('sk')
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
@@ -142,9 +160,13 @@ export default function BlogCreator() {
 
       const blogData = {
         title: formData.title,
+        enTitle: formData.enTitle,
         subtitle: formData.subtitle,
+        enSubtitle: formData.enSubtitle,
         description: formData.description,
+        enDescription: formData.enDescription,
         blogtext: formData.blogtext,
+        enBlogtext: formData.enBlogtext,
         imageUrl: finalImageUrl,
         active: formData.active,
         template: formData.template,
@@ -211,9 +233,13 @@ export default function BlogCreator() {
   const handleEdit = (blog: Blog) => {
     setFormData({
       title: blog.title,
+      enTitle: blog.enTitle || '',
       subtitle: blog.subtitle,
+      enSubtitle: blog.enSubtitle || '',
       description: blog.description,
+      enDescription: blog.enDescription || '',
       blogtext: blog.blogtext,
+      enBlogtext: blog.enBlogtext || '',
       imageUrl: blog.imageUrl,
       active: blog.active,
       template: blog.template,
@@ -269,74 +295,55 @@ export default function BlogCreator() {
     return text.substring(0, maxLength) + '...'
   }
 
+  // Get content based on preview language
+  const getPreviewContent = () => {
+    if (previewLanguage === 'en') {
+      return {
+        title: formData.enTitle || formData.title,
+        subtitle: formData.enSubtitle || formData.subtitle,
+        description: formData.enDescription || formData.description,
+        blogtext: formData.enBlogtext || formData.blogtext,
+      }
+    }
+    return {
+      title: formData.title,
+      subtitle: formData.subtitle,
+      description: formData.description,
+      blogtext: formData.blogtext,
+    }
+  }
+
   // Classic template
-  const ClassicTemplate = () => (
-    <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-      {/* Header Image */}
-      {imagePreview && (
-        <div className="w-full h-64 relative">
-          <Image
-            src={imagePreview}
-            alt={formData.title}
-            layout="fill"
-            objectFit="cover"
-            width={800}
-            height={400}
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">{formData.title}</h1>
-        <h2 className="text-xl text-gray-600 mb-6">{formData.subtitle}</h2>
-
-        <div className="bg-gray-100 p-4 rounded-lg mb-6">
-          <p className="text-gray-700 italic">{formData.description}</p>
-        </div>
-
-        <div className="prose max-w-none text-gray-800">
-          {formData.blogtext.split('\n').map((paragraph, idx) => (
-            <p key={idx} className="mb-4">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-
-  // Modern template
-  const ModernTemplate = () => (
-    <div className="max-w-4xl mx-auto">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-8 rounded-t-lg">
-        <h1 className="text-4xl font-bold text-white mb-2">{formData.title}</h1>
-        <h2 className="text-xl text-purple-100">{formData.subtitle}</h2>
-      </div>
-
-      {/* Image and content in grid layout */}
-      <div className="bg-white p-8 rounded-b-lg shadow-xl grid grid-cols-1 md:grid-cols-2 gap-8">
+  const ClassicTemplate = () => {
+    const content = getPreviewContent()
+    return (
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        {/* Header Image */}
         {imagePreview && (
-          <div className="relative h-80 w-full rounded-lg overflow-hidden">
+          <div className="w-full h-64 relative">
             <Image
               src={imagePreview}
-              alt={formData.title}
-              width={500}
-              height={500}
+              alt={content.title}
+              layout="fill"
+              objectFit="cover"
+              width={800}
+              height={400}
               style={{ objectFit: 'cover' }}
             />
           </div>
         )}
 
-        <div>
-          <div className="bg-purple-50 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
-            <p className="text-purple-800">{formData.description}</p>
+        {/* Content */}
+        <div className="p-8">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">{content.title}</h1>
+          <h2 className="text-xl text-gray-600 mb-6">{content.subtitle}</h2>
+
+          <div className="bg-gray-100 p-4 rounded-lg mb-6">
+            <p className="text-gray-700 italic">{content.description}</p>
           </div>
 
-          <div className="prose text-gray-700">
-            {formData.blogtext.split('\n').map((paragraph, idx) => (
+          <div className="prose max-w-none text-gray-800">
+            {content.blogtext.split('\n').map((paragraph, idx) => (
               <p key={idx} className="mb-4">
                 {paragraph}
               </p>
@@ -344,38 +351,84 @@ export default function BlogCreator() {
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  // Modern template
+  const ModernTemplate = () => {
+    const content = getPreviewContent()
+    return (
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-8 rounded-t-lg">
+          <h1 className="text-4xl font-bold text-white mb-2">{content.title}</h1>
+          <h2 className="text-xl text-purple-100">{content.subtitle}</h2>
+        </div>
+
+        {/* Image and content in grid layout */}
+        <div className="bg-white p-8 rounded-b-lg shadow-xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          {imagePreview && (
+            <div className="relative h-80 w-full rounded-lg overflow-hidden">
+              <Image
+                src={imagePreview}
+                alt={content.title}
+                width={500}
+                height={500}
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          )}
+
+          <div>
+            <div className="bg-purple-50 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
+              <p className="text-purple-800">{content.description}</p>
+            </div>
+
+            <div className="prose text-gray-700">
+              {content.blogtext.split('\n').map((paragraph, idx) => (
+                <p key={idx} className="mb-4">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   // Minimal template
-  const MinimalTemplate = () => (
-    <div className="max-w-2xl mx-auto bg-gray-50 p-8">
-      <h1 className="text-3xl font-light text-gray-800 mb-2 border-b pb-2">{formData.title}</h1>
-      <h2 className="text-lg text-gray-600 mb-8 italic">{formData.subtitle}</h2>
+  const MinimalTemplate = () => {
+    const content = getPreviewContent()
+    return (
+      <div className="max-w-2xl mx-auto bg-gray-50 p-8">
+        <h1 className="text-3xl font-light text-gray-800 mb-2 border-b pb-2">{content.title}</h1>
+        <h2 className="text-lg text-gray-600 mb-8 italic">{content.subtitle}</h2>
 
-      {imagePreview && (
-        <div className="my-6 relative h-60 w-full">
-          <Image
-            src={imagePreview}
-            alt={formData.title}
-            width={700}
-            height={350}
-            style={{ objectFit: 'contain' }}
-          />
+        {imagePreview && (
+          <div className="my-6 relative h-60 w-full">
+            <Image
+              src={imagePreview}
+              alt={content.title}
+              width={700}
+              height={350}
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+        )}
+
+        <div className="text-lg text-gray-700 mb-8">{content.description}</div>
+
+        <div className="prose prose-sm max-w-none text-gray-800">
+          {content.blogtext.split('\n').map((paragraph, idx) => (
+            <p key={idx} className="mb-4 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
         </div>
-      )}
-
-      <div className="text-lg text-gray-700 mb-8">{formData.description}</div>
-
-      <div className="prose prose-sm max-w-none text-gray-800">
-        {formData.blogtext.split('\n').map((paragraph, idx) => (
-          <p key={idx} className="mb-4 leading-relaxed">
-            {paragraph}
-          </p>
-        ))}
       </div>
-    </div>
-  )
+    )
+  }
 
   // Render the selected template preview
   const renderTemplatePreview = () => {
@@ -401,7 +454,7 @@ export default function BlogCreator() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-400">
-              Titulok
+              Titulok (SK)
             </label>
             <input
               type="text"
@@ -415,8 +468,22 @@ export default function BlogCreator() {
           </div>
 
           <div>
+            <label htmlFor="enTitle" className="block text-sm font-medium text-gray-400">
+              Titulok (EN)
+            </label>
+            <input
+              type="text"
+              id="enTitle"
+              name="enTitle"
+              value={formData.enTitle}
+              onChange={handleInputChange}
+              className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+            />
+          </div>
+
+          <div>
             <label htmlFor="subtitle" className="block text-sm font-medium text-gray-400">
-              Podtitulok
+              Podtitulok (SK)
             </label>
             <input
               type="text"
@@ -430,8 +497,22 @@ export default function BlogCreator() {
           </div>
 
           <div>
+            <label htmlFor="enSubtitle" className="block text-sm font-medium text-gray-400">
+              Podtitulok (EN)
+            </label>
+            <input
+              type="text"
+              id="enSubtitle"
+              name="enSubtitle"
+              value={formData.enSubtitle}
+              onChange={handleInputChange}
+              className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+            />
+          </div>
+
+          <div>
             <label htmlFor="description" className="block text-sm font-medium text-gray-400">
-              Krátky popis
+              Krátky popis (SK)
             </label>
             <textarea
               id="description"
@@ -445,8 +526,22 @@ export default function BlogCreator() {
           </div>
 
           <div>
+            <label htmlFor="enDescription" className="block text-sm font-medium text-gray-400">
+              Krátky popis (EN)
+            </label>
+            <textarea
+              id="enDescription"
+              name="enDescription"
+              value={formData.enDescription}
+              onChange={handleInputChange}
+              rows={3}
+              className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+            />
+          </div>
+
+          <div>
             <label htmlFor="blogtext" className="block text-sm font-medium text-gray-400">
-              Obsah blogu
+              Obsah blogu (SK)
             </label>
             <textarea
               id="blogtext"
@@ -454,6 +549,20 @@ export default function BlogCreator() {
               value={formData.blogtext}
               onChange={handleInputChange}
               required
+              rows={8}
+              className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="enBlogtext" className="block text-sm font-medium text-gray-400">
+              Obsah blogu (EN)
+            </label>
+            <textarea
+              id="enBlogtext"
+              name="enBlogtext"
+              value={formData.enBlogtext}
+              onChange={handleInputChange}
               rows={8}
               className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
             />
@@ -575,6 +684,28 @@ export default function BlogCreator() {
                 ? 'Moderná'
                 : 'Minimalistická'}
             </h3>
+            <div className="flex gap-2 mb-4">
+              <button
+                onClick={() => setPreviewLanguage('sk')}
+                className={`px-4 py-2 rounded ${
+                  previewLanguage === 'sk'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                SK
+              </button>
+              <button
+                onClick={() => setPreviewLanguage('en')}
+                className={`px-4 py-2 rounded ${
+                  previewLanguage === 'en'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                }`}
+              >
+                EN
+              </button>
+            </div>
             <button
               onClick={togglePreview}
               className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded"
@@ -615,7 +746,12 @@ export default function BlogCreator() {
             {blogs.map((blog) => (
               <div key={blog.id} className="p-3 border rounded">
                 <div className="flex justify-between">
-                  <h4 className="font-bold text-white">{blog.title}</h4>
+                  <div>
+                    <h4 className="font-bold text-white">{blog.title}</h4>
+                    {blog.enTitle && (
+                      <h5 className="text-sm text-gray-300 italic">{blog.enTitle}</h5>
+                    )}
+                  </div>
                   <div className="flex gap-1">
                     <span
                       className={`text-xs px-2 py-1 rounded ${
@@ -633,8 +769,20 @@ export default function BlogCreator() {
                     </span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-300 mt-1">{blog.subtitle}</p>
-                <p className="text-md text-white mt-1">{truncateText(blog.description, 100)}</p>
+                <div className="mt-1">
+                  <p className="text-sm text-gray-300">{blog.subtitle}</p>
+                  {blog.enSubtitle && (
+                    <p className="text-xs text-gray-400 italic">{blog.enSubtitle}</p>
+                  )}
+                </div>
+                <div className="mt-1">
+                  <p className="text-md text-white">{truncateText(blog.description, 100)}</p>
+                  {blog.enDescription && (
+                    <p className="text-sm text-gray-300 italic mt-1">
+                      {truncateText(blog.enDescription, 100)}
+                    </p>
+                  )}
+                </div>
 
                 {blog.imageUrl && (
                   <div className="mt-2 relative h-40 w-full">
@@ -648,9 +796,14 @@ export default function BlogCreator() {
                   </div>
                 )}
 
-                <p className="text-sm text-gray-400 mt-2 border-t pt-2">
-                  {truncateText(blog.blogtext, 150)}
-                </p>
+                <div className="mt-2 border-t pt-2">
+                  <p className="text-sm text-gray-400">{truncateText(blog.blogtext, 150)}</p>
+                  {blog.enBlogtext && (
+                    <p className="text-xs text-gray-500 italic mt-1">
+                      {truncateText(blog.enBlogtext, 150)}
+                    </p>
+                  )}
+                </div>
 
                 <div className="mt-3 flex gap-2">
                   <button

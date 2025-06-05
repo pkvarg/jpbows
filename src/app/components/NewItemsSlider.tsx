@@ -8,30 +8,29 @@ import { usePathname } from 'next/navigation'
 interface BassData {
   id: string
   name: string
+  enName: string
   description: string
+  enDescription: string
   images: string[]
-  available: string
   price: string
   published: boolean
-  english: boolean
   new: boolean
-  metadata?: string // optional as requested
+  metadata?: string
   createdAt: string
   updatedAt: string
 }
 
-// Bow interface based on actual data structure
 interface BowData {
   id: string
   name: string
+  enName: string
   description: string
+  enDescription: string
   images: string[]
-  available: string
   price: string
   published: boolean
-  english: boolean
   new: boolean
-  metadata?: string // optional as requested
+  metadata?: string
   createdAt: string
   updatedAt: string
 }
@@ -39,14 +38,16 @@ interface BowData {
 interface Product {
   id: string
   name: string
+  enName: string
   description: string
+  enDescription: string
   images: string[]
   price: string
   type: 'bass' | 'bow'
 }
 
 interface UseAutoSlideArgs {
-  products: Product[] // Replace `any` with your specific type, e.g., Product[]
+  products: Product[]
   currentIndex: number
   nextSlide: () => void
 }
@@ -84,16 +85,16 @@ const NewItemsSlider = () => {
       console.log('BData', bassesData)
       console.log('BowData', bowsData)
 
-      // Filter only new and published products based on language
+      // Filter only new and published products (no language filtering needed now)
       const newBasses = bassesData
-        .filter((bass: BassData) => bass.published && bass.new && bass.english === isEnglish)
+        .filter((bass: BassData) => bass.published && bass.new)
         .map((bass: BassData) => ({
           ...bass,
           type: 'bass' as const,
         }))
 
       const newBows = bowsData
-        .filter((bow: BowData) => bow.published && bow.new && bow.english === isEnglish)
+        .filter((bow: BowData) => bow.published && bow.new)
         .map((bow: BowData) => ({
           ...bow,
           type: 'bow' as const,
@@ -123,14 +124,6 @@ const NewItemsSlider = () => {
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
   }
-
-  // Auto-slide every 5 seconds
-  // useEffect(() => {
-  //   if (products.length > 1) {
-  //     const interval = setInterval(nextSlide, 5000)
-  //     return () => clearInterval(interval)
-  //   }
-  // }, [currentIndex, products.length, nextSlide])
 
   function useAutoSlide({ products, currentIndex, nextSlide }: UseAutoSlideArgs): void {
     const setupInterval = useCallback(() => {
@@ -172,13 +165,27 @@ const NewItemsSlider = () => {
 
   const currentProduct = products[currentIndex]
 
+  // Get the appropriate name and description based on language
+  const displayName =
+    isEnglish && currentProduct.enName ? currentProduct.enName : currentProduct.name
+  const displayDescription =
+    isEnglish && currentProduct.enDescription
+      ? currentProduct.enDescription
+      : currentProduct.description
+
   return (
     <section className="bg-transparent py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#fee081] mb-4">Novinky</h2>
-          <p className="text-xl text-gray-300">Najnovšie prírastky do našej kolekcie</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#fee081] mb-4">
+            {isEnglish ? 'New Items' : 'Novinky'}
+          </h2>
+          <p className="text-xl text-gray-300">
+            {isEnglish
+              ? 'Latest additions to our collection'
+              : 'Najnovšie prírastky do našej kolekcie'}
+          </p>
         </div>
 
         {/* Slider Container */}
@@ -191,32 +198,11 @@ const NewItemsSlider = () => {
                   <div className="relative h-full group">
                     <Image
                       src={currentProduct.images[0]}
-                      alt={currentProduct.name}
+                      alt={displayName}
                       fill
                       className="object-contain p-8"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    {/* Product type badge */}
-                    {/* <div className="absolute top-4 left-4">
-                      <span
-                        className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                          currentProduct.type === 'bass'
-                            ? 'bg-blue-600/80 text-white'
-                            : 'bg-purple-600/80 text-white'
-                        }`}
-                      >
-                        {currentProduct.type === 'bass' ? 'Kontrabas' : 'Sláčik'}
-                      </span>
-                    </div> */}
-                    {/* New badge */}
-                    {/* <div className="absolute top-4 right-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
-                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        NOVINKA
-                      </span>
-                    </div> */}
                   </div>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-gray-800/50">
@@ -239,12 +225,10 @@ const NewItemsSlider = () => {
 
               {/* Content Section */}
               <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                  {currentProduct.name}
-                </h3>
+                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">{displayName}</h3>
 
                 <p className="text-gray-300 text-lg leading-relaxed mb-6 line-clamp-3">
-                  {currentProduct.description}
+                  {displayDescription}
                 </p>
 
                 {currentProduct.price && (
@@ -255,7 +239,7 @@ const NewItemsSlider = () => {
                   href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
                   className="inline-flex items-center px-6 py-3 bg-[#fee081] hover:bg-[#fee081] text-gray-900 font-semibold rounded-lg transition-all duration-200 self-start group"
                 >
-                  Do galérie
+                  {isEnglish ? 'View Gallery' : 'Do galérie'}
                   <svg
                     className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                     fill="none"
@@ -328,7 +312,7 @@ const NewItemsSlider = () => {
         {/* Product Counter */}
         {products.length > 1 && (
           <div className="text-center mt-4 text-gray-400">
-            {currentIndex + 1} z {products.length}
+            {currentIndex + 1} {isEnglish ? 'of' : 'z'} {products.length}
           </div>
         )}
       </div>

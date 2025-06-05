@@ -13,9 +13,9 @@ export async function POST(request: NextRequest) {
         name: body.name,
         description: body.description,
         images: body.images || [], // Handle array of images
-        available: body.available,
+        enName: body.enName,
+        enDescription: body.enDescription,
         published: body.published,
-        english: body.english,
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',

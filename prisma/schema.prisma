@@ -26,9 +26,10 @@ model Bows {
   images String[]  
   name String
   description String
-  available String
+  
   published Boolean
-  english Boolean
+  enName String  
+  enDescription String 
   new Boolean
   metadata String?
   price String
@@ -40,10 +41,10 @@ model Bass {
   id  String @id @default(auto()) @map("_id") @db.ObjectId
   images String[] 
   name String
-  description String
-  available String
-  published Boolean
-  english Boolean
+  description String  
+  published Boolean   
+  enName String  
+  enDescription String  
   new Boolean
   metadata String?
   price String
@@ -70,7 +71,10 @@ model Blog {
   description String
   blogtext String
   template String
-  english Boolean @default(false)
+  enTitle String
+  enSubtitle String
+  enDescription String
+  enBlogtext String
   active Boolean
   metadata String?
   createdAt DateTime

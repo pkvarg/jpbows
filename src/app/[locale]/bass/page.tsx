@@ -8,11 +8,11 @@ interface Bass {
   id: string
   images: string[]
   name: string
+  enName: string
   description: string
-  available: string
+  enDescription: string
   price: string
   published: boolean
-  english: boolean
   new: boolean
   createdAt: string
   updatedAt: string
@@ -141,6 +141,10 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
     setCurrentImageIndex(index)
   }
 
+  // Get the appropriate name and description based on language
+  const displayName = isEnglish && bass.enName ? bass.enName : bass.name
+  const displayDescription = isEnglish && bass.enDescription ? bass.enDescription : bass.description
+
   return (
     <>
       <div className="group relative flex flex-col lg:flex-row gap-8 lg:gap-12 py-12 px-4 lg:px-8 hover:bg-white/[0.02] transition-colors duration-300">
@@ -155,7 +159,7 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
                 >
                   <Image
                     src={bass.images[currentImageIndex]}
-                    alt={`${bass.name} - Image ${currentImageIndex + 1}`}
+                    alt={`${displayName} - Image ${currentImageIndex + 1}`}
                     fill
                     className="object-contain hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -277,7 +281,7 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
           <div>
             <div className="flex items-start gap-4 mb-2">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white">{bass.name}</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white">{displayName}</h2>
               {bass.new && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
                   <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -287,30 +291,9 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
                 </span>
               )}
             </div>
-            {/* <span
-              className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium ${
-                bass.available === 'áno'
-                  ? 'bg-green-500/10 text-green-400 ring-1 ring-green-500/30'
-                  : bass.available === 'obmedzená'
-                  ? 'bg-yellow-500/10 text-yellow-400 ring-1 ring-yellow-500/30'
-                  : 'bg-red-500/10 text-red-400 ring-1 ring-red-500/30'
-              }`}
-            >
-              {isEnglish
-                ? bass.available === 'áno'
-                  ? 'Available'
-                  : bass.available === 'obmedzená'
-                  ? 'Limited availability'
-                  : 'Not available'
-                : bass.available === 'áno'
-                ? 'Dostupný'
-                : bass.available === 'obmedzená'
-                ? 'Obmedzená dostupnosť'
-                : 'Nedostupný'}
-            </span> */}
           </div>
 
-          <p className="text-gray-300 text-lg leading-relaxed">{bass.description}</p>
+          <p className="text-gray-300 text-lg leading-relaxed">{displayDescription}</p>
 
           {bass.price && (
             <div className="pt-4">
@@ -358,18 +341,8 @@ const Bass = () => {
       }
 
       const data = await response.json()
-      // Filter based on published status AND language
-      const filteredBasses = data.filter((bass: Bass) => {
-        // Must be published
-        if (!bass.published) return false
-
-        // Filter by language
-        if (isEnglish) {
-          return bass.english === true
-        } else {
-          return bass.english === false
-        }
-      })
+      // Filter only published basses - no language filtering needed now
+      const filteredBasses = data.filter((bass: Bass) => bass.published)
 
       setBasses(filteredBasses)
     } catch (err) {
@@ -384,7 +357,9 @@ const Bass = () => {
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
-          <p className="text-white mt-4">Načítavam kontrabasy...</p>
+          <p className="text-white mt-4">
+            {isEnglish ? 'Loading double basses...' : 'Načítavam kontrabasy...'}
+          </p>
         </div>
       </div>
     )
@@ -399,7 +374,7 @@ const Bass = () => {
             onClick={fetchBasses}
             className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
           >
-            Skúsiť znova
+            {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
         </div>
       </div>
@@ -413,9 +388,13 @@ const Bass = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent"></div>
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-            Kontrabasy
+            {isEnglish ? 'Double Basses' : 'Kontrabasy'}
           </h1>
-          <p className="text-xl text-gray-300">Kvalitné majstrovské kontrabasy...</p>
+          <p className="text-xl text-gray-300">
+            {isEnglish
+              ? 'Quality master-crafted double basses...'
+              : 'Kvalitné majstrovské kontrabasy...'}
+          </p>
         </div>
       </div>
 
@@ -424,7 +403,9 @@ const Bass = () => {
         {basses.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-gray-400 text-xl">
-              Žiadne kontrabasy nie sú momentálne k dispozícii.
+              {isEnglish
+                ? 'No double basses are currently available.'
+                : 'Žiadne kontrabasy nie sú momentálne k dispozícii.'}
             </p>
           </div>
         ) : (

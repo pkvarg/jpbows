@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 type BlogTemplate = 'classic' | 'modern' | 'minimal'
 
@@ -9,9 +10,13 @@ interface Blog {
   id: string
   imageUrl: string
   title: string
+  enTitle: string
   subtitle: string
+  enSubtitle: string
   description: string
+  enDescription: string
   blogtext: string
+  enBlogtext: string
   active: boolean
   template: BlogTemplate
   createdAt: Date
@@ -26,6 +31,10 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
   const [blog, setBlog] = useState<Blog | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const pathname = usePathname()
+
+  // Determine if we're on the English version based on URL
+  const isEnglish = pathname.includes('/en/')
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -60,15 +69,44 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
   if (error || !blog) {
     return (
       <div className="max-w-md mx-auto mt-10 p-6 bg-red-50 rounded-lg border border-red-200">
-        <h1 className="text-xl font-semibold text-red-700 mb-2">Error</h1>
-        <p className="text-red-600">{error || 'Blog not found'}</p>
+        <h1 className="text-xl font-semibold text-red-700 mb-2">{isEnglish ? 'Error' : 'Chyba'}</h1>
+        <p className="text-red-600">
+          {error || (isEnglish ? 'Blog not found' : 'Blog nebol nájdený')}
+        </p>
       </div>
     )
   }
 
+  // Get the appropriate content based on language
+  const getContent = () => {
+    if (isEnglish) {
+      return {
+        title: blog.enTitle || blog.title,
+        subtitle: blog.enSubtitle || blog.subtitle,
+        description: blog.enDescription || blog.description,
+        blogtext: blog.enBlogtext || blog.blogtext,
+      }
+    }
+    return {
+      title: blog.title,
+      subtitle: blog.subtitle,
+      description: blog.description,
+      blogtext: blog.blogtext,
+    }
+  }
+
+  const content = getContent()
+
   // Format date
   const formatDate = (dateString: string | Date) => {
     const date = new Date(dateString)
+    if (isEnglish) {
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    }
     return date.toLocaleDateString('sk-SK', {
       year: 'numeric',
       month: 'long',
@@ -84,7 +122,7 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
         <div className="w-full h-64 relative">
           <Image
             src={blog.imageUrl}
-            alt={blog.title}
+            alt={content.title}
             width={800}
             height={400}
             className="object-cover w-full h-full"
@@ -94,17 +132,19 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
 
       {/* Content */}
       <div className="p-8">
-        <div className="text-sm text-gray-500 mb-3">Publikované: {formatDate(blog.createdAt)}</div>
+        <div className="text-sm text-gray-500 mb-3">
+          {isEnglish ? 'Published:' : 'Publikované:'} {formatDate(blog.createdAt)}
+        </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">{blog.title}</h1>
-        <h2 className="text-xl text-gray-600 mb-6">{blog.subtitle}</h2>
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">{content.title}</h1>
+        <h2 className="text-xl text-gray-600 mb-6">{content.subtitle}</h2>
 
         <div className="bg-gray-100 p-4 rounded-lg mb-6">
-          <p className="text-gray-700 italic">{blog.description}</p>
+          <p className="text-gray-700 italic">{content.description}</p>
         </div>
 
         <div className="prose max-w-none text-gray-800">
-          {blog.blogtext.split('\n').map((paragraph, idx) => (
+          {content.blogtext.split('\n').map((paragraph, idx) => (
             <p key={idx} className="mb-4">
               {paragraph}
             </p>
@@ -119,9 +159,11 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-8 rounded-t-lg">
-        <div className="text-purple-100 mb-3">{formatDate(blog.createdAt)}</div>
-        <h1 className="text-4xl font-bold text-white mb-2">{blog.title}</h1>
-        <h2 className="text-xl text-purple-100">{blog.subtitle}</h2>
+        <div className="text-purple-100 mb-3">
+          {isEnglish ? 'Published:' : 'Publikované:'} {formatDate(blog.createdAt)}
+        </div>
+        <h1 className="text-4xl font-bold text-white mb-2">{content.title}</h1>
+        <h2 className="text-xl text-purple-100">{content.subtitle}</h2>
       </div>
 
       {/* Image and content in grid layout */}
@@ -130,7 +172,7 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
           <div className="relative h-80 w-full rounded-lg overflow-hidden">
             <Image
               src={blog.imageUrl}
-              alt={blog.title}
+              alt={content.title}
               width={500}
               height={500}
               className="object-cover w-full h-full"
@@ -140,11 +182,11 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
 
         <div>
           <div className="bg-purple-50 p-4 rounded-lg mb-6 border-l-4 border-purple-500">
-            <p className="text-purple-800">{blog.description}</p>
+            <p className="text-purple-800">{content.description}</p>
           </div>
 
           <div className="prose text-gray-700">
-            {blog.blogtext.split('\n').map((paragraph, idx) => (
+            {content.blogtext.split('\n').map((paragraph, idx) => (
               <p key={idx} className="mb-4">
                 {paragraph}
               </p>
@@ -158,16 +200,18 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
   // Minimal template
   const MinimalTemplate = () => (
     <div className="max-w-2xl mx-auto bg-gray-50 p-8">
-      <div className="text-gray-400 text-sm mb-4">{formatDate(blog.createdAt)}</div>
+      <div className="text-gray-400 text-sm mb-4">
+        {isEnglish ? 'Published:' : 'Publikované:'} {formatDate(blog.createdAt)}
+      </div>
 
-      <h1 className="text-3xl font-light text-gray-800 mb-2 border-b pb-2">{blog.title}</h1>
-      <h2 className="text-lg text-gray-600 mb-8 italic">{blog.subtitle}</h2>
+      <h1 className="text-3xl font-light text-gray-800 mb-2 border-b pb-2">{content.title}</h1>
+      <h2 className="text-lg text-gray-600 mb-8 italic">{content.subtitle}</h2>
 
       {blog.imageUrl && (
         <div className="my-6 relative h-60 w-full">
           <Image
             src={blog.imageUrl}
-            alt={blog.title}
+            alt={content.title}
             width={700}
             height={350}
             className="object-contain max-h-60"
@@ -175,10 +219,10 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
         </div>
       )}
 
-      <div className="text-lg text-gray-700 mb-8">{blog.description}</div>
+      <div className="text-lg text-gray-700 mb-8">{content.description}</div>
 
       <div className="prose prose-sm max-w-none text-gray-800">
-        {blog.blogtext.split('\n').map((paragraph, idx) => (
+        {content.blogtext.split('\n').map((paragraph, idx) => (
           <p key={idx} className="mb-4 leading-relaxed">
             {paragraph}
           </p>

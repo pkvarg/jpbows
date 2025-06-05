@@ -5,12 +5,12 @@ import { useState, useRef, ChangeEvent } from 'react'
 
 interface BowFormData {
   name: string
+  enName: string
   description: string
+  enDescription: string
   images: string[]
-  available: string
   price: string
   published: boolean
-  english: boolean
   new: boolean
   metadata: string
 }
@@ -19,11 +19,11 @@ interface Bow {
   id: string
   images: string[]
   name: string
+  enName: string
   description: string
-  available: string
+  enDescription: string
   price: string
   published: boolean
-  english: boolean
   new: boolean
   metadata: string
   createdAt: Date
@@ -33,12 +33,12 @@ interface Bow {
 export default function BowManager() {
   const [formData, setFormData] = useState<BowFormData>({
     name: '',
+    enName: '',
     description: '',
+    enDescription: '',
     images: [],
-    available: 'áno',
     price: '',
     published: false,
-    english: false,
     new: false,
     metadata: '',
   })
@@ -54,12 +54,12 @@ export default function BowManager() {
   const resetForm = () => {
     setFormData({
       name: '',
+      enName: '',
       description: '',
+      enDescription: '',
       images: [],
-      available: 'áno',
       price: '',
       published: false,
-      english: false,
       new: false,
       metadata: '',
     })
@@ -164,12 +164,12 @@ export default function BowManager() {
 
       const bowData = {
         name: formData.name,
+        enName: formData.enName,
         description: formData.description,
+        enDescription: formData.enDescription,
         images: uploadedImageUrls,
-        available: formData.available,
         price: formData.price,
         published: formData.published,
-        english: formData.english,
         new: formData.new,
         metadata: formData.metadata,
       }
@@ -234,12 +234,12 @@ export default function BowManager() {
   const handleEdit = (bow: Bow) => {
     setFormData({
       name: bow.name,
+      enName: bow.enName || '',
       description: bow.description,
+      enDescription: bow.enDescription || '',
       images: bow.images || [],
-      available: bow.available,
       price: bow.price || '',
       published: bow.published || false,
-      english: bow.english || false,
       new: bow.new || false,
       metadata: bow.metadata || '',
     })
@@ -292,7 +292,7 @@ export default function BowManager() {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-400">
-            Názov
+            Názov (SK)
           </label>
           <input
             type="text"
@@ -306,8 +306,22 @@ export default function BowManager() {
         </div>
 
         <div>
+          <label htmlFor="enName" className="block text-sm font-medium text-gray-400">
+            Názov (EN)
+          </label>
+          <input
+            type="text"
+            id="enName"
+            name="enName"
+            value={formData.enName}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
           <label htmlFor="description" className="block text-sm font-medium text-gray-400">
-            Popis
+            Popis (SK)
           </label>
           <textarea
             id="description"
@@ -315,6 +329,20 @@ export default function BowManager() {
             value={formData.description}
             onChange={handleInputChange}
             required
+            rows={3}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="enDescription" className="block text-sm font-medium text-gray-400">
+            Popis (EN)
+          </label>
+          <textarea
+            id="enDescription"
+            name="enDescription"
+            value={formData.enDescription}
+            onChange={handleInputChange}
             rows={3}
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
@@ -330,7 +358,7 @@ export default function BowManager() {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
-            placeholder="napr. €1500"
+            placeholder="napr. €150"
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
         </div>
@@ -383,23 +411,6 @@ export default function BowManager() {
         </div>
 
         <div>
-          <label htmlFor="available" className="block text-sm font-medium text-gray-400">
-            Dostupnosť
-          </label>
-          <select
-            id="available"
-            name="available"
-            value={formData.available}
-            onChange={handleInputChange}
-            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
-          >
-            <option value="áno">Áno</option>
-            <option value="nie">Nie</option>
-            <option value="obmedzená">Obmedzená</option>
-          </select>
-        </div>
-
-        <div>
           <label htmlFor="published" className="block text-sm font-medium text-gray-400">
             Publikovaný
           </label>
@@ -419,29 +430,6 @@ export default function BowManager() {
               </span>
             </label>
             <p className="text-xs text-gray-500 mt-1">Zobrazí sa na webstránke</p>
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="english" className="block text-sm font-medium text-gray-400">
-            Anglická verzia
-          </label>
-          <div className="mt-1">
-            <label className="inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                id="english"
-                name="english"
-                checked={formData.english}
-                onChange={(e) => setFormData((prev) => ({ ...prev, english: e.target.checked }))}
-                className="sr-only peer"
-              />
-              <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-              <span className="ml-3 text-sm font-medium text-gray-300">
-                {formData.english ? 'Áno' : 'Nie'}
-              </span>
-            </label>
-            <p className="text-xs text-gray-500 mt-1">Zobrazí sa v anglickej verzii</p>
           </div>
         </div>
 
@@ -532,35 +520,29 @@ export default function BowManager() {
             {bows.map((bow) => (
               <div key={bow.id} className="p-3 border rounded">
                 <div className="flex justify-between">
-                  <h4 className="font-bold text-white">{bow.name}</h4>
+                  <div>
+                    <h4 className="font-bold text-white">{bow.name}</h4>
+                    {bow.enName && <h5 className="text-sm text-gray-300 italic">{bow.enName}</h5>}
+                  </div>
                   <div className="flex items-center gap-2">
                     {bow.new && (
                       <span className="text-xs px-2 py-1 rounded bg-green-600 text-white">
                         Nový
                       </span>
                     )}
-                    {bow.english && (
-                      <span className="text-xs px-2 py-1 rounded bg-blue-600 text-white">EN</span>
-                    )}
                     {!bow.published && (
                       <span className="text-xs px-2 py-1 rounded bg-gray-600 text-gray-300">
                         Nepublikovaný
                       </span>
                     )}
-                    <span
-                      className={`text-xs px-2 py-1 rounded ${
-                        bow.available === 'áno'
-                          ? 'bg-green-100 text-green-800'
-                          : bow.available === 'obmedzená'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      {bow.available}
-                    </span>
                   </div>
                 </div>
-                <p className="text-md text-white mt-1">{bow.description}</p>
+                <div className="mt-1">
+                  <p className="text-md text-white">{bow.description}</p>
+                  {bow.enDescription && (
+                    <p className="text-sm text-gray-300 italic mt-1">{bow.enDescription}</p>
+                  )}
+                </div>
                 {bow.price && <p className="text-sm text-gray-300 mt-1">Cena: {bow.price}</p>}
 
                 {bow.images && bow.images.length > 0 && (

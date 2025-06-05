@@ -25,29 +25,30 @@ model Bows {
   images      String[]
   name        String
   description String
-  available   String
-  published   Boolean
-  english     Boolean
-  new         Boolean
-  metadata    String?
-  price       String
-  createdAt   DateTime
-  updatedAt   DateTime
+
+  published     Boolean
+  enName        String
+  enDescription String
+  new           Boolean
+  metadata      String?
+  price         String
+  createdAt     DateTime
+  updatedAt     DateTime
 }
 
 model Bass {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  images      String[]
-  name        String
-  description String
-  available   String
-  published   Boolean
-  english     Boolean
-  new         Boolean
-  metadata    String?
-  price       String
-  createdAt   DateTime
-  updatedAt   DateTime
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  images        String[]
+  name          String
+  description   String
+  published     Boolean
+  enName        String
+  enDescription String
+  new           Boolean
+  metadata      String?
+  price         String
+  createdAt     DateTime
+  updatedAt     DateTime
 }
 
 model Slider {
@@ -62,16 +63,19 @@ model Slider {
 }
 
 model Blog {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  imageUrl    String
-  title       String
-  subtitle    String
-  description String
-  blogtext    String
-  template    String
-  english     Boolean  @default(false)
-  active      Boolean
-  metadata    String?
-  createdAt   DateTime
-  updatedAt   DateTime
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl      String
+  title         String
+  subtitle      String
+  description   String
+  blogtext      String
+  template      String
+  enTitle       String
+  enSubtitle    String
+  enDescription String
+  enBlogtext    String
+  active        Boolean
+  metadata      String?
+  createdAt     DateTime
+  updatedAt     DateTime
 }

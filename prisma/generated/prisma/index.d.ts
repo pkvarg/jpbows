@@ -2145,9 +2145,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    available: string | null
     published: boolean | null
-    english: boolean | null
+    enName: string | null
+    enDescription: string | null
     new: boolean | null
     metadata: string | null
     price: string | null
@@ -2159,9 +2159,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    available: string | null
     published: boolean | null
-    english: boolean | null
+    enName: string | null
+    enDescription: string | null
     new: boolean | null
     metadata: string | null
     price: string | null
@@ -2174,9 +2174,9 @@ export namespace Prisma {
     images: number
     name: number
     description: number
-    available: number
     published: number
-    english: number
+    enName: number
+    enDescription: number
     new: number
     metadata: number
     price: number
@@ -2190,9 +2190,9 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -2204,9 +2204,9 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -2219,9 +2219,9 @@ export namespace Prisma {
     images?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -2307,9 +2307,9 @@ export namespace Prisma {
     images: string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata: string | null
     price: string
@@ -2339,9 +2339,9 @@ export namespace Prisma {
     images?: boolean
     name?: boolean
     description?: boolean
-    available?: boolean
     published?: boolean
-    english?: boolean
+    enName?: boolean
+    enDescription?: boolean
     new?: boolean
     metadata?: boolean
     price?: boolean
@@ -2356,9 +2356,9 @@ export namespace Prisma {
     images?: boolean
     name?: boolean
     description?: boolean
-    available?: boolean
     published?: boolean
-    english?: boolean
+    enName?: boolean
+    enDescription?: boolean
     new?: boolean
     metadata?: boolean
     price?: boolean
@@ -2366,7 +2366,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "available" | "published" | "english" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
+  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
 
   export type $BowsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bows"
@@ -2376,9 +2376,9 @@ export namespace Prisma {
       images: string[]
       name: string
       description: string
-      available: string
       published: boolean
-      english: boolean
+      enName: string
+      enDescription: string
       new: boolean
       metadata: string | null
       price: string
@@ -2780,9 +2780,9 @@ export namespace Prisma {
     readonly images: FieldRef<"Bows", 'String[]'>
     readonly name: FieldRef<"Bows", 'String'>
     readonly description: FieldRef<"Bows", 'String'>
-    readonly available: FieldRef<"Bows", 'String'>
     readonly published: FieldRef<"Bows", 'Boolean'>
-    readonly english: FieldRef<"Bows", 'Boolean'>
+    readonly enName: FieldRef<"Bows", 'String'>
+    readonly enDescription: FieldRef<"Bows", 'String'>
     readonly new: FieldRef<"Bows", 'Boolean'>
     readonly metadata: FieldRef<"Bows", 'String'>
     readonly price: FieldRef<"Bows", 'String'>
@@ -3150,9 +3150,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    available: string | null
     published: boolean | null
-    english: boolean | null
+    enName: string | null
+    enDescription: string | null
     new: boolean | null
     metadata: string | null
     price: string | null
@@ -3164,9 +3164,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     description: string | null
-    available: string | null
     published: boolean | null
-    english: boolean | null
+    enName: string | null
+    enDescription: string | null
     new: boolean | null
     metadata: string | null
     price: string | null
@@ -3179,9 +3179,9 @@ export namespace Prisma {
     images: number
     name: number
     description: number
-    available: number
     published: number
-    english: number
+    enName: number
+    enDescription: number
     new: number
     metadata: number
     price: number
@@ -3195,9 +3195,9 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -3209,9 +3209,9 @@ export namespace Prisma {
     id?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -3224,9 +3224,9 @@ export namespace Prisma {
     images?: true
     name?: true
     description?: true
-    available?: true
     published?: true
-    english?: true
+    enName?: true
+    enDescription?: true
     new?: true
     metadata?: true
     price?: true
@@ -3312,9 +3312,9 @@ export namespace Prisma {
     images: string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata: string | null
     price: string
@@ -3344,9 +3344,9 @@ export namespace Prisma {
     images?: boolean
     name?: boolean
     description?: boolean
-    available?: boolean
     published?: boolean
-    english?: boolean
+    enName?: boolean
+    enDescription?: boolean
     new?: boolean
     metadata?: boolean
     price?: boolean
@@ -3361,9 +3361,9 @@ export namespace Prisma {
     images?: boolean
     name?: boolean
     description?: boolean
-    available?: boolean
     published?: boolean
-    english?: boolean
+    enName?: boolean
+    enDescription?: boolean
     new?: boolean
     metadata?: boolean
     price?: boolean
@@ -3371,7 +3371,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "available" | "published" | "english" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
+  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
 
   export type $BassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bass"
@@ -3381,9 +3381,9 @@ export namespace Prisma {
       images: string[]
       name: string
       description: string
-      available: string
       published: boolean
-      english: boolean
+      enName: string
+      enDescription: string
       new: boolean
       metadata: string | null
       price: string
@@ -3785,9 +3785,9 @@ export namespace Prisma {
     readonly images: FieldRef<"Bass", 'String[]'>
     readonly name: FieldRef<"Bass", 'String'>
     readonly description: FieldRef<"Bass", 'String'>
-    readonly available: FieldRef<"Bass", 'String'>
     readonly published: FieldRef<"Bass", 'Boolean'>
-    readonly english: FieldRef<"Bass", 'Boolean'>
+    readonly enName: FieldRef<"Bass", 'String'>
+    readonly enDescription: FieldRef<"Bass", 'String'>
     readonly new: FieldRef<"Bass", 'Boolean'>
     readonly metadata: FieldRef<"Bass", 'String'>
     readonly price: FieldRef<"Bass", 'String'>
@@ -5124,7 +5124,10 @@ export namespace Prisma {
     description: string | null
     blogtext: string | null
     template: string | null
-    english: boolean | null
+    enTitle: string | null
+    enSubtitle: string | null
+    enDescription: string | null
+    enBlogtext: string | null
     active: boolean | null
     metadata: string | null
     createdAt: Date | null
@@ -5139,7 +5142,10 @@ export namespace Prisma {
     description: string | null
     blogtext: string | null
     template: string | null
-    english: boolean | null
+    enTitle: string | null
+    enSubtitle: string | null
+    enDescription: string | null
+    enBlogtext: string | null
     active: boolean | null
     metadata: string | null
     createdAt: Date | null
@@ -5154,7 +5160,10 @@ export namespace Prisma {
     description: number
     blogtext: number
     template: number
-    english: number
+    enTitle: number
+    enSubtitle: number
+    enDescription: number
+    enBlogtext: number
     active: number
     metadata: number
     createdAt: number
@@ -5171,7 +5180,10 @@ export namespace Prisma {
     description?: true
     blogtext?: true
     template?: true
-    english?: true
+    enTitle?: true
+    enSubtitle?: true
+    enDescription?: true
+    enBlogtext?: true
     active?: true
     metadata?: true
     createdAt?: true
@@ -5186,7 +5198,10 @@ export namespace Prisma {
     description?: true
     blogtext?: true
     template?: true
-    english?: true
+    enTitle?: true
+    enSubtitle?: true
+    enDescription?: true
+    enBlogtext?: true
     active?: true
     metadata?: true
     createdAt?: true
@@ -5201,7 +5216,10 @@ export namespace Prisma {
     description?: true
     blogtext?: true
     template?: true
-    english?: true
+    enTitle?: true
+    enSubtitle?: true
+    enDescription?: true
+    enBlogtext?: true
     active?: true
     metadata?: true
     createdAt?: true
@@ -5289,7 +5307,10 @@ export namespace Prisma {
     description: string
     blogtext: string
     template: string
-    english: boolean
+    enTitle: string
+    enSubtitle: string
+    enDescription: string
+    enBlogtext: string
     active: boolean
     metadata: string | null
     createdAt: Date
@@ -5321,7 +5342,10 @@ export namespace Prisma {
     description?: boolean
     blogtext?: boolean
     template?: boolean
-    english?: boolean
+    enTitle?: boolean
+    enSubtitle?: boolean
+    enDescription?: boolean
+    enBlogtext?: boolean
     active?: boolean
     metadata?: boolean
     createdAt?: boolean
@@ -5338,14 +5362,17 @@ export namespace Prisma {
     description?: boolean
     blogtext?: boolean
     template?: boolean
-    english?: boolean
+    enTitle?: boolean
+    enSubtitle?: boolean
+    enDescription?: boolean
+    enBlogtext?: boolean
     active?: boolean
     metadata?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "title" | "subtitle" | "description" | "blogtext" | "template" | "english" | "active" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
+  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "title" | "subtitle" | "description" | "blogtext" | "template" | "enTitle" | "enSubtitle" | "enDescription" | "enBlogtext" | "active" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
 
   export type $BlogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Blog"
@@ -5358,7 +5385,10 @@ export namespace Prisma {
       description: string
       blogtext: string
       template: string
-      english: boolean
+      enTitle: string
+      enSubtitle: string
+      enDescription: string
+      enBlogtext: string
       active: boolean
       metadata: string | null
       createdAt: Date
@@ -5762,7 +5792,10 @@ export namespace Prisma {
     readonly description: FieldRef<"Blog", 'String'>
     readonly blogtext: FieldRef<"Blog", 'String'>
     readonly template: FieldRef<"Blog", 'String'>
-    readonly english: FieldRef<"Blog", 'Boolean'>
+    readonly enTitle: FieldRef<"Blog", 'String'>
+    readonly enSubtitle: FieldRef<"Blog", 'String'>
+    readonly enDescription: FieldRef<"Blog", 'String'>
+    readonly enBlogtext: FieldRef<"Blog", 'String'>
     readonly active: FieldRef<"Blog", 'Boolean'>
     readonly metadata: FieldRef<"Blog", 'String'>
     readonly createdAt: FieldRef<"Blog", 'DateTime'>
@@ -6133,9 +6166,9 @@ export namespace Prisma {
     images: 'images',
     name: 'name',
     description: 'description',
-    available: 'available',
     published: 'published',
-    english: 'english',
+    enName: 'enName',
+    enDescription: 'enDescription',
     new: 'new',
     metadata: 'metadata',
     price: 'price',
@@ -6151,9 +6184,9 @@ export namespace Prisma {
     images: 'images',
     name: 'name',
     description: 'description',
-    available: 'available',
     published: 'published',
-    english: 'english',
+    enName: 'enName',
+    enDescription: 'enDescription',
     new: 'new',
     metadata: 'metadata',
     price: 'price',
@@ -6186,7 +6219,10 @@ export namespace Prisma {
     description: 'description',
     blogtext: 'blogtext',
     template: 'template',
-    english: 'english',
+    enTitle: 'enTitle',
+    enSubtitle: 'enSubtitle',
+    enDescription: 'enDescription',
+    enBlogtext: 'enBlogtext',
     active: 'active',
     metadata: 'metadata',
     createdAt: 'createdAt',
@@ -6335,9 +6371,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bows">
     name?: StringFilter<"Bows"> | string
     description?: StringFilter<"Bows"> | string
-    available?: StringFilter<"Bows"> | string
     published?: BoolFilter<"Bows"> | boolean
-    english?: BoolFilter<"Bows"> | boolean
+    enName?: StringFilter<"Bows"> | string
+    enDescription?: StringFilter<"Bows"> | string
     new?: BoolFilter<"Bows"> | boolean
     metadata?: StringNullableFilter<"Bows"> | string | null
     price?: StringFilter<"Bows"> | string
@@ -6350,9 +6386,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -6368,9 +6404,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bows">
     name?: StringFilter<"Bows"> | string
     description?: StringFilter<"Bows"> | string
-    available?: StringFilter<"Bows"> | string
     published?: BoolFilter<"Bows"> | boolean
-    english?: BoolFilter<"Bows"> | boolean
+    enName?: StringFilter<"Bows"> | string
+    enDescription?: StringFilter<"Bows"> | string
     new?: BoolFilter<"Bows"> | boolean
     metadata?: StringNullableFilter<"Bows"> | string | null
     price?: StringFilter<"Bows"> | string
@@ -6383,9 +6419,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -6404,9 +6440,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bows">
     name?: StringWithAggregatesFilter<"Bows"> | string
     description?: StringWithAggregatesFilter<"Bows"> | string
-    available?: StringWithAggregatesFilter<"Bows"> | string
     published?: BoolWithAggregatesFilter<"Bows"> | boolean
-    english?: BoolWithAggregatesFilter<"Bows"> | boolean
+    enName?: StringWithAggregatesFilter<"Bows"> | string
+    enDescription?: StringWithAggregatesFilter<"Bows"> | string
     new?: BoolWithAggregatesFilter<"Bows"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     price?: StringWithAggregatesFilter<"Bows"> | string
@@ -6422,9 +6458,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bass">
     name?: StringFilter<"Bass"> | string
     description?: StringFilter<"Bass"> | string
-    available?: StringFilter<"Bass"> | string
     published?: BoolFilter<"Bass"> | boolean
-    english?: BoolFilter<"Bass"> | boolean
+    enName?: StringFilter<"Bass"> | string
+    enDescription?: StringFilter<"Bass"> | string
     new?: BoolFilter<"Bass"> | boolean
     metadata?: StringNullableFilter<"Bass"> | string | null
     price?: StringFilter<"Bass"> | string
@@ -6437,9 +6473,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -6455,9 +6491,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bass">
     name?: StringFilter<"Bass"> | string
     description?: StringFilter<"Bass"> | string
-    available?: StringFilter<"Bass"> | string
     published?: BoolFilter<"Bass"> | boolean
-    english?: BoolFilter<"Bass"> | boolean
+    enName?: StringFilter<"Bass"> | string
+    enDescription?: StringFilter<"Bass"> | string
     new?: BoolFilter<"Bass"> | boolean
     metadata?: StringNullableFilter<"Bass"> | string | null
     price?: StringFilter<"Bass"> | string
@@ -6470,9 +6506,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -6491,9 +6527,9 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Bass">
     name?: StringWithAggregatesFilter<"Bass"> | string
     description?: StringWithAggregatesFilter<"Bass"> | string
-    available?: StringWithAggregatesFilter<"Bass"> | string
     published?: BoolWithAggregatesFilter<"Bass"> | boolean
-    english?: BoolWithAggregatesFilter<"Bass"> | boolean
+    enName?: StringWithAggregatesFilter<"Bass"> | string
+    enDescription?: StringWithAggregatesFilter<"Bass"> | string
     new?: BoolWithAggregatesFilter<"Bass"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Bass"> | string | null
     price?: StringWithAggregatesFilter<"Bass"> | string
@@ -6579,7 +6615,10 @@ export namespace Prisma {
     description?: StringFilter<"Blog"> | string
     blogtext?: StringFilter<"Blog"> | string
     template?: StringFilter<"Blog"> | string
-    english?: BoolFilter<"Blog"> | boolean
+    enTitle?: StringFilter<"Blog"> | string
+    enSubtitle?: StringFilter<"Blog"> | string
+    enDescription?: StringFilter<"Blog"> | string
+    enBlogtext?: StringFilter<"Blog"> | string
     active?: BoolFilter<"Blog"> | boolean
     metadata?: StringNullableFilter<"Blog"> | string | null
     createdAt?: DateTimeFilter<"Blog"> | Date | string
@@ -6594,7 +6633,10 @@ export namespace Prisma {
     description?: SortOrder
     blogtext?: SortOrder
     template?: SortOrder
-    english?: SortOrder
+    enTitle?: SortOrder
+    enSubtitle?: SortOrder
+    enDescription?: SortOrder
+    enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
     createdAt?: SortOrder
@@ -6612,7 +6654,10 @@ export namespace Prisma {
     description?: StringFilter<"Blog"> | string
     blogtext?: StringFilter<"Blog"> | string
     template?: StringFilter<"Blog"> | string
-    english?: BoolFilter<"Blog"> | boolean
+    enTitle?: StringFilter<"Blog"> | string
+    enSubtitle?: StringFilter<"Blog"> | string
+    enDescription?: StringFilter<"Blog"> | string
+    enBlogtext?: StringFilter<"Blog"> | string
     active?: BoolFilter<"Blog"> | boolean
     metadata?: StringNullableFilter<"Blog"> | string | null
     createdAt?: DateTimeFilter<"Blog"> | Date | string
@@ -6627,7 +6672,10 @@ export namespace Prisma {
     description?: SortOrder
     blogtext?: SortOrder
     template?: SortOrder
-    english?: SortOrder
+    enTitle?: SortOrder
+    enSubtitle?: SortOrder
+    enDescription?: SortOrder
+    enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
     createdAt?: SortOrder
@@ -6648,7 +6696,10 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Blog"> | string
     blogtext?: StringWithAggregatesFilter<"Blog"> | string
     template?: StringWithAggregatesFilter<"Blog"> | string
-    english?: BoolWithAggregatesFilter<"Blog"> | boolean
+    enTitle?: StringWithAggregatesFilter<"Blog"> | string
+    enSubtitle?: StringWithAggregatesFilter<"Blog"> | string
+    enDescription?: StringWithAggregatesFilter<"Blog"> | string
+    enBlogtext?: StringWithAggregatesFilter<"Blog"> | string
     active?: BoolWithAggregatesFilter<"Blog"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Blog"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
@@ -6698,9 +6749,9 @@ export namespace Prisma {
     images?: BowsCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6713,9 +6764,9 @@ export namespace Prisma {
     images?: BowsCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6727,9 +6778,9 @@ export namespace Prisma {
     images?: BowsUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6741,9 +6792,9 @@ export namespace Prisma {
     images?: BowsUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6756,9 +6807,9 @@ export namespace Prisma {
     images?: BowsCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6770,9 +6821,9 @@ export namespace Prisma {
     images?: BowsUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6784,9 +6835,9 @@ export namespace Prisma {
     images?: BowsUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6799,9 +6850,9 @@ export namespace Prisma {
     images?: BassCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6814,9 +6865,9 @@ export namespace Prisma {
     images?: BassCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6828,9 +6879,9 @@ export namespace Prisma {
     images?: BassUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6842,9 +6893,9 @@ export namespace Prisma {
     images?: BassUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6857,9 +6908,9 @@ export namespace Prisma {
     images?: BassCreateimagesInput | string[]
     name: string
     description: string
-    available: string
     published: boolean
-    english: boolean
+    enName: string
+    enDescription: string
     new: boolean
     metadata?: string | null
     price: string
@@ -6871,9 +6922,9 @@ export namespace Prisma {
     images?: BassUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6885,9 +6936,9 @@ export namespace Prisma {
     images?: BassUpdateimagesInput | string[]
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    available?: StringFieldUpdateOperationsInput | string
     published?: BoolFieldUpdateOperationsInput | boolean
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
@@ -6976,7 +7027,10 @@ export namespace Prisma {
     description: string
     blogtext: string
     template: string
-    english?: boolean
+    enTitle: string
+    enSubtitle: string
+    enDescription: string
+    enBlogtext: string
     active: boolean
     metadata?: string | null
     createdAt: Date | string
@@ -6991,7 +7045,10 @@ export namespace Prisma {
     description: string
     blogtext: string
     template: string
-    english?: boolean
+    enTitle: string
+    enSubtitle: string
+    enDescription: string
+    enBlogtext: string
     active: boolean
     metadata?: string | null
     createdAt: Date | string
@@ -7005,7 +7062,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     blogtext?: StringFieldUpdateOperationsInput | string
     template?: StringFieldUpdateOperationsInput | string
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enTitle?: StringFieldUpdateOperationsInput | string
+    enSubtitle?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7019,7 +7079,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     blogtext?: StringFieldUpdateOperationsInput | string
     template?: StringFieldUpdateOperationsInput | string
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enTitle?: StringFieldUpdateOperationsInput | string
+    enSubtitle?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7034,7 +7097,10 @@ export namespace Prisma {
     description: string
     blogtext: string
     template: string
-    english?: boolean
+    enTitle: string
+    enSubtitle: string
+    enDescription: string
+    enBlogtext: string
     active: boolean
     metadata?: string | null
     createdAt: Date | string
@@ -7048,7 +7114,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     blogtext?: StringFieldUpdateOperationsInput | string
     template?: StringFieldUpdateOperationsInput | string
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enTitle?: StringFieldUpdateOperationsInput | string
+    enSubtitle?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7062,7 +7131,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     blogtext?: StringFieldUpdateOperationsInput | string
     template?: StringFieldUpdateOperationsInput | string
-    english?: BoolFieldUpdateOperationsInput | boolean
+    enTitle?: StringFieldUpdateOperationsInput | string
+    enSubtitle?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7214,9 +7286,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7228,9 +7300,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7242,9 +7314,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7284,9 +7356,9 @@ export namespace Prisma {
     images?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7298,9 +7370,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7312,9 +7384,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    available?: SortOrder
     published?: SortOrder
-    english?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
@@ -7363,7 +7435,10 @@ export namespace Prisma {
     description?: SortOrder
     blogtext?: SortOrder
     template?: SortOrder
-    english?: SortOrder
+    enTitle?: SortOrder
+    enSubtitle?: SortOrder
+    enDescription?: SortOrder
+    enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
     createdAt?: SortOrder
@@ -7378,7 +7453,10 @@ export namespace Prisma {
     description?: SortOrder
     blogtext?: SortOrder
     template?: SortOrder
-    english?: SortOrder
+    enTitle?: SortOrder
+    enSubtitle?: SortOrder
+    enDescription?: SortOrder
+    enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
     createdAt?: SortOrder
@@ -7393,7 +7471,10 @@ export namespace Prisma {
     description?: SortOrder
     blogtext?: SortOrder
     template?: SortOrder
-    english?: SortOrder
+    enTitle?: SortOrder
+    enSubtitle?: SortOrder
+    enDescription?: SortOrder
+    enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
     createdAt?: SortOrder
