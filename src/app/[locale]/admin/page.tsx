@@ -21,6 +21,7 @@ const Admin = async () => {
             <Link href={`/admin/bow`}>Bows</Link>
             {/* <Link href={`/admin/slider`}>Sliders</Link> */}
             <Link href={`/admin/blog`}>Blogs</Link>
+            <Link href="https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/share/PdxeXPCaZrZhF1ko/jpbows.pictusweb.com" target="_blank" rel="noopener noreferrer">Analytics</Link>
           </div>
 
           <div className="flex flex-col gap-4">

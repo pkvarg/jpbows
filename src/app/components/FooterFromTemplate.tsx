@@ -39,6 +39,16 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
     }
   }
 
+  const loadUmamiScript = () => {
+    if (typeof window !== 'undefined' && !document.querySelector('script[data-website-id="f7e8b344-d076-4af2-87d6-a22efc731444"]')) {
+      const script = document.createElement('script')
+      script.defer = true
+      script.src = 'https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/script.js'
+      script.setAttribute('data-website-id', 'f7e8b344-d076-4af2-87d6-a22efc731444')
+      document.head.appendChild(script)
+    }
+  }
+
   return (
     <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
       <CookieConsent
@@ -74,6 +84,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
         declineButtonText={disagree}
         onAccept={() => {
           incrementCount()
+          loadUmamiScript()
         }}
       >
         {cookies}
