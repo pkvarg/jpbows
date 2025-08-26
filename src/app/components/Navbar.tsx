@@ -34,7 +34,7 @@ const Navbar = () => {
   // }
 
   return (
-    <nav className="w-full bg-[#f1f1ef] nav-font font-bold text-[#171717]">
+    <nav className="w-full bg-[#f1f1ef] nav-font font-bold text-[#0e1528]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
@@ -54,7 +54,7 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 className="rounded-md p-2 outline-none focus:border focus:border-gray-400"
-                style={{ color: '#171717' }}
+                style={{ color: '#0e1528' }}
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
@@ -120,13 +120,13 @@ const Navbar = () => {
               >
                 Kontrabasy
               </Link>
-              <Link
+              {/* <Link
                 href={'/blog'}
                 className="cursor-pointer hover:text-[#e6c78c]"
                 onClick={handleLinkClick}
               >
                 Blog
-              </Link>
+              </Link> */}
 
               {/* O nás dropdown - desktop uses hover, mobile uses click */}
               {/* <li className="group relative cursor-pointer py-2 md:py-0">

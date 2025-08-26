@@ -40,7 +40,10 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
   }
 
   const loadUmamiScript = () => {
-    if (typeof window !== 'undefined' && !document.querySelector('script[data-website-id="f7e8b344-d076-4af2-87d6-a22efc731444"]')) {
+    if (
+      typeof window !== 'undefined' &&
+      !document.querySelector('script[data-website-id="f7e8b344-d076-4af2-87d6-a22efc731444"]')
+    ) {
       const script = document.createElement('script')
       script.defer = true
       script.src = 'https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/script.js'
@@ -50,7 +53,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
   }
 
   return (
-    <div style={{background: '#f1f1ef'}}>
+    <div style={{ background: '#f1f1ef' }}>
       <CookieConsent
         location="bottom"
         style={{
@@ -92,27 +95,27 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       {/* <motion.footer variants={footerVariants} initial="hidden" whileInView="show"> */}
       <div className={`flex flex-col gap-4`}>
         <div className="mb-[10px] h-[2px] bg-white opacity-10" />
-        <div className="flex flex-col text-[20px] font-light" style={{color: '#0a0a0a'}}>
+        <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
           <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-0  lg:mx-12">
             <div className="flex lg:flex-row flex-col gap-2 justify-center items-center">
-              <h4 className="flex-nowrap" style={{color: '#171717'}}>
+              <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
                 Copyright &copy; {Date().substring(11, 15)}
               </h4>
-              <h4 style={{color: '#171717'}}>bow4bass</h4>
+              <h4 style={{ color: '#0e1528' }}>bow4bass</h4>
             </div>
-            <Link className="hover:text-[#0388f4]" style={{color: '#171717'}} href={`/about`}>
+            <Link className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/about`}>
               {about}
             </Link>
 
-            <a className="hover:text-[#0388f4]" style={{color: '#171717'}} href={`/gdpr`}>
+            <a className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/gdpr`}>
               GDPR
             </a>
 
-            <a className="hover:text-[#0388f4]" style={{color: '#171717'}} href={`/trade-rules`}>
+            <a className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/trade-rules`}>
               {tradeRules}
             </a>
 
-            <p className="font-normal text-[17.5px]" style={{color: '#171717'}}>
+            <p className="font-normal text-[17.5px]" style={{ color: '#0e1528' }}>
               Phone: +421 904 798 505
               <br />
               <a href="mailto:info@jpbows.sk">email: info@jpbows.sk</a>
@@ -124,7 +127,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               target="_blank"
               rel="noreferrer"
               className="text-[12.5px]"
-              style={{color: '#171717'}}
+              style={{ color: '#0e1528' }}
             >
               &#60;&#47;&#62; PICTUSWEB Development
             </a>

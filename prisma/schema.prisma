@@ -33,6 +33,7 @@ model Bows {
   new Boolean
   metadata String?
   price String
+  videoUrl String?
   createdAt DateTime
   updatedAt DateTime
 }
@@ -48,6 +49,7 @@ model Bass {
   new Boolean
   metadata String?
   price String
+  videoUrl String?
   createdAt DateTime
   updatedAt DateTime
 }

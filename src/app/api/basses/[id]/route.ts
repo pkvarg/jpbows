@@ -51,6 +51,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<Re
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',
+        videoUrl: body.videoUrl || '',
         updatedAt: new Date(),
       },
     })
@@ -78,6 +79,7 @@ export async function POST(request: NextRequest) {
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',
+        videoUrl: body.videoUrl || '',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -87,5 +89,32 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating bass:', error)
     return NextResponse.json({ error: 'Failed to create bass' }, { status: 500 })
+  }
+}
+
+// DELETE a bass by id
+export async function DELETE(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
+  try {
+    const resolvedParams = await params
+    const id = resolvedParams.id
+
+    // Check if bass exists first
+    const existingBass = await db.bass.findUnique({
+      where: { id },
+    })
+
+    if (!existingBass) {
+      return NextResponse.json({ error: 'Bass not found' }, { status: 404 })
+    }
+
+    // Delete the bass
+    await db.bass.delete({
+      where: { id },
+    })
+
+    return NextResponse.json({ message: 'Bass deleted successfully' })
+  } catch (error) {
+    console.error('Error deleting bass:', error)
+    return NextResponse.json({ error: 'Failed to delete bass' }, { status: 500 })
   }
 }

@@ -67,12 +67,12 @@ const DoubleBassHero = () => {
                 className="text-5xl lg:text-7xl font-bold leading-tight"
                 style={{ color: '#0a0a0a' }}
               >
-                <span className="block text-[#171717]">bow4bass</span>
+                <span className="block text-[#0e1528]">bow4bass</span>
               </h1>
 
               <p
                 className="text-[20px] leading-relaxed max-w-xl font-sans font-medium  uppercase"
-                style={{ color: '#171717' }}
+                style={{ color: '#0e1528' }}
               >
                 Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
                 klasicizmu a raného romantizmu.
@@ -107,7 +107,7 @@ const DoubleBassHero = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#171717]">Výroba Sláčikov</h3>
+                  <h3 className="text-lg font-semibold text-[#0e1528]">Výroba Sláčikov</h3>
                 </div>
                 <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
@@ -120,7 +120,7 @@ const DoubleBassHero = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#171717]">Kontrabasy</h3>
+                  <h3 className="text-lg font-semibold text-[#0e1528]">Kontrabasy</h3>
                 </div>
                 <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
@@ -133,7 +133,7 @@ const DoubleBassHero = () => {
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#171717]">Individuálne Úpravy</h3>
+                  <h3 className="text-lg font-semibold text-[#0e1528]">Individuálne Úpravy</h3>
                 </div>
                 <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Nastavenie a úprava nástrojov podľa špecifických požiadaviek každého klienta
@@ -147,7 +147,7 @@ const DoubleBassHero = () => {
               className="flex flex-col sm:flex-row gap-4 pt-4 justify-center items-center"
             >
               <motion.button
-                className="bg-[#171717] hover:bg-transparent hover:text-[#171717] border-2 hover:border-[#171717] text-black px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
+                className="bg-[#0e1528] hover:bg-[#902f07] border-2 hover:border-[#0e1528] text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 font-sans cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -155,7 +155,7 @@ const DoubleBassHero = () => {
               </motion.button>
 
               <motion.button
-                className="border-2 border-[#171717] text-[#171717] hover:bg-[#171717] hover:text-black px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 font-sans"
+                className="border-2 border-[#0e1528] text-[#0e1528] hover:bg-[#902f07]  hover:text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 font-sans cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -192,8 +192,8 @@ const DoubleBassHero = () => {
           },
         }}
       >
-        <div className="w-6 h-10 border-2 border-[#171717] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#171717] rounded-full mt-2"></div>
+        <div className="w-6 h-10 border-2 border-[#0e1528] rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-[#0e1528] rounded-full mt-2"></div>
         </div>
       </motion.div> */}
     </div>

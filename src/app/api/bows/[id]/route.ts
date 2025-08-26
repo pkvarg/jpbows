@@ -50,6 +50,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<Re
         published: body.published,
         new: body.new,
         price: body.price || '',
+        videoUrl: body.videoUrl || '',
         updatedAt: new Date(),
       },
     })
@@ -77,6 +78,7 @@ export async function POST(request: NextRequest) {
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',
+        videoUrl: body.videoUrl || '',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -86,5 +88,32 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating bow:', error)
     return NextResponse.json({ error: 'Failed to create bow' }, { status: 500 })
+  }
+}
+
+// DELETE a bow by id
+export async function DELETE(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
+  try {
+    const resolvedParams = await params
+    const id = resolvedParams.id
+
+    // Check if bow exists first
+    const existingBow = await db.bows.findUnique({
+      where: { id },
+    })
+
+    if (!existingBow) {
+      return NextResponse.json({ error: 'Bow not found' }, { status: 404 })
+    }
+
+    // Delete the bow
+    await db.bows.delete({
+      where: { id },
+    })
+
+    return NextResponse.json({ message: 'Bow deleted successfully' })
+  } catch (error) {
+    console.error('Error deleting bow:', error)
+    return NextResponse.json({ error: 'Failed to delete bow' }, { status: 500 })
   }
 }

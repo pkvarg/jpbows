@@ -445,7 +445,7 @@ export default function BlogCreator() {
   }
 
   return (
-    <div className="p-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
+    <div className="px-6 py-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
       <h2 className="text-xl text-white font-bold mb-4">
         {editingId ? 'Upraviť blog' : 'Vytvoriť blog'}
       </h2>
@@ -740,87 +740,128 @@ export default function BlogCreator() {
           {loading ? 'Načítavam...' : 'Všetky blogy'}
         </button>
 
-        {blogs.length > 0 && (
-          <div className="mt-4 space-y-4">
-            <h3 className="text-lg font-medium text-yellow-500">Blogy ({blogs.length})</h3>
-            {blogs.map((blog) => (
-              <div key={blog.id} className="p-3 border rounded">
-                <div className="flex justify-between">
-                  <div>
-                    <h4 className="font-bold text-white">{blog.title}</h4>
-                    {blog.enTitle && (
-                      <h5 className="text-sm text-gray-300 italic">{blog.enTitle}</h5>
+{blogs.length > 0 && (
+          <div className="mt-4 space-y-6">
+            <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
+              Všetky blogy ({blogs.length})
+            </h3>
+            
+            {/* Sort blogs: active/published first, then by creation date */}
+            {[...blogs]
+              .sort((a, b) => {
+                // First sort by active status (active items first)
+                if (a.active !== b.active) {
+                  return b.active ? 1 : -1
+                }
+                // Then sort by creation date (newest first)
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+              })
+              .map((blog) => (
+                <div 
+                  key={blog.id} 
+                  className={`p-4 border-2 rounded-lg transition-all duration-200 ${
+                    blog.active 
+                      ? 'border-green-500 bg-green-50/5' 
+                      : 'border-red-400 bg-red-50/5'
+                  }`}
+                >
+                  {/* Header with title and status badges */}
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h4 className="font-bold text-xl text-white mb-1">{blog.title}</h4>
+                      {blog.enTitle && <h5 className="text-md text-gray-300 italic">{blog.enTitle}</h5>}
+                    </div>
+                    <div className="flex flex-col gap-2 items-end">
+                      {/* Published Status - Most Prominent */}
+                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                        blog.active 
+                          ? 'bg-green-600 text-white' 
+                          : 'bg-red-600 text-white'
+                      }`}>
+                        {blog.active ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
+                      </span>
+                      
+                      {/* Additional badges */}
+                      <div className="flex gap-2">
+                        <span className="px-2 py-1 rounded bg-blue-600 text-white text-xs">
+                          {blog.template === 'classic'
+                            ? 'KLASICKÁ'
+                            : blog.template === 'modern'
+                            ? 'MODERNÁ'
+                            : 'MINIMALISTICKÁ'}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
+                          {new Date(blog.createdAt).toLocaleDateString('sk-SK')}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Subtitles */}
+                  <div className="mb-3">
+                    <p className="text-lg text-gray-300 font-medium">{blog.subtitle}</p>
+                    {blog.enSubtitle && (
+                      <p className="text-md text-gray-400 italic">{blog.enSubtitle}</p>
                     )}
                   </div>
-                  <div className="flex gap-1">
-                    <span
-                      className={`text-xs px-2 py-1 rounded ${
-                        blog.active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                      }`}
+
+                  {/* Descriptions */}
+                  <div className="mb-3">
+                    <p className="text-white mb-2">{truncateText(blog.description, 120)}</p>
+                    {blog.enDescription && (
+                      <p className="text-gray-300 italic text-sm">
+                        {truncateText(blog.enDescription, 120)}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Image */}
+                  {blog.imageUrl && (
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-400 mb-2">Obrázok:</p>
+                      <div className="relative h-32 w-48 border-2 border-gray-600 rounded">
+                        <Image
+                          src={blog.imageUrl}
+                          alt={blog.title}
+                          width={192}
+                          height={128}
+                          style={{ objectFit: 'cover' }}
+                          className="rounded"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Blog content preview */}
+                  <div className="mb-4 border-t border-gray-600 pt-3">
+                    <p className="text-sm text-gray-400 mb-2">Obsah:</p>
+                    <div className="bg-gray-800/50 p-3 rounded">
+                      <p className="text-sm text-gray-300">{truncateText(blog.blogtext, 180)}</p>
+                      {blog.enBlogtext && (
+                        <p className="text-xs text-gray-500 italic mt-2">
+                          {truncateText(blog.enBlogtext, 180)}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Action buttons */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-600">
+                    <button
+                      onClick={() => handleEdit(blog)}
+                      className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 px-4 rounded font-medium transition-colors"
                     >
-                      {blog.active ? 'Publikovaný' : 'Nepublikovaný'}
-                    </span>
-                    <span className="text-xs px-2 py-1 rounded bg-blue-100 text-blue-800">
-                      {blog.template === 'classic'
-                        ? 'Klasická'
-                        : blog.template === 'modern'
-                        ? 'Moderná'
-                        : 'Minimalistická'}
-                    </span>
+                      ✏️ Upraviť
+                    </button>
+                    <button
+                      onClick={() => handleDelete(blog.id)}
+                      className="flex-1 bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded font-medium transition-colors"
+                    >
+                      🗑️ Vymazať
+                    </button>
                   </div>
                 </div>
-                <div className="mt-1">
-                  <p className="text-sm text-gray-300">{blog.subtitle}</p>
-                  {blog.enSubtitle && (
-                    <p className="text-xs text-gray-400 italic">{blog.enSubtitle}</p>
-                  )}
-                </div>
-                <div className="mt-1">
-                  <p className="text-md text-white">{truncateText(blog.description, 100)}</p>
-                  {blog.enDescription && (
-                    <p className="text-sm text-gray-300 italic mt-1">
-                      {truncateText(blog.enDescription, 100)}
-                    </p>
-                  )}
-                </div>
-
-                {blog.imageUrl && (
-                  <div className="mt-2 relative h-40 w-full">
-                    <Image
-                      src={blog.imageUrl}
-                      alt={blog.title}
-                      width={200}
-                      height={200}
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                )}
-
-                <div className="mt-2 border-t pt-2">
-                  <p className="text-sm text-gray-400">{truncateText(blog.blogtext, 150)}</p>
-                  {blog.enBlogtext && (
-                    <p className="text-xs text-gray-500 italic mt-1">
-                      {truncateText(blog.enBlogtext, 150)}
-                    </p>
-                  )}
-                </div>
-
-                <div className="mt-3 flex gap-2">
-                  <button
-                    onClick={() => handleEdit(blog)}
-                    className="flex-1 bg-yellow-900 hover:bg-yellow-600 text-white py-1 px-2 rounded text-sm"
-                  >
-                    Upraviť
-                  </button>
-                  <button
-                    onClick={() => handleDelete(blog.id)}
-                    className="flex-1 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded text-sm"
-                  >
-                    Vymazať
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

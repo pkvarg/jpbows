@@ -2151,6 +2151,7 @@ export namespace Prisma {
     new: boolean | null
     metadata: string | null
     price: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2165,6 +2166,7 @@ export namespace Prisma {
     new: boolean | null
     metadata: string | null
     price: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2180,6 +2182,7 @@ export namespace Prisma {
     new: number
     metadata: number
     price: number
+    videoUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2196,6 +2199,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2210,6 +2214,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2225,6 +2230,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2313,6 +2319,7 @@ export namespace Prisma {
     new: boolean
     metadata: string | null
     price: string
+    videoUrl: string | null
     createdAt: Date
     updatedAt: Date
     _count: BowsCountAggregateOutputType | null
@@ -2345,6 +2352,7 @@ export namespace Prisma {
     new?: boolean
     metadata?: boolean
     price?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["bows"]>
@@ -2362,11 +2370,12 @@ export namespace Prisma {
     new?: boolean
     metadata?: boolean
     price?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
+  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "videoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
 
   export type $BowsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bows"
@@ -2382,6 +2391,7 @@ export namespace Prisma {
       new: boolean
       metadata: string | null
       price: string
+      videoUrl: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["bows"]>
@@ -2786,6 +2796,7 @@ export namespace Prisma {
     readonly new: FieldRef<"Bows", 'Boolean'>
     readonly metadata: FieldRef<"Bows", 'String'>
     readonly price: FieldRef<"Bows", 'String'>
+    readonly videoUrl: FieldRef<"Bows", 'String'>
     readonly createdAt: FieldRef<"Bows", 'DateTime'>
     readonly updatedAt: FieldRef<"Bows", 'DateTime'>
   }
@@ -3156,6 +3167,7 @@ export namespace Prisma {
     new: boolean | null
     metadata: string | null
     price: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3170,6 +3182,7 @@ export namespace Prisma {
     new: boolean | null
     metadata: string | null
     price: string | null
+    videoUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3185,6 +3198,7 @@ export namespace Prisma {
     new: number
     metadata: number
     price: number
+    videoUrl: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3201,6 +3215,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3215,6 +3230,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3230,6 +3246,7 @@ export namespace Prisma {
     new?: true
     metadata?: true
     price?: true
+    videoUrl?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3318,6 +3335,7 @@ export namespace Prisma {
     new: boolean
     metadata: string | null
     price: string
+    videoUrl: string | null
     createdAt: Date
     updatedAt: Date
     _count: BassCountAggregateOutputType | null
@@ -3350,6 +3368,7 @@ export namespace Prisma {
     new?: boolean
     metadata?: boolean
     price?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["bass"]>
@@ -3367,11 +3386,12 @@ export namespace Prisma {
     new?: boolean
     metadata?: boolean
     price?: boolean
+    videoUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
+  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "videoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
 
   export type $BassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bass"
@@ -3387,6 +3407,7 @@ export namespace Prisma {
       new: boolean
       metadata: string | null
       price: string
+      videoUrl: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["bass"]>
@@ -3791,6 +3812,7 @@ export namespace Prisma {
     readonly new: FieldRef<"Bass", 'Boolean'>
     readonly metadata: FieldRef<"Bass", 'String'>
     readonly price: FieldRef<"Bass", 'String'>
+    readonly videoUrl: FieldRef<"Bass", 'String'>
     readonly createdAt: FieldRef<"Bass", 'DateTime'>
     readonly updatedAt: FieldRef<"Bass", 'DateTime'>
   }
@@ -6172,6 +6194,7 @@ export namespace Prisma {
     new: 'new',
     metadata: 'metadata',
     price: 'price',
+    videoUrl: 'videoUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6190,6 +6213,7 @@ export namespace Prisma {
     new: 'new',
     metadata: 'metadata',
     price: 'price',
+    videoUrl: 'videoUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -6377,6 +6401,7 @@ export namespace Prisma {
     new?: BoolFilter<"Bows"> | boolean
     metadata?: StringNullableFilter<"Bows"> | string | null
     price?: StringFilter<"Bows"> | string
+    videoUrl?: StringNullableFilter<"Bows"> | string | null
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
   }
@@ -6392,6 +6417,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6410,6 +6436,7 @@ export namespace Prisma {
     new?: BoolFilter<"Bows"> | boolean
     metadata?: StringNullableFilter<"Bows"> | string | null
     price?: StringFilter<"Bows"> | string
+    videoUrl?: StringNullableFilter<"Bows"> | string | null
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
   }, "id">
@@ -6425,6 +6452,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BowsCountOrderByAggregateInput
@@ -6446,6 +6474,7 @@ export namespace Prisma {
     new?: BoolWithAggregatesFilter<"Bows"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     price?: StringWithAggregatesFilter<"Bows"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
   }
@@ -6464,6 +6493,7 @@ export namespace Prisma {
     new?: BoolFilter<"Bass"> | boolean
     metadata?: StringNullableFilter<"Bass"> | string | null
     price?: StringFilter<"Bass"> | string
+    videoUrl?: StringNullableFilter<"Bass"> | string | null
     createdAt?: DateTimeFilter<"Bass"> | Date | string
     updatedAt?: DateTimeFilter<"Bass"> | Date | string
   }
@@ -6479,6 +6509,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6497,6 +6528,7 @@ export namespace Prisma {
     new?: BoolFilter<"Bass"> | boolean
     metadata?: StringNullableFilter<"Bass"> | string | null
     price?: StringFilter<"Bass"> | string
+    videoUrl?: StringNullableFilter<"Bass"> | string | null
     createdAt?: DateTimeFilter<"Bass"> | Date | string
     updatedAt?: DateTimeFilter<"Bass"> | Date | string
   }, "id">
@@ -6512,6 +6544,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BassCountOrderByAggregateInput
@@ -6533,6 +6566,7 @@ export namespace Prisma {
     new?: BoolWithAggregatesFilter<"Bass"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Bass"> | string | null
     price?: StringWithAggregatesFilter<"Bass"> | string
+    videoUrl?: StringNullableWithAggregatesFilter<"Bass"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Bass"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Bass"> | Date | string
   }
@@ -6755,6 +6789,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6770,6 +6805,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6784,6 +6820,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6798,6 +6835,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6813,6 +6851,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6827,6 +6866,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6841,6 +6881,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6856,6 +6897,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6871,6 +6913,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6885,6 +6928,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6899,6 +6943,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6914,6 +6959,7 @@ export namespace Prisma {
     new: boolean
     metadata?: string | null
     price: string
+    videoUrl?: string | null
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -6928,6 +6974,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6942,6 +6989,7 @@ export namespace Prisma {
     new?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     price?: StringFieldUpdateOperationsInput | string
+    videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7292,6 +7340,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7306,6 +7355,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7320,6 +7370,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7362,6 +7413,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7376,6 +7428,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7390,6 +7443,7 @@ export namespace Prisma {
     new?: SortOrder
     metadata?: SortOrder
     price?: SortOrder
+    videoUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }

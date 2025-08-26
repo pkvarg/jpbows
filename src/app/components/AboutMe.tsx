@@ -37,7 +37,7 @@ const AboutMe = () => {
           {/* Section Title */}
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl lg:text-6xl font-bold text-center text-[#171717] mb-16 font-serif"
+            className="text-4xl lg:text-6xl font-bold text-center text-white mb-16 font-serif"
           >
             O mne
           </motion.h2>
@@ -83,9 +83,9 @@ const AboutMe = () => {
 
                 <p>
                   Absolvent Akadémie umení v Banskej Bystrici, aktívny člen prestížnych súborov ako
-                  <span className="text-[#171717] font-semibold ml-1">Musica Aeterna</span>,{' '}
-                  <span className="text-[#171717] font-semibold">Wiener Akademie</span> a{' '}
-                  <span className="text-[#171717] font-semibold">Il pomo d&apos;oro</span>.
+                  <span className="text-[#0e1528] font-semibold ml-1">Musica Aeterna</span>,{' '}
+                  <span className="text-[#0e1528] font-semibold">Wiener Akademie</span> a{' '}
+                  <span className="text-[#0e1528] font-semibold">Il pomo d&apos;oro</span>.
                 </p>
 
                 <p>
@@ -98,19 +98,19 @@ const AboutMe = () => {
 
                 <p>
                   Zakladateľ{' '}
-                  <span className="text-[#171717] font-semibold">
+                  <span className="text-[#0e1528] font-semibold">
                     Slovenského kontrabasového klubu
                   </span>{' '}
                   (2010) a organizátor medzinárodných podujatí BASS FEST+ a Medzinárodnej
                   kontrabasovej súťaže K. D. v. Dittersdorfa.
                 </p>
                 <p className="text-sm text-gray-300">
-                  <span className="text-[#171717] font-semibold mb-1 mr-1">Pedagóg</span>
+                  <span className="text-[#0e1528] font-semibold mb-1 mr-1">Pedagóg</span>
                   Súkromné konzervatórium Nitra
                 </p>
 
                 <p className="text-sm text-gray-300">
-                  <span className="text-[#171717] font-semibold mb-1 mr-1">Sólista</span>
+                  <span className="text-[#0e1528] font-semibold mb-1 mr-1">Sólista</span>
                   CD Contrabasso/Violone in Presbourg
                 </p>
               </motion.div>
@@ -118,7 +118,7 @@ const AboutMe = () => {
               {/* CTA Button */}
               <motion.div variants={fadeInUp} className="pt-6 flex justify-center items-center">
                 <motion.button
-                  className="bg-[#171717] hover:bg-transparent hover:text-[#171717] border-2 hover:border-[#171717] text-black px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-[#0e1528] border-2 cursor-pointer text-white px-6 py-3 rounded-2xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

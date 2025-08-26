@@ -13,6 +13,7 @@ interface BassFormData {
   published: boolean
   new: boolean
   metadata: string
+  videoUrl: string
 }
 
 interface Bass {
@@ -26,6 +27,7 @@ interface Bass {
   published: boolean
   new: boolean
   metadata: string
+  videoUrl: string
   createdAt: Date
   updatedAt: Date
 }
@@ -41,6 +43,7 @@ export default function BassManager() {
     published: false,
     new: false,
     metadata: '',
+    videoUrl: '',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -62,6 +65,7 @@ export default function BassManager() {
       published: false,
       new: false,
       metadata: '',
+      videoUrl: '',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -172,6 +176,7 @@ export default function BassManager() {
         published: formData.published,
         new: formData.new,
         metadata: formData.metadata,
+        videoUrl: formData.videoUrl,
       }
 
       // Determine if we're creating or updating
@@ -242,6 +247,7 @@ export default function BassManager() {
       published: bass.published || false,
       new: bass.new || false,
       metadata: bass.metadata || '',
+      videoUrl: bass.videoUrl || '',
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -361,6 +367,22 @@ export default function BassManager() {
             placeholder="napr. €1500"
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
+        </div>
+
+        <div>
+          <label htmlFor="videoUrl" className="block text-sm font-medium text-gray-400">
+            Video URL
+          </label>
+          <input
+            type="url"
+            id="videoUrl"
+            name="videoUrl"
+            value={formData.videoUrl}
+            onChange={handleInputChange}
+            placeholder="napr. https://www.youtube.com/watch?v=..."
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+          <p className="text-xs text-gray-500 mt-1">Voliteľné - odkaz na video</p>
         </div>
 
         <div>
@@ -514,72 +536,123 @@ export default function BassManager() {
           {loading ? 'Načítavam...' : 'Všetky kontrabasy'}
         </button>
 
-        {basses.length > 0 && (
-          <div className="mt-4 space-y-4">
-            <h3 className="text-lg font-medium text-yellow-500">Produkty ({basses.length})</h3>
-            {basses.map((bass) => (
-              <div key={bass.id} className="p-3 border rounded">
-                <div className="flex justify-between">
-                  <div>
-                    <h4 className="font-bold text-white">{bass.name}</h4>
-                    {bass.enName && <h5 className="text-sm text-gray-300 italic">{bass.enName}</h5>}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {bass.new && (
-                      <span className="text-xs px-2 py-1 rounded bg-green-600 text-white">
-                        Nový
+{basses.length > 0 && (
+          <div className="mt-4 space-y-6">
+            <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
+              Všetky kontrabasy ({basses.length})
+            </h3>
+            
+            {/* Sort basses: published first, then by creation date */}
+            {[...basses]
+              .sort((a, b) => {
+                // First sort by published status (published items first)
+                if (a.published !== b.published) {
+                  return b.published ? 1 : -1
+                }
+                // Then sort by creation date (newest first)
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+              })
+              .map((bass) => (
+                <div 
+                  key={bass.id} 
+                  className={`p-4 border-2 rounded-lg transition-all duration-200 ${
+                    bass.published 
+                      ? 'border-green-500 bg-green-50/5' 
+                      : 'border-red-400 bg-red-50/5'
+                  }`}
+                >
+                  {/* Header with title and status badges */}
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h4 className="font-bold text-xl text-white mb-1">{bass.name}</h4>
+                      {bass.enName && <h5 className="text-md text-gray-300 italic">{bass.enName}</h5>}
+                    </div>
+                    <div className="flex flex-col gap-2 items-end">
+                      {/* Published Status - Most Prominent */}
+                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                        bass.published 
+                          ? 'bg-green-600 text-white' 
+                          : 'bg-red-600 text-white'
+                      }`}>
+                        {bass.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
                       </span>
-                    )}
-                    {!bass.published && (
-                      <span className="text-xs px-2 py-1 rounded bg-gray-600 text-gray-300">
-                        Nepublikovaný
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="mt-1">
-                  <p className="text-md text-white">{bass.description}</p>
-                  {bass.enDescription && (
-                    <p className="text-sm text-gray-300 italic mt-1">{bass.enDescription}</p>
-                  )}
-                </div>
-                {bass.price && <p className="text-sm text-gray-300 mt-1">Cena: {bass.price}</p>}
-
-                {bass.images && bass.images.length > 0 && (
-                  <div className="mt-2">
-                    <div className="flex gap-2 overflow-x-auto">
-                      {bass.images.map((imageUrl, index) => (
-                        <div key={index} className="relative h-32 w-32 flex-shrink-0">
-                          <Image
-                            src={imageUrl}
-                            alt={`${bass.name} - ${index + 1}`}
-                            width={128}
-                            height={128}
-                            style={{ objectFit: 'cover' }}
-                            className="rounded"
-                          />
-                        </div>
-                      ))}
+                      
+                      {/* Additional badges */}
+                      <div className="flex gap-2">
+                        {bass.new && (
+                          <span className="px-2 py-1 rounded bg-blue-600 text-white text-xs">
+                            NOVÝ
+                          </span>
+                        )}
+                        <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
+                          {new Date(bass.createdAt).toLocaleDateString('sk-SK')}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                )}
 
-                <div className="mt-3 flex gap-2">
-                  <button
-                    onClick={() => handleEdit(bass)}
-                    className="flex-1 bg-yellow-900 hover:bg-yellow-600 text-white py-1 px-2 rounded text-sm"
-                  >
-                    Upraviť
-                  </button>
-                  <button
-                    onClick={() => handleDelete(bass.id)}
-                    className="flex-1 bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded text-sm"
-                  >
-                    Vymazať
-                  </button>
+                  {/* Content */}
+                  <div className="mb-3">
+                    <p className="text-white mb-2">{bass.description}</p>
+                    {bass.enDescription && (
+                      <p className="text-gray-300 italic text-sm">{bass.enDescription}</p>
+                    )}
+                  </div>
+                  
+                  {/* Price */}
+                  {bass.price && (
+                    <p className="text-yellow-400 font-semibold mb-3">💰 {bass.price}</p>
+                  )}
+
+                  {/* Video URL */}
+                  {bass.videoUrl && (
+                    <div className="mb-3">
+                      <p className="text-blue-400 font-semibold">
+                        🎥 <a href={bass.videoUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          Pozrieť video
+                        </a>
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Images */}
+                  {bass.images && bass.images.length > 0 && (
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-400 mb-2">Obrázky ({bass.images.length}):</p>
+                      <div className="flex gap-2 overflow-x-auto pb-2">
+                        {bass.images.map((imageUrl, index) => (
+                          <div key={index} className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded">
+                            <Image
+                              src={imageUrl}
+                              alt={`${bass.name} - ${index + 1}`}
+                              width={96}
+                              height={96}
+                              style={{ objectFit: 'cover' }}
+                              className="rounded"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action buttons */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-600">
+                    <button
+                      onClick={() => handleEdit(bass)}
+                      className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 px-4 rounded font-medium transition-colors"
+                    >
+                      ✏️ Upraviť
+                    </button>
+                    <button
+                      onClick={() => handleDelete(bass.id)}
+                      className="flex-1 bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded font-medium transition-colors"
+                    >
+                      🗑️ Vymazať
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

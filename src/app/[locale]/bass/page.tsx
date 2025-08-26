@@ -14,6 +14,7 @@ interface Bass {
   price: string
   published: boolean
   new: boolean
+  videoUrl: string
   createdAt: string
   updatedAt: string
 }
@@ -37,10 +38,7 @@ const ImageModal = ({
   if (!isOpen) return null
 
   return (
-    <div
-      className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center" onClick={onClose}>
       <div className="relative w-full h-full flex items-center justify-center p-4">
         <div className="relative max-w-7xl max-h-[90vh] w-full h-full">
           <Image
@@ -165,7 +163,7 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   {/* View icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center   transition-all duration-300">
                     <div className="opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300 bg-white/10 backdrop-blur-sm p-4 rounded-full">
                       <svg
                         className="w-8 h-8 text-white"
@@ -293,11 +291,67 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
             </div>
           </div>
 
-          <p className="text-gray-300 text-lg leading-relaxed">{displayDescription}</p>
+          <p className="text-gray-300 text-lg leading-relaxed text-justify">{displayDescription}</p>
 
           {bass.price && (
             <div className="pt-4">
               <p className="text-4xl font-bold text-white">{bass.price} €</p>
+            </div>
+          )}
+
+          {/* Video Section */}
+          {bass.videoUrl && (
+            <div className="pt-6">
+              <h3 className="text-xl font-semibold text-white mb-4">
+                {isEnglish ? 'Watch Video' : 'Pozrieť video'}
+              </h3>
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-800">
+                {(() => {
+                  // Extract YouTube video ID
+                  let videoId = ''
+                  if (bass.videoUrl.includes('youtube.com/watch')) {
+                    const urlParams = new URLSearchParams(bass.videoUrl.split('?')[1])
+                    videoId = urlParams.get('v') || ''
+                  } else if (bass.videoUrl.includes('youtu.be/')) {
+                    videoId = bass.videoUrl.split('youtu.be/')[1]?.split('?')[0] || ''
+                  }
+
+                  if (videoId) {
+                    return (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoId}`}
+                        title={`${displayName} Video`}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )
+                  } else {
+                    // For non-YouTube URLs, show a link
+                    return (
+                      <div className="flex items-center justify-center h-full">
+                        <a
+                          href={bass.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
+                        >
+                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path
+                              fillRule="evenodd"
+                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          {isEnglish ? 'Watch Video' : 'Pozrieť video'}
+                        </a>
+                      </div>
+                    )
+                  }
+                })()}
+              </div>
             </div>
           )}
         </div>

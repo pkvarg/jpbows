@@ -15,12 +15,12 @@ const Admin = async () => {
         <AuthButton key={session?.user ? 'signed-in' : 'signed-out'} />
         <h1 className="text-center text-[32px]">Ahoj admin</h1>
         <div className="flex flex-col lg:flex-row justify-center items-center gap-72 py-16">
-          <div className="flex flex-col gap-4 text-[#171717] text-xl font-bold">
+          <div className="flex flex-col gap-4 text-[#0e1528] text-xl font-bold">
             {/* <Link href={`/admin/file-upload`}>File Upload</Link> */}
             <Link href={`/admin/bass`}>Basses</Link>
             <Link href={`/admin/bow`}>Bows</Link>
             {/* <Link href={`/admin/slider`}>Sliders</Link> */}
-            <Link href={`/admin/blog`}>Blogs</Link>
+            {/* <Link href={`/admin/blog`}>Blogs</Link> */}
             <Link
               href="https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/share/PdxeXPCaZrZhF1ko/jpbows.pictusweb.com"
               target="_blank"

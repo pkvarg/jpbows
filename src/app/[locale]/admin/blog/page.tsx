@@ -4,7 +4,7 @@ import BlogCreator from '@/app/components/BlogCreator'
 
 const AdminBlog = () => {
   return (
-    <main className="mx-8">
+    <main className="px-8 pt-4 bg-gradient-to-br from-gray-900 via-slate-900 to-black">
       <Link href={'/admin'} className="text-white text-[30px] text-center cursor-pointer">
         Naspäť
       </Link>
