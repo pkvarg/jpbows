@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+//import { Geist, Geist_Mono } from 'next/font/google'
+import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import './globals.css'
 import { NextIntlClientProvider } from 'next-intl'
 import NavbarServer from './components/translationServerComponents/NavbarServer'
 import FooterServerComponent from './components/translationServerComponents/FooterServerComponent'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
+// const geistSans = Geist({
+//   variable: '--font-geist-sans',
+//   subsets: ['latin'],
+// })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
   subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
-  title: 'JP Bows',
+  title: 'bow4bass',
   description: 'Double Basses and bows.',
 }
 
@@ -33,7 +34,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={(await params).lang}>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${montserrat.variable} font-sans antialiased`}>
         <NextIntlClientProvider>
           <NavbarServer />
           {children}

@@ -178,7 +178,7 @@ const NewItemsSlider = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#fee081] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#171717] mb-4">
             {isEnglish ? 'New Items' : 'Novinky'}
           </h2>
           <p className="text-xl text-gray-300">
@@ -232,12 +232,12 @@ const NewItemsSlider = () => {
                 </p>
 
                 {currentProduct.price && (
-                  <p className="text-2xl font-bold text-[#fee081] mb-8">{currentProduct.price} €</p>
+                  <p className="text-2xl font-bold text-[#171717] mb-8">{currentProduct.price} €</p>
                 )}
 
                 <Link
                   href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
-                  className="inline-flex items-center px-6 py-3 bg-[#fee081] hover:bg-[#fee081] text-gray-900 font-semibold rounded-lg transition-all duration-200 self-start group"
+                  className="inline-flex items-center px-6 py-3 bg-[#171717] hover:bg-[#171717] text-gray-900 font-semibold rounded-lg transition-all duration-200 self-start group"
                 >
                   {isEnglish ? 'View Gallery' : 'Do galérie'}
                   <svg
@@ -300,7 +300,7 @@ const NewItemsSlider = () => {
                   onClick={() => goToSlide(index)}
                   className={`transition-all duration-300 ${
                     index === currentIndex
-                      ? 'w-8 h-2 bg-[#fee081]'
+                      ? 'w-8 h-2 bg-[#171717]'
                       : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
                   } rounded-full`}
                 />

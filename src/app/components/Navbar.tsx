@@ -34,7 +34,7 @@ const Navbar = () => {
   // }
 
   return (
-    <nav className="w-full bg-[#111828] nav-font font-bold text-[#fee081]">
+    <nav className="w-full bg-[#f1f1ef] nav-font font-bold text-[#171717]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
@@ -49,11 +49,12 @@ const Navbar = () => {
                 height={500}
                 className="w-[50px]"
               /> */}
-              <h1 className="text-[20px] leading-[22.5px]">JP BOWS</h1>
+              <h1 className="text-[20px] leading-[22.5px]">bow4bass</h1>
             </div>
             <div className="md:hidden">
               <button
-                className="rounded-md p-2 text-white outline-none focus:border focus:border-gray-400"
+                className="rounded-md p-2 outline-none focus:border focus:border-gray-400"
+                style={{ color: '#171717' }}
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (

@@ -110,9 +110,9 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
     const origin = 'JPBOWS'
     const subjectTranslations = {
-      en: 'Message from JP Bows',
+      en: 'Message from bow4bass',
 
-      sk: 'Správa od JP Bows',
+      sk: 'Správa od bow4bass',
     }
 
     const subject =
@@ -194,10 +194,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   return (
     <>
       <div
-        className="bg-gradient-to-br from-gray-900 via-slate-900 to-black scroll-mt-14"
+        className="scroll-mt-14"
         id="contact"
+        style={{background: '#f1f1ef'}}
       >
-        <div className="px-6 py-16 text-white lg:px-[15%]">
+        <div className="px-6 py-16 lg:px-[15%]" style={{color: '#0a0a0a'}}>
           {/* Section Header with decorative elements */}
           <div className="relative mb-12">
             <h1 className="text-center text-3xl md:text-4xl font-bold text-amber-200 tracking-wide">
@@ -215,7 +216,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
               </div>
 
               {/* Form with enhanced styling */}
-              <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm shadow-lg">
+              <div className="rounded-lg p-6 backdrop-blur-sm shadow-lg" style={{background: '#ffffff'}}>
                 <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
                   {/* Personal Information Fields */}
                   <div className="space-y-4">
@@ -225,7 +226,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                         {contactName}
                       </label>
                       <input
-                        className="rounded-lg p-3 bg-white/5 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 text-white"
+                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
+                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
                         type="text"
                         name="user_name"
                         value={name}
@@ -241,7 +243,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                         {contactEmail}
                       </label>
                       <input
-                        className="rounded-lg p-3 bg-white/5 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 text-white"
+                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
+                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
                         type="email"
                         name="user_email"
                         value={email}
@@ -257,7 +260,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                         {contactPhone}
                       </label>
                       <input
-                        className="rounded-lg p-3 bg-white/5 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 text-white"
+                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
+                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
                         type="text"
                         name="user_phone"
                         value={phone}
@@ -274,7 +278,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       {contactMessage}
                     </label>
                     <textarea
-                      className="rounded-lg p-3 bg-white/5 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 text-white min-h-32"
+                      className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 min-h-32"
+                      style={{background: '#f1f1ef', color: '#0a0a0a'}}
                       rows={5}
                       name="message"
                       value={mailMessage}
@@ -342,7 +347,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
             {/* Decorative Side Element */}
             <div className="hidden lg:block lg:w-1/3">
-              <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black p-6 rounded-lg  h-full">
+              <div className="p-6 rounded-lg h-full" style={{background: '#ffffff'}}>
                 <h3 className="text-2xl font-semibold text-amber-200 mb-4">Kontaktujte nás</h3>
                 <p className="text-lg mb-4">
                   Máte otázky alebo chcete získať viac informácií? Neváhajte nás kontaktovať

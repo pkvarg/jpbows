@@ -41,7 +41,7 @@ const DoubleBassHero = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden" style={{ background: '#f1f1ef' }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -63,11 +63,17 @@ const DoubleBassHero = () => {
             animate="animate"
           >
             <motion.div variants={fadeInUp} className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight font-serif">
-                <span className="block text-[#fee081]">JP Bows</span>
+              <h1
+                className="text-5xl lg:text-7xl font-bold leading-tight"
+                style={{ color: '#0a0a0a' }}
+              >
+                <span className="block text-[#171717]">bow4bass</span>
               </h1>
 
-              <p className="text-[20px] text-gray-100 leading-relaxed max-w-xl font-sans font-medium">
+              <p
+                className="text-[20px] leading-relaxed max-w-xl font-sans font-medium  uppercase"
+                style={{ color: '#171717' }}
+              >
                 Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
                 klasicizmu a raného romantizmu.
               </p>
@@ -96,41 +102,40 @@ const DoubleBassHero = () => {
             {/* Services Grid */}
             <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div
-                className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-amber-500/30 transition-all duration-300"
+                className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-amber-500/30 transition-all duration-300"
+                style={{ background: '#ffffff' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#fee081] font-serif">
-                    Výroba Sláčikov
-                  </h3>
+                  <h3 className="text-lg font-semibold text-[#171717]">Výroba Sláčikov</h3>
                 </div>
-                <p className="text-white text-md leading-relaxed">
+                <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
                 </p>
               </motion.div>
 
               <motion.div
-                className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-red-500/30 transition-all duration-300"
+                className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-red-500/30 transition-all duration-300"
+                style={{ background: '#ffffff' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#fee081] font-serif">Kontrabasy</h3>
+                  <h3 className="text-lg font-semibold text-[#171717]">Kontrabasy</h3>
                 </div>
-                <p className="text-white text-md leading-relaxed">
+                <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
                 </p>
               </motion.div>
 
               <motion.div
-                className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-orange-500/30 transition-all duration-300 md:col-span-2"
+                className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-orange-500/30 transition-all duration-300 md:col-span-2"
+                style={{ background: '#ffffff' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
-                  <h3 className="text-lg font-semibold text-[#fee081] font-serif">
-                    Individuálne Úpravy
-                  </h3>
+                  <h3 className="text-lg font-semibold text-[#171717]">Individuálne Úpravy</h3>
                 </div>
-                <p className="text-white text-md leading-relaxed">
+                <p style={{ color: '#0a0a0a' }} className="text-md leading-relaxed">
                   Nastavenie a úprava nástrojov podľa špecifických požiadaviek každého klienta
                 </p>
               </motion.div>
@@ -142,7 +147,7 @@ const DoubleBassHero = () => {
               className="flex flex-col sm:flex-row gap-4 pt-4 justify-center items-center"
             >
               <motion.button
-                className="bg-[#fee081] hover:bg-transparent hover:text-[#fee081] border-2 hover:border-[#fee081] text-black px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
+                className="bg-[#171717] hover:bg-transparent hover:text-[#171717] border-2 hover:border-[#171717] text-black px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 font-sans"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -150,7 +155,7 @@ const DoubleBassHero = () => {
               </motion.button>
 
               <motion.button
-                className="border-2 border-[#fee081] text-[#fee081] hover:bg-[#fee081] hover:text-black px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 font-sans"
+                className="border-2 border-[#171717] text-[#171717] hover:bg-[#171717] hover:text-black px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 font-sans"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -160,28 +165,18 @@ const DoubleBassHero = () => {
           </motion.div>
 
           {/* Right Content Desktop ONLY - Image */}
-          <motion.div
-            className="hidden lg:flex relative ml-auto"
-            initial="initial"
-            animate="animate"
-          >
+          <div className="hidden lg:flex relative ml-auto">
             {/* Main Double Bass Image */}
-            <motion.div
-              className="relative z-10"
-              variants={slideInRight}
-              animate={floatingAnimation}
-            >
-              <div className="bg-gradient-to-br from-amber-200 to-orange-300 rounded-3xl p-6 shadow-2xl">
-                <Image
-                  src="/foto1.jpg"
-                  alt="Ján Prievozník"
-                  width={500}
-                  height={500}
-                  className="w-full h-[500px] object-cover rounded-2xl shadow-lg"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
+            <div className="relative z-10">
+              <Image
+                src="/foto1.jpg"
+                alt="Ján Prievozník"
+                width={500}
+                height={500}
+                className="w-full h-[500px] object-cover rounded-2xl"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -197,8 +192,8 @@ const DoubleBassHero = () => {
           },
         }}
       >
-        <div className="w-6 h-10 border-2 border-[#fee081] rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-[#fee081] rounded-full mt-2"></div>
+        <div className="w-6 h-10 border-2 border-[#171717] rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-[#171717] rounded-full mt-2"></div>
         </div>
       </motion.div> */}
     </div>
