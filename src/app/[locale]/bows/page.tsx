@@ -281,7 +281,9 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
           <div>
             <div className="flex items-start gap-4 mb-2">
-              <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">{displayName}</h2>
+              <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
+                {displayName}
+              </h2>
               {bow.new && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
                   <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -386,7 +388,7 @@ const Bow = () => {
       {/* Header Section */}
       <div className="relative py-16 px-4 text-center border-b border-[#2f0000]/20">
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-5xl lg:text-9xl font-normal text-[#e80e19] mb-4 tracking-tight">
+          <h1 className="text-5xl lg:text-7xl font-normal text-[#e80e19] mb-4 tracking-tight">
             {isEnglish ? 'Bows' : 'Sláčiky'}
           </h1>
           <p className="text-xl lg:text-5xl font-normal text-[#2f0000]">

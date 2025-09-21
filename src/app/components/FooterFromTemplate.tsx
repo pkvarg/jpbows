@@ -95,7 +95,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       {/* <motion.footer variants={footerVariants} initial="hidden" whileInView="show"> */}
       <div className={`flex flex-col gap-4`}>
         <div className="mb-[10px] h-[2px] bg-white opacity-10" />
-        <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
+        <div className="flex flex-col text-[25px] font-light" style={{ color: '#0a0a0a' }}>
           <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-0  lg:mx-12">
             <div className="flex lg:flex-row flex-col gap-2 justify-center items-center">
               <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
@@ -103,22 +103,25 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               </h4>
               <h4 style={{ color: '#0e1528' }}>bow4bass</h4>
             </div>
-            <Link className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/about`}>
+            <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/about`}>
               {about}
             </Link>
 
-            <a className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/gdpr`}>
+            <a className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
               GDPR
             </a>
 
-            <a className="hover:text-[#0388f4]" style={{ color: '#0e1528' }} href={`/trade-rules`}>
+            <a
+              className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+              href={`/trade-rules`}
+            >
               {tradeRules}
             </a>
 
-            <p className="font-normal text-[17.5px]" style={{ color: '#0e1528' }}>
-              Phone: +421 904 798 505
+            <p className="font-normal text-[25px]" style={{ color: '#0e1528' }}>
+              Phone: +421 905 338 081
               <br />
-              <a href="mailto:info@jpbows.sk">email: info@jpbows.sk</a>
+              <a href="mailto:info@bow4bass.com">email: info@bow4bass.com</a>
             </p>
           </div>
           <div className="flex justify-center items-center mt-4">
@@ -126,10 +129,10 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               href="https://www.pictusweb.sk"
               target="_blank"
               rel="noreferrer"
-              className="text-[12.5px]"
+              className="text-[17.5px] tracking-widest"
               style={{ color: '#0e1528' }}
             >
-              &#60;&#47;&#62; PICTUSWEB Development
+              &#60;&#47;&#62; Pictusweb Development
             </a>
           </div>
         </div>

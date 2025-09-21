@@ -193,15 +193,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
   return (
     <>
-      <div
-        className="scroll-mt-14"
-        id="contact"
-        style={{background: '#f1f1ef'}}
-      >
-        <div className="px-6 py-16 lg:px-[15%]" style={{color: '#0a0a0a'}}>
+      <div className="scroll-mt-14" id="contact" style={{ background: '#f1f1ef' }}>
+        <div className="px-6 py-16 lg:px-[15%] text-[#2f0000]">
           {/* Section Header with decorative elements */}
           <div className="relative mb-12">
-            <h1 className="text-center text-3xl md:text-4xl font-bold text-amber-200 tracking-wide">
+            <h1 className="text-center text-5xl lg:text-7xl font-normal text-[#e80e19] tracking-wide">
               {contactTitle}
             </h1>
           </div>
@@ -216,18 +212,18 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
               </div>
 
               {/* Form with enhanced styling */}
-              <div className="rounded-lg p-6 backdrop-blur-sm shadow-lg" style={{background: '#ffffff'}}>
-                <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-4">
+              <div className="rounded-lg p-6 backdrop-blur-sm shadow-lg bg-white border border-[#2f0000]/20" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
                   {/* Personal Information Fields */}
                   <div className="space-y-4">
                     <div className="flex flex-col">
-                      <label className="flex items-center text-lg text-amber-200 mb-2 font-medium">
-                        <MdPerson className="mr-2 text-xl" />
+                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
+                        <MdPerson className="mr-2 text-2xl" />
                         {contactName}
                       </label>
                       <input
-                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
-                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
+                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
+                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                         type="text"
                         name="user_name"
                         value={name}
@@ -238,13 +234,13 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     </div>
 
                     <div className="flex flex-col">
-                      <label className="flex items-center text-lg text-amber-200 mb-2 font-medium">
-                        <MdEmail className="mr-2 text-xl" />
+                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
+                        <MdEmail className="mr-2 text-2xl" />
                         {contactEmail}
                       </label>
                       <input
-                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
-                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
+                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
+                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                         type="email"
                         name="user_email"
                         value={email}
@@ -255,13 +251,13 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     </div>
 
                     <div className="flex flex-col">
-                      <label className="flex items-center text-lg text-amber-200 mb-2 font-medium">
-                        <MdPhone className="mr-2 text-xl" />
+                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
+                        <MdPhone className="mr-2 text-2xl" />
                         {contactPhone}
                       </label>
                       <input
-                        className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300"
-                        style={{background: '#f1f1ef', color: '#0a0a0a'}}
+                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
+                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                         type="text"
                         name="user_phone"
                         value={phone}
@@ -273,13 +269,13 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                   {/* Message Textarea */}
                   <div className="flex flex-col mt-2">
-                    <label className="flex items-center text-lg text-amber-200 mb-2 font-medium">
-                      <MdMessage className="mr-2 text-xl" />
+                    <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
+                      <MdMessage className="mr-2 text-2xl" />
                       {contactMessage}
                     </label>
                     <textarea
-                      className="rounded-lg p-3 border border-amber-700 focus:border-amber-300 focus:outline-none focus:ring-1 focus:ring-amber-300 min-h-32"
-                      style={{background: '#f1f1ef', color: '#0a0a0a'}}
+                      className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 min-h-32 bg-[#f1f1ef] text-[#2f0000] text-lg"
+                      style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                       rows={5}
                       name="message"
                       value={mailMessage}
@@ -296,14 +292,17 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       type="checkbox"
                       onChange={handleCheckBox}
                       required
-                      className="w-5 h-5 mt-1 rounded-md border-2 border-amber-600 focus:ring-amber-300 checked:bg-amber-600"
+                      className="w-6 h-6 rounded-md border-2 border-[#2f0000] focus:ring-[#e80e19] checked:bg-[#e80e19] accent-[#e80e19]"
                     />
                     <div>
-                      <label className="text-lg cursor-pointer" htmlFor="flexCheckDefault">
+                      <label
+                        className="text-lg lg:text-xl cursor-pointer text-[#2f0000]"
+                        htmlFor="flexCheckDefault"
+                      >
                         {contactAgree}{' '}
                         <button
                           type="button"
-                          className="text-amber-300 underline hover:text-amber-200 transition-colors"
+                          className="text-[#e80e19] underline hover:text-[#2f0000] transition-colors font-semibold"
                           onClick={(e) => toggleShowGdpr(e)}
                         >
                           {contactGdpr}
@@ -311,8 +310,10 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       </label>
 
                       {showGdpr && (
-                        <div className="mt-3 p-4 bg-amber-900/40 border-l-4 border-amber-300 rounded-md">
-                          <p className="text-base leading-relaxed">{contactGdpr1}</p>
+                        <div className="mt-3 p-4 bg-[#e80e19]/10 border-l-4 border-[#e80e19] rounded-md">
+                          <p className="text-base lg:text-lg leading-relaxed text-[#2f0000]">
+                            {contactGdpr1}
+                          </p>
                         </div>
                       )}
                     </div>
@@ -334,11 +335,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                   {/* Submit Button */}
                   <button
-                    className="flex items-center justify-center gap-2 button-color hover:bg-amber-600 text-white py-3 px-6 rounded-lg mt-6 font-medium transition-all duration-300 border border-amber-600 hover:border-amber-300"
+                    className="flex items-center justify-center gap-3 bg-[#e80e19] hover:bg-white hover:text-[#2f0000] hover:border-2 hover:border-[#2f0000] text-white py-4 px-8 rounded-lg mt-6 font-semibold text-lg lg:text-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                     type="submit"
                     value="Send"
                   >
-                    <MdSend className="text-xl" />
+                    <MdSend className="text-2xl" />
                     {contactSend}
                   </button>
                 </form>
@@ -347,23 +348,25 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
             {/* Decorative Side Element */}
             <div className="hidden lg:block lg:w-1/3">
-              <div className="p-6 rounded-lg h-full" style={{background: '#ffffff'}}>
-                <h3 className="text-2xl font-semibold text-amber-200 mb-4">Kontaktujte nás</h3>
-                <p className="text-lg mb-4">
+              <div className="p-6 rounded-lg h-full bg-white border border-[#2f0000]/20" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+                <h3 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] mb-6 tracking-wider">
+                  Kontaktujte nás
+                </h3>
+                <p className="text-lg lg:text-xl mb-6 text-[#2f0000] leading-relaxed">
                   Máte otázky alebo chcete získať viac informácií? Neváhajte nás kontaktovať
                   prostredníctvom tohto formulára.
                 </p>
-                <p className="text-lg mb-4">
+                <p className="text-lg lg:text-xl mb-6 text-[#2f0000] leading-relaxed">
                   Radi zodpovieme vaše otázky a poskytneme vám všetky potrebné informácie.
                 </p>
                 <div className="mt-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <MdEmail className="text-2xl text-amber-300" />
-                    <span className="text-lg">xxx@xxx.sk</span>
+                  <div className="flex items-center gap-3 mb-6">
+                    <MdEmail className="text-2xl text-[#e80e19]" />
+                    <span className="text-lg lg:text-xl text-[#2f0000]">info@bow4bass.com</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <MdPhone className="text-2xl text-amber-300" />
-                    <span className="text-lg">+421 900 000 000 (meno)</span>
+                    <MdPhone className="text-2xl text-[#e80e19]" />
+                    <span className="text-lg lg:text-xl text-[#2f0000]">+421 905 338 081</span>
                   </div>
                 </div>
               </div>
