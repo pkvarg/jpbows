@@ -181,7 +181,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/pictus/Desktop/jpbows/prisma/generated/prisma",
+      "value": "/Users/pictus/PW-Local-Projects/jpbows/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -195,7 +195,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/pictus/Desktop/jpbows/prisma/schema.prisma",
+    "sourceFilePath": "/Users/pictus/PW-Local-Projects/jpbows/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
