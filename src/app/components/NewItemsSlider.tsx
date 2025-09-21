@@ -219,7 +219,7 @@ const NewItemsSlider = () => {
               </div>
 
               {/* Content Section */}
-              <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+              <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center mt-16">
                 <h3 className="text-2xl lg:text-4xl font-semibold text-[#2f0000] hover:text-[#e6c78c] transition-colors mb-4">
                   {displayName}
                 </h3>
@@ -262,7 +262,7 @@ const NewItemsSlider = () => {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#2f0000]/80 hover:bg-[#2f0000] text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
+                className="absolute left-4 top-1/2 -translate-y-1/2  hover:bg-[#2f0000] hover:text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -276,7 +276,7 @@ const NewItemsSlider = () => {
 
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#2f0000]/80 hover:bg-[#2f0000] text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
+                className="absolute right-4 top-1/2 -translate-y-1/2  hover:bg-[#2f0000] hover:text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path

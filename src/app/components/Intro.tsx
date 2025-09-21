@@ -36,28 +36,28 @@ const Intro = () => {
 
           <motion.p
             variants={fadeInUp}
-            className="text-xl lg:text-5xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
+            className="text-4xl lg:text-5xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
           >
             Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
             klasicizmu a raného romantizmu.
           </motion.p>
 
           <motion.div variants={fadeInUp} className="space-y-8 max-w-3xl mx-auto">
-            <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Výroba Sláčikov
             </h2>
             <p className="text-4xl leading-relaxed text-[#2f0000]">
               Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
             </p>
 
-            <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Kontrabasy
             </h2>
             <p className="text-4xl leading-relaxed text-[#2f0000]">
               Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
             </p>
 
-            <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Individuálne Úpravy
             </h2>
             <p className="text-4xl leading-relaxed text-[#2f0000]">

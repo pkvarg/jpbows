@@ -27,7 +27,10 @@ export default function LangSwitcher() {
 
   return (
     <div className="flex flex-row gap-4 mr-2">
-      <button className="cursor-pointer hover:text-[#2f0000]" onClick={() => handleLanguage('en')}>
+      <button
+        className="ml-2 lg:ml-0 cursor-pointer hover:text-[#2f0000]"
+        onClick={() => handleLanguage('en')}
+      >
         en
       </button>
       <button className="cursor-pointer hover:text-[#2f0000]" onClick={() => handleLanguage('sk')}>

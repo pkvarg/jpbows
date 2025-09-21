@@ -45,7 +45,7 @@ const AboutMe = () => {
           <div className="text-center space-y-12 max-w-5xl mx-auto">
             <motion.h3
               variants={fadeInUp}
-              className="text-2xl lg:text-4xl font-semibold text-[#2f0000] tracking-wider"
+              className="text-3xl lg:text-5xl font-semibold text-[#2f0000] tracking-wider"
             >
               Ján Prievozník
             </motion.h3>

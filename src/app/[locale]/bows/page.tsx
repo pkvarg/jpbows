@@ -388,10 +388,10 @@ const Bow = () => {
       {/* Header Section */}
       <div className="relative py-16 px-4 text-center border-b border-[#2f0000]/20">
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-5xl lg:text-7xl font-normal text-[#e80e19] mb-4 tracking-tight">
+          <h1 className="text-6xl lg:text-7xl font-normal text-[#e80e19] mb-4 tracking-tight">
             {isEnglish ? 'Bows' : 'Sláčiky'}
           </h1>
-          <p className="text-xl lg:text-5xl font-normal text-[#2f0000]">
+          <p className="text-3xl lg:text-5xl font-normal text-[#2f0000]">
             {isEnglish ? 'Quality handcrafted bows...' : 'Kvalitné ručne vyrobené sláčiky...'}
           </p>
         </div>
