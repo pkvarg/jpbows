@@ -149,10 +149,10 @@ const NewItemsSlider = () => {
 
   if (loading) {
     return (
-      <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black py-16">
+      <div className="bg-[#f1f1ef] py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-96 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2f0000]"></div>
           </div>
         </div>
       </div>
@@ -174,23 +174,18 @@ const NewItemsSlider = () => {
       : currentProduct.description
 
   return (
-    <section className="bg-transparent py-16 relative overflow-hidden">
+    <section className="bg-[#f1f1ef] py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0e1528] mb-4">
+          <h2 className="text-5xl lg:text-7xl font-normal text-[#e80e19]  mb-4">
             {isEnglish ? 'New Items' : 'Novinky'}
           </h2>
-          <p className="text-xl text-gray-300">
-            {isEnglish
-              ? 'Latest additions to our collection'
-              : 'Najnovšie prírastky do našej kolekcie'}
-          </p>
         </div>
 
         {/* Slider Container */}
         <div className="relative">
-          <div className="backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden">
+          <div className="bg-[#f1f1ef] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
             <div className="flex flex-col lg:flex-row">
               {/* Image Section */}
               <div className="lg:w-1/2 relative h-96 lg:h-[500px]">
@@ -205,9 +200,9 @@ const NewItemsSlider = () => {
                     />
                   </div>
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-800/50">
+                  <div className="w-full h-full flex items-center justify-center bg-[#2f0000]/10">
                     <svg
-                      className="w-20 h-20 text-gray-600"
+                      className="w-20 h-20 text-[#2f0000]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -225,19 +220,23 @@ const NewItemsSlider = () => {
 
               {/* Content Section */}
               <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">{displayName}</h3>
+                <h3 className="text-2xl lg:text-4xl font-semibold text-[#2f0000] hover:text-[#e6c78c] transition-colors mb-4">
+                  {displayName}
+                </h3>
 
-                <p className="text-gray-300 text-lg leading-relaxed mb-6 line-clamp-3">
+                <p className="text-3xl tracking-widest font-normal text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
                   {displayDescription}
                 </p>
 
                 {currentProduct.price && (
-                  <p className="text-2xl font-bold text-[#0e1528] mb-8">{currentProduct.price} €</p>
+                  <p className="text-2xl font-semibold text-[#2f0000] mb-8">
+                    {currentProduct.price} €
+                  </p>
                 )}
 
                 <Link
                   href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
-                  className="inline-flex items-center px-6 py-3 bg-[#0e1528] hover:bg-[#0e1528] text-white font-semibold rounded-lg transition-all duration-200 self-start group"
+                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-3xl"
                 >
                   {isEnglish ? 'View Gallery' : 'Do galérie'}
                   <svg
@@ -263,7 +262,7 @@ const NewItemsSlider = () => {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 text-white p-3 rounded-full transition-all backdrop-blur-sm border border-gray-600/50"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#2f0000]/80 hover:bg-[#2f0000] text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -277,7 +276,7 @@ const NewItemsSlider = () => {
 
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 text-white p-3 rounded-full transition-all backdrop-blur-sm border border-gray-600/50"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#2f0000]/80 hover:bg-[#2f0000] text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -300,8 +299,8 @@ const NewItemsSlider = () => {
                   onClick={() => goToSlide(index)}
                   className={`transition-all duration-300 ${
                     index === currentIndex
-                      ? 'w-8 h-2 bg-[#0e1528]'
-                      : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
+                      ? 'w-8 h-2 bg-[#2f0000]'
+                      : 'w-2 h-2 bg-[#2f0000]/60 hover:bg-[#2f0000]/80'
                   } rounded-full`}
                 />
               ))}
@@ -311,7 +310,7 @@ const NewItemsSlider = () => {
 
         {/* Product Counter */}
         {products.length > 1 && (
-          <div className="text-center mt-4 text-gray-400">
+          <div className="text-center mt-4 text-[#2f0000]">
             {currentIndex + 1} {isEnglish ? 'of' : 'z'} {products.length}
           </div>
         )}

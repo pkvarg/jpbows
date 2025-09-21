@@ -147,7 +147,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
 
   return (
     <>
-      <div className="group relative flex flex-col lg:flex-row gap-8 lg:gap-12 py-12 px-4 lg:px-8 hover:bg-white/[0.02] transition-colors duration-300">
+      <div className="group relative flex flex-col lg:flex-row gap-8 lg:gap-12 py-12 px-4 lg:px-8 hover:bg-[#2f0000]/[0.02] transition-colors duration-300">
         {/* Image Section - Left Side */}
         <div className="w-full lg:w-1/2 relative">
           <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-lg">
@@ -165,7 +165,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   {/* View icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/20 transition-all duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center bg-[#2f0000]/0 group-hover:bg-[#2f0000]/20 transition-all duration-300">
                     <div className="opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300 bg-white/10 backdrop-blur-sm p-4 rounded-full">
                       <svg
                         className="w-8 h-8 text-white"
@@ -258,9 +258,9 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                 )}
               </>
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gray-800/50 rounded-lg">
+              <div className="w-full h-full flex items-center justify-center bg-[#2f0000]/10 rounded-lg">
                 <svg
-                  className="w-20 h-20 text-gray-600"
+                  className="w-20 h-20 text-[#2f0000]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -281,7 +281,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
         <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
           <div>
             <div className="flex items-start gap-4 mb-2">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white">{displayName}</h2>
+              <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">{displayName}</h2>
               {bow.new && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
                   <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -293,11 +293,11 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
             </div>
           </div>
 
-          <p className="text-gray-300 text-lg leading-relaxed">{displayDescription}</p>
+          <p className="text-[#2f0000] text-4xl leading-relaxed">{displayDescription}</p>
 
           {bow.price && (
             <div className="pt-4">
-              <p className="text-4xl font-bold text-white">{bow.price} €</p>
+              <p className="text-4xl font-semibold text-[#2f0000]">{bow.price} €</p>
             </div>
           )}
         </div>
@@ -354,10 +354,10 @@ const Bow = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
-          <p className="text-white mt-4">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#e80e19]"></div>
+          <p className="text-[#2f0000] mt-4 text-4xl">
             {isEnglish ? 'Loading bows...' : 'Načítavam sláčiky...'}
           </p>
         </div>
@@ -367,12 +367,12 @@ const Bow = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex items-center justify-center">
+      <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-400 text-xl">{error}</p>
+          <p className="text-[#e80e19] text-4xl">{error}</p>
           <button
             onClick={fetchBows}
-            className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
+            className="mt-4 px-6 py-2 bg-[#e80e19] hover:bg-white hover:text-[#2f0000] hover:border-black text-white rounded-lg font-medium transition-colors duration-200"
           >
             {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
@@ -382,25 +382,24 @@ const Bow = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black">
+    <div className="min-h-screen bg-[#f1f1ef]">
       {/* Header Section */}
-      <div className="relative py-16 px-4 text-center border-b border-gray-800/50">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent"></div>
+      <div className="relative py-16 px-4 text-center border-b border-[#2f0000]/20">
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-5xl lg:text-9xl font-normal text-[#e80e19] mb-4 tracking-tight">
             {isEnglish ? 'Bows' : 'Sláčiky'}
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl lg:text-5xl font-normal text-[#2f0000]">
             {isEnglish ? 'Quality handcrafted bows...' : 'Kvalitné ručne vyrobené sláčiky...'}
           </p>
         </div>
       </div>
 
       {/* Bows List */}
-      <div className="max-w-7xl mx-auto divide-y divide-gray-800/50">
+      <div className="max-w-7xl mx-auto divide-y divide-[#2f0000]/20">
         {bows.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-400 text-xl">
+            <p className="text-[#2f0000] text-4xl">
               {isEnglish
                 ? 'No bows are currently available.'
                 : 'Žiadne sláčiky nie sú momentálne k dispozícii.'}
