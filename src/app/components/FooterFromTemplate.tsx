@@ -57,19 +57,28 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       <CookieConsent
         location="bottom"
         style={{
-          background: '#0f1729',
-          color: '#ffffff',
-          fontSize: '19px',
+          background: '#ffffff',
+          color: '#2f0000',
+          fontSize: '17px',
           textAlign: 'start',
+          fontFamily: 'var(--font-crimson-text), serif',
+          fontWeight: '300',
+          padding: '16px 24px',
+          boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.1)',
+          border: 'none',
+          borderTop: '1px solid rgba(47, 0, 0, 0.1)',
         }}
         buttonStyle={{
-          background: '#1d9f2f',
-          color: '#fff',
-          fontSize: '18px',
-          paddingTop: '9px',
-          paddingLeft: '40px',
-          paddingRight: '40px',
-          borderRadius: '20px',
+          background: '#e80e19',
+          color: '#ffffff',
+          fontSize: '17px',
+          fontWeight: '400',
+          padding: '8px 20px',
+          borderRadius: '6px',
+          border: 'none',
+          cursor: 'pointer',
+          fontFamily: 'var(--font-crimson-text), serif',
+          transition: 'background-color 0.2s ease',
         }}
         buttonText={agree}
         expires={365}
@@ -78,11 +87,17 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
           incrementCount()
         }}
         declineButtonStyle={{
-          background: 'red',
-          color: '#fff',
-          fontSize: '18px',
-          paddingTop: '7.5px',
-          borderRadius: '20px',
+          background: 'transparent',
+          color: '#2f0000',
+          fontSize: '17px',
+          fontWeight: '400',
+          padding: '8px 20px',
+          borderRadius: '6px',
+          border: '1px solid rgba(47, 0, 0, 0.2)',
+          cursor: 'pointer',
+          fontFamily: 'var(--font-crimson-text), serif',
+          marginRight: '12px',
+          transition: 'all 0.2s ease',
         }}
         declineButtonText={disagree}
         onAccept={() => {

@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-[#f1f1ef] font-semibold text-[#e80e19] text-[30px] lg:text-[25px] tracking-wider">
+    <nav className="w-full bg-[#f1f1ef] font-semibold text-[#e80e19] text-[25px] lg:text-[25px] tracking-wider">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
