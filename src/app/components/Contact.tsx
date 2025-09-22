@@ -1,7 +1,7 @@
 'use client'
 import React, { useRef, useState, FC } from 'react'
 import Message from './Message'
-import { MdEmail, MdPhone, MdPerson, MdMessage, MdSend } from 'react-icons/md'
+import { MdEmail, MdPhone, MdSend } from 'react-icons/md'
 import { useParams } from 'next/navigation'
 
 interface TranslationProps {
@@ -194,179 +194,166 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   return (
     <>
       <div className="scroll-mt-14" id="contact" style={{ background: '#f1f1ef' }}>
-        <div className="px-6 py-16 lg:px-[15%] text-[#2f0000]">
-          {/* Section Header with decorative elements */}
-          <div className="relative mb-12">
-            <h1 className="text-center text-5xl lg:text-7xl font-normal text-[#e80e19] tracking-wide">
-              {contactTitle}
-            </h1>
+        <div className="px-6 py-12 lg:px-[15%] text-[#2f0000]">
+          {/* Section Header */}
+          <div className="relative mb-8 text-center">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-2xl lg:text-3xl font-light text-[#e80e19] mb-3 tracking-wide">
+                {contactTitle}
+              </h1>
+              <p className="text-base lg:text-lg font-light text-[#2f0000] leading-relaxed">
+                {locale === 'en'
+                  ? 'Get in touch with us for any inquiries'
+                  : 'Kontaktujte nás s akýmikoľvek otázkami'}
+              </p>
+            </div>
           </div>
 
           {/* Contact Form Container */}
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10">
-            <div className="w-full lg:w-2/3 max-w-2xl">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8 font-serif">
               {/* Success/Error Messages */}
               <div className="mb-6">
                 {messageSuccess && <Message variant="success">{messageSuccess}</Message>}
                 {message && <Message variant="danger">{message}</Message>}
               </div>
-
-              {/* Form with enhanced styling */}
-              <div className="rounded-lg p-6 backdrop-blur-sm shadow-lg bg-white border border-[#2f0000]/20" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-                <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
-                  {/* Personal Information Fields */}
-                  <div className="space-y-4">
-                    <div className="flex flex-col">
-                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
-                        <MdPerson className="mr-2 text-2xl" />
-                        {contactName}
-                      </label>
-                      <input
-                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
-                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
-                        type="text"
-                        name="user_name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        placeholder="Vaše meno"
-                      />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
-                        <MdEmail className="mr-2 text-2xl" />
-                        {contactEmail}
-                      </label>
-                      <input
-                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
-                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
-                        type="email"
-                        name="user_email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        placeholder="vas@email.com"
-                      />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
-                        <MdPhone className="mr-2 text-2xl" />
-                        {contactPhone}
-                      </label>
-                      <input
-                        className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 bg-[#f1f1ef] text-[#2f0000] text-lg"
-                        style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
-                        type="text"
-                        name="user_phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+421 XXX XXX XXX"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Message Textarea */}
-                  <div className="flex flex-col mt-2">
-                    <label className="flex items-center text-xl lg:text-2xl text-[#e80e19] mb-2 font-semibold tracking-wider">
-                      <MdMessage className="mr-2 text-2xl" />
-                      {contactMessage}
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                {/* Personal Information Fields */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col">
+                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                      {contactName}
                     </label>
-                    <textarea
-                      className="rounded-lg p-4 border-2 border-[#2f0000]/30 focus:border-[#e80e19] focus:outline-none focus:ring-2 focus:ring-[#e80e19]/30 min-h-32 bg-[#f1f1ef] text-[#2f0000] text-lg"
-                      style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
-                      rows={5}
-                      name="message"
-                      value={mailMessage}
-                      onChange={(e) => setMailMessage(e.target.value)}
-                      required
-                      placeholder="Vaša správa..."
-                    ></textarea>
-                  </div>
-
-                  {/* GDPR Checkbox */}
-                  <div className="flex items-start mt-6 space-x-3 relative">
                     <input
-                      id="flexCheckDefault"
-                      type="checkbox"
-                      onChange={handleCheckBox}
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      type="text"
+                      name="user_name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-6 h-6 rounded-md border-2 border-[#2f0000] focus:ring-[#e80e19] checked:bg-[#e80e19] accent-[#e80e19]"
+                      placeholder="Vaše meno"
                     />
-                    <div>
-                      <label
-                        className="text-lg lg:text-xl cursor-pointer text-[#2f0000]"
-                        htmlFor="flexCheckDefault"
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                      {contactEmail}
+                    </label>
+                    <input
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      type="email"
+                      name="user_email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="vas@email.com"
+                    />
+                  </div>
+
+                  <div className="flex flex-col md:col-span-2">
+                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                      {contactPhone}
+                    </label>
+                    <input
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      type="text"
+                      name="user_phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+421 XXX XXX XXX"
+                    />
+                  </div>
+                </div>
+
+                {/* Message Textarea */}
+                <div className="flex flex-col">
+                  <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                    {contactMessage}
+                  </label>
+                  <textarea
+                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors resize-none"
+                    rows={5}
+                    name="message"
+                    value={mailMessage}
+                    onChange={(e) => setMailMessage(e.target.value)}
+                    required
+                    placeholder="Vaša správa..."
+                  ></textarea>
+                </div>
+
+                {/* GDPR Checkbox */}
+                <div className="flex items-start space-x-3">
+                  <input
+                    id="flexCheckDefault"
+                    type="checkbox"
+                    onChange={handleCheckBox}
+                    required
+                    className="w-5 h-5 mt-0.5 rounded border border-[#2f0000]/30 focus:ring-[#e80e19] checked:bg-[#e80e19] accent-[#e80e19]"
+                  />
+                  <div>
+                    <label
+                      className="text-sm lg:text-base cursor-pointer text-[#2f0000] font-light"
+                      htmlFor="flexCheckDefault"
+                    >
+                      {contactAgree}{' '}
+                      <button
+                        type="button"
+                        className="text-[#e80e19] underline hover:text-[#2f0000] transition-colors font-medium"
+                        onClick={(e) => toggleShowGdpr(e)}
                       >
-                        {contactAgree}{' '}
-                        <button
-                          type="button"
-                          className="text-[#e80e19] underline hover:text-[#2f0000] transition-colors font-semibold"
-                          onClick={(e) => toggleShowGdpr(e)}
-                        >
-                          {contactGdpr}
-                        </button>
-                      </label>
+                        {contactGdpr}
+                      </button>
+                    </label>
 
-                      {showGdpr && (
-                        <div className="mt-3 p-4 bg-[#e80e19]/10 border-l-4 border-[#e80e19] rounded-md">
-                          <p className="text-base lg:text-lg leading-relaxed text-[#2f0000]">
-                            {contactGdpr1}
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                    {showGdpr && (
+                      <div className="mt-3 p-3 bg-[#e80e19]/5 border-l-2 border-[#e80e19] rounded-md">
+                        <p className="text-sm lg:text-base leading-relaxed text-[#2f0000] font-light">
+                          {contactGdpr1}
+                        </p>
+                      </div>
+                    )}
                   </div>
+                </div>
 
-                  {/* Hidden Fields */}
-                  <input
-                    className="hidden"
-                    type="text"
-                    defaultValue={passwordGroupOne}
-                    onChange={(e) => setPasswordGroupOne(e.target.value)}
-                  />
-                  <input
-                    className="hidden"
-                    type="text"
-                    defaultValue={passwordGroupTwo}
-                    onChange={(e) => setPasswordGroupTwo(e.target.value)}
-                  />
+                {/* Hidden Fields */}
+                <input
+                  className="hidden"
+                  type="text"
+                  defaultValue={passwordGroupOne}
+                  onChange={(e) => setPasswordGroupOne(e.target.value)}
+                />
+                <input
+                  className="hidden"
+                  type="text"
+                  defaultValue={passwordGroupTwo}
+                  onChange={(e) => setPasswordGroupTwo(e.target.value)}
+                />
 
-                  {/* Submit Button */}
-                  <button
-                    className="flex items-center justify-center gap-3 bg-[#e80e19] hover:bg-white hover:text-[#2f0000] hover:border-2 hover:border-[#2f0000] text-white py-4 px-8 rounded-lg mt-6 font-semibold text-lg lg:text-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-                    type="submit"
-                    value="Send"
-                  >
-                    <MdSend className="text-2xl" />
-                    {contactSend}
-                  </button>
-                </form>
-              </div>
-            </div>
+                {/* Submit Button */}
+                <button
+                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#2f0000] text-white py-3 px-6 rounded-lg font-medium text-sm lg:text-base transition-colors duration-200"
+                  type="submit"
+                  value="Send"
+                >
+                  <MdSend className="text-lg" />
+                  {contactSend}
+                </button>
+              </form>
 
-            {/* Decorative Side Element */}
-            <div className="hidden lg:block lg:w-1/3">
-              <div className="p-6 rounded-lg h-full bg-white border border-[#2f0000]/20" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-                <h3 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] mb-6 tracking-wider">
-                  Kontaktujte nás
-                </h3>
-                <p className="text-lg lg:text-xl mb-6 text-[#2f0000] leading-relaxed">
-                  Máte otázky alebo chcete získať viac informácií? Neváhajte nás kontaktovať
-                  prostredníctvom tohto formulára.
-                </p>
-                <p className="text-lg lg:text-xl mb-6 text-[#2f0000] leading-relaxed">
-                  Radi zodpovieme vaše otázky a poskytneme vám všetky potrebné informácie.
-                </p>
-                <div className="mt-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <MdEmail className="text-2xl text-[#e80e19]" />
-                    <span className="text-lg lg:text-xl text-[#2f0000]">info@bow4bass.com</span>
+              {/* Contact Information */}
+              <div className="mt-8 pt-6 border-t border-[#2f0000]/10">
+                <div className="flex flex-col md:flex-row gap-6 justify-center text-center md:text-left">
+                  <div className="flex items-center justify-center md:justify-start gap-2">
+                    <MdEmail className="text-lg text-[#e80e19]" />
+                    <span className="text-sm lg:text-base text-[#2f0000] font-light">
+                      info@bow4bass.com
+                    </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <MdPhone className="text-2xl text-[#e80e19]" />
-                    <span className="text-lg lg:text-xl text-[#2f0000]">+421 905 338 081</span>
+                  <div className="flex items-center justify-center md:justify-start gap-2">
+                    <MdPhone className="text-lg text-[#e80e19]" />
+                    <span className="text-sm lg:text-base text-[#2f0000] font-light">
+                      +421 905 338 081
+                    </span>
                   </div>
                 </div>
               </div>

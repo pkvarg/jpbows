@@ -42,78 +42,105 @@ const AboutMe = () => {
             O mne
           </motion.h2>
 
-          <div className="text-center space-y-12 max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <motion.h3
               variants={fadeInUp}
-              className="text-2xl lg:text-4xl font-semibold text-[#2f0000] tracking-wider"
+              className="text-2xl lg:text-4xl font-semibold text-[#2f0000] tracking-wider text-center mb-12"
             >
               Ján Prievozník
             </motion.h3>
 
-            {/* Image Section - Centered */}
-            <motion.div variants={imageAnimation} className="flex justify-center">
-              <div className="relative rounded-3xl p-6 shadow-2xl max-w-md">
-                <Image
-                  src="/foto1.jpg"
-                  alt="Ján Prievozník"
-                  width={400}
-                  height={400}
-                  className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
-                />
-              </div>
-            </motion.div>
-
-            {/* Text Content - Centered */}
+            {/* Content with flowing text around image */}
             <motion.div
               variants={fadeInUp}
-              className="space-y-8 text-[#2f0000] leading-relaxed tracking-widest"
+              className="text-[#2f0000] leading-relaxed tracking-widest"
             >
-              <p className="text-2xl lg:text-3xl font-semibold">
-                Špecialista na historické kontrabasy a sláčiky
-              </p>
-              <p className="text-2xl lg:text-3xl">
-                Viac ako 20-rokov skúseností v oblasti starej hudby a autentickej interpretácie.
-              </p>
+              {/* Image positioned to float on desktop, hidden on mobile (will show in between text) */}
+              <motion.div 
+                variants={imageAnimation} 
+                className="hidden lg:float-left lg:mr-12 lg:mb-8 lg:block"
+              >
+                <div className="relative rounded-3xl p-4 shadow-2xl">
+                  <Image
+                    src="/foto1.jpg"
+                    alt="Ján Prievozník"
+                    width={300}
+                    height={300}
+                    className="w-[300px] h-[350px] object-cover rounded-2xl shadow-lg"
+                  />
+                </div>
+              </motion.div>
 
-              <p className="text-2xl lg:text-3xl">
-                Absolvent Akadémie umení v Banskej Bystrici, aktívny člen prestížnych súborov ako
-                <span className="text-[#e80e19] font-semibold ml-1"> Musica Aeterna</span>,{' '}
-                <span className="text-[#e80e19] font-semibold">Wiener Akademie</span> a{' '}
-                <span className="text-[#e80e19] font-semibold">Il pomo d&apos;oro</span>.
-              </p>
-
-              <p className="text-2xl lg:text-3xl">
-                Účinkoval na významných európskych pódiách vrátane{' '}
-                <span className="text-[#e80e19] font-semibold"> Wiener Musikverein</span>,{' '}
-                <span className="text-[#e80e19] font-semibold">Opera national de Paris</span> a
-                festivaloch ako{' '}
-                <span className="text-[#e80e19] font-semibold">Salzburg Festspiele</span> či{' '}
-                <span className="text-[#e80e19] font-semibold">Pražské jaro</span>.
-              </p>
-
-              <p className="text-2xl lg:text-3xl">
-                Zakladateľ{' '}
-                <span className="text-[#e80e19] font-semibold">
-                  Slovenského kontrabasového klubu
-                </span>{' '}
-                <span className="text-2xl">
-                  {' '}
-                  (2010) a organizátor medzinárodných podujatí BASS FEST+ a Medzinárodnej
-                  kontrabasovej súťaže K. D. v. Dittersdorfa.
-                </span>
-              </p>
-
-              <div className="space-y-4">
-                <p className="text-2xl lg:text-3xl text-[#2f0000]">
-                  <span className="font-semibold mb-1 mr-1">Pedagóg</span>
-                  <span className="text-2xl">Súkromné konzervatórium Nitra</span>
+              {/* Text content */}
+              <div className="space-y-6 text-center lg:text-justify">
+                {/* First part of text */}
+                <p className="text-2xl lg:text-3xl font-semibold">
+                  Špecialista na historické kontrabasy a sláčiky
+                </p>
+                <p className="text-2xl lg:text-3xl">
+                  Viac ako 20-rokov skúseností v oblasti starej hudby a autentickej interpretácie.
                 </p>
 
-                <p className="text-2xl lg:text-3xl text-[#2f0000]">
-                  <span className="font-semibold mb-1 mr-1">Sólista</span>
-                  <span className="text-2xl"> CD Contrabasso/Violone in Presbourg</span>
+                <p className="text-2xl lg:text-3xl">
+                  Absolvent Akadémie umení v Banskej Bystrici, aktívny člen prestížnych súborov ako
+                  <span className="text-[#e80e19] font-semibold ml-1"> Musica Aeterna</span>,{' '}
+                  <span className="text-[#e80e19] font-semibold">Wiener Akademie</span> a{' '}
+                  <span className="text-[#e80e19] font-semibold">Il pomo d&apos;oro</span>.
                 </p>
+
+                {/* Image for mobile - positioned between text */}
+                <motion.div 
+                  variants={imageAnimation} 
+                  className="lg:hidden flex justify-center my-8"
+                >
+                  <div className="relative rounded-3xl p-4 shadow-2xl">
+                    <Image
+                      src="/foto1.jpg"
+                      alt="Ján Prievozník"
+                      width={300}
+                      height={300}
+                      className="w-[250px] h-[300px] object-cover rounded-2xl shadow-lg"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Second part of text */}
+                <p className="text-2xl lg:text-3xl">
+                  Účinkoval na významných európskych pódiách vrátane{' '}
+                  <span className="text-[#e80e19] font-semibold"> Wiener Musikverein</span>,{' '}
+                  <span className="text-[#e80e19] font-semibold">Opera national de Paris</span> a
+                  festivaloch ako{' '}
+                  <span className="text-[#e80e19] font-semibold">Salzburg Festspiele</span> či{' '}
+                  <span className="text-[#e80e19] font-semibold">Pražské jaro</span>.
+                </p>
+
+                <p className="text-2xl lg:text-3xl">
+                  Zakladateľ{' '}
+                  <span className="text-[#e80e19] font-semibold">
+                    Slovenského kontrabasového klubu
+                  </span>{' '}
+                  <span className="text-2xl">
+                    {' '}
+                    (2010) a organizátor medzinárodných podujatí BASS FEST+ a Medzinárodnej
+                    kontrabasovej súťaže K. D. v. Dittersdorfa.
+                  </span>
+                </p>
+
+                <div className="space-y-4">
+                  <p className="text-2xl lg:text-3xl text-[#2f0000]">
+                    <span className="font-semibold mb-1 mr-1">Pedagóg</span>
+                    <span className="text-2xl">Súkromné konzervatórium Nitra</span>
+                  </p>
+
+                  <p className="text-2xl lg:text-3xl text-[#2f0000]">
+                    <span className="font-semibold mb-1 mr-1">Sólista</span>
+                    <span className="text-2xl"> CD Contrabasso/Violone in Presbourg</span>
+                  </p>
+                </div>
               </div>
+              
+              {/* Clear the float */}
+              <div className="clear-left"></div>
             </motion.div>
           </div>
         </motion.div>

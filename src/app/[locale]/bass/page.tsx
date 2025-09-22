@@ -148,219 +148,167 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
 
   return (
     <>
-      <div className="group relative flex flex-col lg:flex-row gap-8 lg:gap-12 py-12 px-4 lg:px-8 hover:bg-[#2f0000]/[0.02] transition-colors duration-300">
-        {/* Image Section - Left Side */}
-        <div className="w-full lg:w-1/2 relative">
-          <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-lg">
-            {bass.images.length > 0 ? (
-              <>
-                <div
-                  className="relative h-full cursor-pointer group"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  <Image
-                    src={bass.images[currentImageIndex]}
-                    alt={`${displayName} - Image ${currentImageIndex + 1}`}
-                    fill
-                    className="object-contain hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  {/* View icon overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center   transition-all duration-300">
-                    <div className="opacity-0 group-hover:opacity-100 transform scale-90 group-hover:scale-100 transition-all duration-300 bg-white/10 backdrop-blur-sm p-4 rounded-full">
-                      <svg
-                        className="w-8 h-8 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                        />
-                      </svg>
-                    </div>
+      <div className="group relative bg-white mx-4 lg:mx-8 my-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+        <div className="flex flex-col lg:flex-row">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative h-64 lg:h-80 overflow-hidden">
+              {bass.images.length > 0 ? (
+                <>
+                  <div
+                    className="relative h-full cursor-pointer"
+                    onClick={() => setIsModalOpen(true)}
+                  >
+                    <Image
+                      src={bass.images[currentImageIndex]}
+                      alt={`${displayName} - Image ${currentImageIndex + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                    
+                    {/* Subtle overlay on hover */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
                   </div>
-                </div>
 
-                {/* Navigation for multiple images */}
-                {hasMultipleImages && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        previousImage()
-                      }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                  {/* Navigation for multiple images */}
+                  {hasMultipleImages && (
+                    <>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          previousImage()
+                        }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 19l-7-7 7-7"
-                        />
-                      </svg>
-                    </button>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
 
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        nextImage()
-                      }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all opacity-0 group-hover:opacity-100"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          nextImage()
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
 
-                    {/* Thumbnail dots */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                      {bass.images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            goToImage(index)
-                          }}
-                          className={`w-2 h-2 rounded-full transition-all ${
-                            index === currentImageIndex
-                              ? 'bg-white w-6'
-                              : 'bg-white/50 hover:bg-white/70'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-[#2f0000]/10 rounded-lg">
-                <svg
-                  className="w-20 h-20 text-[#2f0000]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Content Section - Right Side */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6">
-          <div>
-            <div className="flex items-start gap-4 mb-2">
-              <h2 className="text-2xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-                {displayName}
-              </h2>
-              {bass.new && (
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg animate-pulse">
-                  <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      {/* Thumbnail dots */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+                        {bass.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              goToImage(index)
+                            }}
+                            className={`w-1.5 h-1.5 rounded-full transition-all ${
+                              index === currentImageIndex
+                                ? 'bg-white w-4'
+                                : 'bg-white/60 hover:bg-white/80'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-[#f1f1ef]">
+                  <svg className="w-12 h-12 text-[#2f0000]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  {isEnglish ? 'NEW' : 'NOVINKA'}
-                </span>
+                </div>
               )}
             </div>
           </div>
 
-          <p className="text-[#2f0000] text-4xl leading-relaxed text-justify">
-            {displayDescription}
-          </p>
-
-          {bass.price && (
-            <div className="pt-4">
-              <p className="text-4xl font-semibold text-[#2f0000]">{bass.price} €</p>
-            </div>
-          )}
-
-          {/* Video Section */}
-          {bass.videoUrl && (
-            <div className="pt-6">
-              <h3 className="text-xl font-semibold text-[#e80e19] mb-4">
-                {isEnglish ? 'Watch Video' : 'Pozrieť video'}
-              </h3>
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-[#2f0000]/10">
-                {(() => {
-                  // Extract YouTube video ID
-                  let videoId = ''
-                  if (bass.videoUrl.includes('youtube.com/watch')) {
-                    const urlParams = new URLSearchParams(bass.videoUrl.split('?')[1])
-                    videoId = urlParams.get('v') || ''
-                  } else if (bass.videoUrl.includes('youtu.be/')) {
-                    videoId = bass.videoUrl.split('youtu.be/')[1]?.split('?')[0] || ''
-                  }
-
-                  if (videoId) {
-                    return (
-                      <iframe
-                        src={`https://www.youtube.com/embed/${videoId}`}
-                        title={`${displayName} Video`}
-                        className="w-full h-full"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    )
-                  } else {
-                    // For non-YouTube URLs, show a link
-                    return (
-                      <div className="flex items-center justify-center h-full">
-                        <a
-                          href={bass.videoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3 px-6 py-3 bg-[#e80e19] hover:bg-white hover:text-[#2f0000] hover:border-black text-white rounded-lg font-medium transition-colors duration-200"
-                        >
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                            <path
-                              fillRule="evenodd"
-                              d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          {isEnglish ? 'Watch Video' : 'Pozrieť video'}
-                        </a>
-                      </div>
-                    )
-                  }
-                })()}
+          {/* Content Section */}
+          <div className="w-full lg:w-1/2 p-6 lg:p-8 flex flex-col justify-center">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <h2 className="text-lg lg:text-xl font-medium text-[#e80e19] leading-tight">
+                  {displayName}
+                </h2>
+                {bass.new && (
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                    {isEnglish ? 'NEW' : 'NOVINKA'}
+                  </span>
+                )}
               </div>
+
+              <p className="text-[#2f0000] text-sm lg:text-base leading-relaxed font-light">
+                {displayDescription}
+              </p>
+
+              {bass.price && (
+                <div className="pt-2">
+                  <p className="text-lg lg:text-xl font-medium text-[#2f0000]">{bass.price} €</p>
+                </div>
+              )}
+
+              {/* Video Section */}
+              {bass.videoUrl && (
+                <div className="pt-4">
+                  <h3 className="text-sm lg:text-base font-medium text-[#e80e19] mb-3">
+                    {isEnglish ? 'Watch Video' : 'Pozrieť video'}
+                  </h3>
+                  <div className="relative aspect-video rounded-lg overflow-hidden bg-[#2f0000]/10">
+                    {(() => {
+                      // Extract YouTube video ID
+                      let videoId = ''
+                      if (bass.videoUrl.includes('youtube.com/watch')) {
+                        const urlParams = new URLSearchParams(bass.videoUrl.split('?')[1])
+                        videoId = urlParams.get('v') || ''
+                      } else if (bass.videoUrl.includes('youtu.be/')) {
+                        videoId = bass.videoUrl.split('youtu.be/')[1]?.split('?')[0] || ''
+                      }
+
+                      if (videoId) {
+                        return (
+                          <iframe
+                            src={`https://www.youtube.com/embed/${videoId}`}
+                            title={`${displayName} Video`}
+                            className="w-full h-full"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        )
+                      } else {
+                        // For non-YouTube URLs, show a link
+                        return (
+                          <div className="flex items-center justify-center h-full">
+                            <a
+                              href={bass.videoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-light text-sm transition-colors duration-200"
+                            >
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path
+                                  fillRule="evenodd"
+                                  d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                              {isEnglish ? 'Watch Video' : 'Pozrieť video'}
+                            </a>
+                          </div>
+                        )
+                      }
+                    })()}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
 
@@ -417,8 +365,8 @@ const Bass = () => {
     return (
       <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#e80e19]"></div>
-          <p className="text-[#2f0000] mt-4 text-4xl">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
+          <p className="text-[#2f0000] mt-4 text-sm lg:text-base font-light">
             {isEnglish ? 'Loading double basses...' : 'Načítavam kontrabasy...'}
           </p>
         </div>
@@ -430,10 +378,10 @@ const Bass = () => {
     return (
       <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#e80e19] text-4xl">{error}</p>
+          <p className="text-[#e80e19] text-base lg:text-lg font-light mb-4">{error}</p>
           <button
             onClick={fetchBasses}
-            className="mt-4 px-6 py-2 bg-[#e80e19] hover:bg-white hover:text-[#2f0000] hover:border-black text-white rounded-lg font-medium transition-colors duration-200"
+            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-light text-sm transition-colors duration-200"
           >
             {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
@@ -445,31 +393,33 @@ const Bass = () => {
   return (
     <div className="min-h-screen bg-[#f1f1ef]">
       {/* Header Section */}
-      <div className="relative py-16 px-4 text-center border-b border-[#2f0000]/20">
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-6xl lg:text-7xl font-normal text-[#e80e19] mb-4 tracking-tight">
+      <div className="relative py-12 px-4 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h1 className="text-2xl lg:text-3xl font-light text-[#e80e19] mb-3 tracking-wide">
             {isEnglish ? 'Double Basses' : 'Kontrabasy'}
           </h1>
-          <p className="text-3xl lg:text-5xl font-normal text-[#2f0000]">
+          <p className="text-base lg:text-lg font-light text-[#2f0000] leading-relaxed">
             {isEnglish
-              ? 'Quality master-crafted double basses...'
-              : 'Kvalitné majstrovské kontrabasy...'}
+              ? 'Quality master-crafted double basses for professional musicians'
+              : 'Kvalitné majstrovské kontrabasy pre profesionálnych hudobníkov'}
           </p>
         </div>
       </div>
 
       {/* Basses List */}
-      <div className="max-w-7xl mx-auto divide-y divide-[#2f0000]/20">
+      <div className="max-w-6xl mx-auto pb-12">
         {basses.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-[#2f0000] text-4xl">
+          <div className="text-center py-16">
+            <p className="text-[#2f0000] text-base lg:text-lg font-light">
               {isEnglish
                 ? 'No double basses are currently available.'
                 : 'Žiadne kontrabasy nie sú momentálne k dispozícii.'}
             </p>
           </div>
         ) : (
-          basses.map((bass) => <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />)
+          <div className="space-y-8">
+            {basses.map((bass) => <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />)}
+          </div>
         )}
       </div>
     </div>
