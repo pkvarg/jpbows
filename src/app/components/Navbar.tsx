@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-[#f1f1ef] font-semibold text-[#e80e19] text-[20px] lg:text-[30px] tracking-wider">
+    <nav className="w-full bg-[#f1f1ef] font-semibold text-[#e80e19] text-[30px] lg:text-[25px] tracking-wider">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
@@ -32,7 +32,7 @@ const Navbar = () => {
                 className="w-[40px]"
               />
               {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
-              <h1 className="leading-[22.5px] text-4xl lg:text-3xl text-[#e80e19]">bow4bass</h1>
+              <h1 className="leading-[22.5px] text-[#e80e19]">bow4bass</h1>
             </div>
             <div className="md:hidden">
               <button
@@ -79,7 +79,7 @@ const Navbar = () => {
               navbar ? 'block h-[80vh] overflow-y-auto' : 'hidden'
             }`}
           >
-            <ul className="flex flex-col space-y-6 text-4xl md:text-[20px] lg:text-[30px] md:flex-row md:space-x-6 md:space-y-0">
+            <ul className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
               <Link
                 href={'/'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"

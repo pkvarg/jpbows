@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 //import { Geist, Geist_Mono } from 'next/font/google'
-import { Great_Vibes } from 'next/font/google'
-// import { Montserrat } from 'next/font/google'
+// import { Great_Vibes } from 'next/font/google'
+import { Crimson_Text } from 'next/font/google'
 // import { Dancing_Script } from 'next/font/google'
 import './globals.css'
 import { NextIntlClientProvider } from 'next-intl'
@@ -13,16 +13,18 @@ import FooterServerComponent from './components/translationServerComponents/Foot
 //   subsets: ['latin'],
 // })
 
-// const montserrat = Montserrat({
-//   variable: '--font-montserrat',
+const crimsonText = Crimson_Text({
+  variable: '--font-crimson-text',
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+})
+
+// const greatVibes = Great_Vibes({
+//   variable: '--font-great-vibes',
+//   weight: ['400'],
 //   subsets: ['latin'],
 // })
-
-const greatVibes = Great_Vibes({
-  variable: '--font-great-vibes',
-  weight: ['400'],
-  subsets: ['latin'],
-})
 // const dancingScript = Dancing_Script({
 //   variable: '--font-dancing-script',
 //   weight: ['400', '500', '600', '700'],
@@ -47,7 +49,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={(await params).lang}>
-      <body className={`${greatVibes.variable} font-sans antialiased`}>
+      <body className={`${crimsonText.variable} font-serif antialiased`}>
         <NextIntlClientProvider>
           <NavbarServer />
           {children}

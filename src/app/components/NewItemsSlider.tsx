@@ -178,7 +178,7 @@ const NewItemsSlider = () => {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-5xl lg:text-7xl font-normal text-[#e80e19]  mb-4">
+          <h2 className="text-4xl lg:text-6xl font-normal text-[#e80e19]  mb-4">
             {isEnglish ? 'New Items' : 'Novinky'}
           </h2>
         </div>
@@ -220,11 +220,11 @@ const NewItemsSlider = () => {
 
               {/* Content Section */}
               <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center mt-16">
-                <h3 className="text-2xl lg:text-4xl font-semibold text-[#2f0000] hover:text-[#e6c78c] transition-colors mb-4">
+                <h3 className="text-xl lg:text-3xl font-semibold text-[#2f0000] hover:text-[#e6c78c] transition-colors mb-4">
                   {displayName}
                 </h3>
 
-                <p className="text-3xl tracking-widest font-normal text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
+                <p className="text-lg tracking-wider font-normal text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
                   {displayDescription}
                 </p>
 
@@ -236,7 +236,7 @@ const NewItemsSlider = () => {
 
                 <Link
                   href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
-                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-3xl"
+                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-2xl"
                 >
                   {isEnglish ? 'View Gallery' : 'Do galérie'}
                   <svg

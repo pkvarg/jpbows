@@ -28,14 +28,14 @@ const Intro = () => {
         >
           <motion.h1
             variants={fadeInUp}
-            className="text-5xl lg:text-9xl font-normal leading-tight text-[#e80e19] "
+            className="text-4xl lg:text-7xl font-normal leading-tight text-[#e80e19] "
           >
             bow4bass
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
-            className="text-4xl lg:text-5xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
+            className="text-3xl lg:text-4xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
           >
             Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
             klasicizmu a raného romantizmu.
@@ -45,21 +45,21 @@ const Intro = () => {
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Výroba Sláčikov
             </h2>
-            <p className="text-4xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000]">
               Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Kontrabasy
             </h2>
-            <p className="text-4xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000]">
               Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Individuálne Úpravy
             </h2>
-            <p className="text-4xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000]">
               Nastavenie a úprava nástrojov podľa špecifických požiadaviek každého klienta
             </p>
           </motion.div>

@@ -37,7 +37,7 @@ const AboutMe = () => {
           {/* Section Title */}
           <motion.h2
             variants={fadeInUp}
-            className="text-5xl lg:text-7xl font-normal text-center text-[#e80e19] mb-16"
+            className="text-4xl lg:text-6xl font-normal text-center text-[#e80e19] mb-16"
           >
             O mne
           </motion.h2>
@@ -45,7 +45,7 @@ const AboutMe = () => {
           <div className="text-center space-y-12 max-w-5xl mx-auto">
             <motion.h3
               variants={fadeInUp}
-              className="text-3xl lg:text-5xl font-semibold text-[#2f0000] tracking-wider"
+              className="text-2xl lg:text-4xl font-semibold text-[#2f0000] tracking-wider"
             >
               Ján Prievozník
             </motion.h3>
@@ -68,21 +68,21 @@ const AboutMe = () => {
               variants={fadeInUp}
               className="space-y-8 text-[#2f0000] leading-relaxed tracking-widest"
             >
-              <p className="text-3xl font-semibold">
+              <p className="text-2xl lg:text-3xl font-semibold">
                 Špecialista na historické kontrabasy a sláčiky
               </p>
-              <p className="text-3xl">
+              <p className="text-2xl lg:text-3xl">
                 Viac ako 20-rokov skúseností v oblasti starej hudby a autentickej interpretácie.
               </p>
 
-              <p className="text-3xl">
+              <p className="text-2xl lg:text-3xl">
                 Absolvent Akadémie umení v Banskej Bystrici, aktívny člen prestížnych súborov ako
                 <span className="text-[#e80e19] font-semibold ml-1"> Musica Aeterna</span>,{' '}
                 <span className="text-[#e80e19] font-semibold">Wiener Akademie</span> a{' '}
                 <span className="text-[#e80e19] font-semibold">Il pomo d&apos;oro</span>.
               </p>
 
-              <p className="text-3xl">
+              <p className="text-2xl lg:text-3xl">
                 Účinkoval na významných európskych pódiách vrátane{' '}
                 <span className="text-[#e80e19] font-semibold"> Wiener Musikverein</span>,{' '}
                 <span className="text-[#e80e19] font-semibold">Opera national de Paris</span> a
@@ -91,7 +91,7 @@ const AboutMe = () => {
                 <span className="text-[#e80e19] font-semibold">Pražské jaro</span>.
               </p>
 
-              <p className="text-3xl">
+              <p className="text-2xl lg:text-3xl">
                 Zakladateľ{' '}
                 <span className="text-[#e80e19] font-semibold">
                   Slovenského kontrabasového klubu
@@ -104,12 +104,12 @@ const AboutMe = () => {
               </p>
 
               <div className="space-y-4">
-                <p className="text-3xl text-[#2f0000]">
+                <p className="text-2xl lg:text-3xl text-[#2f0000]">
                   <span className="font-semibold mb-1 mr-1">Pedagóg</span>
                   <span className="text-2xl">Súkromné konzervatórium Nitra</span>
                 </p>
 
-                <p className="text-3xl text-[#2f0000]">
+                <p className="text-2xl lg:text-3xl text-[#2f0000]">
                   <span className="font-semibold mb-1 mr-1">Sólista</span>
                   <span className="text-2xl"> CD Contrabasso/Violone in Presbourg</span>
                 </p>

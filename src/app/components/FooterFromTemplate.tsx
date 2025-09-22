@@ -95,7 +95,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       {/* <motion.footer variants={footerVariants} initial="hidden" whileInView="show"> */}
       <div className={`flex flex-col gap-4`}>
         <div className="mb-[10px] h-[2px] bg-white opacity-10" />
-        <div className="flex flex-col text-[25px] font-light" style={{ color: '#0a0a0a' }}>
+        <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
           <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-0  lg:mx-12">
             <div className="flex lg:flex-row flex-col gap-2 justify-center items-center">
               <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
@@ -118,7 +118,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               {tradeRules}
             </a>
 
-            <p className="font-normal text-[25px]" style={{ color: '#0e1528' }}>
+            <p className="font-normal" style={{ color: '#0e1528' }}>
               Phone: +421 905 338 081
               <br />
               <a href="mailto:info@bow4bass.com">email: info@bow4bass.com</a>
