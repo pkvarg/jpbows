@@ -17,7 +17,7 @@ const Hero = () => {
       {/* Title overlay */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center px-6 max-w-4xl mx-auto">
-          <h1 className="text-3xl lg:text-5xl font-bold text-white drop-shadow-2xl leading-tight">
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] drop-shadow-2xl leading-tight">
             Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
             klasicizmu a raného romantizmu.
           </h1>

@@ -262,30 +262,30 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
           <div className="w-full lg:w-1/2 p-6 lg:p-8 flex flex-col justify-center">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <h2 className="text-lg lg:text-xl font-medium text-[#e80e19] leading-tight">
+                <h2 className="text-xl lg:text-2xl font-semibold text-[#e80e19] leading-tight">
                   {displayName}
                 </h2>
                 {bass.new && (
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
                     {isEnglish ? 'NEW' : 'NOVINKA'}
                   </span>
                 )}
               </div>
 
-              <p className="text-[#2f0000] text-sm lg:text-base leading-relaxed font-light">
+              <p className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
                 {displayDescription}
               </p>
 
               {bass.price && (
                 <div className="pt-2">
-                  <p className="text-lg lg:text-xl font-medium text-[#2f0000]">{bass.price} €</p>
+                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">{bass.price} €</p>
                 </div>
               )}
 
               {/* Video Section */}
               {bass.videoUrl && (
                 <div className="pt-4">
-                  <h3 className="text-sm lg:text-base font-medium text-[#e80e19] mb-3">
+                  <h3 className="text-base lg:text-lg font-semibold text-[#e80e19] mb-3">
                     {isEnglish ? 'Watch Video' : 'Pozrieť video'}
                   </h3>
                   <div className="relative aspect-video rounded-lg overflow-hidden bg-[#2f0000]/10">
@@ -318,7 +318,7 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
                               href={bass.videoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 px-4 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-light text-sm transition-colors duration-200"
+                              className="flex items-center gap-2 px-4 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-medium text-base transition-colors duration-200"
                             >
                               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -396,7 +396,7 @@ const Bass = () => {
       <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
-          <p className="text-[#2f0000] mt-4 text-sm lg:text-base font-light">
+          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
             {isEnglish ? 'Loading double basses...' : 'Načítavam kontrabasy...'}
           </p>
         </div>
@@ -408,10 +408,10 @@ const Bass = () => {
     return (
       <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#e80e19] text-base lg:text-lg font-light mb-4">{error}</p>
+          <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
           <button
             onClick={fetchBasses}
-            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-light text-sm transition-colors duration-200"
+            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-medium text-base transition-colors duration-200"
           >
             {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
@@ -425,10 +425,10 @@ const Bass = () => {
       {/* Header Section */}
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-2xl lg:text-3xl font-light text-[#e80e19] mb-3 tracking-wide">
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
             {isEnglish ? 'Double Basses' : 'Kontrabasy'}
           </h1>
-          <p className="text-base lg:text-lg font-light text-[#2f0000] leading-relaxed">
+          <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
             {isEnglish
               ? 'Quality master-crafted double basses for professional musicians'
               : 'Kvalitné majstrovské kontrabasy pre profesionálnych hudobníkov'}
@@ -440,7 +440,7 @@ const Bass = () => {
       <div className="max-w-6xl mx-auto pb-12">
         {basses.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-[#2f0000] text-base lg:text-lg font-light">
+            <p className="text-[#2f0000] text-lg lg:text-xl font-medium">
               {isEnglish
                 ? 'No double basses are currently available.'
                 : 'Žiadne kontrabasy nie sú momentálne k dispozícii.'}
