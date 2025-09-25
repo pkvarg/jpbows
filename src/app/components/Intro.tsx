@@ -18,7 +18,7 @@ const Intro = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#ffffff] py-20">
+    <div className="relative min-h-screen bg-[#fefefe] py-20">
       <div className="container mx-auto px-6 mt-16">
         <motion.div
           className="text-center space-y-12"
@@ -26,7 +26,7 @@ const Intro = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h1
+          {/* <motion.h1
             variants={fadeInUp}
             className="text-4xl lg:text-7xl font-normal leading-tight text-[#e80e19] "
           >
@@ -39,27 +39,27 @@ const Intro = () => {
           >
             Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
             klasicizmu a raného romantizmu.
-          </motion.p>
+          </motion.p> */}
 
           <motion.div variants={fadeInUp} className="space-y-8 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Výroba Sláčikov
             </h2>
-            <p className="text-2xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Kontrabasy
             </h2>
-            <p className="text-2xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Individuálne Úpravy
             </h2>
-            <p className="text-2xl leading-relaxed text-[#2f0000]">
+            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               Nastavenie a úprava nástrojov podľa špecifických požiadaviek každého klienta
             </p>
           </motion.div>

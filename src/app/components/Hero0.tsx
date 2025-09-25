@@ -41,7 +41,7 @@ const DoubleBassHero = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden" style={{ background: '#ffffff' }}>
+    <div className="relative min-h-screen overflow-hidden" style={{ background: '#fefefe' }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -103,7 +103,7 @@ const DoubleBassHero = () => {
             <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div
                 className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-amber-500/30 transition-all duration-300"
-                style={{ background: '#ffffff' }}
+                style={{ background: '#fefefe' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
@@ -116,7 +116,7 @@ const DoubleBassHero = () => {
 
               <motion.div
                 className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-red-500/30 transition-all duration-300"
-                style={{ background: '#ffffff' }}
+                style={{ background: '#fefefe' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">
@@ -129,7 +129,7 @@ const DoubleBassHero = () => {
 
               <motion.div
                 className="backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-gray-700/50 hover:shadow-xl hover:border-orange-500/30 transition-all duration-300 md:col-span-2"
-                style={{ background: '#ffffff' }}
+                style={{ background: '#fefefe' }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
                 <div className="flex items-center space-x-3 mb-3">

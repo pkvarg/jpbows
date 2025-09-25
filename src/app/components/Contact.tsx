@@ -193,15 +193,15 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
   return (
     <>
-      <div className="scroll-mt-14" id="contact" style={{ background: '#ffffff' }}>
+      <div className="scroll-mt-14" id="contact" style={{ background: '#fefefe' }}>
         <div className="px-6 py-12 lg:px-[15%] text-[#2f0000]">
           {/* Section Header */}
           <div className="relative mb-8 text-center">
             <div className="max-w-3xl mx-auto">
-              <h1 className="text-2xl lg:text-3xl font-light text-[#e80e19] mb-3 tracking-wide">
+              <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
                 {contactTitle}
               </h1>
-              <p className="text-base lg:text-lg font-light text-[#2f0000] leading-relaxed">
+              <p className="text-xl lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
                 {locale === 'en'
                   ? 'Get in touch with us for any inquiries'
                   : 'Kontaktujte nás s akýmikoľvek otázkami'}
@@ -221,11 +221,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                 {/* Personal Information Fields */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex flex-col">
-                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
                       {contactName}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
                       type="text"
                       name="user_name"
                       value={name}
@@ -236,11 +236,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   </div>
 
                   <div className="flex flex-col">
-                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
                       {contactEmail}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
                       type="email"
                       name="user_email"
                       value={email}
@@ -251,11 +251,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   </div>
 
                   <div className="flex flex-col md:col-span-2">
-                    <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
                       {contactPhone}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
                       type="text"
                       name="user_phone"
                       value={phone}
@@ -267,11 +267,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                 {/* Message Textarea */}
                 <div className="flex flex-col">
-                  <label className="text-sm lg:text-base text-[#2f0000] mb-2 font-medium">
+                  <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
                     {contactMessage}
                   </label>
                   <textarea
-                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors resize-none"
+                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors resize-none"
                     rows={5}
                     name="message"
                     value={mailMessage}
@@ -292,7 +292,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   />
                   <div>
                     <label
-                      className="text-sm lg:text-base cursor-pointer text-[#2f0000] font-light"
+                      className="text-base lg:text-xl cursor-pointer text-[#2f0000] font-medium"
                       htmlFor="flexCheckDefault"
                     >
                       {contactAgree}{' '}
@@ -307,7 +307,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                     {showGdpr && (
                       <div className="mt-3 p-3 bg-[#e80e19]/5 border-l-2 border-[#e80e19] rounded-md">
-                        <p className="text-sm lg:text-base leading-relaxed text-[#2f0000] font-light">
+                        <p className="text-base lg:text-xl leading-relaxed text-[#2f0000] font-medium">
                           {contactGdpr1}
                         </p>
                       </div>
@@ -331,11 +331,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                 {/* Submit Button */}
                 <button
-                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#2f0000] text-white py-3 px-6 rounded-lg font-medium text-sm lg:text-base transition-colors duration-200"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#2f0000] text-white py-3 px-6 rounded-lg font-medium text-base lg:text-xl transition-colors duration-200"
                   type="submit"
                   value="Send"
                 >
-                  <MdSend className="text-lg" />
+                  <MdSend className="text-xl" />
                   {contactSend}
                 </button>
               </form>
@@ -344,14 +344,14 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
               <div className="mt-8 pt-6 border-t border-[#2f0000]/10">
                 <div className="flex flex-col md:flex-row gap-6 justify-center text-center md:text-left">
                   <div className="flex items-center justify-center md:justify-start gap-2">
-                    <MdEmail className="text-lg text-[#e80e19]" />
-                    <span className="text-sm lg:text-base text-[#2f0000] font-light">
+                    <MdEmail className="text-xl text-[#e80e19]" />
+                    <span className="text-base lg:text-xl text-[#2f0000] font-medium">
                       info@bow4bass.com
                     </span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-2">
-                    <MdPhone className="text-lg text-[#e80e19]" />
-                    <span className="text-sm lg:text-base text-[#2f0000] font-light">
+                    <MdPhone className="text-xl text-[#e80e19]" />
+                    <span className="text-base lg:text-xl text-[#2f0000] font-medium">
                       +421 905 338 081
                     </span>
                   </div>

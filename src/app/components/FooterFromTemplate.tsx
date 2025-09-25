@@ -53,11 +53,11 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
   }
 
   return (
-    <div style={{ background: '#ffffff' }}>
+    <div style={{ background: '#fefefe' }}>
       <CookieConsent
         location="bottom"
         style={{
-          background: '#ffffff',
+          background: '#fefefe',
           color: '#2f0000',
           fontSize: '17px',
           textAlign: 'start',
@@ -70,7 +70,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
         }}
         buttonStyle={{
           background: '#e80e19',
-          color: '#ffffff',
+          color: '#fefefe',
           fontSize: '17px',
           fontWeight: '800',
           padding: '8px 20px',

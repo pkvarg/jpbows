@@ -149,7 +149,7 @@ const NewItemsSlider = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#ffffff] py-16">
+      <div className="bg-[#fefefe] py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-96 flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2f0000]"></div>
@@ -174,18 +174,18 @@ const NewItemsSlider = () => {
       : currentProduct.description
 
   return (
-    <section className="bg-[#ffffff] py-16 relative overflow-hidden">
+    <section className="bg-[#fefefe] py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-6xl font-normal text-[#e80e19]  mb-4">
+          <h2 className="text-4xl lg:text-6xl font-bold text-[#e80e19]  mb-4">
             {isEnglish ? 'New Items' : 'Novinky'}
           </h2>
         </div>
 
         {/* Slider Container */}
         <div className="relative">
-          <div className="bg-[#ffffff] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
+          <div className="bg-[#fefefe] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
             <div className="flex flex-col lg:flex-row">
               {/* Image Section */}
               <div className="lg:w-1/2 relative h-96 lg:h-[500px]">
@@ -224,7 +224,7 @@ const NewItemsSlider = () => {
                   {displayName}
                 </h3>
 
-                <p className="text-lg tracking-wider font-normal text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
+                <p className="text-lg tracking-wider font-semibold text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
                   {displayDescription}
                 </p>
 
@@ -236,7 +236,7 @@ const NewItemsSlider = () => {
 
                 <Link
                   href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
-                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-2xl"
+                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-2xl w-full lg:w-auto justify-center text-center"
                 >
                   {isEnglish ? 'View Gallery' : 'Do galérie'}
                   <svg

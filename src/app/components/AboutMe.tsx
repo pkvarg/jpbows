@@ -25,7 +25,7 @@ const AboutMe = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#ffffff] overflow-hidden">
+    <div className="relative min-h-screen bg-[#fefefe] overflow-hidden">
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 py-16 lg:py-24">
         <motion.div
@@ -37,7 +37,7 @@ const AboutMe = () => {
           {/* Section Title */}
           <motion.h2
             variants={fadeInUp}
-            className="text-4xl lg:text-6xl font-normal text-center text-[#e80e19] mb-16"
+            className="text-4xl lg:text-6xl font-bold text-center text-[#e80e19] mb-16"
           >
             O mne
           </motion.h2>

@@ -238,7 +238,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                   )}
                 </>
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-[#ffffff]">
+                <div className="w-full h-full flex items-center justify-center bg-[#fefefe]">
                   <svg
                     className="w-12 h-12 text-[#2f0000]/30"
                     fill="none"
@@ -336,7 +336,7 @@ const Bow = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
           <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
@@ -349,7 +349,7 @@ const Bow = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
         <div className="text-center">
           <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
           <button
@@ -364,7 +364,7 @@ const Bow = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#ffffff]">
+    <div className="min-h-screen bg-[#fefefe]">
       {/* Header Section */}
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
