@@ -193,7 +193,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
   return (
     <>
-      <div className="scroll-mt-14" id="contact" style={{ background: '#f1f1ef' }}>
+      <div className="scroll-mt-14" id="contact" style={{ background: '#ffffff' }}>
         <div className="px-6 py-12 lg:px-[15%] text-[#2f0000]">
           {/* Section Header */}
           <div className="relative mb-8 text-center">
@@ -211,7 +211,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
           {/* Contact Form Container */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8 font-serif">
+            <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8 font-sans">
               {/* Success/Error Messages */}
               <div className="mb-6">
                 {messageSuccess && <Message variant="success">{messageSuccess}</Message>}
@@ -225,7 +225,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       {contactName}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
                       type="text"
                       name="user_name"
                       value={name}
@@ -240,7 +240,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       {contactEmail}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
                       type="email"
                       name="user_email"
                       value={email}
@@ -255,7 +255,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       {contactPhone}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors"
+                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors"
                       type="text"
                       name="user_phone"
                       value={phone}
@@ -271,7 +271,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     {contactMessage}
                   </label>
                   <textarea
-                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#f1f1ef] text-[#2f0000] text-sm lg:text-base transition-colors resize-none"
+                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#ffffff] text-[#2f0000] text-sm lg:text-base transition-colors resize-none"
                     rows={5}
                     name="message"
                     value={mailMessage}

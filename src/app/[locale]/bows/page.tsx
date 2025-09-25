@@ -165,7 +165,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                       className="object-cover hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    
+
                     {/* Subtle overlay on hover */}
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
                   </div>
@@ -180,8 +180,18 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                         }}
                         className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 19l-7-7 7-7"
+                          />
                         </svg>
                       </button>
 
@@ -192,8 +202,18 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                         }}
                         className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </button>
 
@@ -218,9 +238,19 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                   )}
                 </>
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-[#f1f1ef]">
-                  <svg className="w-12 h-12 text-[#2f0000]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                <div className="w-full h-full flex items-center justify-center bg-[#ffffff]">
+                  <svg
+                    className="w-12 h-12 text-[#2f0000]/30"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
               )}
@@ -231,23 +261,23 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
           <div className="w-full lg:w-1/2 p-6 lg:p-8 flex flex-col justify-center">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <h2 className="text-lg lg:text-xl font-medium text-[#e80e19] leading-tight">
+                <h2 className="text-xl lg:text-2xl font-semibold text-[#e80e19] leading-tight">
                   {displayName}
                 </h2>
                 {bow.new && (
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
                     {isEnglish ? 'NEW' : 'NOVINKA'}
                   </span>
                 )}
               </div>
 
-              <p className="text-[#2f0000] text-sm lg:text-base leading-relaxed font-light">
+              <p className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
                 {displayDescription}
               </p>
 
               {bow.price && (
                 <div className="pt-2">
-                  <p className="text-lg lg:text-xl font-medium text-[#2f0000]">{bow.price} €</p>
+                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">{bow.price} €</p>
                 </div>
               )}
             </div>
@@ -306,10 +336,10 @@ const Bow = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
+      <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
-          <p className="text-[#2f0000] mt-4 text-sm lg:text-base font-light">
+          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
             {isEnglish ? 'Loading bows...' : 'Načítavam sláčiky...'}
           </p>
         </div>
@@ -319,12 +349,12 @@ const Bow = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#f1f1ef] flex items-center justify-center">
+      <div className="min-h-screen bg-[#ffffff] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#e80e19] text-base lg:text-lg font-light mb-4">{error}</p>
+          <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
           <button
             onClick={fetchBows}
-            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-light text-sm transition-colors duration-200"
+            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-medium text-base transition-colors duration-200"
           >
             {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
@@ -334,15 +364,17 @@ const Bow = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#f1f1ef]">
+    <div className="min-h-screen bg-[#ffffff]">
       {/* Header Section */}
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-2xl lg:text-3xl font-light text-[#e80e19] mb-3 tracking-wide">
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
             {isEnglish ? 'Bows' : 'Sláčiky'}
           </h1>
-          <p className="text-base lg:text-lg font-light text-[#2f0000] leading-relaxed">
-            {isEnglish ? 'Quality handcrafted bows for discerning musicians' : 'Kvalitné ručne vyrobené sláčiky pre náročných hudobníkov'}
+          <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
+            {isEnglish
+              ? 'Quality handcrafted bows for discerning musicians'
+              : 'Kvalitné ručne vyrobené sláčiky pre náročných hudobníkov'}
           </p>
         </div>
       </div>
@@ -351,7 +383,7 @@ const Bow = () => {
       <div className="max-w-6xl mx-auto pb-12">
         {bows.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-[#2f0000] text-base lg:text-lg font-light">
+            <p className="text-[#2f0000] text-lg lg:text-xl font-medium">
               {isEnglish
                 ? 'No bows are currently available.'
                 : 'Žiadne sláčiky nie sú momentálne k dispozícii.'}
@@ -359,7 +391,9 @@ const Bow = () => {
           </div>
         ) : (
           <div className="space-y-8">
-            {bows.map((bow) => <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />)}
+            {bows.map((bow) => (
+              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+            ))}
           </div>
         )}
       </div>

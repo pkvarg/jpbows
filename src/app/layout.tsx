@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 //import { Geist, Geist_Mono } from 'next/font/google'
 // import { Great_Vibes } from 'next/font/google'
-import { Crimson_Text } from 'next/font/google'
+import { Poiret_One } from 'next/font/google'
 // import { Dancing_Script } from 'next/font/google'
 import './globals.css'
 import { NextIntlClientProvider } from 'next-intl'
@@ -13,11 +13,10 @@ import FooterServerComponent from './components/translationServerComponents/Foot
 //   subsets: ['latin'],
 // })
 
-const crimsonText = Crimson_Text({
-  variable: '--font-crimson-text',
-  weight: ['400', '600', '700'],
+const poiretOne = Poiret_One({
+  variable: '--font-poiret-one',
+  weight: ['400'],
   subsets: ['latin'],
-  style: ['normal', 'italic'],
 })
 
 // const greatVibes = Great_Vibes({
@@ -49,7 +48,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={(await params).lang}>
-      <body className={`${crimsonText.variable} font-serif antialiased`}>
+      <body className={`${poiretOne.variable} font-sans antialiased`}>
         <NextIntlClientProvider>
           <NavbarServer />
           {children}

@@ -53,7 +53,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
   }
 
   return (
-    <div style={{ background: '#f1f1ef' }}>
+    <div style={{ background: '#ffffff' }}>
       <CookieConsent
         location="bottom"
         style={{
@@ -61,7 +61,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
           color: '#2f0000',
           fontSize: '17px',
           textAlign: 'start',
-          fontFamily: 'var(--font-crimson-text), serif',
+          fontFamily: 'var(--font-poiret-one), sans-serif',
           fontWeight: '300',
           padding: '16px 24px',
           boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.1)',
@@ -77,7 +77,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
           borderRadius: '6px',
           border: 'none',
           cursor: 'pointer',
-          fontFamily: 'var(--font-crimson-text), serif',
+          fontFamily: 'var(--font-poiret-one), sans-serif',
           transition: 'background-color 0.2s ease',
         }}
         buttonText={agree}
@@ -95,7 +95,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
           borderRadius: '6px',
           border: '1px solid rgba(47, 0, 0, 0.2)',
           cursor: 'pointer',
-          fontFamily: 'var(--font-crimson-text), serif',
+          fontFamily: 'var(--font-poiret-one), sans-serif',
           marginRight: '12px',
           transition: 'all 0.2s ease',
         }}

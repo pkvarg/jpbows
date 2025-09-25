@@ -41,7 +41,7 @@ const DoubleBassHero = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden" style={{ background: '#f1f1ef' }}>
+    <div className="relative min-h-screen overflow-hidden" style={{ background: '#ffffff' }}>
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div

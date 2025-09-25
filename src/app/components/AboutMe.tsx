@@ -25,7 +25,7 @@ const AboutMe = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#f1f1ef] overflow-hidden">
+    <div className="relative min-h-screen bg-[#ffffff] overflow-hidden">
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-6 py-16 lg:py-24">
         <motion.div
@@ -56,8 +56,8 @@ const AboutMe = () => {
               className="text-[#2f0000] leading-relaxed tracking-widest"
             >
               {/* Image positioned to float on desktop, hidden on mobile (will show in between text) */}
-              <motion.div 
-                variants={imageAnimation} 
+              <motion.div
+                variants={imageAnimation}
                 className="hidden lg:float-left lg:mr-12 lg:mb-8 lg:block"
               >
                 <div className="relative rounded-3xl p-4 shadow-2xl">
@@ -89,8 +89,8 @@ const AboutMe = () => {
                 </p>
 
                 {/* Image for mobile - positioned between text */}
-                <motion.div 
-                  variants={imageAnimation} 
+                <motion.div
+                  variants={imageAnimation}
                   className="lg:hidden flex justify-center my-8"
                 >
                   <div className="relative rounded-3xl p-4 shadow-2xl">
@@ -138,7 +138,7 @@ const AboutMe = () => {
                   </p>
                 </div>
               </div>
-              
+
               {/* Clear the float */}
               <div className="clear-left"></div>
             </motion.div>

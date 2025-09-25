@@ -16,23 +16,26 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-[#f1f1ef] font-semibold text-[#e80e19] text-[25px] lg:text-[25px] tracking-wider">
+    <nav className="text-4xl lg:text-4xl font-normal leading-tight text-[#e80e19]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
             <div
               onClick={() => router.push('/')}
-              className="flex cursor-pointer flex-row items-center gap-4 bg-[#f1f1ef]"
+              className="flex cursor-pointer flex-row items-center gap-4"
             >
               <Image
                 src="/b4b_logo8.png"
                 alt="technik"
                 width={500}
                 height={500}
-                className="w-[40px]"
+                className="w-[60px]"
               />
               {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
-              <h1 className="leading-[22.5px] text-[#e80e19]">bow4bass</h1>
+              {/* <h1 className="leading-[22.5px] text-4xl text-[#e80e19]">bow4bass</h1>  */}
+              <h1 className="text-4xl lg:text-5xl font-normal leading-tight text-[#e80e19]">
+                bow4bass
+              </h1>
             </div>
             <div className="md:hidden">
               <button

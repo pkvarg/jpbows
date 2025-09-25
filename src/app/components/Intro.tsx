@@ -18,7 +18,7 @@ const Intro = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#f1f1ef] py-20">
+    <div className="relative min-h-screen bg-[#ffffff] py-20">
       <div className="container mx-auto px-6 mt-16">
         <motion.div
           className="text-center space-y-12"

@@ -149,7 +149,7 @@ const NewItemsSlider = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#f1f1ef] py-16">
+      <div className="bg-[#ffffff] py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-96 flex items-center justify-center">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2f0000]"></div>
@@ -174,7 +174,7 @@ const NewItemsSlider = () => {
       : currentProduct.description
 
   return (
-    <section className="bg-[#f1f1ef] py-16 relative overflow-hidden">
+    <section className="bg-[#ffffff] py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-12">
@@ -185,7 +185,7 @@ const NewItemsSlider = () => {
 
         {/* Slider Container */}
         <div className="relative">
-          <div className="bg-[#f1f1ef] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
+          <div className="bg-[#ffffff] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
             <div className="flex flex-col lg:flex-row">
               {/* Image Section */}
               <div className="lg:w-1/2 relative h-96 lg:h-[500px]">
