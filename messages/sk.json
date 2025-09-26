@@ -35,5 +35,15 @@
 
     "contactGdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
     "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu."
+  },
+  "BivajArt": {
+    "title": "Bivaj Art Luthery",
+    "subtitle": "Kvalitné hudobné nástroje z Transylvánie",
+    "intro": "Predstavujeme vám naše kvalitné hudobné nástroje, ktoré vyrábajú dvaja remeselníci Vajai Ferenc a Biro István (starí chlapci) z dielne \"Bivaj\" v Transylvánii. Naším hlavným profilom je výroba kontrabasu, ale radi vytvárame aj violončelá, viola da gamby alebo husle, ktoré evokujú svet starej hudby. Naše nástroje sú vyrobené na základe jedinečných návrhov a realizácií, čo potvrdzuje aj náš špeciálny vnútorný štítok a certifikát pravosti.",
+    "materials": "Suroviny, ktoré používame, pochádzajú z Karpát, kde prirodzene schnú niekoľko rokov. Vrchná doska nástroja je vyrobená z dôkladne vybraného rezonančného dreva, zatiaľ čo zadná strana, bočnice a krk sú vyrobené z kučeravého javora, zadná strana pozostáva z dvoch častí. Hmatník a držiak strún sú vyrobené z ébenoviny a noha je vyrobená z dôkladne vybraného javora.",
+    "craftsmanship": "Tieto nástroje sú vyrobené s starostlivosťou a láskou, úplne ručne, prostredníctvom mnohoročného majstrovstva. Lakovanie s antickým efektom je špecialitou našej dielne, ktoré pozostáva z laku na báze Joha alkoholu a prírodnej živice vyrobenej podľa nášho vlastného receptu. Táto špeciálna technika lakovania prispieva ku krásnemu a flexibilnému zvuku nástrojov. Osobitný dôraz kladieme aj na ručne vyrobené umelecké basové kľúče a mechanizmy, ktoré tiež predstavujú jedinečné riešenia.",
+    "conclusion": "Naša dielňa ponúka vyberateľné a hneď hrateľné sláčikové nástroje, ktoré poskytujú dokonalý zvuk a kvalitu pre orchestrálne alebo sólové vystúpenia. Každý nástroj 'Bivaj' je ručne vyrábaný, jedinečný umelecký diel, ktorý predstavuje najvyššie štandardy remeselníctva a ponúka bohatú, uspokojivú tónovú komplexnosť.",
+    "more": "Viac",
+    "less": "Menej"
   }
 }

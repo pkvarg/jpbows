@@ -31,5 +31,15 @@
 
     "contactGdpr1": "We do not store the data provided by you in any database.",
     "contactGdpr2": "The email will only be used to respond to your message."
+  },
+  "BivajArt": {
+    "title": "Bivaj Art Luthery",
+    "subtitle": "High-quality musical instruments from Transylvania",
+    "intro": "We present to you our high-quality musical instruments, which are made by two craftsmen Vajai Ferenc and Biro István (old boys) of the \"Bivaj\" workshop in Transylvania. Our main profile is the making of the double bass, but we are also happy to create cellos, viola da gambas, or violins, which evoke the world of early music. Our instruments are made based on unique designs and implementations, which is also confirmed by our special internal label and certificate of authenticity.",
+    "materials": "The raw materials we use come from the Carpathians, where they dry naturally for several years. The top of the instrument is made of carefully selected resonance wood, while the back, sides and neck are made of curly maple, the back consists of two parts. The fingerboard and string holder are made of ebony, and the leg is made of carefully selected maple.",
+    "craftsmanship": "These instruments are made with care and love, completely by hand, through many years of mastery. Lacquering with an antique effect is the specialty of our workshop, which consists of Joha spirit-based varnish and natural resin made according to our own recipe. This special lacquering technique contributes to the beautiful and flexible sound of the instruments. We also pay special attention to handmade artistic bass keys and mechanisms, which also represent unique solutions.",
+    "conclusion": "Our workshop offers selectable and ready-to-play stringed instruments that provide perfect sound and quality for orchestral or solo performances. Each 'Bivaj' instrument is a handcrafted, unique work of art that represents the highest standards of craftsmanship and offers rich, satisfying tonal complexity.",
+    "more": "More",
+    "less": "Less"
   }
 }

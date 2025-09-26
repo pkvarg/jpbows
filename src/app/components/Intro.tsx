@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import { Link } from '@/i18n/routing'
 import { motion } from 'framer-motion'
 
 const Intro = () => {
@@ -26,20 +27,6 @@ const Intro = () => {
           initial="initial"
           animate="animate"
         >
-          {/* <motion.h1
-            variants={fadeInUp}
-            className="text-4xl lg:text-7xl font-normal leading-tight text-[#e80e19] "
-          >
-            bow4bass
-          </motion.h1>
-
-          <motion.p
-            variants={fadeInUp}
-            className="text-3xl lg:text-4xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
-          >
-          Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia baroka, klasicizmu a raného romantizmu.
-          </motion.p> */}
-
           <motion.div variants={fadeInUp} className="space-y-8 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Výroba Sláčikov
@@ -62,8 +49,14 @@ const Intro = () => {
               Kontrabasy
             </h2>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne „Bivaj Art Luthery“.
-              Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní
+              Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne{' '}
+              <Link
+                href="/bivaj-art"
+                className="text-[#e80e19] hover:underline transition-all duration-200"
+              >
+                &ldquo;Bivaj Art Luthery&rdquo;
+              </Link>
+              . Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní
               tradičných postupov, prvotriedneho materiálu a poctivej práce títo majstri produkujú
               prvotriedne majstrovské kontrabasy rôznych foriem od tradičných Talianskych a
               Francúzskych modelov, cez Viedenské modely nástrojov až po variácie tvarov. Nástroje
