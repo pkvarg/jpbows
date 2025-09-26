@@ -19,12 +19,12 @@ const AboutMe = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#fefefe] py-20">
-      <h1 className="text-xl lg:text-5xl font-semibold text-[#e80e19] leading-tight text-center my-16">
+    <div className="relative min-h-screen bg-[#fefefe]">
+      {/* <h1 className="text-xl lg:text-5xl font-semibold text-[#e80e19] leading-tight text-center my-16">
         O mne
-      </h1>
-      <div className="container mx-auto px-6 mt-16">
-        <motion.div
+      </h1> */}
+      <div className="container mx-auto px-6">
+        {/* <motion.div
           className="text-center space-y-12"
           variants={staggerContainer}
           initial="initial"
@@ -64,7 +64,7 @@ const AboutMe = () => {
               a skúšaný mnou a samozrejme zákazníkom.
             </p>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
 
         <About_Me />
       </div>
