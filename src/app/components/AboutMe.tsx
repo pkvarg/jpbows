@@ -156,7 +156,7 @@ const About_Me = () => {
                   Ako sólista sa predstavil so Štátnym orchestrom Žilina, Musicou Aeternou a
                   Slovenskou filharmóniou. V roku 2022 vydal svoje profilové CD{' '}
                   <span className="text-[#e80e19] font-semibold">
-                    „Contrabasso/ Violone in Presbourg"
+                    &quot;Contrabasso/ Violone in Presbourg&quot;
                   </span>
                   .
                 </p>
@@ -170,7 +170,9 @@ const About_Me = () => {
                   napr.: kontrabasové kurzy a koncerty –{' '}
                   <span className="text-[#e80e19] font-semibold">BASS FEST+</span> (14 ročníkov),
                   hudobný festival{' '}
-                  <span className="text-[#e80e19] font-semibold">„Musica Perennis Iuventutis"</span>{' '}
+                  <span className="text-[#e80e19] font-semibold">
+                    &quot;Musica Perennis Iuventutis&quot;
+                  </span>{' '}
                   (10 ročníkov),{' '}
                   <span className="text-[#e80e19] font-semibold">
                     Medzinárodnú kontrabasovú súťaž K. D. v. Dittersdorfa
