@@ -25,8 +25,8 @@ const Hero = () => {
                 bow4bass
               </h1>
               <h2 className="text-3xl lg:text-5xl font-bold font-bolder text-[#2f0000] leading-tight mt-16">
-                Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
-                klasicizmu a raného romantizmu.
+                Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov
+                obdobia baroka, klasicizmu a raného romantizmu.
               </h2>
             </div>
           </div>
@@ -36,8 +36,8 @@ const Hero = () => {
       {/* Mobile Title - Below image */}
       <div className="lg:hidden bg-[#fefefe] py-8 px-6">
         <h2 className="text-2xl font-bold text-[#2f0000] leading-tight text-center">
-          Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
-          klasicizmu a raného romantizmu.
+          Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia
+          baroka, klasicizmu a raného romantizmu.
         </h2>
       </div>
     </>

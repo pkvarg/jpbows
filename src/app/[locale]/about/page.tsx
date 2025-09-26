@@ -7,8 +7,9 @@ const About = () => {
 
   return (
     <div>
-      <PagesNavbarServer />
-      <h1 className="text-center">{t('headerAbout')}</h1>
+      <h1 className="text-xl lg:text-5xl font-semibold text-[#e80e19] leading-tight text-center my-16">
+        O firme
+      </h1>
     </div>
   )
 }

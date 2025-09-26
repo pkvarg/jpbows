@@ -1,4 +1,3 @@
-import AboutMe from '../components/AboutMe'
 import Hero from '../components/Hero'
 import Intro from '../components/Intro'
 import NewItemsSlider from '../components/NewItemsSlider'
@@ -9,7 +8,6 @@ export default function Home() {
       <Hero />
       <Intro />
       <NewItemsSlider />
-      <AboutMe />
     </div>
   )
 }

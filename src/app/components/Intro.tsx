@@ -37,8 +37,7 @@ const Intro = () => {
             variants={fadeInUp}
             className="text-3xl lg:text-4xl leading-relaxed max-w-4xl mx-auto font-normal text-[#2f0000]"
           >
-            Exkluzívne kontrabasy a sláčiky inšpirované historickými modelmi z obdobia baroka,
-            klasicizmu a raného romantizmu.
+          Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia baroka, klasicizmu a raného romantizmu.
           </motion.p> */}
 
           <motion.div variants={fadeInUp} className="space-y-8 max-w-3xl mx-auto">
@@ -46,21 +45,31 @@ const Intro = () => {
               Výroba Sláčikov
             </h2>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              Historické modely pre kontrabas a violone s francúzskou a nemeckou žabkou
+              Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia
+              baroka, klasicizmu a raného romantizmu.
+            </p>
+
+            <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
+              Rekonštrukcie a opravy
+            </h2>
+            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
+              Rekonštrukcie a opravy sláčikov. Prineste svoj starý, poškodený či znehodnotený sláčik
+              a ja mu pri rešpektovaní jeho originálnych „proporcií“ a pôvodného využitia vdýchnem
+              nový život.
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
               Kontrabasy
             </h2>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              Prezentácia nástrojov a sprostredkovanie predaja kvalitných kontrabasov
-            </p>
-
-            <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-              Individuálne Úpravy
-            </h2>
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              Nastavenie a úprava nástrojov podľa špecifických požiadaviek každého klienta
+              Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne „Bivaj Art Luthery“.
+              Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní
+              tradičných postupov, prvotriedneho materiálu a poctivej práce títo majstri produkujú
+              prvotriedne majstrovské kontrabasy rôznych foriem od tradičných Talianskych a
+              Francúzskych modelov, cez Viedenské modely nástrojov až po variácie tvarov. Nástroje
+              si môžete vybrať podľa vlastných požiadaviek či vkusu, povrchovej úpravy, prísť si ich
+              vyskúšať a na základe vašich preferencií bude nástroj nastavený. Na nástroje sa
+              vzťahuje doživotná záruka.
             </p>
           </motion.div>
         </motion.div>

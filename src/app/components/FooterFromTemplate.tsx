@@ -122,16 +122,16 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               {about}
             </Link>
 
-            <a className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
+            <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
               GDPR
-            </a>
+            </Link>
 
-            <a
+            <Link
               className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
               href={`/trade-rules`}
             >
               {tradeRules}
-            </a>
+            </Link>
 
             <p className="font-normal" style={{ color: '#0e1528' }}>
               Phone: +421 905 338 081
