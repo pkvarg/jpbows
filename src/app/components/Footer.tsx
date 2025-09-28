@@ -111,7 +111,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       <div className={`flex flex-col gap-4`}>
         <div className="mb-[10px] h-[2px] bg-white opacity-10" />
         <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
-          <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-0  lg:mx-12">
+          <div className="flex lg:flex-row flex-col items-start justify-between flex-wrap gap-4 mx-0  lg:mx-12">
             <div className="flex lg:flex-row flex-col gap-2 justify-center items-center">
               <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
                 Copyright &copy; {Date().substring(11, 15)}
@@ -122,16 +122,48 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               {about}
             </Link>
 
-            <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
-              GDPR
-            </Link>
+            <div className="flex flex-col gap-2 justify-center items-center">
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/gdpr`}
+              >
+                GDPR
+              </Link>
 
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/trade-rules`}
+              >
+                {tradeRules}
+              </Link>
+            </div>
+
+            {/* <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
+              GDPR
+            </Link> */}
+            {/* 
             <Link
               className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
               href={`/trade-rules`}
             >
               {tradeRules}
-            </Link>
+            </Link> */}
+
+            <div className="flex flex-col gap-2 justify-center items-center">
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/bivaj-art`}
+              >
+                Bivaj Art
+              </Link>
+              {/* 
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/trade-rules`}
+              >
+                {tradeRules}
+              </Link> */}
+            </div>
 
             <p className="font-normal" style={{ color: '#0e1528' }}>
               Phone: +421 905 338 081

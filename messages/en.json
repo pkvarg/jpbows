@@ -30,7 +30,57 @@
     "contactSuccess": "Message successfully sent!",
 
     "contactGdpr1": "We do not store the data provided by you in any database.",
-    "contactGdpr2": "The email will only be used to respond to your message."
+    "contactGdpr2": "The email will only be used to respond to your message.",
+
+    "gdprTitle": "PERSONAL DATA PROCESSING POLICY",
+    "gdprIntro": "We take the protection of personal data seriously. It is important to us that your personal data is secure. All personal data obtained during your visit to our bow4bass.com website is processed in accordance with the personal data protection law as well as in accordance with applicable European legislation. From 25.05.2018, inclusive, your personal data is processed in accordance with REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation = GDPR) and in accordance with Act No. 18/2018 Coll. on personal data protection and on amendments to certain acts as amended in force from 25.05.2018.",
+
+    "gdprWhatMeansTitle": "What does this mean for you and your personal data?",
+    "gdprWhatMeansText": "Your personal data is any information that relates to you and on the basis of which you are identifiable to us as a natural person. This occurs in cases where we can identify you directly or indirectly, in particular on the basis of a generally applicable identifier or other identifier, such as name, surname, identification number, location data or online identifier. Personal data therefore includes in particular contact details of a natural person, their IP address, may be information about the use of services or about activities and preferences of a natural person.",
+
+    "gdprDataCollectedTitle": "What data do we store?",
+    "gdprDataCollectedText": "During your visit to our website, we record the IP address assigned to you by your internet provider, from which websites you visited our site, how long you stayed on our site, which specific subpages you view, and more. This information is considered personal data as it is your online identifier, and therefore we handle this data with increased care.",
+
+    "gdprCookiesTitle": "Cookies and tracking",
+    "gdprCookiesIntro": "This website uses the following types of cookies and technologies:",
+    "gdprCookiesEssentialTitle": "1. Essential cookies",
+    "gdprCookiesEssentialText": "These cookies are necessary for the basic functioning of the website and cannot be disabled:\n- Storage of your cookie consent (CookieConsent) - 365 days\n- Contact form functionality",
+    "gdprCookiesAnalyticsTitle": "2. Analytics cookies (optional)",
+    "gdprCookiesAnalyticsText": "With your consent, we use our own Umami analytics tool for:\n- Measuring website traffic\n- Analyzing visitor behavior (anonymously)\n- Improving user experience",
+
+    "gdprCookiesNotUsedTitle": "3. What we do not use",
+    "gdprCookiesNotUsedText": "We do not use:\n- Marketing cookies\n- Third-party advertising cookies\n- Social media cookies\n- Third-party tracking cookies",
+    "gdprCookiesManagementTitle": "Consent management",
+    "gdprCookiesManagementText": "You can change your consent to analytics cookies at any time:\n- By clearing browser data\n- By contacting us via email\n- The banner will appear again after clearing cookies when visiting the site",
+    "gdprCookiesVisitorsTitle": "Website traffic",
+    "gdprCookiesVisitorsText": "Basic traffic counter works without cookies and records only the total number of visits without identifying individual users.",
+
+    "gdprOtherDataTitle": "Other personal data",
+    "gdprOtherDataText": "You provide your personal data voluntarily only through the contact form on our website. We store these personal data: email address, name and phone number, if you choose to provide it. Your personal data is used for the more specifically defined purposes in these policies, and only to the necessary extent.",
+
+    "gdprPurposesTitle": "What do we use this information about you for (purposes)? And on what legal basis?",
+    "gdprPurposesText": "The controller for the purposes of personal data processing is Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovakia, Business ID: 53 075 471, responsible person: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. Personal data collection occurs on the website bow4bass.com name, surname, email - communication with customers about musical instrument inquiries, answering questions, providing information about instrument availability = the legal basis for processing this personal data is the legitimate interest of the service provider; mobile number - for faster communication regarding instrument availability = the legal basis is the controller's legitimate interest in providing quality customer support.",
+
+    "gdprRetentionTitle": "Data retention period",
+    "gdprRetentionText": "Personal data is stored by the controller for the stated purposes for a period of 2 years from the last communication, unless you withdraw your consent or unless we are legally obligated to archive your data further.",
+
+    "gdprSecurityTitle": "Security",
+    "gdprSecurityText": "If our systems were to be attacked by a hacker attack, or if our system were otherwise attacked and there was even a threat of data breach, you will be informed within 72 hours by our support about the measures taken and at the same time within the same period we will communicate with the supervisory authority in the field of personal data protection in the Slovak Republic - with the Office for Personal Data Protection.",
+
+    "gdprRightsTitle": "Your rights",
+    "gdprRightsText": "As a data subject, you have the right to be informed about the controller's data. The controller is Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovakia, Business ID: 53 075 471, responsible person: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. You have the right to access the data we process about you, the right to correct provided data, the right to delete provided data and the right to withdraw consent to personal data processing.",
+
+    "gdprContactTitle": "Contact details:",
+    "gdprContactText": "For all questions regarding personal data protection, you can contact us through the contact form on our website.",
+
+    "gdprProcessorsTitle": "Processors (data recipients)",
+    "gdprProcessorsText": "Hosting and technical services are provided to us by these companies:",
+
+    "gdprThirdPartyTitle": "Third party links",
+    "gdprThirdPartyText": "Sometimes on our website we refer to third party services and products. These third party websites have their own personal data protection policies and are independent of ours. Therefore, we bear no legal responsibility for the content and activities of these third parties.",
+
+    "gdprNoSharingTitle": "We do not provide your data to third parties",
+    "gdprNoSharingText": "We do not sell, trade or otherwise provide your personal data to third parties. Transfer of your personal data to state organizations is only based on law or valid official or court decisions in accordance with the legal regulations of the Slovak Republic. These conditions are valid from 1.1.2024."
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

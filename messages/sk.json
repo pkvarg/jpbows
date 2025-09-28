@@ -34,7 +34,57 @@
     "contactSuccess": "Vaša správa bola úspešne odoslaná!",
 
     "contactGdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
-    "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu."
+    "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu.",
+
+    "gdprTitle": "ZÁSADY SPRACOVÁVANIA OSOBNÝCH ÚDAJOV",
+    "gdprIntro": "Ochranu osobných údajov berieme vážne. Je pre nás dôležité, aby vaše osobné údaje boli v bezpečí. Všetky osobné údaje, ktoré sú získavané počas vašej návštevy na našej stránke bow4bass.com sú spracovávané v súlade so zákonom o ochrane osobných údajov ako aj v súlade s platnou európskou legislatívou. Od 25.05.2018, vrátane, sú vaše osobné údaje spracovávané v súlade s NARIADENÍM EURÓPSKEHO PARLAMENTU A RADY (EÚ) 2016/679 z 27. apríla 2016 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto údajov, ktorým sa ruší smernica 95/46/ES (všeobecné nariadenie o ochrane údajov = GDPR) a v súlade so zákonom č. 18/2018 Z. z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov v znení platnom a účinnom od 25.05.2018.",
+
+    "gdprWhatMeansTitle": "Čo to pre vás a vaše osobné údaje znamená?",
+    "gdprWhatMeansText": "Vaším osobným údajom je akákoľvek informácia, ktorá sa vás týka a na základe ktorej ste pre nás ako fyzická osoba určiteľným subjektom. Nastáva to v takých prípadoch, keď vás môžeme priamo alebo nepriamo identifikovať, najmä na základe všeobecne použiteľného identifikátora alebo iného identifikátora, ako je napríklad meno, priezvisko, identifikačné číslo, lokalizačné údaje alebo online identifikátor. Medzi osobné údaje teda spadajú najmä kontaktné údaje fyzickej osoby, jeho IP adresa, môžu nimi byť informácie o využívaní služieb alebo o činnostiach a preferenciách fyzickej osoby.",
+
+    "gdprDataCollectedTitle": "Aké údaje teda uchovávame?",
+    "gdprDataCollectedText": "Počas vašej návštevy našich stránok zaznamenávame IP adresu, ktorú vám pridelil váš poskytovateľ internetu, z akých stránok ste navštívili našu stránku, ako dlho ste na našej stránke, ktoré konkrétne podstránky si prezeráte a pod. Tieto informácie sú považované za osobný údaj, keďže ide o Váš online identifikátor, a preto s týmto údajom nakladáme so zvýšenou starostlivosťou.",
+
+    "gdprCookiesTitle": "Cookies a sledovanie",
+    "gdprCookiesIntro": "Táto webstránka používa nasledujúce typy cookies a technológií:",
+    "gdprCookiesEssentialTitle": "1. Nevyhnutné cookies",
+    "gdprCookiesEssentialText": "Tieto cookies sú potrebné pre základné fungovanie webu a nemožno ich vypnúť:\n- Uloženie Vášho súhlasu s cookies (CookieConsent) - 365 dní\n- Funkčnosť kontaktného formulára",
+    "gdprCookiesAnalyticsTitle": "2. Analytické cookies (voliteľné)",
+    "gdprCookiesAnalyticsText": "S Vaším súhlasom používame vlastný analytický nástroj Umami na:\n- Meranie návštevnosti stránky\n- Analýzu správania návštevníkov (anonymne)\n- Zlepšenie používateľského zážitku",
+
+    "gdprCookiesNotUsedTitle": "3. Čo nepoužívame",
+    "gdprCookiesNotUsedText": "Nepoužívame:\n- Marketingové cookies\n- Reklamné cookies tretích strán\n- Cookies sociálnych sietí\n- Sledovacie cookies tretích strán",
+    "gdprCookiesManagementTitle": "Správa súhlasu",
+    "gdprCookiesManagementText": "Váš súhlas s analytickými cookies môžete kedykoľvek zmeniť:\n- Vymazaním údajov prehliadača\n- Kontaktovaním nás na email\n- Pri návšteve stránky sa banner zobrazí znovu po vymazaní cookies",
+    "gdprCookiesVisitorsTitle": "Návštevnosť",
+    "gdprCookiesVisitorsText": "Základné počítadlo návštevnosti funguje bez cookies a zaznamenáva len celkový počet návštev bez identifikácie jednotlivých používateľov.",
+
+    "gdprOtherDataTitle": "Ďalšie osobné údaje",
+    "gdprOtherDataText": "Vaše osobné údaje zadávate dobrovoľne iba do kontaktného formulára na našej stránke. Uchovávame tieto osobné údaje: e-mailová adresa, meno a tel. číslo, ak sa ho rozhodnete uviesť. Vaše osobné údaje sú používané na bližšie konkretizované účely v týchto zásadách, a to len v nevyhnutnom rozsahu.",
+
+    "gdprPurposesTitle": "Na čo tieto informácie o vás používame (účely)? A na akom právnom základe?",
+    "gdprPurposesText": "Prevádzkovateľom na účely spracovania osobných údajov je spoločnosť Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovensko, IČO: 53 075 471, zodpovedná osoba: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. K zberu osobných údajov dochádza na webstránke bow4bass.com meno, priezvisko, email - komunikácia so zákazníkom o dopytoch na hudobné nástroje, odpovede na otázky, poskytovanie informácií o dostupnosti nástrojov = právnym základom pre spracovanie týchto osobných údajov je oprávnený záujem poskytovateľa služieb; mobilné číslo - za účelom rýchlejšej komunikácie ohľadom dostupnosti nástrojov = právnym základom je oprávnený záujem prevádzkovateľa poskytovať kvalitnú zákaznícku podporu.",
+
+    "gdprRetentionTitle": "Doba uchovávania údajov",
+    "gdprRetentionText": "Osobné údaje sa u prevádzkovateľa uchovávajú na uvedené účely po dobu 2 rokov od poslednej komunikácie, pokým svoj súhlas neodvoláte alebo pokiaľ nie sme zákonnou povinnosťou viazaní váš údaj ďalej archivovať.",
+
+    "gdprSecurityTitle": "Bezpečnosť",
+    "gdprSecurityText": "Ak by náhodou boli naše systémy napadnuté hackerským útokom, či inak by bol náš systém napadnutý a vznikla by čo i len hrozba úniku dát, budete do 72 hodín informovaní našou podporou o prijatých opatreniach a zároveň v tej istej lehote budeme komunikovať aj s dozorným orgánom v oblasti ochrany osobných údajov v SR - s Úradom na ochranu osobných údajov.",
+
+    "gdprRightsTitle": "Vaše práva",
+    "gdprRightsText": "Ako dotknutá osoba máte právo byť informovaný o údajoch prevádzkovateľa. Prevádzkovateľom je spoločnosť Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovensko, IČO: 53 075 471, zodpovedná osoba: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. Máte právo na prístup k údajom, ktoré o vás spracúvame, právo na opravu poskytnutých údajov, právo na vymazanie poskytnutých údajov a právo odvolať súhlas so spracúvaním osobných údajov.",
+
+    "gdprContactTitle": "Kontaktné údaje:",
+    "gdprContactText": "Pre všetky otázky týkajúce sa ochrany osobných údajov nás môžete kontaktovať prostredníctvom kontaktného formulára na našej stránke.",
+
+    "gdprProcessorsTitle": "Sprostredkovatelia (príjemcovia údajov)",
+    "gdprProcessorsText": "Hosting a technické služby nám poskytujú tieto spoločnosti:",
+
+    "gdprThirdPartyTitle": "Odkazy tretích strán",
+    "gdprThirdPartyText": "Niekedy na našich stránkach odkazujeme na služby a produkty tretích strán. Webstránky týchto tretích strán majú vlastné podmienky ochrany osobných údajov a sú nezávislé na našich. Z toho dôvodu nenesieme žiadnu právnu zodpovednosť za obsah a aktivity týchto tretích strán.",
+
+    "gdprNoSharingTitle": "Neposkytujeme Vaše údaje tretím stranám",
+    "gdprNoSharingText": "Nepredávame, neobchodujeme ani žiadnym iným spôsobom neposkytujeme vaše osobné údaje tretím stranám. Odovzdanie Vašich osobných údajov štátnym organizáciám je len na základe zákona alebo právoplatných úradných či súdnych rozhodnutí v súlade s právnymi predpismi Slovenskej republiky. Tieto podmienky sú platné od 1.1.2024."
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

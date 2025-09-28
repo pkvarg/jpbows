@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslations } from 'next-intl'
-import Footer from './../FooterFromTemplate'
+import Footer from '../Footer'
 
 const FooterServerComponent = () => {
   const t = useTranslations('Home')
