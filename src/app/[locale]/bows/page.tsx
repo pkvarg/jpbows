@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 interface Bow {
   id: string
@@ -12,8 +13,10 @@ interface Bow {
   description: string
   enDescription: string
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
+  availability: 'available' | 'sold'
   createdAt: string
   updatedAt: string
 }
@@ -125,6 +128,7 @@ const ImageModal = ({
 
 // Bow Item Component
 const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
+  const t = useTranslations('Home')
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const hasMultipleImages = bow.images.length > 1
@@ -271,15 +275,34 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                 )}
               </div>
 
-              <p className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
-                {displayDescription}
-              </p>
+              <div className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
+                {displayDescription.split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                  <div key={index}>{sentence}</div>
+                ))}
+              </div>
 
-              {bow.price && (
+              {(bow.price || bow.priceEnglish) && (
                 <div className="pt-2">
-                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">{bow.price} €</p>
+                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">
+                    {isEnglish && bow.priceEnglish ? bow.priceEnglish : bow.price}
+                  </p>
                 </div>
               )}
+
+              {/* Availability */}
+              <div className="pt-2">
+                <span
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
+                    bow.availability === 'available'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-red-100 text-red-800'
+                  }`}
+                >
+                  {bow.availability === 'available'
+                    ? t('availabilityAvailable')
+                    : t('availabilitySold')}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -368,18 +391,19 @@ const Bow = () => {
       <div className="text-center space-y-12 mt-8 mx-4">
         <div className="space-y-8 max-w-3xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-            Výroba Sláčikov
+            Sláčiky
           </h2>
           <div>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              Sláčik ako neoddeliteľná súčasť nástroja a hry na &ldquo;sláčikový hudobný nástroj&rdquo; je azda
-              najdôležitejším elementom pri tvorbe tónu, umeleckej interpretácii a zdrojom
-              neuveriteľných artikulačných možností. Toto azda vystihuje najviac moju životnú
-              filozofiu v hre na dobové či moderné nástroje od violone, barokového kontrabasu,
-              kontrabasu tzv. viedenskéh ladenia či moderných nástrojov –orchestrálnych a sólových.
-              V mojej bohatej orchestrálnej, komornej a sólovej praxi som si čoraz viac uvedomoval
-              potrebu a dôležitosť sláčika a to bol aj impulz, prečo som sa začal viac do hľbky
-              zaoberať jeho špecifikami a následnou výrobou a servisom sláčikov.
+              Sláčik ako neoddeliteľná súčasť nástroja a hry na &ldquo;sláčikový hudobný
+              nástroj&rdquo; je azda najdôležitejším elementom pri tvorbe tónu, umeleckej
+              interpretácii a zdrojom neuveriteľných artikulačných možností. Toto azda vystihuje
+              najviac moju životnú filozofiu v hre na dobové či moderné nástroje od violone,
+              barokového kontrabasu, kontrabasu tzv. viedenskéh ladenia či moderných nástrojov
+              –orchestrálnych a sólových. V mojej bohatej orchestrálnej, komornej a sólovej praxi
+              som si čoraz viac uvedomoval potrebu a dôležitosť sláčika a to bol aj impulz, prečo
+              som sa začal viac do hľbky zaoberať jeho špecifikami a následnou výrobou a servisom
+              sláčikov.
             </p>
 
             {isExpanded && (
@@ -389,9 +413,9 @@ const Bow = () => {
                   uvedomujem obrovskú rôznorodosť, farebnú škálu (zvukovú) ako i neuveriteľné
                   možnosti a využitie sláčika naprieč hudobnými štýlmi, použitia v orchestrálnej,
                   komornej či sólovej hre a pod. V neposlednom rade pohnútkou prečo sa viac do hľbky
-                  venovať sláčikom, bola potreba spraviť si &ldquo;servis&rdquo; a jeho údržbu, vymeniť vlasy,
-                  vyčistiť a vedieť ho správne a účelne použiť a udržať sláčik v správnej a zdravej
-                  kondícii.
+                  venovať sláčikom, bola potreba spraviť si &ldquo;servis&rdquo; a jeho údržbu,
+                  vymeniť vlasy, vyčistiť a vedieť ho správne a účelne použiť a udržať sláčik v
+                  správnej a zdravej kondícii.
                 </p>
 
                 <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">

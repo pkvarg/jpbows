@@ -84,15 +84,18 @@
     "gdprThirdPartyText": "Niekedy na našich stránkach odkazujeme na služby a produkty tretích strán. Webstránky týchto tretích strán majú vlastné podmienky ochrany osobných údajov a sú nezávislé na našich. Z toho dôvodu nenesieme žiadnu právnu zodpovednosť za obsah a aktivity týchto tretích strán.",
 
     "gdprNoSharingTitle": "Neposkytujeme Vaše údaje tretím stranám",
-    "gdprNoSharingText": "Nepredávame, neobchodujeme ani žiadnym iným spôsobom neposkytujeme vaše osobné údaje tretím stranám. Odovzdanie Vašich osobných údajov štátnym organizáciám je len na základe zákona alebo právoplatných úradných či súdnych rozhodnutí v súlade s právnymi predpismi Slovenskej republiky. Tieto podmienky sú platné od 1.1.2024."
+    "gdprNoSharingText": "Nepredávame, neobchodujeme ani žiadnym iným spôsobom neposkytujeme vaše osobné údaje tretím stranám. Odovzdanie Vašich osobných údajov štátnym organizáciám je len na základe zákona alebo právoplatných úradných či súdnych rozhodnutí v súlade s právnymi predpismi Slovenskej republiky. Tieto podmienky sú platné od 1.1.2024.",
+
+    "availabilityAvailable": "Dostupný",
+    "availabilitySold": "Predaný"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",
     "subtitle": "Kvalitné hudobné nástroje z Transylvánie",
-    "intro": "Predstavujeme vám naše kvalitné hudobné nástroje, ktoré vyrábajú dvaja remeselníci Vajai Ferenc a Biro István (starí chlapci) z dielne \"Bivaj\" v Transylvánii. Naším hlavným profilom je výroba kontrabasu, ale radi vytvárame aj violončelá, viola da gamby alebo husle, ktoré evokujú svet starej hudby. Naše nástroje sú vyrobené na základe jedinečných návrhov a realizácií, čo potvrdzuje aj náš špeciálny vnútorný štítok a certifikát pravosti.",
-    "materials": "Suroviny, ktoré používame, pochádzajú z Karpát, kde prirodzene schnú niekoľko rokov. Vrchná doska nástroja je vyrobená z dôkladne vybraného rezonančného dreva, zatiaľ čo zadná strana, bočnice a krk sú vyrobené z kučeravého javora, zadná strana pozostáva z dvoch častí. Hmatník a držiak strún sú vyrobené z ébenoviny a noha je vyrobená z dôkladne vybraného javora.",
-    "craftsmanship": "Tieto nástroje sú vyrobené s starostlivosťou a láskou, úplne ručne, prostredníctvom mnohoročného majstrovstva. Lakovanie s antickým efektom je špecialitou našej dielne, ktoré pozostáva z laku na báze Joha alkoholu a prírodnej živice vyrobenej podľa nášho vlastného receptu. Táto špeciálna technika lakovania prispieva ku krásnemu a flexibilnému zvuku nástrojov. Osobitný dôraz kladieme aj na ručne vyrobené umelecké basové kľúče a mechanizmy, ktoré tiež predstavujú jedinečné riešenia.",
-    "conclusion": "Naša dielňa ponúka vyberateľné a hneď hrateľné sláčikové nástroje, ktoré poskytujú dokonalý zvuk a kvalitu pre orchestrálne alebo sólové vystúpenia. Každý nástroj 'Bivaj' je ručne vyrábaný, jedinečný umelecký diel, ktorý predstavuje najvyššie štandardy remeselníctva a ponúka bohatú, uspokojivú tónovú komplexnosť.",
+    "intro": "V dielni Bivaj v Transylvánii majstri remeselníci Vajai Ferenc a Bíro István (láskavo nazývaní \"starí chlapci\") vyrábajú ručne špičkové sláčikové nástroje s bezkonkurenčnou presnosťou a vášňou. Špecializujú sa na kontrabasy, ale vyrábajú aj violončelá, violy da gamba a husle, inšpirované historickými hudobnými tradíciami. Každý nástroj je individuálne navrhnutý, obsahuje náš vlastný vnútorný štítok a dodáva sa s certifikátom pravosti.",
+    "materials": "Všetko drevo pochádza z Karpát a je sušené na vzduchu roky. Vrchné dosky sú vyrobené z vysokokvalitného rezonančného smreka, so zadnými doskami, bočnicami a krkmi z dvojdielneho kučeravého javora. Používajú ébenové drevo na hmatník a struník a vybraný javor na kobylku.",
+    "craftsmanship": "Každý nástroj je kompletne ručne vyrábaný tradičnými metódami. Charakteristický lak v antickom štýle kombinuje originálny lak Joha na báze alkoholu a prírodnej živice, čím zvýrazňuje vzhľad aj zvuk. Vytvárajú aj vlastné mechaniky a umelecké basové kľúče s inovatívnym dizajnom.",
+    "conclusion": "Či už ste sólista alebo orchestrálny hudobník, nástroj Bivaj ponúka vynikajúci tón, remeselo a nadčasový charakter, skutočne jedinečné dielo.",
     "more": "Viac",
     "less": "Menej"
   }

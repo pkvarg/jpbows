@@ -33,7 +33,9 @@ model Bows {
   new Boolean
   metadata String?
   price String
+  priceEnglish String?
   videoUrl String?
+  availability String @default("available")
   createdAt DateTime
   updatedAt DateTime
 }
@@ -49,7 +51,9 @@ model Bass {
   new Boolean
   metadata String?
   price String
+  priceEnglish String?
   videoUrl String?
+  availability String @default("available")
   createdAt DateTime
   updatedAt DateTime
 }

@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="text-4xl lg:text-3xl font-semibold leading-tight text-[#e80e19]">
+    <nav className="text-3xl lg:text-2xl font-semibold leading-tight text-[#e80e19]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
@@ -29,11 +29,11 @@ const Navbar = () => {
                 alt="technik"
                 width={900}
                 height={900}
-                className="w-[60px]"
+                className="w-[40px]"
               />
               {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
               {/* <h1 className="leading-[22.5px] text-4xl text-[#e80e19]">bow4bass</h1>  */}
-              <h1 className="text-4xl lg:text-4xl font-bold lg:font-semibold leading-tight text-[#e80e19]">
+              <h1 className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19]">
                 bow4bass
               </h1>
             </div>
@@ -83,20 +83,12 @@ const Navbar = () => {
             }`}
           >
             <ul className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
-              {/* <Link
-                href={'/'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                Domov
-              </Link> */}
-
               <Link
                 href={'/bows'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Výroba sláčikov
+                Sláčiky
               </Link>
               <Link
                 href={'/repairs'}
@@ -111,7 +103,7 @@ const Navbar = () => {
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Kontrabasy
+                Nástroje
               </Link>
               <Link
                 href={'/about-me'}

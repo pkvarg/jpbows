@@ -17,7 +17,7 @@ const Admin = async () => {
         <div className="flex flex-col lg:flex-row justify-center items-center gap-72 py-16">
           <div className="flex flex-col gap-4 text-[#0e1528] text-xl font-bold">
             {/* <Link href={`/admin/file-upload`}>File Upload</Link> */}
-            <Link href={`/admin/bass`}>Basses</Link>
+            <Link href={`/admin/bass`}>Instruments</Link>
             <Link href={`/admin/bow`}>Bows</Link>
             {/* <Link href={`/admin/slider`}>Sliders</Link> */}
             {/* <Link href={`/admin/blog`}>Blogs</Link> */}

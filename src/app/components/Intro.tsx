@@ -29,7 +29,7 @@ const Intro = () => {
         >
           <motion.div variants={fadeInUp} className="space-y-8 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-              Výroba Sláčikov
+              Sláčiky
             </h2>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia
@@ -46,7 +46,7 @@ const Intro = () => {
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-              Kontrabasy
+              Nástroje
             </h2>
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne{' '}
@@ -58,7 +58,7 @@ const Intro = () => {
               </Link>
               . Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní
               tradičných postupov, prvotriedneho materiálu a poctivej práce títo majstri produkujú
-              prvotriedne majstrovské kontrabasy rôznych foriem od tradičných Talianskych a
+              prvotriedne majstrovské nástroje rôznych foriem od tradičných Talianskych a
               Francúzskych modelov, cez Viedenské modely nástrojov až po variácie tvarov. Nástroje
               si môžete vybrať podľa vlastných požiadaviek či vkusu, povrchovej úpravy, prísť si ich
               vyskúšať a na základe vašich preferencií bude nástroj nastavený. Na nástroje sa

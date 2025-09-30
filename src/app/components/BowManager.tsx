@@ -10,10 +10,12 @@ interface BowFormData {
   enDescription: string
   images: string[]
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
   metadata: string
   videoUrl: string
+  availability: 'available' | 'sold'
 }
 
 interface Bow {
@@ -24,10 +26,12 @@ interface Bow {
   description: string
   enDescription: string
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
   metadata: string
   videoUrl: string
+  availability: 'available' | 'sold'
   createdAt: Date
   updatedAt: Date
 }
@@ -40,10 +44,12 @@ export default function BowManager() {
     enDescription: '',
     images: [],
     price: '',
+    priceEnglish: '',
     published: false,
     new: false,
     metadata: '',
     videoUrl: '',
+    availability: 'available',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -62,10 +68,12 @@ export default function BowManager() {
       enDescription: '',
       images: [],
       price: '',
+      priceEnglish: '',
       published: false,
       new: false,
       metadata: '',
       videoUrl: '',
+      availability: 'available',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -173,10 +181,12 @@ export default function BowManager() {
         enDescription: formData.enDescription,
         images: uploadedImageUrls,
         price: formData.price,
+        priceEnglish: formData.priceEnglish,
         published: formData.published,
         new: formData.new,
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
+        availability: formData.availability,
       }
 
       // Determine if we're creating or updating
@@ -244,10 +254,12 @@ export default function BowManager() {
       enDescription: bow.enDescription || '',
       images: bow.images || [],
       price: bow.price || '',
+      priceEnglish: bow.priceEnglish || '',
       published: bow.published || false,
       new: bow.new || false,
       metadata: bow.metadata || '',
       videoUrl: bow.videoUrl || '',
+      availability: bow.availability || 'available',
     })
     setEditingId(bow.id)
     setImagePreviews(bow.images || [])
@@ -356,7 +368,7 @@ export default function BowManager() {
 
         <div>
           <label htmlFor="price" className="block text-sm font-medium text-gray-400">
-            Cena
+            Cena (SK)
           </label>
           <input
             type="text"
@@ -364,7 +376,22 @@ export default function BowManager() {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
-            placeholder="napr. €150"
+            placeholder="napr. 1500€"
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="priceEnglish" className="block text-sm font-medium text-gray-400">
+            Cena (EN)
+          </label>
+          <input
+            type="text"
+            id="priceEnglish"
+            name="priceEnglish"
+            value={formData.priceEnglish}
+            onChange={handleInputChange}
+            placeholder="napr. 1500€"
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
         </div>
@@ -479,6 +506,23 @@ export default function BowManager() {
         </div>
 
         <div>
+          <label htmlFor="availability" className="block text-sm font-medium text-gray-400">
+            Dostupnosť
+          </label>
+          <select
+            id="availability"
+            name="availability"
+            value={formData.availability}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          >
+            <option value="available">Dostupný</option>
+            <option value="sold">Predaný</option>
+          </select>
+          <p className="text-xs text-gray-500 mt-1">Stav dostupnosti sláčika</p>
+        </div>
+
+        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -536,12 +580,12 @@ export default function BowManager() {
           {loading ? 'Načítavam...' : 'Všetky sláčiky'}
         </button>
 
-{bows.length > 0 && (
+        {bows.length > 0 && (
           <div className="mt-4 space-y-6">
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
               Všetky sláčiky ({bows.length})
             </h3>
-            
+
             {/* Sort bows: published first, then by creation date */}
             {[...bows]
               .sort((a, b) => {
@@ -553,12 +597,10 @@ export default function BowManager() {
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
               })
               .map((bow) => (
-                <div 
-                  key={bow.id} 
+                <div
+                  key={bow.id}
                   className={`p-4 border-2 rounded-lg transition-all duration-200 ${
-                    bow.published 
-                      ? 'border-green-500 bg-green-50/5' 
-                      : 'border-red-400 bg-red-50/5'
+                    bow.published ? 'border-green-500 bg-green-50/5' : 'border-red-400 bg-red-50/5'
                   }`}
                 >
                   {/* Header with title and status badges */}
@@ -569,14 +611,14 @@ export default function BowManager() {
                     </div>
                     <div className="flex flex-col gap-2 items-end">
                       {/* Published Status - Most Prominent */}
-                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                        bow.published 
-                          ? 'bg-green-600 text-white' 
-                          : 'bg-red-600 text-white'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-bold ${
+                          bow.published ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+                        }`}
+                      >
                         {bow.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
                       </span>
-                      
+
                       {/* Additional badges */}
                       <div className="flex gap-2">
                         {bow.new && (
@@ -584,6 +626,13 @@ export default function BowManager() {
                             NOVÝ
                           </span>
                         )}
+                        <span
+                          className={`px-2 py-1 rounded text-white text-xs font-medium ${
+                            bow.availability === 'available' ? 'bg-green-600' : 'bg-red-600'
+                          }`}
+                        >
+                          {bow.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ'}
+                        </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
                           {new Date(bow.createdAt).toLocaleDateString('sk-SK')}
                         </span>
@@ -598,7 +647,7 @@ export default function BowManager() {
                       <p className="text-gray-300 italic text-sm">{bow.enDescription}</p>
                     )}
                   </div>
-                  
+
                   {/* Price */}
                   {bow.price && (
                     <p className="text-yellow-400 font-semibold mb-3">💰 {bow.price}</p>
@@ -608,7 +657,13 @@ export default function BowManager() {
                   {bow.videoUrl && (
                     <div className="mb-3">
                       <p className="text-blue-400 font-semibold">
-                        🎥 <a href={bow.videoUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        🎥{' '}
+                        <a
+                          href={bow.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
                           Pozrieť video
                         </a>
                       </p>
@@ -621,7 +676,10 @@ export default function BowManager() {
                       <p className="text-sm text-gray-400 mb-2">Obrázky ({bow.images.length}):</p>
                       <div className="flex gap-2 overflow-x-auto pb-2">
                         {bow.images.map((imageUrl, index) => (
-                          <div key={index} className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded">
+                          <div
+                            key={index}
+                            className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded"
+                          >
                             <Image
                               src={imageUrl}
                               alt={`${bow.name} - ${index + 1}`}

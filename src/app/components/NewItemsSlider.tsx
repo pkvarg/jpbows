@@ -230,7 +230,7 @@ const NewItemsSlider = () => {
 
                 {currentProduct.price && (
                   <p className="text-2xl font-semibold text-[#2f0000] mb-8">
-                    {currentProduct.price} €
+                    {currentProduct.price}
                   </p>
                 )}
 

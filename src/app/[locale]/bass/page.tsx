@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 interface Bass {
   id: string
@@ -12,9 +13,11 @@ interface Bass {
   description: string
   enDescription: string
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
   videoUrl: string
+  availability: 'available' | 'sold'
   createdAt: string
   updatedAt: string
 }
@@ -126,6 +129,7 @@ const ImageModal = ({
 
 // Bass Item Component
 const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
+  const t = useTranslations('Home')
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const hasMultipleImages = bass.images.length > 1
@@ -272,15 +276,34 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
                 )}
               </div>
 
-              <p className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
-                {displayDescription}
-              </p>
+              <div className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
+                {displayDescription.split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                  <div key={index}>{sentence}</div>
+                ))}
+              </div>
 
-              {bass.price && (
+              {(bass.price || bass.priceEnglish) && (
                 <div className="pt-2">
-                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">{bass.price} €</p>
+                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">
+                    {isEnglish && bass.priceEnglish ? bass.priceEnglish : bass.price}
+                  </p>
                 </div>
               )}
+
+              {/* Availability */}
+              <div className="pt-2">
+                <span
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
+                    bass.availability === 'available'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-red-100 text-red-800'
+                  }`}
+                >
+                  {bass.availability === 'available'
+                    ? t('availabilityAvailable')
+                    : t('availabilitySold')}
+                </span>
+              </div>
 
               {/* Video Section */}
               {bass.videoUrl && (
@@ -397,7 +420,7 @@ const Bass = () => {
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
           <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
-            {isEnglish ? 'Loading double basses...' : 'Načítavam kontrabasy...'}
+            {isEnglish ? 'Loading double basses...' : 'Načítavam nástroje...'}
           </p>
         </div>
       </div>
@@ -426,12 +449,12 @@ const Bass = () => {
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
-            {isEnglish ? 'Double Basses' : 'Kontrabasy'}
+            {isEnglish ? 'Instruments' : 'Nástroje'}
           </h1>
           <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
             {isEnglish
-              ? 'Quality master-crafted double basses for professional musicians'
-              : 'Kvalitné majstrovské kontrabasy pre profesionálnych hudobníkov'}
+              ? 'Quality master-crafted musical instruments for professional musicians'
+              : 'Kvalitné majstrovské hudobné nástroje pre profesionálnych hudobníkov'}
           </p>
         </div>
       </div>
@@ -443,7 +466,7 @@ const Bass = () => {
             <p className="text-[#2f0000] text-lg lg:text-xl font-medium">
               {isEnglish
                 ? 'No double basses are currently available.'
-                : 'Žiadne kontrabasy nie sú momentálne k dispozícii.'}
+                : 'Žiadne nástroje nie sú momentálne k dispozícii.'}
             </p>
           </div>
         ) : (

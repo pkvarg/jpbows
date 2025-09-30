@@ -10,10 +10,12 @@ interface BassFormData {
   enDescription: string
   images: string[]
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
   metadata: string
   videoUrl: string
+  availability: 'available' | 'sold'
 }
 
 interface Bass {
@@ -24,10 +26,12 @@ interface Bass {
   description: string
   enDescription: string
   price: string
+  priceEnglish: string
   published: boolean
   new: boolean
   metadata: string
   videoUrl: string
+  availability: 'available' | 'sold'
   createdAt: Date
   updatedAt: Date
 }
@@ -40,10 +44,12 @@ export default function BassManager() {
     enDescription: '',
     images: [],
     price: '',
+    priceEnglish: '',
     published: false,
     new: false,
     metadata: '',
     videoUrl: '',
+    availability: 'available',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -62,10 +68,12 @@ export default function BassManager() {
       enDescription: '',
       images: [],
       price: '',
+      priceEnglish: '',
       published: false,
       new: false,
       metadata: '',
       videoUrl: '',
+      availability: 'available',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -173,10 +181,12 @@ export default function BassManager() {
         enDescription: formData.enDescription,
         images: uploadedImageUrls,
         price: formData.price,
+        priceEnglish: formData.priceEnglish,
         published: formData.published,
         new: formData.new,
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
+        availability: formData.availability,
       }
 
       // Determine if we're creating or updating
@@ -244,10 +254,12 @@ export default function BassManager() {
       enDescription: bass.enDescription || '',
       images: bass.images || [],
       price: bass.price || '',
+      priceEnglish: bass.priceEnglish || '',
       published: bass.published || false,
       new: bass.new || false,
       metadata: bass.metadata || '',
       videoUrl: bass.videoUrl || '',
+      availability: bass.availability || 'available',
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -292,7 +304,7 @@ export default function BassManager() {
   return (
     <div className="px-6 py-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
       <h2 className="text-xl text-white font-bold mb-4">
-        {editingId ? 'Upraviť kontrabas' : 'Vytvoriť kontrabas'}
+        {editingId ? 'Upraviť nástroj' : 'Vytvoriť nástroj'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -356,7 +368,7 @@ export default function BassManager() {
 
         <div>
           <label htmlFor="price" className="block text-sm font-medium text-gray-400">
-            Cena
+            Cena (SK)
           </label>
           <input
             type="text"
@@ -364,7 +376,22 @@ export default function BassManager() {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
-            placeholder="napr. €1500"
+            placeholder="napr. 1500€"
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="priceEnglish" className="block text-sm font-medium text-gray-400">
+            Cena (EN)
+          </label>
+          <input
+            type="text"
+            id="priceEnglish"
+            name="priceEnglish"
+            value={formData.priceEnglish}
+            onChange={handleInputChange}
+            placeholder="napr. 1500€"
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           />
         </div>
@@ -479,6 +506,23 @@ export default function BassManager() {
         </div>
 
         <div>
+          <label htmlFor="availability" className="block text-sm font-medium text-gray-400">
+            Dostupnosť
+          </label>
+          <select
+            id="availability"
+            name="availability"
+            value={formData.availability}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          >
+            <option value="available">Dostupný</option>
+            <option value="sold">Predaný</option>
+          </select>
+          <p className="text-xs text-gray-500 mt-1">Stav dostupnosti nástroja</p>
+        </div>
+
+        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -500,7 +544,7 @@ export default function BassManager() {
             disabled={loading}
             className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50"
           >
-            {loading ? 'Ukladám...' : editingId ? 'Upraviť kontrabas' : 'Vytvoriť kontrabas'}
+            {loading ? 'Ukladám...' : editingId ? 'Upraviť nástroj' : 'Vytvoriť nástroj'}
           </button>
 
           {editingId && (
@@ -533,15 +577,15 @@ export default function BassManager() {
           disabled={loading}
           className="w-full bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded disabled:opacity-50"
         >
-          {loading ? 'Načítavam...' : 'Všetky kontrabasy'}
+          {loading ? 'Načítavam...' : 'Všetky nástroje'}
         </button>
 
-{basses.length > 0 && (
+        {basses.length > 0 && (
           <div className="mt-4 space-y-6">
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
-              Všetky kontrabasy ({basses.length})
+              Všetky nástroje ({basses.length})
             </h3>
-            
+
             {/* Sort basses: published first, then by creation date */}
             {[...basses]
               .sort((a, b) => {
@@ -553,30 +597,30 @@ export default function BassManager() {
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
               })
               .map((bass) => (
-                <div 
-                  key={bass.id} 
+                <div
+                  key={bass.id}
                   className={`p-4 border-2 rounded-lg transition-all duration-200 ${
-                    bass.published 
-                      ? 'border-green-500 bg-green-50/5' 
-                      : 'border-red-400 bg-red-50/5'
+                    bass.published ? 'border-green-500 bg-green-50/5' : 'border-red-400 bg-red-50/5'
                   }`}
                 >
                   {/* Header with title and status badges */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <h4 className="font-bold text-xl text-white mb-1">{bass.name}</h4>
-                      {bass.enName && <h5 className="text-md text-gray-300 italic">{bass.enName}</h5>}
+                      {bass.enName && (
+                        <h5 className="text-md text-gray-300 italic">{bass.enName}</h5>
+                      )}
                     </div>
                     <div className="flex flex-col gap-2 items-end">
                       {/* Published Status - Most Prominent */}
-                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                        bass.published 
-                          ? 'bg-green-600 text-white' 
-                          : 'bg-red-600 text-white'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-bold ${
+                          bass.published ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+                        }`}
+                      >
                         {bass.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
                       </span>
-                      
+
                       {/* Additional badges */}
                       <div className="flex gap-2">
                         {bass.new && (
@@ -584,6 +628,13 @@ export default function BassManager() {
                             NOVÝ
                           </span>
                         )}
+                        <span
+                          className={`px-2 py-1 rounded text-white text-xs font-medium ${
+                            bass.availability === 'available' ? 'bg-green-600' : 'bg-red-600'
+                          }`}
+                        >
+                          {bass.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ'}
+                        </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
                           {new Date(bass.createdAt).toLocaleDateString('sk-SK')}
                         </span>
@@ -598,7 +649,7 @@ export default function BassManager() {
                       <p className="text-gray-300 italic text-sm">{bass.enDescription}</p>
                     )}
                   </div>
-                  
+
                   {/* Price */}
                   {bass.price && (
                     <p className="text-yellow-400 font-semibold mb-3">💰 {bass.price}</p>
@@ -608,7 +659,13 @@ export default function BassManager() {
                   {bass.videoUrl && (
                     <div className="mb-3">
                       <p className="text-blue-400 font-semibold">
-                        🎥 <a href={bass.videoUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        🎥{' '}
+                        <a
+                          href={bass.videoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
                           Pozrieť video
                         </a>
                       </p>
@@ -621,7 +678,10 @@ export default function BassManager() {
                       <p className="text-sm text-gray-400 mb-2">Obrázky ({bass.images.length}):</p>
                       <div className="flex gap-2 overflow-x-auto pb-2">
                         {bass.images.map((imageUrl, index) => (
-                          <div key={index} className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded">
+                          <div
+                            key={index}
+                            className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded"
+                          >
                             <Image
                               src={imageUrl}
                               alt={`${bass.name} - ${index + 1}`}

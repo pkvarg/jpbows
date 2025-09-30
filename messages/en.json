@@ -80,15 +80,18 @@
     "gdprThirdPartyText": "Sometimes on our website we refer to third party services and products. These third party websites have their own personal data protection policies and are independent of ours. Therefore, we bear no legal responsibility for the content and activities of these third parties.",
 
     "gdprNoSharingTitle": "We do not provide your data to third parties",
-    "gdprNoSharingText": "We do not sell, trade or otherwise provide your personal data to third parties. Transfer of your personal data to state organizations is only based on law or valid official or court decisions in accordance with the legal regulations of the Slovak Republic. These conditions are valid from 1.1.2024."
+    "gdprNoSharingText": "We do not sell, trade or otherwise provide your personal data to third parties. Transfer of your personal data to state organizations is only based on law or valid official or court decisions in accordance with the legal regulations of the Slovak Republic. These conditions are valid from 1.1.2024.",
+
+    "availabilityAvailable": "Available",
+    "availabilitySold": "Sold"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",
     "subtitle": "High-quality musical instruments from Transylvania",
-    "intro": "We present to you our high-quality musical instruments, which are made by two craftsmen Vajai Ferenc and Biro István (old boys) of the \"Bivaj\" workshop in Transylvania. Our main profile is the making of the double bass, but we are also happy to create cellos, viola da gambas, or violins, which evoke the world of early music. Our instruments are made based on unique designs and implementations, which is also confirmed by our special internal label and certificate of authenticity.",
-    "materials": "The raw materials we use come from the Carpathians, where they dry naturally for several years. The top of the instrument is made of carefully selected resonance wood, while the back, sides and neck are made of curly maple, the back consists of two parts. The fingerboard and string holder are made of ebony, and the leg is made of carefully selected maple.",
-    "craftsmanship": "These instruments are made with care and love, completely by hand, through many years of mastery. Lacquering with an antique effect is the specialty of our workshop, which consists of Joha spirit-based varnish and natural resin made according to our own recipe. This special lacquering technique contributes to the beautiful and flexible sound of the instruments. We also pay special attention to handmade artistic bass keys and mechanisms, which also represent unique solutions.",
-    "conclusion": "Our workshop offers selectable and ready-to-play stringed instruments that provide perfect sound and quality for orchestral or solo performances. Each 'Bivaj' instrument is a handcrafted, unique work of art that represents the highest standards of craftsmanship and offers rich, satisfying tonal complexity.",
+    "intro": "At the Bivaj Workshop in Transylvania, master craftsmen Vajai Ferenc and Biro István (affectionately known as the \"old boys\") handcraft top-quality stringed instruments with unmatched precision and passion. We specialize in double basses, but also build cellos, viola da gambas, and violons, inspired by historical music traditions. Every instrument is individually designed, features our custom internal label, and comes with a certificate of authenticity.",
+    "materials": "All wood is sourced from the Carpathians and air-dried for years. The tops are made of high-grade resonance spruce, with two-piece curly maple backs, ribs, and necks. We use ebony for the fingerboard and tailpiece, and select maple for the bridge.",
+    "craftsmanship": "Each instrument is completely handmade using traditional methods. Our signature antique-style varnish combines Joha original spirit-based lacquer and natural resins, enhancing both look and sound. We also create custom mechanisms and artistic bass keys with innovative designs.",
+    "conclusion": "Whether you're a soloist or orchestral performer, a Bivaj instrument offers superior tone, craftsmanship, and timeless character, a true one-of-a-kind creation.",
     "more": "More",
     "less": "Less"
   }

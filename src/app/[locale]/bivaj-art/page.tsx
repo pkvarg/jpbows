@@ -40,19 +40,29 @@ const BivajArt = () => {
 
           {/* Content Section */}
           <div className="text-justify">
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold ">{t('intro')}</p>
+            <div className="text-2xl leading-relaxed text-[#2f0000] font-bold">
+              {t('intro').split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                <div key={index}>{sentence}</div>
+              ))}
+            </div>
 
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8 ">
-              {t('materials')}
-            </p>
+            <div className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
+              {t('materials').split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                <div key={index}>{sentence}</div>
+              ))}
+            </div>
 
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8 ">
-              {t('craftsmanship')}
-            </p>
+            <div className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
+              {t('craftsmanship').split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                <div key={index}>{sentence}</div>
+              ))}
+            </div>
 
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8 ">
-              {t('conclusion')}
-            </p>
+            <div className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
+              {t('conclusion').split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                <div key={index}>{sentence}</div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
