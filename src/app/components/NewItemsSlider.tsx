@@ -224,9 +224,11 @@ const NewItemsSlider = () => {
                   {displayName}
                 </h3>
 
-                <p className="text-lg tracking-wider font-semibold text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
-                  {displayDescription}
-                </p>
+                <div className="text-lg tracking-wider font-semibold text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
+                  {displayDescription.split(/(?<=[.!?])\s+/).map((sentence, index) => (
+                    <div key={index}>{sentence}</div>
+                  ))}
+                </div>
 
                 {currentProduct.price && (
                   <p className="text-2xl font-semibold text-[#2f0000] mb-8">
