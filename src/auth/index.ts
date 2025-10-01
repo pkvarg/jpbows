@@ -19,14 +19,14 @@ const authOptions: NextAuthConfig = {
             id: 'test-user-1',
             userName: 'Peto Admin',
             name: 'Peto Admin',
-            password: 'pass',
+            password: 'JPTitanB4B*',
             email: process.env.ADMIN_EMAIL,
           },
           {
             id: 'test-user-2',
             userName: 'Jano Admin',
             name: 'Jano Admin',
-            password: 'pass',
+            password: 'JPTitanB4B*',
             email: process.env.ADMIN_EMAIL2,
           },
         ]
