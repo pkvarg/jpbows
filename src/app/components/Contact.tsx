@@ -156,9 +156,9 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           subject,
         }
 
-        const apiUrl = 'http://localhost:3013/api/contact'
+        //const apiUrl = 'http://localhost:3013/api/contact'
 
-        // const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
+        const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
 
         // Make the API request
         const response = await fetch(apiUrl, {
