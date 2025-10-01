@@ -156,9 +156,9 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           subject,
         }
 
-        //const apiUrl = 'http://localhost:3013/api/contact'
+        const apiUrl = 'http://localhost:3013/api/contact'
 
-        const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
+        // const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
 
         // Make the API request
         const response = await fetch(apiUrl, {
@@ -188,6 +188,10 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
         setMessageSuccess(contactSuccess)
         increaseEmails()
 
+        // Scroll to top to show success message
+        const element = document.getElementById('contact')
+        element?.scrollIntoView({ behavior: 'smooth' })
+
         return {
           success: true,
           message: data.message || 'Message sent successfully',
@@ -195,9 +199,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       } catch (error) {
         setMessage(contactError)
         console.log(error)
+
+        // Scroll to top to show error message
+        const element = document.getElementById('contact')
+        element?.scrollIntoView({ behavior: 'smooth' })
       }
-      const element = document.getElementById('contact')
-      element?.scrollIntoView({ behavior: 'smooth' })
     }
   }
 

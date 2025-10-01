@@ -8,11 +8,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import NavbarServer from './components/translationServerComponents/NavbarServer'
 import FooterServerComponent from './components/translationServerComponents/FooterServerComponent'
 
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// })
-
 const poiretOne = Poiret_One({
   variable: '--font-poiret-one',
   weight: ['400'],
