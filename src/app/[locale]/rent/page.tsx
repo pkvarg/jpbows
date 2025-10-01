@@ -3,20 +3,17 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+//import { useTranslations } from 'next-intl'
 
-interface Bow {
+interface RentalInstrument {
   id: string
   images: string[]
   name: string
   enName: string
   description: string
   enDescription: string
-  price: string
-  priceEnglish: string
   published: boolean
-  new: boolean
-  availability: 'available' | 'sold'
+  status: 'available' | 'rented' | 'maintenance'
   createdAt: string
   updatedAt: string
 }
@@ -126,19 +123,26 @@ const ImageModal = ({
   )
 }
 
-// Bow Item Component
-const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
-  const t = useTranslations('Home')
+// Rental Instrument Item Component
+const RentalInstrumentItem = ({
+  rentalInstrument,
+  isEnglish,
+}: {
+  rentalInstrument: RentalInstrument
+  isEnglish: boolean
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const hasMultipleImages = bow.images.length > 1
+  const hasMultipleImages = rentalInstrument.images.length > 1
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % bow.images.length)
+    setCurrentImageIndex((prev) => (prev + 1) % rentalInstrument.images.length)
   }
 
   const previousImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + bow.images.length) % bow.images.length)
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + rentalInstrument.images.length) % rentalInstrument.images.length,
+    )
   }
 
   const goToImage = (index: number) => {
@@ -146,8 +150,31 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
   }
 
   // Get the appropriate name and description based on language
-  const displayName = isEnglish && bow.enName ? bow.enName : bow.name
-  const displayDescription = isEnglish && bow.enDescription ? bow.enDescription : bow.description
+  const displayName =
+    isEnglish && rentalInstrument.enName ? rentalInstrument.enName : rentalInstrument.name
+  const displayDescription =
+    isEnglish && rentalInstrument.enDescription
+      ? rentalInstrument.enDescription
+      : rentalInstrument.description
+
+  // Status labels
+  const getStatusLabel = (status: string) => {
+    const labels: { [key: string]: { sk: string; en: string } } = {
+      available: { sk: 'Dostupný', en: 'Available' },
+      rented: { sk: 'Prenajatý', en: 'Rented' },
+      maintenance: { sk: 'Údržba', en: 'Maintenance' },
+    }
+    return isEnglish ? labels[status]?.en || status : labels[status]?.sk || status
+  }
+
+  const getStatusColor = (status: string) => {
+    const colors: { [key: string]: string } = {
+      available: 'bg-green-100 text-green-800',
+      rented: 'bg-orange-100 text-orange-800',
+      maintenance: 'bg-gray-100 text-gray-800',
+    }
+    return colors[status] || 'bg-gray-100 text-gray-800'
+  }
 
   return (
     <>
@@ -156,14 +183,14 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
           {/* Image Section */}
           <div className="w-full lg:w-1/2 relative">
             <div className="relative h-64 lg:h-80 overflow-hidden">
-              {bow.images.length > 0 ? (
+              {rentalInstrument.images.length > 0 ? (
                 <>
                   <div
                     className="relative h-full cursor-pointer"
                     onClick={() => setIsModalOpen(true)}
                   >
                     <Image
-                      src={bow.images[currentImageIndex]}
+                      src={rentalInstrument.images[currentImageIndex]}
                       alt={`${displayName} - Image ${currentImageIndex + 1}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500"
@@ -223,7 +250,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
 
                       {/* Thumbnail dots */}
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
-                        {bow.images.map((_, index) => (
+                        {rentalInstrument.images.map((_, index) => (
                           <button
                             key={index}
                             onClick={(e) => {
@@ -268,11 +295,6 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                 <h2 className="text-xl lg:text-2xl font-semibold text-[#e80e19] leading-tight">
                   {displayName}
                 </h2>
-                {bow.new && (
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
-                    {isEnglish ? 'NEW' : 'NOVINKA'}
-                  </span>
-                )}
               </div>
 
               <div className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
@@ -281,26 +303,14 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                 ))}
               </div>
 
-              {(bow.price || bow.priceEnglish) && (
-                <div className="pt-2">
-                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">
-                    {isEnglish && bow.priceEnglish ? bow.priceEnglish : bow.price}
-                  </p>
-                </div>
-              )}
-
-              {/* Availability */}
+              {/* Status */}
               <div className="pt-2">
                 <span
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                    bow.availability === 'available'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
+                  className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(
+                    rentalInstrument.status,
+                  )}`}
                 >
-                  {bow.availability === 'available'
-                    ? t('availabilityAvailable')
-                    : t('availabilitySold')}
+                  {getStatusLabel(rentalInstrument.status)}
                 </span>
               </div>
             </div>
@@ -310,7 +320,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
 
       {/* Image Modal */}
       <ImageModal
-        images={bow.images}
+        images={rentalInstrument.images}
         currentIndex={currentImageIndex}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -321,36 +331,36 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
   )
 }
 
-// Main Bow Component
-const Bow = () => {
-  const t = useTranslations('Home')
-  const [bows, setBows] = useState<Bow[]>([])
+// Main Rent Component
+const Rent = () => {
+  const [rentalInstruments, setRentalInstruments] = useState<RentalInstrument[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [isExpanded, setIsExpanded] = useState(false)
   const pathname = usePathname()
 
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
   useEffect(() => {
-    fetchBows()
+    fetchRentalInstruments()
   }, [])
 
-  const fetchBows = async () => {
+  const fetchRentalInstruments = async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/bows')
+      const response = await fetch('/api/rental-instruments')
 
       if (!response.ok) {
-        throw new Error('Failed to fetch bows')
+        throw new Error('Failed to fetch rental instruments')
       }
 
       const data = await response.json()
-      // Filter only published bows - no language filtering needed now
-      const filteredBows = data.filter((bow: Bow) => bow.published)
+      // Filter only published rental instruments
+      const filteredRentalInstruments = data.filter(
+        (rentalInstrument: RentalInstrument) => rentalInstrument.published,
+      )
 
-      setBows(filteredBows)
+      setRentalInstruments(filteredRentalInstruments)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
@@ -364,7 +374,7 @@ const Bow = () => {
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
           <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
-            {t('bowsLoading')}
+            {isEnglish ? 'Loading rental instruments...' : 'Načítavam nástroje na prenájom...'}
           </p>
         </div>
       </div>
@@ -377,7 +387,7 @@ const Bow = () => {
         <div className="text-center">
           <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
           <button
-            onClick={fetchBows}
+            onClick={fetchRentalInstruments}
             className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-medium text-base transition-colors duration-200"
           >
             {isEnglish ? 'Try again' : 'Skúsiť znova'}
@@ -389,61 +399,38 @@ const Bow = () => {
 
   return (
     <div className="min-h-screen bg-[#fefefe]">
-      <div className="text-center space-y-12 mt-8 mx-4">
-        <div className="space-y-8 max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-            {t('bowsTitle')}
-          </h2>
-          <div>
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              {t('bowsIntro1')}
-            </p>
-
-            {isExpanded && (
-              <>
-                <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
-                  {t('bowsIntro2')}
-                </p>
-
-                <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
-                  {t('bowsIntro3')}
-                </p>
-              </>
-            )}
-
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-6 px-6 py-2 bg-[#e80e19] hover:bg-white hover:text-[#e80e19] hover:border-1 text-white rounded-lg font-bold text-2xl transition-colors duration-200 my-8 cursor-pointer"
-            >
-              {isExpanded ? t('lessButton') : t('moreButton')}
-            </button>
-          </div>
-        </div>
-      </div>
       {/* Header Section */}
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
-            {t('bowsTitle')}
+            {isEnglish ? 'Instruments for Rent' : 'Nástroje na prenájom'}
           </h1>
           <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
-            {t('bowsSubtitle')}
+            {isEnglish
+              ? 'Quality instruments available for rental'
+              : 'Kvalitné nástroje k dispozícii na prenájom'}
           </p>
         </div>
       </div>
 
-      {/* Bows List */}
+      {/* Rental Instruments List */}
       <div className="max-w-6xl mx-auto pb-12">
-        {bows.length === 0 ? (
+        {rentalInstruments.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-[#2f0000] text-lg lg:text-xl font-medium">
-              {t('bowsEmpty')}
+              {isEnglish
+                ? 'No instruments are currently available for rent.'
+                : 'Žiadne nástroje nie sú momentálne k dispozícii na prenájom.'}
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            {bows.map((bow) => (
-              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+            {rentalInstruments.map((rentalInstrument) => (
+              <RentalInstrumentItem
+                key={rentalInstrument.id}
+                rentalInstrument={rentalInstrument}
+                isEnglish={isEnglish}
+              />
             ))}
           </div>
         )}
@@ -452,4 +439,4 @@ const Bow = () => {
   )
 }
 
-export default Bow
+export default Rent

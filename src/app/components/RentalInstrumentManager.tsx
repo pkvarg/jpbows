@@ -1,0 +1,620 @@
+'use client'
+
+import Image from 'next/image'
+import { useState, useRef, ChangeEvent } from 'react'
+
+interface RentalInstrumentFormData {
+  name: string
+  enName: string
+  description: string
+  enDescription: string
+  images: string[]
+  published: boolean
+  metadata: string
+  status: 'available' | 'rented' | 'maintenance'
+}
+
+interface RentalInstrument {
+  id: string
+  images: string[]
+  name: string
+  enName: string
+  description: string
+  enDescription: string
+  published: boolean
+  metadata: string
+  status: 'available' | 'rented' | 'maintenance'
+  createdAt: Date
+  updatedAt: Date
+}
+
+export default function RentalInstrumentManager() {
+  const [formData, setFormData] = useState<RentalInstrumentFormData>({
+    name: '',
+    enName: '',
+    description: '',
+    enDescription: '',
+    images: [],
+    published: false,
+    metadata: '',
+    status: 'available',
+  })
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [rentalInstruments, setRentalInstruments] = useState<RentalInstrument[]>([])
+  const [imageFiles, setImageFiles] = useState<File[]>([])
+  const [imagePreviews, setImagePreviews] = useState<string[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      enName: '',
+      description: '',
+      enDescription: '',
+      images: [],
+      published: false,
+      metadata: '',
+      status: 'available',
+    })
+    setImageFiles([])
+    setImagePreviews([])
+    setEditingId(null)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    if (files.length === 0) return
+
+    // Validate file types
+    const invalidFiles = files.filter((file) => !file.type.startsWith('image/'))
+    if (invalidFiles.length > 0) {
+      setError('Please upload only image files')
+      return
+    }
+
+    // Create previews for new files
+    const newPreviews: string[] = []
+    const fileReaders: Promise<void>[] = []
+
+    files.forEach((file, index) => {
+      const reader = new FileReader()
+      const promise = new Promise<void>((resolve) => {
+        reader.onloadend = () => {
+          newPreviews[index] = reader.result as string
+          resolve()
+        }
+      })
+      fileReaders.push(promise)
+      reader.readAsDataURL(file)
+    })
+
+    Promise.all(fileReaders).then(() => {
+      setImageFiles((prevFiles) => [...prevFiles, ...files])
+      setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews])
+    })
+  }
+
+  const removeImage = (index: number) => {
+    setImageFiles((prevFiles) => prevFiles.filter((_, i) => i !== index))
+    setImagePreviews((prevPreviews) => prevPreviews.filter((_, i) => i !== index))
+
+    // If editing and removing an existing image
+    if (editingId && index < formData.images.length) {
+      setFormData((prev) => ({
+        ...prev,
+        images: prev.images.filter((_, i) => i !== index),
+      }))
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    setSuccessMessage(null)
+
+    try {
+      let uploadedImageUrls: string[] = [...formData.images]
+
+      // Upload new image files
+      if (imageFiles.length > 0) {
+        const uploadPromises = imageFiles.map(async (file) => {
+          const formData = new FormData()
+          formData.append('file', file)
+
+          const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
+          //const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            body: formData,
+          })
+
+          if (!response.ok) {
+            throw new Error('Failed to upload image')
+          }
+
+          const data = await response.json()
+          return data.imageUrl
+        })
+
+        const newImageUrls = await Promise.all(uploadPromises)
+        uploadedImageUrls = [...uploadedImageUrls, ...newImageUrls]
+      }
+
+      const rentalInstrumentData = {
+        name: formData.name,
+        enName: formData.enName,
+        description: formData.description,
+        enDescription: formData.enDescription,
+        images: uploadedImageUrls,
+        published: formData.published,
+        metadata: formData.metadata,
+        status: formData.status,
+      }
+
+      // Determine if we're creating or updating
+      const url = editingId ? `/api/rental-instruments/${editingId}` : '/api/rental-instruments'
+      const method = editingId ? 'PUT' : 'POST'
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(rentalInstrumentData),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to ${editingId ? 'update' : 'create'} rental instrument`)
+      }
+
+      const resultRentalInstrument = await response.json()
+
+      if (editingId) {
+        // Update rental instruments list with edited item
+        setRentalInstruments(
+          rentalInstruments.map((item) => (item.id === editingId ? resultRentalInstrument : item)),
+        )
+        setSuccessMessage('Rental instrument updated successfully!')
+      } else {
+        // Add new rental instrument to list
+        setRentalInstruments([...rentalInstruments, resultRentalInstrument])
+        setSuccessMessage('Rental instrument created successfully!')
+      }
+
+      // Reset the form
+      resetForm()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchRentalInstruments = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+
+      const response = await fetch('/api/rental-instruments')
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch rental instruments')
+      }
+
+      const data = await response.json()
+      setRentalInstruments(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleEdit = (rentalInstrument: RentalInstrument) => {
+    setFormData({
+      name: rentalInstrument.name,
+      enName: rentalInstrument.enName || '',
+      description: rentalInstrument.description,
+      enDescription: rentalInstrument.enDescription || '',
+      images: rentalInstrument.images || [],
+      published: rentalInstrument.published || false,
+      metadata: rentalInstrument.metadata || '',
+      status: rentalInstrument.status || 'available',
+    })
+    setEditingId(rentalInstrument.id)
+    setImagePreviews(rentalInstrument.images || [])
+    setImageFiles([])
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this rental instrument?')) return
+
+    try {
+      setLoading(true)
+      setError(null)
+
+      const response = await fetch(`/api/rental-instruments/${id}`, {
+        method: 'DELETE',
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to delete rental instrument')
+      }
+
+      // Remove from rental instruments list
+      setRentalInstruments(rentalInstruments.filter((item) => item.id !== id))
+      setSuccessMessage('Rental instrument deleted successfully!')
+
+      // Reset form if we were editing the deleted item
+      if (editingId === id) {
+        resetForm()
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const cancelEdit = () => {
+    resetForm()
+  }
+
+  return (
+    <div className="px-6 py-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
+      <h2 className="text-xl text-white font-bold mb-4">
+        {editingId ? 'Upraviť nástroj na prenájom' : 'Vytvoriť nástroj na prenájom'}
+      </h2>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-400">
+            Názov (SK)
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="enName" className="block text-sm font-medium text-gray-400">
+            Názov (EN)
+          </label>
+          <input
+            type="text"
+            id="enName"
+            name="enName"
+            value={formData.enName}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="description" className="block text-sm font-medium text-gray-400">
+            Popis (SK)
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            required
+            rows={3}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="enDescription" className="block text-sm font-medium text-gray-400">
+            Popis (EN)
+          </label>
+          <textarea
+            id="enDescription"
+            name="enDescription"
+            value={formData.enDescription}
+            onChange={handleInputChange}
+            rows={3}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="imageUpload" className="block text-sm font-medium text-gray-400">
+            Obrázky
+          </label>
+          <input
+            type="file"
+            id="imageUpload"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept="image/*"
+            multiple
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+          <p className="text-xs text-gray-500 mt-1">Môžete vybrať viacero obrázkov naraz</p>
+
+          {imagePreviews.length > 0 && (
+            <div className="mt-2">
+              <p className="text-sm text-gray-500 mb-1">
+                Náhľad ({imagePreviews.length} obrázkov):
+              </p>
+              <div className="grid grid-cols-3 gap-2 h-[200px]">
+                {imagePreviews.map((preview, index) => (
+                  <div key={index} className="relative group">
+                    <div className="relative h-24 w-24 border">
+                      <Image
+                        src={preview}
+                        alt={`Image preview ${index + 1}`}
+                        width={96}
+                        height={96}
+                        style={{ objectFit: 'cover' }}
+                        className="rounded"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeImage(index)}
+                      className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      ×
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="published" className="block text-sm font-medium text-gray-400">
+            Publikovaný
+          </label>
+          <div className="mt-1">
+            <label className="inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                id="published"
+                name="published"
+                checked={formData.published}
+                onChange={(e) => setFormData((prev) => ({ ...prev, published: e.target.checked }))}
+                className="sr-only peer"
+              />
+              <div className="relative w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <span className="ml-3 text-sm font-medium text-gray-300">
+                {formData.published ? 'Áno' : 'Nie'}
+              </span>
+            </label>
+            <p className="text-xs text-gray-500 mt-1">Zobrazí sa na webstránke</p>
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="status" className="block text-sm font-medium text-gray-400">
+            Stav
+          </label>
+          <select
+            id="status"
+            name="status"
+            value={formData.status}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          >
+            <option value="available">Dostupný</option>
+            <option value="rented">Prenajatý</option>
+            <option value="maintenance">Údržba</option>
+          </select>
+          <p className="text-xs text-gray-500 mt-1">Stav dostupnosti nástroja</p>
+        </div>
+
+        <div>
+          <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
+            Metadata
+          </label>
+          <textarea
+            id="metadata"
+            name="metadata"
+            value={formData.metadata}
+            onChange={handleInputChange}
+            rows={2}
+            placeholder="JSON metadata alebo doplňujúce informácie"
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+          <p className="text-xs text-gray-500 mt-1">Doplňujúce údaje vo formáte JSON</p>
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50"
+          >
+            {loading ? 'Ukladám...' : editingId ? 'Upraviť nástroj' : 'Vytvoriť nástroj'}
+          </button>
+
+          {editingId && (
+            <button
+              type="button"
+              onClick={cancelEdit}
+              className="flex-1 bg-gray-300 hover:bg-gray-400 text-black py-2 px-4 rounded"
+            >
+              Zrušiť
+            </button>
+          )}
+        </div>
+      </form>
+
+      {successMessage && (
+        <div className="mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+          {successMessage}
+        </div>
+      )}
+
+      {error && (
+        <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          {error}
+        </div>
+      )}
+
+      <div className="mt-6">
+        <button
+          onClick={fetchRentalInstruments}
+          disabled={loading}
+          className="w-full bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded disabled:opacity-50"
+        >
+          {loading ? 'Načítavam...' : 'Všetky nástroje na prenájom'}
+        </button>
+
+        {rentalInstruments.length > 0 && (
+          <div className="mt-4 space-y-6">
+            <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
+              Všetky nástroje na prenájom ({rentalInstruments.length})
+            </h3>
+
+            {/* Sort rental instruments: published first, then by creation date */}
+            {[...rentalInstruments]
+              .sort((a, b) => {
+                // First sort by published status (published items first)
+                if (a.published !== b.published) {
+                  return b.published ? 1 : -1
+                }
+                // Then sort by creation date (newest first)
+                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+              })
+              .map((rentalInstrument) => (
+                <div
+                  key={rentalInstrument.id}
+                  className={`p-4 border-2 rounded-lg transition-all duration-200 ${
+                    rentalInstrument.published
+                      ? 'border-green-500 bg-green-50/5'
+                      : 'border-red-400 bg-red-50/5'
+                  }`}
+                >
+                  {/* Header with title and status badges */}
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h4 className="font-bold text-xl text-white mb-1">{rentalInstrument.name}</h4>
+                      {rentalInstrument.enName && (
+                        <h5 className="text-md text-gray-300 italic">{rentalInstrument.enName}</h5>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-2 items-end">
+                      {/* Published Status - Most Prominent */}
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-bold ${
+                          rentalInstrument.published
+                            ? 'bg-green-600 text-white'
+                            : 'bg-red-600 text-white'
+                        }`}
+                      >
+                        {rentalInstrument.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
+                      </span>
+
+                      {/* Additional badges */}
+                      <div className="flex gap-2">
+                        <span
+                          className={`px-2 py-1 rounded text-white text-xs font-medium ${
+                            rentalInstrument.status === 'available'
+                              ? 'bg-green-600'
+                              : rentalInstrument.status === 'rented'
+                                ? 'bg-orange-600'
+                                : 'bg-gray-600'
+                          }`}
+                        >
+                          {rentalInstrument.status === 'available'
+                            ? 'DOSTUPNÝ'
+                            : rentalInstrument.status === 'rented'
+                              ? 'PRENAJATÝ'
+                              : 'ÚDRŽBA'}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
+                          {new Date(rentalInstrument.createdAt).toLocaleDateString('sk-SK')}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="mb-3">
+                    <p className="text-white mb-2">{rentalInstrument.description}</p>
+                    {rentalInstrument.enDescription && (
+                      <p className="text-gray-300 italic text-sm">
+                        {rentalInstrument.enDescription}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Images */}
+                  {rentalInstrument.images && rentalInstrument.images.length > 0 && (
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-400 mb-2">
+                        Obrázky ({rentalInstrument.images.length}):
+                      </p>
+                      <div className="flex gap-2 overflow-x-auto pb-2">
+                        {rentalInstrument.images.map((imageUrl, index) => (
+                          <div
+                            key={index}
+                            className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded"
+                          >
+                            <Image
+                              src={imageUrl}
+                              alt={`${rentalInstrument.name} - ${index + 1}`}
+                              width={96}
+                              height={96}
+                              style={{ objectFit: 'cover' }}
+                              className="rounded"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action buttons */}
+                  <div className="flex gap-2 pt-2 border-t border-gray-600">
+                    <button
+                      onClick={() => handleEdit(rentalInstrument)}
+                      className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 px-4 rounded font-medium transition-colors"
+                    >
+                      ✏️ Upraviť
+                    </button>
+                    <button
+                      onClick={() => handleDelete(rentalInstrument.id)}
+                      className="flex-1 bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded font-medium transition-colors"
+                    >
+                      🗑️ Vymazať
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}

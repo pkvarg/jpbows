@@ -33,6 +33,12 @@
     "contactError": "Chyba! Napíšte nám na orchester.technik@stuba.sk, prosím.",
     "contactSuccess": "Vaša správa bola úspešne odoslaná!",
 
+    "contactPlaceholderName": "Vaše meno",
+    "contactPlaceholderEmail": "vas@email.com",
+    "contactPlaceholderPhone": "+421 XXX XXX XXX",
+    "contactPlaceholderMessage": "Vaša správa...",
+    "contactSubtitle": "Kontaktujte nás s akýmikoľvek otázkami",
+
     "contactGdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
     "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu.",
 
@@ -87,7 +93,46 @@
     "gdprNoSharingText": "Nepredávame, neobchodujeme ani žiadnym iným spôsobom neposkytujeme vaše osobné údaje tretím stranám. Odovzdanie Vašich osobných údajov štátnym organizáciám je len na základe zákona alebo právoplatných úradných či súdnych rozhodnutí v súlade s právnymi predpismi Slovenskej republiky. Tieto podmienky sú platné od 1.1.2024.",
 
     "availabilityAvailable": "Dostupný",
-    "availabilitySold": "Predaný"
+    "availabilitySold": "Predaný",
+
+    "navBows": "Sláčiky",
+    "navServiceRepairs": "Servis / opravy",
+    "navInstruments": "Nástroje",
+    "navRentalInstruments": "Prenájom nástrojov",
+    "navAboutMe": "O mne",
+    "navContact": "Kontakt",
+
+    "bowsTitle": "Sláčiky",
+    "bowsIntro1": "Sláčik ako neoddeliteľná súčasť nástroja a hry na \"sláčikový hudobný nástroj\" je azda najdôležitejším elementom pri tvorbe tónu, umeleckej interpretácii a zdrojom neuveriteľných artikulačných možností. Toto azda vystihuje najviac moju životnú filozofiu v hre na dobové či moderné nástroje od violone, barokového kontrabasu, kontrabasu tzv. viedenskéh ladenia či moderných nástrojov –orchestrálnych a sólových. V mojej bohatej orchestrálnej, komornej a sólovej praxi som si čoraz viac uvedomoval potrebu a dôležitosť sláčika a to bol aj impulz, prečo som sa začal viac do hľbky zaoberať jeho špecifikami a následnou výrobou a servisom sláčikov.",
+    "bowsIntro2": "Ako hráč na prakticky všetky basové nástroje od baroka až po súčastnosť si uvedomujem obrovskú rôznorodosť, farebnú škálu (zvukovú) ako i neuveriteľné možnosti a využitie sláčika naprieč hudobnými štýlmi, použitia v orchestrálnej, komornej či sólovej hre a pod. V neposlednom rade pohnútkou prečo sa viac do hľbky venovať sláčikom, bola potreba spraviť si \"servis\" a jeho údržbu, vymeniť vlasy, vyčistiť a vedieť ho správne a účelne použiť a udržať sláčik v správnej a zdravej kondícii.",
+    "bowsIntro3": "Sláčiky z mojej produkcie vyrábam ručne, na základe vlastných interpretačných skúseností, špecifík použitia a potrieb hudobného nástroja. Každý sláčik je jedinečný originálny výtvor a robený na mieru. Má inú zvukovosť – farbu, dokáže vytiahnuť z vášho nástroja to čo hľadáte, alebo vám pomôcť pri správnom tvorení tónu, technike hry a dokonalejšej interretácii na vašom obľúbenom nástroji. Sláčik vzniká na základe objednávky a špecifických potrieb a prianí zákazníka. Výsledný produkt je konzultovaný a skúšaný mnou a samozrejme zákazníkom.",
+    "bowsSubtitle": "Kvalitné ručne vyrobené sláčiky pre náročných hudobníkov",
+    "bowsEmpty": "Žiadne sláčiky nie sú momentálne k dispozícii.",
+    "bowsLoading": "Načítavam sláčiky...",
+    "moreButton": "Viac",
+    "lessButton": "Menej",
+
+    "introSectionBowsTitle": "Sláčiky",
+    "introSectionBowsText": "Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia baroka, klasicizmu a raného romantizmu.",
+    "introSectionRepairsTitle": "Rekonštrukcie a opravy",
+    "introSectionRepairsText": "Rekonštrukcie a opravy sláčikov. Prineste svoj starý, poškodený či znehodnotený sláčik a ja mu pri rešpektovaní jeho originálnych \"proporcií\" a pôvodného využitia vdýchnem nový život.",
+    "introSectionInstrumentsTitle": "Nástroje",
+    "introSectionInstrumentsText": "Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne \"Bivaj Art Luthery\". Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní tradičných postupov, prvotriedneho materiálu a poctivej práce títo majstri produkujú prvotriedne majstrovské nástroje rôznych foriem od tradičných Talianskych a Francúzskych modelov, cez Viedenské modely nástrojov až po variácie tvarov. Nástroje si môžete vybrať podľa vlastných požiadaviek či vkusu, povrchovej úpravy, prísť si ich vyskúšať a na základe vašich preferencií bude nástroj nastavený. Na nástroje sa vzťahuje doživotná záruka.",
+
+    "aboutMeTitle": "O mne",
+    "aboutMeName": "Ján Prievozník",
+    "aboutMePara1": "Študoval na súkromnom konzervatóriu Dezidera Kardoša v Topoľčanoch, Cirkevnom konzervatóriu v Bratislave a na Akadémii umení v Banskej Bystrici (ped. vedenie Ján Krigovský). Ako kontrabasista pôsobil v orchestroch Štátnej opery v Banskej Bystrici, v orchestri Slovenského národného divadla a v Symfonickom orchestri Slovenského rozhlasu - SOSR.",
+    "aboutMePara2": "Už počas štúdií na vysokej škole sa venoval interpretácii starej hudby. Začal spolupracovať so súborom Musica Aeterna pod vedením Petra Zajíčka, čo odštartovalo jeho aktivity v oblasti starej hudby a autentickej interpretácie, ktorej sa venuje dodnes.",
+    "aboutMePara3": "Od roku 2006 je členom a pravidelne spolupracuje so súbormi: Musica Aeterna /SK, Wiener Akademie /AT, Hoffkapelle Esterházy /HU, Ars Antiqua Austria /AT, Czech Ensemble Baroque /CZ, Il pomo d'oro /IT a mnohými ďalšími.",
+    "aboutMePara4": "Predstavil sa na významných pódiách a festivaloch: Bratislavské Hudobné Slávnosti, Pražské Jaro, Salzburg Festspiele, Bach Fest Lipsko, Early music festival Utrecht a mnohých ďalších.",
+    "aboutMePara5": "Účinkoval na pódiách: Wiener Musikverein, Koncerthaus Wien, Opera national de Paris, Tchaikovski Concert Hall, Palau de la Música Catalana, ale i na mnohých koncertných pódiách v celej Európe, Japonsku, Amerike, Mexiku, Guatemale, Ekvádore a Chile.",
+    "aboutMePara6": "Spolupracoval s dirigentskými osobnosťami: sir Andrew Parrot, Jaap ter Linden, Giovanni Antonini, Martin Haselböck, ako i sólistami: Monica Hugget, John Holloway, Enrico Onofri, Joyce DiDonato a mnohými ďalšími.",
+    "aboutMePara7": "Od roku 2000 je lektorom na Letnej škole barokní hudby v Holešove (ČR). Ako pedagóg kontrabasu pôsobil na Cirkevnom konzervatóriu v Bratislave, Hudobnej a umeleckej akadémii Jána Albrechta v Banskej Štiavnici. Od roku 2004 pôsobí ako pedagóg kontrabasu na Súkromnom konzervatóriu v Nitre.",
+    "aboutMePara8": "Ako sólista sa predstavil so Štátnym orchestrom Žilina, Musicou Aeternou a Slovenskou filharmóniou. V roku 2022 vydal svoje profilové CD \"Contrabasso/ Violone in Presbourg\".",
+    "aboutMePara9": "V roku 2010 založil spolu so svojim pedagógom a priateľom Jánom Krigovským Slovenský kontrabasový klub – Slovak Double Bass Club, ktorý za posledných 14 rokov zorganizoval niekoľko medzinárodných podujatí ako napr.: kontrabasové kurzy a koncerty – BASS FEST+ (14 ročníkov), hudobný festival \"Musica Perennis Iuventutis\" (10 ročníkov), SLOVAKIA DOUBLE BASS COMPETITION (3 ročníky) a mnohé ďalšie.",
+
+    "repairsTitle": "Servis - Opravy",
+    "aboutCompanyTitle": "O firme"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

@@ -29,6 +29,12 @@
     "contactError": "Error! Write to orchester.technik@stuba.sk, please.",
     "contactSuccess": "Message successfully sent!",
 
+    "contactPlaceholderName": "Your name",
+    "contactPlaceholderEmail": "your@email.com",
+    "contactPlaceholderPhone": "+421 XXX XXX XXX",
+    "contactPlaceholderMessage": "Your message...",
+    "contactSubtitle": "Get in touch with us for any inquiries",
+
     "contactGdpr1": "We do not store the data provided by you in any database.",
     "contactGdpr2": "The email will only be used to respond to your message.",
 
@@ -83,7 +89,46 @@
     "gdprNoSharingText": "We do not sell, trade or otherwise provide your personal data to third parties. Transfer of your personal data to state organizations is only based on law or valid official or court decisions in accordance with the legal regulations of the Slovak Republic. These conditions are valid from 1.1.2024.",
 
     "availabilityAvailable": "Available",
-    "availabilitySold": "Sold"
+    "availabilitySold": "Sold",
+
+    "navBows": "Bows",
+    "navServiceRepairs": "Service / Repairs",
+    "navInstruments": "Instruments",
+    "navRentalInstruments": "Rental Instruments",
+    "navAboutMe": "About Me",
+    "navContact": "Contact",
+
+    "bowsTitle": "Bows",
+    "bowsIntro1": "The bow as an inseparable part of the instrument and playing a \"bowed musical instrument\" is perhaps the most important element in tone production, artistic interpretation and a source of incredible articulation possibilities. This perhaps best captures my life philosophy in playing historical or modern instruments from violone, baroque double bass, double bass in the so-called Viennese tuning to modern instruments - orchestral and solo. In my rich orchestral, chamber and solo practice, I became more and more aware of the need and importance of the bow, and that was the impulse why I started to deal more deeply with its specifics and subsequent production and service of bows.",
+    "bowsIntro2": "As a player of practically all bass instruments from the Baroque to the present, I am aware of the enormous diversity, color palette (sound) as well as the incredible possibilities and use of the bow across musical styles, use in orchestral, chamber or solo playing, etc. Last but not least, the reason for devoting myself more deeply to bows was the need to do \"service\" and its maintenance, replace hairs, clean and know how to use it correctly and purposefully and keep the bow in proper and healthy condition.",
+    "bowsIntro3": "Bows from my production I make by hand, based on my own interpretive experience, use specifics and needs of the musical instrument. Every bow is a unique original creation and custom-made. It has a different sound - color, can bring out what you are looking for from your instrument, or help you with proper tone production, playing technique and better interpretation on your favorite instrument. The bow is created based on order and specific needs and wishes of the customer. The final product is consulted and tested by me and of course the customer.",
+    "bowsSubtitle": "Quality handcrafted bows for discerning musicians",
+    "bowsEmpty": "No bows are currently available.",
+    "bowsLoading": "Loading bows...",
+    "moreButton": "More",
+    "lessButton": "Less",
+
+    "introSectionBowsTitle": "Bows",
+    "introSectionBowsText": "Exclusive double bass bows, copies according to preserved originals and drawings from the Baroque, Classical and early Romantic periods.",
+    "introSectionRepairsTitle": "Reconstructions and Repairs",
+    "introSectionRepairsText": "Bow reconstructions and repairs. Bring your old, damaged or degraded bow and I will breathe new life into it while respecting its original \"proportions\" and intended use.",
+    "introSectionInstrumentsTitle": "Instruments",
+    "introSectionInstrumentsText": "Looking for a new instrument? Come and choose your new instrument from the workshop \"Bivaj Art Luthery\". These are master instruments from the workshop of Ferenc Vajai and István Bíró. While respecting traditional procedures, first-class material and honest work, these masters produce first-class master instruments of various forms from traditional Italian and French models, through Viennese models of instruments to shape variations. You can choose instruments according to your own requirements or taste, surface treatment, come and try them and the instrument will be adjusted according to your preferences. The instruments come with a lifetime warranty.",
+
+    "aboutMeTitle": "About Me",
+    "aboutMeName": "Ján Prievozník",
+    "aboutMePara1": "He studied at the Private Conservatory of Dezider Kardoš in Topoľčany, the Church Conservatory in Bratislava, and at the Academy of Arts in Banská Bystrica (under the pedagogical guidance of Ján Krigovský). As a double bassist, he worked in the orchestras of the State Opera in Banská Bystrica, in the Slovak National Theatre orchestra, and in the Slovak Radio Symphony Orchestra - SOSR.",
+    "aboutMePara2": "Already during his university studies, he devoted himself to the interpretation of early music. He began collaborating with the ensemble Musica Aeterna under the direction of Peter Zajíček, which launched his activities in the field of early music and authentic interpretation, which he continues to pursue to this day.",
+    "aboutMePara3": "Since 2006, he has been a member and regularly collaborates with ensembles: Musica Aeterna /SK, Wiener Akademie /AT, Hoffkapelle Esterházy /HU, Ars Antiqua Austria /AT, Czech Ensemble Baroque /CZ, Il pomo d'oro /IT and many others.",
+    "aboutMePara4": "He has performed at major venues and festivals: Bratislava Music Festival, Prague Spring, Salzburg Festspiele, Bach Fest Leipzig, Early Music Festival Utrecht and many others.",
+    "aboutMePara5": "He has performed at venues: Wiener Musikverein, Koncerthaus Wien, Opera national de Paris, Tchaikovski Concert Hall, Palau de la Música Catalana, but also at many concert venues throughout Europe, Japan, America, Mexico, Guatemala, Ecuador and Chile.",
+    "aboutMePara6": "He has collaborated with conducting personalities: sir Andrew Parrot, Jaap ter Linden, Giovanni Antonini, Martin Haselböck, as well as soloists: Monica Hugget, John Holloway, Enrico Onofri, Joyce DiDonato and many others.",
+    "aboutMePara7": "Since 2000, he has been a lecturer at the Summer School of Baroque Music in Holešov (Czech Republic). As a double bass teacher, he worked at the Church Conservatory in Bratislava, the Musical and Art Academy of Ján Albrecht in Banská Štiavnica. Since 2004, he has been working as a double bass teacher at the Private Conservatory in Nitra.",
+    "aboutMePara8": "As a soloist, he has performed with the State Orchestra Žilina, Musica Aeterna and the Slovak Philharmonic. In 2022, he released his profile CD \"Contrabasso/Violone in Presbourg\".",
+    "aboutMePara9": "In 2010, together with his teacher and friend Ján Krigovský, he founded the Slovak Double Bass Club, which over the past 14 years has organized several international events such as: double bass courses and concerts – BASS FEST+ (14 editions), music festival \"Musica Perennis Iuventutis\" (10 editions), SLOVAKIA DOUBLE BASS COMPETITION (3 editions) and many others.",
+
+    "repairsTitle": "Service - Repairs",
+    "aboutCompanyTitle": "About the Company"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

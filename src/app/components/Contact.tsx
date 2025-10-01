@@ -19,6 +19,11 @@ interface TranslationProps {
     contactSuccess: string
     contactGdpr1: string
     //contactGdpr2: string
+    contactPlaceholderName: string
+    contactPlaceholderEmail: string
+    contactPlaceholderPhone: string
+    contactPlaceholderMessage: string
+    contactSubtitle: string
   }
 }
 
@@ -37,6 +42,11 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
     contactSuccess,
     contactGdpr1,
     //contactGdpr2,
+    contactPlaceholderName,
+    contactPlaceholderEmail,
+    contactPlaceholderPhone,
+    contactPlaceholderMessage,
+    contactSubtitle,
   } = translations
   const [message, setMessage] = useState<string | null>(null)
   const [messageSuccess, setMessageSuccess] = useState<string | null>(null)
@@ -202,9 +212,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                 {contactTitle}
               </h1>
               <p className="text-xl lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
-                {locale === 'en'
-                  ? 'Get in touch with us for any inquiries'
-                  : 'Kontaktujte nás s akýmikoľvek otázkami'}
+                {contactSubtitle}
               </p>
             </div>
           </div>
@@ -231,7 +239,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      placeholder="Vaše meno"
+                      placeholder={contactPlaceholderName}
                     />
                   </div>
 
@@ -246,7 +254,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      placeholder="vas@email.com"
+                      placeholder={contactPlaceholderEmail}
                     />
                   </div>
 
@@ -260,7 +268,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                       name="user_phone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+421 XXX XXX XXX"
+                      placeholder={contactPlaceholderPhone}
                     />
                   </div>
                 </div>
@@ -277,7 +285,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     value={mailMessage}
                     onChange={(e) => setMailMessage(e.target.value)}
                     required
-                    placeholder="Vaša správa..."
+                    placeholder={contactPlaceholderMessage}
                   ></textarea>
                 </div>
 

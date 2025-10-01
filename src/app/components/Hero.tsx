@@ -9,14 +9,15 @@ const Hero = () => {
       {/* Hero Image Section */}
       <div className="relative min-h-[40vh] lg:min-h-[70vh] overflow-hidden bg-[#fefefe]">
         <Image
-          src="/Slacik2.jpg
-          "
+          src="/Slacik2.jpg"
           alt="Hero background"
           fill
-          //className="lg:object-center object-contain"
-          className=""
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
           priority
+          className="hidden lg:block"
         />
+
+        <Image src="/Slacik2.jpg" alt="Hero background" fill priority className="block lg:hidden" />
 
         {/* Title overlay - Desktop only */}
         {/* <div className="hidden lg:flex absolute top-[50%] inset-0 items-center justify-center">

@@ -9,7 +9,6 @@ const Contact = () => {
   const contactTranslations = {
     contactTitle: t('contactTitle'),
     contactName: t('contactName'),
-
     contactEmail: t('contactEmail'),
     contactPhone: t('contactPhone'),
     contactMessage: t('contactMessage'),
@@ -21,6 +20,11 @@ const Contact = () => {
     contactSuccess: t('contactSuccess'),
     contactGdpr1: t('contactGdpr1'),
     // contactGdpr2: t('contactGdpr2'),
+    contactPlaceholderName: t('contactPlaceholderName'),
+    contactPlaceholderEmail: t('contactPlaceholderEmail'),
+    contactPlaceholderPhone: t('contactPlaceholderPhone'),
+    contactPlaceholderMessage: t('contactPlaceholderMessage'),
+    contactSubtitle: t('contactSubtitle'),
   }
 
   return (

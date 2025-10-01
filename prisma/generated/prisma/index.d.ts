@@ -38,6 +38,11 @@ export type Slider = $Result.DefaultSelection<Prisma.$SliderPayload>
  * 
  */
 export type Blog = $Result.DefaultSelection<Prisma.$BlogPayload>
+/**
+ * Model RentalInstrument
+ * 
+ */
+export type RentalInstrument = $Result.DefaultSelection<Prisma.$RentalInstrumentPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -180,6 +185,16 @@ export class PrismaClient<
     * ```
     */
   get blog(): Prisma.BlogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.rentalInstrument`: Exposes CRUD operations for the **RentalInstrument** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RentalInstruments
+    * const rentalInstruments = await prisma.rentalInstrument.findMany()
+    * ```
+    */
+  get rentalInstrument(): Prisma.RentalInstrumentDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -624,7 +639,8 @@ export namespace Prisma {
     Bows: 'Bows',
     Bass: 'Bass',
     Slider: 'Slider',
-    Blog: 'Blog'
+    Blog: 'Blog',
+    RentalInstrument: 'RentalInstrument'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -643,7 +659,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "visitor" | "bows" | "bass" | "slider" | "blog"
+      modelProps: "visitor" | "bows" | "bass" | "slider" | "blog" | "rentalInstrument"
       txIsolationLevel: never
     }
     model: {
@@ -1017,6 +1033,80 @@ export namespace Prisma {
           }
         }
       }
+      RentalInstrument: {
+        payload: Prisma.$RentalInstrumentPayload<ExtArgs>
+        fields: Prisma.RentalInstrumentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RentalInstrumentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RentalInstrumentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          findFirst: {
+            args: Prisma.RentalInstrumentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RentalInstrumentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          findMany: {
+            args: Prisma.RentalInstrumentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>[]
+          }
+          create: {
+            args: Prisma.RentalInstrumentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          createMany: {
+            args: Prisma.RentalInstrumentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RentalInstrumentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          update: {
+            args: Prisma.RentalInstrumentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          deleteMany: {
+            args: Prisma.RentalInstrumentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RentalInstrumentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RentalInstrumentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RentalInstrumentPayload>
+          }
+          aggregate: {
+            args: Prisma.RentalInstrumentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRentalInstrument>
+          }
+          groupBy: {
+            args: Prisma.RentalInstrumentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RentalInstrumentGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.RentalInstrumentFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.RentalInstrumentAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.RentalInstrumentCountArgs<ExtArgs>
+            result: $Utils.Optional<RentalInstrumentCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1093,6 +1183,7 @@ export namespace Prisma {
     bass?: BassOmit
     slider?: SliderOmit
     blog?: BlogOmit
+    rentalInstrument?: RentalInstrumentOmit
   }
 
   /* Types for Logging */
@@ -6215,6 +6306,1000 @@ export namespace Prisma {
 
 
   /**
+   * Model RentalInstrument
+   */
+
+  export type AggregateRentalInstrument = {
+    _count: RentalInstrumentCountAggregateOutputType | null
+    _min: RentalInstrumentMinAggregateOutputType | null
+    _max: RentalInstrumentMaxAggregateOutputType | null
+  }
+
+  export type RentalInstrumentMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    published: boolean | null
+    enName: string | null
+    enDescription: string | null
+    metadata: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RentalInstrumentMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    published: boolean | null
+    enName: string | null
+    enDescription: string | null
+    metadata: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RentalInstrumentCountAggregateOutputType = {
+    id: number
+    images: number
+    name: number
+    description: number
+    published: number
+    enName: number
+    enDescription: number
+    metadata: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RentalInstrumentMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RentalInstrumentMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RentalInstrumentCountAggregateInputType = {
+    id?: true
+    images?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RentalInstrumentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RentalInstrument to aggregate.
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RentalInstruments to fetch.
+     */
+    orderBy?: RentalInstrumentOrderByWithRelationInput | RentalInstrumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RentalInstrumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RentalInstruments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RentalInstruments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RentalInstruments
+    **/
+    _count?: true | RentalInstrumentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RentalInstrumentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RentalInstrumentMaxAggregateInputType
+  }
+
+  export type GetRentalInstrumentAggregateType<T extends RentalInstrumentAggregateArgs> = {
+        [P in keyof T & keyof AggregateRentalInstrument]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRentalInstrument[P]>
+      : GetScalarType<T[P], AggregateRentalInstrument[P]>
+  }
+
+
+
+
+  export type RentalInstrumentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RentalInstrumentWhereInput
+    orderBy?: RentalInstrumentOrderByWithAggregationInput | RentalInstrumentOrderByWithAggregationInput[]
+    by: RentalInstrumentScalarFieldEnum[] | RentalInstrumentScalarFieldEnum
+    having?: RentalInstrumentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RentalInstrumentCountAggregateInputType | true
+    _min?: RentalInstrumentMinAggregateInputType
+    _max?: RentalInstrumentMaxAggregateInputType
+  }
+
+  export type RentalInstrumentGroupByOutputType = {
+    id: string
+    images: string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: RentalInstrumentCountAggregateOutputType | null
+    _min: RentalInstrumentMinAggregateOutputType | null
+    _max: RentalInstrumentMaxAggregateOutputType | null
+  }
+
+  type GetRentalInstrumentGroupByPayload<T extends RentalInstrumentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RentalInstrumentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RentalInstrumentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RentalInstrumentGroupByOutputType[P]>
+            : GetScalarType<T[P], RentalInstrumentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RentalInstrumentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    images?: boolean
+    name?: boolean
+    description?: boolean
+    published?: boolean
+    enName?: boolean
+    enDescription?: boolean
+    metadata?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["rentalInstrument"]>
+
+
+
+  export type RentalInstrumentSelectScalar = {
+    id?: boolean
+    images?: boolean
+    name?: boolean
+    description?: boolean
+    published?: boolean
+    enName?: boolean
+    enDescription?: boolean
+    metadata?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RentalInstrumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "metadata" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["rentalInstrument"]>
+
+  export type $RentalInstrumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RentalInstrument"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      images: string[]
+      name: string
+      description: string
+      published: boolean
+      enName: string
+      enDescription: string
+      metadata: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["rentalInstrument"]>
+    composites: {}
+  }
+
+  type RentalInstrumentGetPayload<S extends boolean | null | undefined | RentalInstrumentDefaultArgs> = $Result.GetResult<Prisma.$RentalInstrumentPayload, S>
+
+  type RentalInstrumentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RentalInstrumentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RentalInstrumentCountAggregateInputType | true
+    }
+
+  export interface RentalInstrumentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RentalInstrument'], meta: { name: 'RentalInstrument' } }
+    /**
+     * Find zero or one RentalInstrument that matches the filter.
+     * @param {RentalInstrumentFindUniqueArgs} args - Arguments to find a RentalInstrument
+     * @example
+     * // Get one RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RentalInstrumentFindUniqueArgs>(args: SelectSubset<T, RentalInstrumentFindUniqueArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RentalInstrument that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RentalInstrumentFindUniqueOrThrowArgs} args - Arguments to find a RentalInstrument
+     * @example
+     * // Get one RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RentalInstrumentFindUniqueOrThrowArgs>(args: SelectSubset<T, RentalInstrumentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RentalInstrument that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentFindFirstArgs} args - Arguments to find a RentalInstrument
+     * @example
+     * // Get one RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RentalInstrumentFindFirstArgs>(args?: SelectSubset<T, RentalInstrumentFindFirstArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RentalInstrument that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentFindFirstOrThrowArgs} args - Arguments to find a RentalInstrument
+     * @example
+     * // Get one RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RentalInstrumentFindFirstOrThrowArgs>(args?: SelectSubset<T, RentalInstrumentFindFirstOrThrowArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RentalInstruments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RentalInstruments
+     * const rentalInstruments = await prisma.rentalInstrument.findMany()
+     * 
+     * // Get first 10 RentalInstruments
+     * const rentalInstruments = await prisma.rentalInstrument.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rentalInstrumentWithIdOnly = await prisma.rentalInstrument.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RentalInstrumentFindManyArgs>(args?: SelectSubset<T, RentalInstrumentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RentalInstrument.
+     * @param {RentalInstrumentCreateArgs} args - Arguments to create a RentalInstrument.
+     * @example
+     * // Create one RentalInstrument
+     * const RentalInstrument = await prisma.rentalInstrument.create({
+     *   data: {
+     *     // ... data to create a RentalInstrument
+     *   }
+     * })
+     * 
+     */
+    create<T extends RentalInstrumentCreateArgs>(args: SelectSubset<T, RentalInstrumentCreateArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RentalInstruments.
+     * @param {RentalInstrumentCreateManyArgs} args - Arguments to create many RentalInstruments.
+     * @example
+     * // Create many RentalInstruments
+     * const rentalInstrument = await prisma.rentalInstrument.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RentalInstrumentCreateManyArgs>(args?: SelectSubset<T, RentalInstrumentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RentalInstrument.
+     * @param {RentalInstrumentDeleteArgs} args - Arguments to delete one RentalInstrument.
+     * @example
+     * // Delete one RentalInstrument
+     * const RentalInstrument = await prisma.rentalInstrument.delete({
+     *   where: {
+     *     // ... filter to delete one RentalInstrument
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RentalInstrumentDeleteArgs>(args: SelectSubset<T, RentalInstrumentDeleteArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RentalInstrument.
+     * @param {RentalInstrumentUpdateArgs} args - Arguments to update one RentalInstrument.
+     * @example
+     * // Update one RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RentalInstrumentUpdateArgs>(args: SelectSubset<T, RentalInstrumentUpdateArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RentalInstruments.
+     * @param {RentalInstrumentDeleteManyArgs} args - Arguments to filter RentalInstruments to delete.
+     * @example
+     * // Delete a few RentalInstruments
+     * const { count } = await prisma.rentalInstrument.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RentalInstrumentDeleteManyArgs>(args?: SelectSubset<T, RentalInstrumentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RentalInstruments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RentalInstruments
+     * const rentalInstrument = await prisma.rentalInstrument.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RentalInstrumentUpdateManyArgs>(args: SelectSubset<T, RentalInstrumentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RentalInstrument.
+     * @param {RentalInstrumentUpsertArgs} args - Arguments to update or create a RentalInstrument.
+     * @example
+     * // Update or create a RentalInstrument
+     * const rentalInstrument = await prisma.rentalInstrument.upsert({
+     *   create: {
+     *     // ... data to create a RentalInstrument
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RentalInstrument we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RentalInstrumentUpsertArgs>(args: SelectSubset<T, RentalInstrumentUpsertArgs<ExtArgs>>): Prisma__RentalInstrumentClient<$Result.GetResult<Prisma.$RentalInstrumentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RentalInstruments that matches the filter.
+     * @param {RentalInstrumentFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const rentalInstrument = await prisma.rentalInstrument.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: RentalInstrumentFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a RentalInstrument.
+     * @param {RentalInstrumentAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const rentalInstrument = await prisma.rentalInstrument.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: RentalInstrumentAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of RentalInstruments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentCountArgs} args - Arguments to filter RentalInstruments to count.
+     * @example
+     * // Count the number of RentalInstruments
+     * const count = await prisma.rentalInstrument.count({
+     *   where: {
+     *     // ... the filter for the RentalInstruments we want to count
+     *   }
+     * })
+    **/
+    count<T extends RentalInstrumentCountArgs>(
+      args?: Subset<T, RentalInstrumentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RentalInstrumentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RentalInstrument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RentalInstrumentAggregateArgs>(args: Subset<T, RentalInstrumentAggregateArgs>): Prisma.PrismaPromise<GetRentalInstrumentAggregateType<T>>
+
+    /**
+     * Group by RentalInstrument.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RentalInstrumentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RentalInstrumentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RentalInstrumentGroupByArgs['orderBy'] }
+        : { orderBy?: RentalInstrumentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RentalInstrumentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRentalInstrumentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RentalInstrument model
+   */
+  readonly fields: RentalInstrumentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RentalInstrument.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RentalInstrumentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RentalInstrument model
+   */
+  interface RentalInstrumentFieldRefs {
+    readonly id: FieldRef<"RentalInstrument", 'String'>
+    readonly images: FieldRef<"RentalInstrument", 'String[]'>
+    readonly name: FieldRef<"RentalInstrument", 'String'>
+    readonly description: FieldRef<"RentalInstrument", 'String'>
+    readonly published: FieldRef<"RentalInstrument", 'Boolean'>
+    readonly enName: FieldRef<"RentalInstrument", 'String'>
+    readonly enDescription: FieldRef<"RentalInstrument", 'String'>
+    readonly metadata: FieldRef<"RentalInstrument", 'String'>
+    readonly status: FieldRef<"RentalInstrument", 'String'>
+    readonly createdAt: FieldRef<"RentalInstrument", 'DateTime'>
+    readonly updatedAt: FieldRef<"RentalInstrument", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RentalInstrument findUnique
+   */
+  export type RentalInstrumentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter, which RentalInstrument to fetch.
+     */
+    where: RentalInstrumentWhereUniqueInput
+  }
+
+  /**
+   * RentalInstrument findUniqueOrThrow
+   */
+  export type RentalInstrumentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter, which RentalInstrument to fetch.
+     */
+    where: RentalInstrumentWhereUniqueInput
+  }
+
+  /**
+   * RentalInstrument findFirst
+   */
+  export type RentalInstrumentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter, which RentalInstrument to fetch.
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RentalInstruments to fetch.
+     */
+    orderBy?: RentalInstrumentOrderByWithRelationInput | RentalInstrumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RentalInstruments.
+     */
+    cursor?: RentalInstrumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RentalInstruments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RentalInstruments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RentalInstruments.
+     */
+    distinct?: RentalInstrumentScalarFieldEnum | RentalInstrumentScalarFieldEnum[]
+  }
+
+  /**
+   * RentalInstrument findFirstOrThrow
+   */
+  export type RentalInstrumentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter, which RentalInstrument to fetch.
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RentalInstruments to fetch.
+     */
+    orderBy?: RentalInstrumentOrderByWithRelationInput | RentalInstrumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RentalInstruments.
+     */
+    cursor?: RentalInstrumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RentalInstruments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RentalInstruments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RentalInstruments.
+     */
+    distinct?: RentalInstrumentScalarFieldEnum | RentalInstrumentScalarFieldEnum[]
+  }
+
+  /**
+   * RentalInstrument findMany
+   */
+  export type RentalInstrumentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter, which RentalInstruments to fetch.
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RentalInstruments to fetch.
+     */
+    orderBy?: RentalInstrumentOrderByWithRelationInput | RentalInstrumentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RentalInstruments.
+     */
+    cursor?: RentalInstrumentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RentalInstruments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RentalInstruments.
+     */
+    skip?: number
+    distinct?: RentalInstrumentScalarFieldEnum | RentalInstrumentScalarFieldEnum[]
+  }
+
+  /**
+   * RentalInstrument create
+   */
+  export type RentalInstrumentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * The data needed to create a RentalInstrument.
+     */
+    data: XOR<RentalInstrumentCreateInput, RentalInstrumentUncheckedCreateInput>
+  }
+
+  /**
+   * RentalInstrument createMany
+   */
+  export type RentalInstrumentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RentalInstruments.
+     */
+    data: RentalInstrumentCreateManyInput | RentalInstrumentCreateManyInput[]
+  }
+
+  /**
+   * RentalInstrument update
+   */
+  export type RentalInstrumentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * The data needed to update a RentalInstrument.
+     */
+    data: XOR<RentalInstrumentUpdateInput, RentalInstrumentUncheckedUpdateInput>
+    /**
+     * Choose, which RentalInstrument to update.
+     */
+    where: RentalInstrumentWhereUniqueInput
+  }
+
+  /**
+   * RentalInstrument updateMany
+   */
+  export type RentalInstrumentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RentalInstruments.
+     */
+    data: XOR<RentalInstrumentUpdateManyMutationInput, RentalInstrumentUncheckedUpdateManyInput>
+    /**
+     * Filter which RentalInstruments to update
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * Limit how many RentalInstruments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RentalInstrument upsert
+   */
+  export type RentalInstrumentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * The filter to search for the RentalInstrument to update in case it exists.
+     */
+    where: RentalInstrumentWhereUniqueInput
+    /**
+     * In case the RentalInstrument found by the `where` argument doesn't exist, create a new RentalInstrument with this data.
+     */
+    create: XOR<RentalInstrumentCreateInput, RentalInstrumentUncheckedCreateInput>
+    /**
+     * In case the RentalInstrument was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RentalInstrumentUpdateInput, RentalInstrumentUncheckedUpdateInput>
+  }
+
+  /**
+   * RentalInstrument delete
+   */
+  export type RentalInstrumentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+    /**
+     * Filter which RentalInstrument to delete.
+     */
+    where: RentalInstrumentWhereUniqueInput
+  }
+
+  /**
+   * RentalInstrument deleteMany
+   */
+  export type RentalInstrumentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RentalInstruments to delete
+     */
+    where?: RentalInstrumentWhereInput
+    /**
+     * Limit how many RentalInstruments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RentalInstrument findRaw
+   */
+  export type RentalInstrumentFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * RentalInstrument aggregateRaw
+   */
+  export type RentalInstrumentAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * RentalInstrument without action
+   */
+  export type RentalInstrumentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RentalInstrument
+     */
+    select?: RentalInstrumentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RentalInstrument
+     */
+    omit?: RentalInstrumentOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6302,6 +7387,23 @@ export namespace Prisma {
   };
 
   export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof BlogScalarFieldEnum]
+
+
+  export const RentalInstrumentScalarFieldEnum: {
+    id: 'id',
+    images: 'images',
+    name: 'name',
+    description: 'description',
+    published: 'published',
+    enName: 'enName',
+    enDescription: 'enDescription',
+    metadata: 'metadata',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RentalInstrumentScalarFieldEnum = (typeof RentalInstrumentScalarFieldEnum)[keyof typeof RentalInstrumentScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6808,6 +7910,88 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
   }
 
+  export type RentalInstrumentWhereInput = {
+    AND?: RentalInstrumentWhereInput | RentalInstrumentWhereInput[]
+    OR?: RentalInstrumentWhereInput[]
+    NOT?: RentalInstrumentWhereInput | RentalInstrumentWhereInput[]
+    id?: StringFilter<"RentalInstrument"> | string
+    images?: StringNullableListFilter<"RentalInstrument">
+    name?: StringFilter<"RentalInstrument"> | string
+    description?: StringFilter<"RentalInstrument"> | string
+    published?: BoolFilter<"RentalInstrument"> | boolean
+    enName?: StringFilter<"RentalInstrument"> | string
+    enDescription?: StringFilter<"RentalInstrument"> | string
+    metadata?: StringNullableFilter<"RentalInstrument"> | string | null
+    status?: StringFilter<"RentalInstrument"> | string
+    createdAt?: DateTimeFilter<"RentalInstrument"> | Date | string
+    updatedAt?: DateTimeFilter<"RentalInstrument"> | Date | string
+  }
+
+  export type RentalInstrumentOrderByWithRelationInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RentalInstrumentWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RentalInstrumentWhereInput | RentalInstrumentWhereInput[]
+    OR?: RentalInstrumentWhereInput[]
+    NOT?: RentalInstrumentWhereInput | RentalInstrumentWhereInput[]
+    images?: StringNullableListFilter<"RentalInstrument">
+    name?: StringFilter<"RentalInstrument"> | string
+    description?: StringFilter<"RentalInstrument"> | string
+    published?: BoolFilter<"RentalInstrument"> | boolean
+    enName?: StringFilter<"RentalInstrument"> | string
+    enDescription?: StringFilter<"RentalInstrument"> | string
+    metadata?: StringNullableFilter<"RentalInstrument"> | string | null
+    status?: StringFilter<"RentalInstrument"> | string
+    createdAt?: DateTimeFilter<"RentalInstrument"> | Date | string
+    updatedAt?: DateTimeFilter<"RentalInstrument"> | Date | string
+  }, "id">
+
+  export type RentalInstrumentOrderByWithAggregationInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RentalInstrumentCountOrderByAggregateInput
+    _max?: RentalInstrumentMaxOrderByAggregateInput
+    _min?: RentalInstrumentMinOrderByAggregateInput
+  }
+
+  export type RentalInstrumentScalarWhereWithAggregatesInput = {
+    AND?: RentalInstrumentScalarWhereWithAggregatesInput | RentalInstrumentScalarWhereWithAggregatesInput[]
+    OR?: RentalInstrumentScalarWhereWithAggregatesInput[]
+    NOT?: RentalInstrumentScalarWhereWithAggregatesInput | RentalInstrumentScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    images?: StringNullableListFilter<"RentalInstrument">
+    name?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    description?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    published?: BoolWithAggregatesFilter<"RentalInstrument"> | boolean
+    enName?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    enDescription?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    metadata?: StringNullableWithAggregatesFilter<"RentalInstrument"> | string | null
+    status?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"RentalInstrument"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"RentalInstrument"> | Date | string
+  }
+
   export type VisitorCreateInput = {
     id?: string
     count: number
@@ -7285,6 +8469,100 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RentalInstrumentCreateInput = {
+    id?: string
+    images?: RentalInstrumentCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    status?: string
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RentalInstrumentUncheckedCreateInput = {
+    id?: string
+    images?: RentalInstrumentCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    status?: string
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RentalInstrumentUpdateInput = {
+    images?: RentalInstrumentUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RentalInstrumentUncheckedUpdateInput = {
+    images?: RentalInstrumentUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RentalInstrumentCreateManyInput = {
+    id?: string
+    images?: RentalInstrumentCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    status?: string
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RentalInstrumentUpdateManyMutationInput = {
+    images?: RentalInstrumentUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RentalInstrumentUncheckedUpdateManyInput = {
+    images?: RentalInstrumentUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -7643,6 +8921,46 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type RentalInstrumentCountOrderByAggregateInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RentalInstrumentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RentalInstrumentMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -7682,6 +9000,15 @@ export namespace Prisma {
   }
 
   export type BassUpdateimagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type RentalInstrumentCreateimagesInput = {
+    set: string[]
+  }
+
+  export type RentalInstrumentUpdateimagesInput = {
     set?: string[]
     push?: string | string[]
   }

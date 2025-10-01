@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import LangSwitcher from './LangSwitcher'
 
 const Navbar = () => {
+  const t = useTranslations('Home')
   const [navbar, setNavbar] = useState(false)
 
   const router = useRouter()
@@ -26,7 +28,7 @@ const Navbar = () => {
             >
               <Image
                 src="/b4b_logo9.png"
-                alt="technik"
+                alt="bow4bass.com"
                 width={900}
                 height={900}
                 className="w-[40px]"
@@ -88,14 +90,14 @@ const Navbar = () => {
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Sláčiky
+                {t('navBows')}
               </Link>
               <Link
                 href={'/repairs'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Servis / opravy
+                {t('navServiceRepairs')}
               </Link>
 
               <Link
@@ -103,14 +105,21 @@ const Navbar = () => {
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Nástroje
+                {t('navInstruments')}
+              </Link>
+              <Link
+                href={'/rent'}
+                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                onClick={handleLinkClick}
+              >
+                {t('navRentalInstruments')}
               </Link>
               <Link
                 href={'/about-me'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                O mne
+                {t('navAboutMe')}
               </Link>
 
               <Link
@@ -118,7 +127,7 @@ const Navbar = () => {
                 className="cursor-pointer hover:text-[#2f0000] block py-2"
                 onClick={handleLinkClick}
               >
-                Kontakt
+                {t('navContact')}
               </Link>
 
               <LangSwitcher />

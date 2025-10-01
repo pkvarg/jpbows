@@ -86,3 +86,17 @@ model Blog {
   createdAt DateTime
   updatedAt DateTime
 }
+
+model RentalInstrument {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  images String[]
+  name String
+  description String
+  published Boolean
+  enName String
+  enDescription String
+  metadata String?
+  status String @default("available")
+  createdAt DateTime
+  updatedAt DateTime
+}

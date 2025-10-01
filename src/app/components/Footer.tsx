@@ -111,25 +111,27 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
       <div className={`flex flex-col gap-4`}>
         <div className="mb-[10px] h-[2px] bg-white opacity-10" />
         <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
-          <div className="flex lg:flex-row flex-col items-start justify-between flex-wrap gap-4 mx-0  lg:mx-12">
-            <div className="flex lg:flex-row flex-col gap-2 justify-center items-center">
+          <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-4 lg:mx-12">
+            <div className="flex lg:flex-row flex-col gap-2 justify-center items-center text-center">
               <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
                 Copyright &copy; {Date().substring(11, 15)}
               </h4>
               <h4 style={{ color: '#0e1528' }}>bow4bass</h4>
             </div>
-            <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/about`}>
-              {about}
-            </Link>
 
-            <div className="flex flex-col gap-2 justify-center items-center">
+            <div className="flex flex-col gap-2 justify-center items-center text-center">
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/about`}
+              >
+                {about}
+              </Link>
               <Link
                 className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
                 href={`/gdpr`}
               >
                 GDPR
               </Link>
-
               <Link
                 className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
                 href={`/trade-rules`}
@@ -138,34 +140,57 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
               </Link>
             </div>
 
-            {/* <Link className="text-[#0e1528] hover:text-[#e80e19] transition-colors" href={`/gdpr`}>
-              GDPR
-            </Link> */}
-            {/* 
-            <Link
-              className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-              href={`/trade-rules`}
-            >
-              {tradeRules}
-            </Link> */}
-
-            <div className="flex flex-col gap-2 justify-center items-center">
+            <div className="flex flex-col gap-2 justify-center items-center text-center">
               <Link
                 className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
                 href={`/bivaj-art`}
               >
                 Bivaj Art
               </Link>
-              {/* 
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/trade-rules`}
-              >
-                {tradeRules}
-              </Link> */}
             </div>
 
-            <p className="font-normal" style={{ color: '#0e1528' }}>
+            <div className="flex flex-col gap-2 justify-center items-center text-center">
+              <a
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href="https://www.slovakdoublebassclub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Slovak Double Bass Club
+              </a>
+              <a
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href="https://www.bassband.sk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                BassBand
+              </a>
+              {/* <a
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors flex items-center gap-1"
+                href="https://www.facebook.com/groups/424063780943330"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Slovak Double Bass Club
+              </a>
+              <a
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors flex items-center gap-1"
+                href="https://www.facebook.com/bassbandsk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                BassBand
+              </a> */}
+            </div>
+
+            <p className="font-normal text-center" style={{ color: '#0e1528' }}>
               Phone: +421 905 338 081
               <br />
               <a href="mailto:info@bow4bass.com">email: info@bow4bass.com</a>
