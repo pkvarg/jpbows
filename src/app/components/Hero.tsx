@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Hero Image Section */}
       <div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[10%] lg:ml-[17%]">
         <Image
-          src="/Sláčik 2 žabka.jpg"
+          src="/hero.jpg"
           //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"
@@ -20,7 +20,7 @@ const Hero = () => {
         />
 
         <Image
-          src="/Sláčik 2 žabka.jpg"
+          src="/hero.jpg"
           //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"

@@ -82,9 +82,6 @@ const NewItemsSlider = () => {
       const bassesData = await bassesResponse.json()
       const bowsData = await bowsResponse.json()
 
-      console.log('BData', bassesData)
-      console.log('BowData', bowsData)
-
       // Filter only new and published products (no language filtering needed now)
       const newBasses = bassesData
         .filter((bass: BassData) => bass.published && bass.new)
