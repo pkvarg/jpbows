@@ -7,9 +7,10 @@ const Hero = () => {
   return (
     <>
       {/* Hero Image Section */}
-      <div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[10%] lg:ml-[12.5%]">
+      <div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[10%] lg:ml-[17%]">
         <Image
-          src="/01c.png"
+          src="/Sláčik 2 žabka.jpg"
+          //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"
           fill
@@ -19,7 +20,8 @@ const Hero = () => {
         />
 
         <Image
-          src="/01c.png"
+          src="/Sláčik 2 žabka.jpg"
+          //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"
           style={{ objectFit: 'contain', objectPosition: 'center' }}
