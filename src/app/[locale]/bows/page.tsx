@@ -78,7 +78,7 @@ const ImageModal = ({
                   e.stopPropagation()
                   onPrevious()
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#E80D19] p-3 rounded-full transition-all"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -95,7 +95,7 @@ const ImageModal = ({
                   e.stopPropagation()
                   onNext()
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#E80D19] p-3 rounded-full transition-all"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -363,9 +363,7 @@ const Bow = () => {
       <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
-          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
-            {t('bowsLoading')}
-          </p>
+          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">{t('bowsLoading')}</p>
         </div>
       </div>
     )
@@ -395,9 +393,7 @@ const Bow = () => {
             {t('bowsTitle')}
           </h2>
           <div>
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
-              {t('bowsIntro1')}
-            </p>
+            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">{t('bowsIntro1')}</p>
 
             {isExpanded && (
               <>
@@ -436,9 +432,7 @@ const Bow = () => {
       <div className="max-w-6xl mx-auto pb-12">
         {bows.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-[#2f0000] text-lg lg:text-xl font-medium">
-              {t('bowsEmpty')}
-            </p>
+            <p className="text-[#2f0000] text-lg lg:text-xl font-medium">{t('bowsEmpty')}</p>
           </div>
         ) : (
           <div className="space-y-8">

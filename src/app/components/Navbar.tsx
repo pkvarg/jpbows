@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="text-3xl lg:text-2xl font-semibold leading-tight text-[#e80e19]">
+    <nav className="text-2xl lg:text-xl font-semibold leading-tight text-[#e80e19]">
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
         <div className="mb-0 lg:mb-2">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
