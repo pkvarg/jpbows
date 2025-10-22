@@ -153,6 +153,68 @@ export default function BassManager() {
     }
   }
 
+  const moveImageUp = (index: number) => {
+    if (index === 0) return // Can't move first image up
+
+    // Swap with previous image in previews
+    setImagePreviews((prevPreviews) => {
+      const newPreviews = [...prevPreviews]
+      ;[newPreviews[index - 1], newPreviews[index]] = [newPreviews[index], newPreviews[index - 1]]
+      return newPreviews
+    })
+
+    // Swap in image files if they exist
+    setImageFiles((prevFiles) => {
+      const newFiles = [...prevFiles]
+      if (newFiles[index] && newFiles[index - 1]) {
+        ;[newFiles[index - 1], newFiles[index]] = [newFiles[index], newFiles[index - 1]]
+      }
+      return newFiles
+    })
+
+    // Swap in formData.images if editing existing images
+    if (editingId) {
+      setFormData((prev) => {
+        const newImages = [...prev.images]
+        if (newImages[index] && newImages[index - 1]) {
+          ;[newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]]
+        }
+        return { ...prev, images: newImages }
+      })
+    }
+  }
+
+  const moveImageDown = (index: number) => {
+    if (index === imagePreviews.length - 1) return // Can't move last image down
+
+    // Swap with next image in previews
+    setImagePreviews((prevPreviews) => {
+      const newPreviews = [...prevPreviews]
+      ;[newPreviews[index], newPreviews[index + 1]] = [newPreviews[index + 1], newPreviews[index]]
+      return newPreviews
+    })
+
+    // Swap in image files if they exist
+    setImageFiles((prevFiles) => {
+      const newFiles = [...prevFiles]
+      if (newFiles[index] && newFiles[index + 1]) {
+        ;[newFiles[index], newFiles[index + 1]] = [newFiles[index + 1], newFiles[index]]
+      }
+      return newFiles
+    })
+
+    // Swap in formData.images if editing existing images
+    if (editingId) {
+      setFormData((prev) => {
+        const newImages = [...prev.images]
+        if (newImages[index] && newImages[index + 1]) {
+          ;[newImages[index], newImages[index + 1]] = [newImages[index + 1], newImages[index]]
+        }
+        return { ...prev, images: newImages }
+      })
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -460,14 +522,42 @@ export default function BassManager() {
                         style={{ objectFit: 'cover' }}
                         className="rounded"
                       />
+                      {/* Image position indicator */}
+                      <div className="absolute bottom-0 left-0 bg-black/70 text-white text-xs px-1 rounded-tr">
+                        #{index + 1}
+                      </div>
                     </div>
+                    {/* Remove button */}
                     <button
                       type="button"
                       onClick={() => removeImage(index)}
                       className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                      title="Odstrániť"
                     >
                       ×
                     </button>
+                    {/* Move up button */}
+                    {index > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => moveImageUp(index)}
+                        className="absolute top-0 left-0 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                        title="Posunúť hore"
+                      >
+                        ↑
+                      </button>
+                    )}
+                    {/* Move down button */}
+                    {index < imagePreviews.length - 1 && (
+                      <button
+                        type="button"
+                        onClick={() => moveImageDown(index)}
+                        className="absolute bottom-0 left-0 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                        title="Posunúť dole"
+                      >
+                        ↓
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
