@@ -53,6 +53,7 @@ model Bass {
   priceEnglish  String?
   videoUrl      String?
   availability  String   @default("available")
+  order         Int      @default(999)
   createdAt     DateTime
   updatedAt     DateTime
 }

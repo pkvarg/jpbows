@@ -7,9 +7,10 @@ const Hero = () => {
   return (
     <>
       {/* Hero Image Section */}
-      <div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[10%] lg:ml-[17%]">
+      {/* </><div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[10%] lg:ml-[17%]"> */}
+      <div className="relative min-h-[40vh] lg:min-h-[70vh] bg-[#fefefe] ml-[0%] lg:ml-[0%]">
         <Image
-          src="/hero.jpg"
+          src="/hero2.jpg"
           //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"
@@ -20,7 +21,7 @@ const Hero = () => {
         />
 
         <Image
-          src="/hero.jpg"
+          src="/hero2.jpg"
           //src="/01c.png"
           //src="/Slacik2.jpg"
           alt="Hero background"

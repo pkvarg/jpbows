@@ -35,7 +35,7 @@ const Navbar = () => {
               />
               {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
               {/* <h1 className="leading-[22.5px] text-4xl text-[#e80e19]">bow4bass</h1>  */}
-              <h1 className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19]">
+              <h1 className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19] italic">
                 bow4bass
               </h1>
             </div>

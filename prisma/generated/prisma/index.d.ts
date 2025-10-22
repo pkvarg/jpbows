@@ -3266,8 +3266,18 @@ export namespace Prisma {
 
   export type AggregateBass = {
     _count: BassCountAggregateOutputType | null
+    _avg: BassAvgAggregateOutputType | null
+    _sum: BassSumAggregateOutputType | null
     _min: BassMinAggregateOutputType | null
     _max: BassMaxAggregateOutputType | null
+  }
+
+  export type BassAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type BassSumAggregateOutputType = {
+    order: number | null
   }
 
   export type BassMinAggregateOutputType = {
@@ -3283,6 +3293,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3300,6 +3311,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3318,11 +3330,20 @@ export namespace Prisma {
     priceEnglish: number
     videoUrl: number
     availability: number
+    order: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type BassAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type BassSumAggregateInputType = {
+    order?: true
+  }
 
   export type BassMinAggregateInputType = {
     id?: true
@@ -3337,6 +3358,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3354,6 +3376,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3372,6 +3395,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3415,6 +3439,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: BassAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BassSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: BassMinAggregateInputType
@@ -3445,6 +3481,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BassCountAggregateInputType | true
+    _avg?: BassAvgAggregateInputType
+    _sum?: BassSumAggregateInputType
     _min?: BassMinAggregateInputType
     _max?: BassMaxAggregateInputType
   }
@@ -3463,9 +3501,12 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string
+    order: number
     createdAt: Date
     updatedAt: Date
     _count: BassCountAggregateOutputType | null
+    _avg: BassAvgAggregateOutputType | null
+    _sum: BassSumAggregateOutputType | null
     _min: BassMinAggregateOutputType | null
     _max: BassMaxAggregateOutputType | null
   }
@@ -3498,6 +3539,7 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["bass"]>
@@ -3518,11 +3560,12 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
+  export type BassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["bass"]>
 
   export type $BassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bass"
@@ -3541,6 +3584,7 @@ export namespace Prisma {
       priceEnglish: string | null
       videoUrl: string | null
       availability: string
+      order: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["bass"]>
@@ -3948,6 +3992,7 @@ export namespace Prisma {
     readonly priceEnglish: FieldRef<"Bass", 'String'>
     readonly videoUrl: FieldRef<"Bass", 'String'>
     readonly availability: FieldRef<"Bass", 'String'>
+    readonly order: FieldRef<"Bass", 'Int'>
     readonly createdAt: FieldRef<"Bass", 'DateTime'>
     readonly updatedAt: FieldRef<"Bass", 'DateTime'>
   }
@@ -7347,6 +7392,7 @@ export namespace Prisma {
     priceEnglish: 'priceEnglish',
     videoUrl: 'videoUrl',
     availability: 'availability',
+    order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7656,6 +7702,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bass"> | string | null
     videoUrl?: StringNullableFilter<"Bass"> | string | null
     availability?: StringFilter<"Bass"> | string
+    order?: IntFilter<"Bass"> | number
     createdAt?: DateTimeFilter<"Bass"> | Date | string
     updatedAt?: DateTimeFilter<"Bass"> | Date | string
   }
@@ -7674,6 +7721,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7695,6 +7743,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bass"> | string | null
     videoUrl?: StringNullableFilter<"Bass"> | string | null
     availability?: StringFilter<"Bass"> | string
+    order?: IntFilter<"Bass"> | number
     createdAt?: DateTimeFilter<"Bass"> | Date | string
     updatedAt?: DateTimeFilter<"Bass"> | Date | string
   }, "id">
@@ -7713,11 +7762,14 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BassCountOrderByAggregateInput
+    _avg?: BassAvgOrderByAggregateInput
     _max?: BassMaxOrderByAggregateInput
     _min?: BassMinOrderByAggregateInput
+    _sum?: BassSumOrderByAggregateInput
   }
 
   export type BassScalarWhereWithAggregatesInput = {
@@ -7737,6 +7789,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableWithAggregatesFilter<"Bass"> | string | null
     videoUrl?: StringNullableWithAggregatesFilter<"Bass"> | string | null
     availability?: StringWithAggregatesFilter<"Bass"> | string
+    order?: IntWithAggregatesFilter<"Bass"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Bass"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Bass"> | Date | string
   }
@@ -8166,6 +8219,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8184,6 +8238,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8201,6 +8256,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8218,6 +8274,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8236,6 +8293,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8253,6 +8311,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8270,6 +8329,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8796,8 +8856,13 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BassAvgOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type BassMaxOrderByAggregateInput = {
@@ -8813,6 +8878,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8830,8 +8896,13 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BassSumOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type SliderCountOrderByAggregateInput = {

@@ -16,6 +16,7 @@ interface BassFormData {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  order: number
 }
 
 interface Bass {
@@ -32,6 +33,7 @@ interface Bass {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  order: number
   createdAt: Date
   updatedAt: Date
 }
@@ -50,6 +52,7 @@ export default function BassManager() {
     metadata: '',
     videoUrl: '',
     availability: 'available',
+    order: 999,
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -74,6 +77,7 @@ export default function BassManager() {
       metadata: '',
       videoUrl: '',
       availability: 'available',
+      order: 999,
     })
     setImageFiles([])
     setImagePreviews([])
@@ -87,10 +91,20 @@ export default function BassManager() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+
+    // For order field, allow empty string temporarily while typing
+    if (name === 'order') {
+      const numValue = value === '' ? 0 : parseInt(value)
+      setFormData((prev) => ({
+        ...prev,
+        [name]: isNaN(numValue) ? 999 : numValue,
+      }))
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }))
+    }
   }
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -187,6 +201,7 @@ export default function BassManager() {
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
         availability: formData.availability,
+        order: formData.order,
       }
 
       // Determine if we're creating or updating
@@ -260,6 +275,7 @@ export default function BassManager() {
       metadata: bass.metadata || '',
       videoUrl: bass.videoUrl || '',
       availability: bass.availability || 'available',
+      order: bass.order || 999,
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -302,7 +318,7 @@ export default function BassManager() {
   }
 
   return (
-    <div className="px-6 py-6 border rounded-lg shadow-md max-w-md mx-auto text-black">
+    <div className="px-6 py-6 border rounded-lg shadow-md max-w-2xl mx-auto text-black">
       <h2 className="text-xl text-white font-bold mb-4">
         {editingId ? 'Upraviť nástroj' : 'Vytvoriť nástroj'}
       </h2>
@@ -523,6 +539,24 @@ export default function BassManager() {
         </div>
 
         <div>
+          <label htmlFor="order" className="block text-sm font-medium text-gray-400">
+            Poradie zobrazenia
+          </label>
+          <input
+            type="number"
+            id="order"
+            name="order"
+            value={formData.order}
+            onChange={handleInputChange}
+            min="1"
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          />
+          <p className="text-xs text-gray-500 mt-1">
+            Nižšie číslo = zobrazí sa skôr (1 = prvý, 2 = druhý, atď.)
+          </p>
+        </div>
+
+        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -586,12 +620,12 @@ export default function BassManager() {
               Všetky nástroje ({basses.length})
             </h3>
 
-            {/* Sort basses: published first, then by creation date */}
+            {/* Sort basses: by order first, then by creation date */}
             {[...basses]
               .sort((a, b) => {
-                // First sort by published status (published items first)
-                if (a.published !== b.published) {
-                  return b.published ? 1 : -1
+                // First sort by order (ascending - lower numbers first)
+                if (a.order !== b.order) {
+                  return a.order - b.order
                 }
                 // Then sort by creation date (newest first)
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -623,6 +657,9 @@ export default function BassManager() {
 
                       {/* Additional badges */}
                       <div className="flex gap-2">
+                        <span className="px-2 py-1 rounded bg-purple-600 text-white text-xs font-bold">
+                          #{bass.order}
+                        </span>
                         {bass.new && (
                           <span className="px-2 py-1 rounded bg-blue-600 text-white text-xs">
                             NOVÝ

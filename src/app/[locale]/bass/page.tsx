@@ -18,6 +18,7 @@ interface Bass {
   new: boolean
   videoUrl: string
   availability: 'available' | 'sold'
+  order: number
   createdAt: string
   updatedAt: string
 }
@@ -385,6 +386,8 @@ const Bass = () => {
   const [error, setError] = useState<string | null>(null)
   const pathname = usePathname()
 
+  console.log('basses', basses)
+
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
@@ -406,7 +409,16 @@ const Bass = () => {
       // Filter only published basses - no language filtering needed now
       const filteredBasses = data.filter((bass: Bass) => bass.published)
 
-      setBasses(filteredBasses)
+      // Sort by order (ascending - lower numbers first)
+      const sortedBasses = filteredBasses.sort((a: Bass, b: Bass) => {
+        if (a.order !== b.order) {
+          return a.order - b.order
+        }
+        // If same order, sort by creation date (newest first)
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      })
+
+      setBasses(sortedBasses)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {

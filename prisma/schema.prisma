@@ -42,18 +42,19 @@ model Bows {
 
 model Bass {
   id  String @id @default(auto()) @map("_id") @db.ObjectId
-  images String[] 
+  images String[]
   name String
-  description String  
-  published Boolean   
-  enName String  
-  enDescription String  
+  description String
+  published Boolean
+  enName String
+  enDescription String
   new Boolean
   metadata String?
   price String
   priceEnglish String?
   videoUrl String?
   availability String @default("available")
+  order Int @default(999)
   createdAt DateTime
   updatedAt DateTime
 }

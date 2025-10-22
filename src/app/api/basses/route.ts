@@ -19,6 +19,10 @@ export async function POST(request: NextRequest) {
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',
+        priceEnglish: body.priceEnglish || '',
+        videoUrl: body.videoUrl || '',
+        availability: body.availability || 'available',
+        order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -46,10 +50,13 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    // Fetch all basses ordered by creation date
+    // Fetch all basses ordered by order field (ascending)
     const basses = await db.bass.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { order: 'asc' },
     })
+
+    // Debug: Log the order values
+    console.log('Basses order:', basses.map(b => ({ name: b.name, order: b.order })))
 
     // Return successful response
     return NextResponse.json(basses)
