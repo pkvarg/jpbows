@@ -1,8 +1,11 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const TradeRules = () => {
+  const pathname = usePathname()
+  const isEnglish = pathname.includes('/en/')
 
   return (
     <div className="min-h-screen bg-[#fefefe]">
@@ -11,7 +14,7 @@ const TradeRules = () => {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] tracking-wide">
-              Obchodné podmienky
+              {isEnglish ? 'Terms and Conditions' : 'Obchodné podmienky'}
             </h1>
           </div>
         </div>
@@ -86,25 +89,19 @@ const TradeRules = () => {
           {/* Warranty */}
           <section className="mb-12">
             <h2 className="text-2xl lg:text-3xl font-bold text-[#e80e19] mb-6">
-              Záruka a servis
+              {isEnglish ? 'Warranty and Service' : 'Záruka a servis'}
             </h2>
             <div className="bg-green-50 border-l-4 border-green-500 rounded-md p-6 mb-6">
-              <h3 className="text-xl lg:text-2xl font-bold text-[#2f0000] mb-4">
-                Doživotná záruka
-              </h3>
               <p className="text-lg leading-relaxed">
-                Na všetky nástroje z dielne Bivaj Art Luthery poskytujeme doživotnú záruku na materiál a remeselné spracovanie.
+                {isEnglish
+                  ? 'All products have a warranty according to the law: 24 months for individuals, 12 months for legal entities. The warranty certificate must be reported within 48 hours of receipt — after this period, complaints are no longer accepted. Complaints are sent to the specified address. The customer must comply with them — failure to comply with them may result in the loss of the warranty. The warranty only for the product is used according to the instructions, the correctly completed certificate is returned and the product has been exposed to fire, bad weather or misused; repairs were made by unauthorized persons. The warranty is not valid if the product is used according to the instructions, it is valid only if the product has been exposed to fire, bad weather or misused; repairs were made by unauthorized technicians. The warranty does not cover problems caused by the product that has been exposed to humidity, extreme temperatures, sun, sweat or corrosion.'
+                  : 'Všetky produkty majú záruku podľa zákona: 24 mesiacov pre fyzické osoby, 12 mesiacov pre právnické subjekty. Záručná doba začína bežať po okamihu prevzatia tovaru — po uplynutí tejto doby sa reklamácie tovaru už neprijímajú. Reklamácie sa posielajú na adresu uvedenú nižšie. Zákazník musí zaslať záručný certifikát — nesplnenie tohto požiadavky môže viesť k strate záruky. Záruka sa vzťahuje iba na chyby materiálu alebo výroby. Platí len vtedy, ak bol produkt používaný v súlade s návodom, riadne vyplnený záručný certifikát je zaslaný s produktom a produkt nebol vystavený ohňu, zlému počasiu alebo zneužitiu; opravy boli vykonané neautorizovanými technikmi. Záruka sa nevzťahuje na problémy spôsobené produktom, ktorý bol vystavený vlhkosti, extrémnym teplotám, slnku, potu alebo korózii.'
+                }
               </p>
             </div>
             <div className="space-y-6">
               <p className="text-lg lg:text-xl leading-relaxed">
-                <strong>Záruka zahŕňa:</strong> Bezplatné opravy defektov materiálu a výrobných chýb.
-              </p>
-              <p className="text-lg lg:text-xl leading-relaxed">
-                <strong>Záruka nezahŕňa:</strong> Poškodenia spôsobené nesprávnym používaním, pádom, vlhkosťou alebo bežným opotrebovaním.
-              </p>
-              <p className="text-lg lg:text-xl leading-relaxed">
-                <strong>Servisné služby:</strong> Ponúkame údržbu, opravy a rekonštrukcie nástrojov aj od iných výrobcov.
+                <strong>{isEnglish ? 'Service:' : 'Servisné služby:'}</strong> {isEnglish ? 'We offer maintenance, repairs and reconstructions of instruments from other manufacturers.' : 'Ponúkame údržbu, opravy a rekonštrukcie nástrojov aj od iných výrobcov.'}
               </p>
             </div>
           </section>
