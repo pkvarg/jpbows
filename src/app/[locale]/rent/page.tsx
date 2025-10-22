@@ -14,6 +14,7 @@ interface RentalInstrument {
   enDescription: string
   published: boolean
   status: 'available' | 'rented' | 'maintenance'
+  order: number
   createdAt: string
   updatedAt: string
 }
@@ -360,7 +361,18 @@ const Rent = () => {
         (rentalInstrument: RentalInstrument) => rentalInstrument.published,
       )
 
-      setRentalInstruments(filteredRentalInstruments)
+      // Sort by order (ascending - lower numbers first)
+      const sortedRentalInstruments = filteredRentalInstruments.sort(
+        (a: RentalInstrument, b: RentalInstrument) => {
+          if (a.order !== b.order) {
+            return a.order - b.order
+          }
+          // If same order, sort by creation date (newest first)
+          return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        },
+      )
+
+      setRentalInstruments(sortedRentalInstruments)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {

@@ -19,6 +19,10 @@ export async function POST(request: NextRequest) {
         new: body.new,
         metadata: body.metadata,
         price: body.price || '',
+        priceEnglish: body.priceEnglish || '',
+        videoUrl: body.videoUrl || '',
+        availability: body.availability || 'available',
+        order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -46,9 +50,9 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    // Fetch all bows ordered by creation date
+    // Fetch all bows ordered by order field (ascending)
     const bows = await db.bows.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { order: 'asc' },
     })
 
     // Return successful response

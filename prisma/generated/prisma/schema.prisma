@@ -21,11 +21,10 @@ model Visitor {
 }
 
 model Bows {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  images      String[]
-  name        String
-  description String
-
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  images        String[]
+  name          String
+  description   String
   published     Boolean
   enName        String
   enDescription String
@@ -35,6 +34,7 @@ model Bows {
   priceEnglish  String?
   videoUrl      String?
   availability  String   @default("available")
+  order         Int      @default(999)
   createdAt     DateTime
   updatedAt     DateTime
 }
@@ -97,6 +97,7 @@ model RentalInstrument {
   enDescription String
   metadata      String?
   status        String   @default("available")
+  order         Int      @default(999)
   createdAt     DateTime
   updatedAt     DateTime
 }

@@ -2228,8 +2228,18 @@ export namespace Prisma {
 
   export type AggregateBows = {
     _count: BowsCountAggregateOutputType | null
+    _avg: BowsAvgAggregateOutputType | null
+    _sum: BowsSumAggregateOutputType | null
     _min: BowsMinAggregateOutputType | null
     _max: BowsMaxAggregateOutputType | null
+  }
+
+  export type BowsAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type BowsSumAggregateOutputType = {
+    order: number | null
   }
 
   export type BowsMinAggregateOutputType = {
@@ -2245,6 +2255,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2262,6 +2273,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2280,11 +2292,20 @@ export namespace Prisma {
     priceEnglish: number
     videoUrl: number
     availability: number
+    order: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type BowsAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type BowsSumAggregateInputType = {
+    order?: true
+  }
 
   export type BowsMinAggregateInputType = {
     id?: true
@@ -2299,6 +2320,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2316,6 +2338,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2334,6 +2357,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2377,6 +2401,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: BowsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BowsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: BowsMinAggregateInputType
@@ -2407,6 +2443,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BowsCountAggregateInputType | true
+    _avg?: BowsAvgAggregateInputType
+    _sum?: BowsSumAggregateInputType
     _min?: BowsMinAggregateInputType
     _max?: BowsMaxAggregateInputType
   }
@@ -2425,9 +2463,12 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string
+    order: number
     createdAt: Date
     updatedAt: Date
     _count: BowsCountAggregateOutputType | null
+    _avg: BowsAvgAggregateOutputType | null
+    _sum: BowsSumAggregateOutputType | null
     _min: BowsMinAggregateOutputType | null
     _max: BowsMaxAggregateOutputType | null
   }
@@ -2460,6 +2501,7 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["bows"]>
@@ -2480,11 +2522,12 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
+  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
 
   export type $BowsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bows"
@@ -2503,6 +2546,7 @@ export namespace Prisma {
       priceEnglish: string | null
       videoUrl: string | null
       availability: string
+      order: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["bows"]>
@@ -2910,6 +2954,7 @@ export namespace Prisma {
     readonly priceEnglish: FieldRef<"Bows", 'String'>
     readonly videoUrl: FieldRef<"Bows", 'String'>
     readonly availability: FieldRef<"Bows", 'String'>
+    readonly order: FieldRef<"Bows", 'Int'>
     readonly createdAt: FieldRef<"Bows", 'DateTime'>
     readonly updatedAt: FieldRef<"Bows", 'DateTime'>
   }
@@ -6356,8 +6401,18 @@ export namespace Prisma {
 
   export type AggregateRentalInstrument = {
     _count: RentalInstrumentCountAggregateOutputType | null
+    _avg: RentalInstrumentAvgAggregateOutputType | null
+    _sum: RentalInstrumentSumAggregateOutputType | null
     _min: RentalInstrumentMinAggregateOutputType | null
     _max: RentalInstrumentMaxAggregateOutputType | null
+  }
+
+  export type RentalInstrumentAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type RentalInstrumentSumAggregateOutputType = {
+    order: number | null
   }
 
   export type RentalInstrumentMinAggregateOutputType = {
@@ -6369,6 +6424,7 @@ export namespace Prisma {
     enDescription: string | null
     metadata: string | null
     status: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6382,6 +6438,7 @@ export namespace Prisma {
     enDescription: string | null
     metadata: string | null
     status: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6396,11 +6453,20 @@ export namespace Prisma {
     enDescription: number
     metadata: number
     status: number
+    order: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type RentalInstrumentAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type RentalInstrumentSumAggregateInputType = {
+    order?: true
+  }
 
   export type RentalInstrumentMinAggregateInputType = {
     id?: true
@@ -6411,6 +6477,7 @@ export namespace Prisma {
     enDescription?: true
     metadata?: true
     status?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6424,6 +6491,7 @@ export namespace Prisma {
     enDescription?: true
     metadata?: true
     status?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6438,6 +6506,7 @@ export namespace Prisma {
     enDescription?: true
     metadata?: true
     status?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6481,6 +6550,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: RentalInstrumentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RentalInstrumentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: RentalInstrumentMinAggregateInputType
@@ -6511,6 +6592,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: RentalInstrumentCountAggregateInputType | true
+    _avg?: RentalInstrumentAvgAggregateInputType
+    _sum?: RentalInstrumentSumAggregateInputType
     _min?: RentalInstrumentMinAggregateInputType
     _max?: RentalInstrumentMaxAggregateInputType
   }
@@ -6525,9 +6608,12 @@ export namespace Prisma {
     enDescription: string
     metadata: string | null
     status: string
+    order: number
     createdAt: Date
     updatedAt: Date
     _count: RentalInstrumentCountAggregateOutputType | null
+    _avg: RentalInstrumentAvgAggregateOutputType | null
+    _sum: RentalInstrumentSumAggregateOutputType | null
     _min: RentalInstrumentMinAggregateOutputType | null
     _max: RentalInstrumentMaxAggregateOutputType | null
   }
@@ -6556,6 +6642,7 @@ export namespace Prisma {
     enDescription?: boolean
     metadata?: boolean
     status?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["rentalInstrument"]>
@@ -6572,11 +6659,12 @@ export namespace Prisma {
     enDescription?: boolean
     metadata?: boolean
     status?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type RentalInstrumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "metadata" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["rentalInstrument"]>
+  export type RentalInstrumentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "metadata" | "status" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["rentalInstrument"]>
 
   export type $RentalInstrumentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RentalInstrument"
@@ -6591,6 +6679,7 @@ export namespace Prisma {
       enDescription: string
       metadata: string | null
       status: string
+      order: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["rentalInstrument"]>
@@ -6994,6 +7083,7 @@ export namespace Prisma {
     readonly enDescription: FieldRef<"RentalInstrument", 'String'>
     readonly metadata: FieldRef<"RentalInstrument", 'String'>
     readonly status: FieldRef<"RentalInstrument", 'String'>
+    readonly order: FieldRef<"RentalInstrument", 'Int'>
     readonly createdAt: FieldRef<"RentalInstrument", 'DateTime'>
     readonly updatedAt: FieldRef<"RentalInstrument", 'DateTime'>
   }
@@ -7371,6 +7461,7 @@ export namespace Prisma {
     priceEnglish: 'priceEnglish',
     videoUrl: 'videoUrl',
     availability: 'availability',
+    order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7445,6 +7536,7 @@ export namespace Prisma {
     enDescription: 'enDescription',
     metadata: 'metadata',
     status: 'status',
+    order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7600,6 +7692,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bows"> | string | null
     videoUrl?: StringNullableFilter<"Bows"> | string | null
     availability?: StringFilter<"Bows"> | string
+    order?: IntFilter<"Bows"> | number
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
   }
@@ -7618,6 +7711,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7639,6 +7733,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bows"> | string | null
     videoUrl?: StringNullableFilter<"Bows"> | string | null
     availability?: StringFilter<"Bows"> | string
+    order?: IntFilter<"Bows"> | number
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
   }, "id">
@@ -7657,11 +7752,14 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BowsCountOrderByAggregateInput
+    _avg?: BowsAvgOrderByAggregateInput
     _max?: BowsMaxOrderByAggregateInput
     _min?: BowsMinOrderByAggregateInput
+    _sum?: BowsSumOrderByAggregateInput
   }
 
   export type BowsScalarWhereWithAggregatesInput = {
@@ -7681,6 +7779,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     videoUrl?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     availability?: StringWithAggregatesFilter<"Bows"> | string
+    order?: IntWithAggregatesFilter<"Bows"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
   }
@@ -7976,6 +8075,7 @@ export namespace Prisma {
     enDescription?: StringFilter<"RentalInstrument"> | string
     metadata?: StringNullableFilter<"RentalInstrument"> | string | null
     status?: StringFilter<"RentalInstrument"> | string
+    order?: IntFilter<"RentalInstrument"> | number
     createdAt?: DateTimeFilter<"RentalInstrument"> | Date | string
     updatedAt?: DateTimeFilter<"RentalInstrument"> | Date | string
   }
@@ -7990,6 +8090,7 @@ export namespace Prisma {
     enDescription?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8007,6 +8108,7 @@ export namespace Prisma {
     enDescription?: StringFilter<"RentalInstrument"> | string
     metadata?: StringNullableFilter<"RentalInstrument"> | string | null
     status?: StringFilter<"RentalInstrument"> | string
+    order?: IntFilter<"RentalInstrument"> | number
     createdAt?: DateTimeFilter<"RentalInstrument"> | Date | string
     updatedAt?: DateTimeFilter<"RentalInstrument"> | Date | string
   }, "id">
@@ -8021,11 +8123,14 @@ export namespace Prisma {
     enDescription?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: RentalInstrumentCountOrderByAggregateInput
+    _avg?: RentalInstrumentAvgOrderByAggregateInput
     _max?: RentalInstrumentMaxOrderByAggregateInput
     _min?: RentalInstrumentMinOrderByAggregateInput
+    _sum?: RentalInstrumentSumOrderByAggregateInput
   }
 
   export type RentalInstrumentScalarWhereWithAggregatesInput = {
@@ -8041,6 +8146,7 @@ export namespace Prisma {
     enDescription?: StringWithAggregatesFilter<"RentalInstrument"> | string
     metadata?: StringNullableWithAggregatesFilter<"RentalInstrument"> | string | null
     status?: StringWithAggregatesFilter<"RentalInstrument"> | string
+    order?: IntWithAggregatesFilter<"RentalInstrument"> | number
     createdAt?: DateTimeWithAggregatesFilter<"RentalInstrument"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"RentalInstrument"> | Date | string
   }
@@ -8097,6 +8203,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8115,6 +8222,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8132,6 +8240,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8149,6 +8258,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8167,6 +8277,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8184,6 +8295,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8201,6 +8313,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8539,6 +8652,7 @@ export namespace Prisma {
     enDescription: string
     metadata?: string | null
     status?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8553,6 +8667,7 @@ export namespace Prisma {
     enDescription: string
     metadata?: string | null
     status?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8566,6 +8681,7 @@ export namespace Prisma {
     enDescription?: StringFieldUpdateOperationsInput | string
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8579,6 +8695,7 @@ export namespace Prisma {
     enDescription?: StringFieldUpdateOperationsInput | string
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8593,6 +8710,7 @@ export namespace Prisma {
     enDescription: string
     metadata?: string | null
     status?: string
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -8606,6 +8724,7 @@ export namespace Prisma {
     enDescription?: StringFieldUpdateOperationsInput | string
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8619,6 +8738,7 @@ export namespace Prisma {
     enDescription?: StringFieldUpdateOperationsInput | string
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8777,8 +8897,13 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BowsAvgOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type BowsMaxOrderByAggregateInput = {
@@ -8794,6 +8919,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8811,8 +8937,13 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BowsSumOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -9002,8 +9133,13 @@ export namespace Prisma {
     enDescription?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type RentalInstrumentAvgOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type RentalInstrumentMaxOrderByAggregateInput = {
@@ -9015,6 +9151,7 @@ export namespace Prisma {
     enDescription?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9028,8 +9165,13 @@ export namespace Prisma {
     enDescription?: SortOrder
     metadata?: SortOrder
     status?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type RentalInstrumentSumOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type IntFieldUpdateOperationsInput = {

@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
         published: body.published,
         metadata: body.metadata,
         status: body.status || 'available',
+        order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -45,9 +46,9 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    // Fetch all rental instruments ordered by creation date
+    // Fetch all rental instruments ordered by order field
     const rentalInstruments = await db.rentalInstrument.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { order: 'asc' },
     })
 
     // Return successful response

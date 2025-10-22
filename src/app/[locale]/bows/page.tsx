@@ -17,6 +17,7 @@ interface Bow {
   published: boolean
   new: boolean
   availability: 'available' | 'sold'
+  order: number
   createdAt: string
   updatedAt: string
 }
@@ -350,7 +351,16 @@ const Bow = () => {
       // Filter only published bows - no language filtering needed now
       const filteredBows = data.filter((bow: Bow) => bow.published)
 
-      setBows(filteredBows)
+      // Sort by order (ascending - lower numbers first)
+      const sortedBows = filteredBows.sort((a: Bow, b: Bow) => {
+        if (a.order !== b.order) {
+          return a.order - b.order
+        }
+        // If same order, sort by creation date (newest first)
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      })
+
+      setBows(sortedBows)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {

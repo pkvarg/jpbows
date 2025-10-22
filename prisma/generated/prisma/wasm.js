@@ -133,6 +133,7 @@ exports.Prisma.BowsScalarFieldEnum = {
   priceEnglish: 'priceEnglish',
   videoUrl: 'videoUrl',
   availability: 'availability',
+  order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -195,6 +196,7 @@ exports.Prisma.RentalInstrumentScalarFieldEnum = {
   enDescription: 'enDescription',
   metadata: 'metadata',
   status: 'status',
+  order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

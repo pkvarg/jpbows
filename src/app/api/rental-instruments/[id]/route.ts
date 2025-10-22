@@ -49,6 +49,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<Re
         enDescription: body.enDescription,
         published: body.published,
         status: body.status || 'available',
+        order: body.order ?? 999,
         updatedAt: new Date(),
       },
     })
@@ -75,6 +76,7 @@ export async function POST(request: NextRequest) {
         published: body.published,
         metadata: body.metadata,
         status: body.status || 'available',
+        order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
