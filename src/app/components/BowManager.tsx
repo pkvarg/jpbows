@@ -16,7 +16,6 @@ interface BowFormData {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
-  order: number
 }
 
 interface Bow {
@@ -52,7 +51,6 @@ export default function BowManager() {
     metadata: '',
     videoUrl: '',
     availability: 'available',
-    order: 999,
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -61,6 +59,7 @@ export default function BowManager() {
   const [bows, setBows] = useState<Bow[]>([])
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [imagePreviews, setImagePreviews] = useState<string[]>([])
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const resetForm = () => {
@@ -77,7 +76,6 @@ export default function BowManager() {
       metadata: '',
       videoUrl: '',
       availability: 'available',
-      order: 999,
     })
     setImageFiles([])
     setImagePreviews([])
@@ -91,20 +89,10 @@ export default function BowManager() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target
-
-    // For order field, allow empty string temporarily while typing
-    if (name === 'order') {
-      const numValue = value === '' ? 0 : parseInt(value)
-      setFormData((prev) => ({
-        ...prev,
-        [name]: isNaN(numValue) ? 999 : numValue,
-      }))
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }))
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
   }
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -250,6 +238,9 @@ export default function BowManager() {
         uploadedImageUrls = [...uploadedImageUrls, ...newImageUrls]
       }
 
+      // Get the highest order number and add 1 for new items
+      const maxOrder = editingId ? undefined : Math.max(0, ...bows.map(b => b.order)) + 1
+
       const bowData = {
         name: formData.name,
         enName: formData.enName,
@@ -263,7 +254,7 @@ export default function BowManager() {
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
         availability: formData.availability,
-        order: formData.order,
+        ...(maxOrder !== undefined && { order: maxOrder }),
       }
 
       // Determine if we're creating or updating
@@ -337,7 +328,6 @@ export default function BowManager() {
       metadata: bow.metadata || '',
       videoUrl: bow.videoUrl || '',
       availability: bow.availability || 'available',
-      order: bow.order || 999,
     })
     setEditingId(bow.id)
     setImagePreviews(bow.images || [])
@@ -377,6 +367,64 @@ export default function BowManager() {
 
   const cancelEdit = () => {
     resetForm()
+  }
+
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index)
+  }
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = async (dropIndex: number) => {
+    if (draggedIndex === null || draggedIndex === dropIndex) {
+      setDraggedIndex(null)
+      return
+    }
+
+    // Create new array with updated order
+    const updatedBows = [...bows]
+    const [draggedItem] = updatedBows.splice(draggedIndex, 1)
+    updatedBows.splice(dropIndex, 0, draggedItem)
+
+    // Update order values for all items
+    const bowsWithNewOrder = updatedBows.map((bow, index) => ({
+      ...bow,
+      order: index + 1,
+    }))
+
+    // Optimistically update UI
+    setBows(bowsWithNewOrder)
+    setDraggedIndex(null)
+
+    // Send update to server
+    try {
+      const response = await fetch('/api/bows/reorder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          bows: bowsWithNewOrder.map(b => ({ id: b.id, order: b.order })),
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update order')
+      }
+
+      setSuccessMessage('Order updated successfully!')
+      setTimeout(() => setSuccessMessage(null), 3000)
+    } catch {
+      setError('Failed to update order. Please refresh the page.')
+      // Revert on error
+      fetchBows()
+    }
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
   }
 
   return (
@@ -629,24 +677,6 @@ export default function BowManager() {
         </div>
 
         <div>
-          <label htmlFor="order" className="block text-sm font-medium text-gray-400">
-            Poradie zobrazenia
-          </label>
-          <input
-            type="number"
-            id="order"
-            name="order"
-            value={formData.order}
-            onChange={handleInputChange}
-            min="1"
-            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
-          />
-          <p className="text-xs text-gray-500 mt-1">
-            Nižšie číslo = zobrazí sa skôr (1 = prvý, 2 = druhý, atď.)
-          </p>
-        </div>
-
-        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -705,10 +735,13 @@ export default function BowManager() {
         </button>
 
         {bows.length > 0 && (
-          <div className="mt-4 space-y-6">
+          <div className="mt-4 space-y-3">
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
               Všetky sláčiky ({bows.length})
             </h3>
+            <p className="text-sm text-gray-400 mb-2">
+              💡 Presuňte sláčiky ťahaním pre zmenu poradia zobrazenia
+            </p>
 
             {/* Sort bows: by order first, then by creation date */}
             {[...bows]
@@ -720,12 +753,17 @@ export default function BowManager() {
                 // Then sort by creation date (newest first)
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
               })
-              .map((bow) => (
+              .map((bow, index) => (
                 <div
                   key={bow.id}
-                  className={`p-4 border-2 rounded-lg transition-all duration-200 ${
+                  draggable
+                  onDragStart={() => handleDragStart(index)}
+                  onDragOver={handleDragOver}
+                  onDrop={() => handleDrop(index)}
+                  onDragEnd={handleDragEnd}
+                  className={`p-4 border-2 rounded-lg transition-all duration-200 cursor-move hover:shadow-lg ${
                     bow.published ? 'border-green-500 bg-green-50/5' : 'border-red-400 bg-red-50/5'
-                  }`}
+                  } ${draggedIndex === index ? 'opacity-50' : ''}`}
                 >
                   {/* Header with title and status badges */}
                   <div className="flex justify-between items-start mb-3">

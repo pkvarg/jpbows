@@ -115,8 +115,11 @@ const ImageModal = ({
                   <div
                     key={index}
                     className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'bg-white w-6' : 'bg-white/50'
+                      index === currentIndex ? 'w-6' : ''
                     }`}
+                    style={{
+                      backgroundColor: index === currentIndex ? '#E80D19' : 'rgba(232, 13, 25, 0.5)'
+                    }}
                   />
                 ))}
               </div>
