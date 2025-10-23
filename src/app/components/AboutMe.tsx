@@ -85,7 +85,7 @@ const About_Me = () => {
                 className="hidden lg:float-left lg:mr-12 lg:mb-8 lg:block"
               >
                 <Image
-                  src="/g3a.webp"
+                  src="/g4.webp"
                   alt="Ján Prievozník"
                   width={300}
                   height={300}
