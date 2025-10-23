@@ -117,6 +117,72 @@ const About_Me = () => {
               <div className="clear-left"></div>
             </motion.div>
           </motion.div>
+
+          {/* Gallery Section */}
+          <motion.div variants={fadeInUp} className="mt-20">
+            <h3 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider text-center mb-12">
+              {t('galleryTitle')}
+            </h3>
+
+            {/* Image Gallery */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {[1, 2, 3, 4, 5].map((num) => (
+                <motion.div
+                  key={num}
+                  variants={imageAnimation}
+                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                >
+                  <Image
+                    src={`/g${num}.webp`}
+                    alt={`${t('galleryImageAlt')} ${num}`}
+                    width={400}
+                    height={300}
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Video Section */}
+            <div className="mt-16">
+              <h4 className="text-2xl lg:text-3xl font-semibold text-[#e80e19] text-center mb-8">
+                {t('videosTitle')}
+              </h4>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                {/* Video 1 */}
+                <motion.div
+                  variants={imageAnimation}
+                  className="relative overflow-hidden rounded-2xl shadow-xl"
+                >
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                      src="https://www.youtube.com/embed/NLlnsnvpjjA"
+                      title="YouTube video 1"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Video 2 */}
+                <motion.div
+                  variants={imageAnimation}
+                  className="relative overflow-hidden rounded-2xl shadow-xl"
+                >
+                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                      src="https://www.youtube.com/embed/E47SbwkXUxI"
+                      title="YouTube video 2"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
