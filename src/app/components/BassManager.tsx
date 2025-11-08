@@ -798,7 +798,7 @@ export default function BassManager() {
                             bass.availability === 'available' ? 'bg-green-600' : 'bg-red-600'
                           }`}
                         >
-                          {bass.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ'}
+                          {bass.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ - NA OBJEDNÁVKU'}
                         </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
                           {new Date(bass.createdAt).toLocaleDateString('sk-SK')}

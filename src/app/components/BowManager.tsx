@@ -239,7 +239,7 @@ export default function BowManager() {
       }
 
       // Get the highest order number and add 1 for new items
-      const maxOrder = editingId ? undefined : Math.max(0, ...bows.map(b => b.order)) + 1
+      const maxOrder = editingId ? undefined : Math.max(0, ...bows.map((b) => b.order)) + 1
 
       const bowData = {
         name: formData.name,
@@ -406,7 +406,7 @@ export default function BowManager() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          bows: bowsWithNewOrder.map(b => ({ id: b.id, order: b.order })),
+          bows: bowsWithNewOrder.map((b) => ({ id: b.id, order: b.order })),
         }),
       })
 
@@ -671,7 +671,7 @@ export default function BowManager() {
             className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
           >
             <option value="available">Dostupný</option>
-            <option value="sold">Predaný</option>
+            <option value="sold">Predaný - na objednávku</option>
           </select>
           <p className="text-xs text-gray-500 mt-1">Stav dostupnosti sláčika</p>
         </div>
@@ -796,7 +796,9 @@ export default function BowManager() {
                             bow.availability === 'available' ? 'bg-green-600' : 'bg-red-600'
                           }`}
                         >
-                          {bow.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ'}
+                          {bow.availability === 'available'
+                            ? 'DOSTUPNÝ'
+                            : 'PREDANÝ - NA OBJEDNÁVKU'}
                         </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
                           {new Date(bow.createdAt).toLocaleDateString('sk-SK')}
