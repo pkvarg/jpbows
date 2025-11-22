@@ -58,12 +58,7 @@ const FileUpload = () => {
     const formData = new FormData()
     formData.append('file', file)
 
-   // const apiUrl = 'http://localhost:3013/api/upload/jpbows'
-        
-
-     const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
-
-    //console.log('apiUrl file upload', apiUrl)
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
 
     try {
       const response = await fetch(apiUrl, {

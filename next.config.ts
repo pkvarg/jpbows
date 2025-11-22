@@ -17,13 +17,11 @@ const nextConfig = {
       {
         protocol: 'https' as 'https',
         hostname: 'hono-api.pictusweb.com',
-        pathname: '/api/upload/jpbows/**',
       },
       {
         protocol: 'http' as 'http',
         hostname: 'localhost',
         port: '3013',
-        pathname: '/api/upload/jpbows/**',
       },
       {
         protocol: 'https' as 'https',

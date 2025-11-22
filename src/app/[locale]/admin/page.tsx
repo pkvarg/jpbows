@@ -20,6 +20,7 @@ const Admin = async () => {
             <Link href={`/admin/bass`}>Instruments</Link>
             <Link href={`/admin/bow`}>Bows</Link>
             <Link href={`/admin/rental`}>Rental Instruments</Link>
+            <Link href={`/admin/repairs`}>Repairs</Link>
             {/* <Link href={`/admin/slider`}>Sliders</Link> */}
             {/* <Link href={`/admin/blog`}>Blogs</Link> */}
             <Link

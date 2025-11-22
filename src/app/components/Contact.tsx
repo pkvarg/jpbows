@@ -76,8 +76,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   }
 
   const increaseBots = async () => {
-    const apiUrl = 'https://hono-api.pictusweb.com/api/bots/jpbows/increase'
-    //const apiUrl = 'http://localhost:3013/api/bots/jpbows/increase'
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/bots/jpbows/increase`
+
     try {
       await fetch(apiUrl, {
         method: 'PUT',
@@ -93,8 +93,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   }
 
   const increaseEmails = async () => {
-    const apiUrl = 'https://hono-api.pictusweb.com/api/emails/jpbows/increase'
-    //const apiUrl = 'http://localhost:3013/api/emails/jpbows/increase'
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/emails/jpbows/increase`
     try {
       await fetch(apiUrl, {
         method: 'PUT',
@@ -156,9 +155,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           subject,
         }
 
-        //const apiUrl = 'http://localhost:3013/api/contact'
-
-        const apiUrl = 'https://hono-api.pictusweb.com/api/contact'
+        const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/contact`
 
         // Make the API request
         const response = await fetch(apiUrl, {

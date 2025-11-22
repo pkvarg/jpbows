@@ -18,10 +18,8 @@ interface TranslationProps {
 
 const Footer: FC<TranslationProps> = ({ translations }) => {
   const { cookies, agree, disagree, tradeRules, about } = translations
-  //const { locale } = useParams()
 
-  const apiUrl = 'https://hono-api.pictusweb.com/api/visitors/jpbows/increase'
-  //const apiUrl = 'http://localhost:3013/api/visitors/jpbows/increase'
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/visitors/jpbows/increase`
 
   const incrementCount = async () => {
     try {

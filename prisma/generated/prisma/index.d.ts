@@ -43,6 +43,11 @@ export type Blog = $Result.DefaultSelection<Prisma.$BlogPayload>
  * 
  */
 export type RentalInstrument = $Result.DefaultSelection<Prisma.$RentalInstrumentPayload>
+/**
+ * Model Repair
+ * 
+ */
+export type Repair = $Result.DefaultSelection<Prisma.$RepairPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -195,6 +200,16 @@ export class PrismaClient<
     * ```
     */
   get rentalInstrument(): Prisma.RentalInstrumentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.repair`: Exposes CRUD operations for the **Repair** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Repairs
+    * const repairs = await prisma.repair.findMany()
+    * ```
+    */
+  get repair(): Prisma.RepairDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -640,7 +655,8 @@ export namespace Prisma {
     Bass: 'Bass',
     Slider: 'Slider',
     Blog: 'Blog',
-    RentalInstrument: 'RentalInstrument'
+    RentalInstrument: 'RentalInstrument',
+    Repair: 'Repair'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -659,7 +675,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "visitor" | "bows" | "bass" | "slider" | "blog" | "rentalInstrument"
+      modelProps: "visitor" | "bows" | "bass" | "slider" | "blog" | "rentalInstrument" | "repair"
       txIsolationLevel: never
     }
     model: {
@@ -1107,6 +1123,80 @@ export namespace Prisma {
           }
         }
       }
+      Repair: {
+        payload: Prisma.$RepairPayload<ExtArgs>
+        fields: Prisma.RepairFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RepairFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RepairFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          findFirst: {
+            args: Prisma.RepairFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RepairFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          findMany: {
+            args: Prisma.RepairFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>[]
+          }
+          create: {
+            args: Prisma.RepairCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          createMany: {
+            args: Prisma.RepairCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RepairDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          update: {
+            args: Prisma.RepairUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          deleteMany: {
+            args: Prisma.RepairDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RepairUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RepairUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RepairPayload>
+          }
+          aggregate: {
+            args: Prisma.RepairAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRepair>
+          }
+          groupBy: {
+            args: Prisma.RepairGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RepairGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.RepairFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.RepairAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.RepairCountArgs<ExtArgs>
+            result: $Utils.Optional<RepairCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1184,6 +1274,7 @@ export namespace Prisma {
     slider?: SliderOmit
     blog?: BlogOmit
     rentalInstrument?: RentalInstrumentOmit
+    repair?: RepairOmit
   }
 
   /* Types for Logging */
@@ -7435,6 +7526,1034 @@ export namespace Prisma {
 
 
   /**
+   * Model Repair
+   */
+
+  export type AggregateRepair = {
+    _count: RepairCountAggregateOutputType | null
+    _avg: RepairAvgAggregateOutputType | null
+    _sum: RepairSumAggregateOutputType | null
+    _min: RepairMinAggregateOutputType | null
+    _max: RepairMaxAggregateOutputType | null
+  }
+
+  export type RepairAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type RepairSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type RepairMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    published: boolean | null
+    enName: string | null
+    enDescription: string | null
+    metadata: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RepairMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    published: boolean | null
+    enName: string | null
+    enDescription: string | null
+    metadata: string | null
+    order: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type RepairCountAggregateOutputType = {
+    id: number
+    images: number
+    name: number
+    description: number
+    published: number
+    enName: number
+    enDescription: number
+    metadata: number
+    order: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type RepairAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type RepairSumAggregateInputType = {
+    order?: true
+  }
+
+  export type RepairMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RepairMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type RepairCountAggregateInputType = {
+    id?: true
+    images?: true
+    name?: true
+    description?: true
+    published?: true
+    enName?: true
+    enDescription?: true
+    metadata?: true
+    order?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type RepairAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Repair to aggregate.
+     */
+    where?: RepairWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Repairs to fetch.
+     */
+    orderBy?: RepairOrderByWithRelationInput | RepairOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RepairWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Repairs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Repairs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Repairs
+    **/
+    _count?: true | RepairCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RepairAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RepairSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RepairMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RepairMaxAggregateInputType
+  }
+
+  export type GetRepairAggregateType<T extends RepairAggregateArgs> = {
+        [P in keyof T & keyof AggregateRepair]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRepair[P]>
+      : GetScalarType<T[P], AggregateRepair[P]>
+  }
+
+
+
+
+  export type RepairGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RepairWhereInput
+    orderBy?: RepairOrderByWithAggregationInput | RepairOrderByWithAggregationInput[]
+    by: RepairScalarFieldEnum[] | RepairScalarFieldEnum
+    having?: RepairScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RepairCountAggregateInputType | true
+    _avg?: RepairAvgAggregateInputType
+    _sum?: RepairSumAggregateInputType
+    _min?: RepairMinAggregateInputType
+    _max?: RepairMaxAggregateInputType
+  }
+
+  export type RepairGroupByOutputType = {
+    id: string
+    images: string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata: string | null
+    order: number
+    createdAt: Date
+    updatedAt: Date
+    _count: RepairCountAggregateOutputType | null
+    _avg: RepairAvgAggregateOutputType | null
+    _sum: RepairSumAggregateOutputType | null
+    _min: RepairMinAggregateOutputType | null
+    _max: RepairMaxAggregateOutputType | null
+  }
+
+  type GetRepairGroupByPayload<T extends RepairGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RepairGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RepairGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RepairGroupByOutputType[P]>
+            : GetScalarType<T[P], RepairGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RepairSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    images?: boolean
+    name?: boolean
+    description?: boolean
+    published?: boolean
+    enName?: boolean
+    enDescription?: boolean
+    metadata?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["repair"]>
+
+
+
+  export type RepairSelectScalar = {
+    id?: boolean
+    images?: boolean
+    name?: boolean
+    description?: boolean
+    published?: boolean
+    enName?: boolean
+    enDescription?: boolean
+    metadata?: boolean
+    order?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type RepairOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "metadata" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["repair"]>
+
+  export type $RepairPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Repair"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      images: string[]
+      name: string
+      description: string
+      published: boolean
+      enName: string
+      enDescription: string
+      metadata: string | null
+      order: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["repair"]>
+    composites: {}
+  }
+
+  type RepairGetPayload<S extends boolean | null | undefined | RepairDefaultArgs> = $Result.GetResult<Prisma.$RepairPayload, S>
+
+  type RepairCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RepairFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RepairCountAggregateInputType | true
+    }
+
+  export interface RepairDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Repair'], meta: { name: 'Repair' } }
+    /**
+     * Find zero or one Repair that matches the filter.
+     * @param {RepairFindUniqueArgs} args - Arguments to find a Repair
+     * @example
+     * // Get one Repair
+     * const repair = await prisma.repair.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RepairFindUniqueArgs>(args: SelectSubset<T, RepairFindUniqueArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Repair that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RepairFindUniqueOrThrowArgs} args - Arguments to find a Repair
+     * @example
+     * // Get one Repair
+     * const repair = await prisma.repair.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RepairFindUniqueOrThrowArgs>(args: SelectSubset<T, RepairFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Repair that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairFindFirstArgs} args - Arguments to find a Repair
+     * @example
+     * // Get one Repair
+     * const repair = await prisma.repair.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RepairFindFirstArgs>(args?: SelectSubset<T, RepairFindFirstArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Repair that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairFindFirstOrThrowArgs} args - Arguments to find a Repair
+     * @example
+     * // Get one Repair
+     * const repair = await prisma.repair.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RepairFindFirstOrThrowArgs>(args?: SelectSubset<T, RepairFindFirstOrThrowArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Repairs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Repairs
+     * const repairs = await prisma.repair.findMany()
+     * 
+     * // Get first 10 Repairs
+     * const repairs = await prisma.repair.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const repairWithIdOnly = await prisma.repair.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RepairFindManyArgs>(args?: SelectSubset<T, RepairFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Repair.
+     * @param {RepairCreateArgs} args - Arguments to create a Repair.
+     * @example
+     * // Create one Repair
+     * const Repair = await prisma.repair.create({
+     *   data: {
+     *     // ... data to create a Repair
+     *   }
+     * })
+     * 
+     */
+    create<T extends RepairCreateArgs>(args: SelectSubset<T, RepairCreateArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Repairs.
+     * @param {RepairCreateManyArgs} args - Arguments to create many Repairs.
+     * @example
+     * // Create many Repairs
+     * const repair = await prisma.repair.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RepairCreateManyArgs>(args?: SelectSubset<T, RepairCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Repair.
+     * @param {RepairDeleteArgs} args - Arguments to delete one Repair.
+     * @example
+     * // Delete one Repair
+     * const Repair = await prisma.repair.delete({
+     *   where: {
+     *     // ... filter to delete one Repair
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RepairDeleteArgs>(args: SelectSubset<T, RepairDeleteArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Repair.
+     * @param {RepairUpdateArgs} args - Arguments to update one Repair.
+     * @example
+     * // Update one Repair
+     * const repair = await prisma.repair.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RepairUpdateArgs>(args: SelectSubset<T, RepairUpdateArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Repairs.
+     * @param {RepairDeleteManyArgs} args - Arguments to filter Repairs to delete.
+     * @example
+     * // Delete a few Repairs
+     * const { count } = await prisma.repair.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RepairDeleteManyArgs>(args?: SelectSubset<T, RepairDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Repairs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Repairs
+     * const repair = await prisma.repair.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RepairUpdateManyArgs>(args: SelectSubset<T, RepairUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Repair.
+     * @param {RepairUpsertArgs} args - Arguments to update or create a Repair.
+     * @example
+     * // Update or create a Repair
+     * const repair = await prisma.repair.upsert({
+     *   create: {
+     *     // ... data to create a Repair
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Repair we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RepairUpsertArgs>(args: SelectSubset<T, RepairUpsertArgs<ExtArgs>>): Prisma__RepairClient<$Result.GetResult<Prisma.$RepairPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Repairs that matches the filter.
+     * @param {RepairFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const repair = await prisma.repair.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: RepairFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a Repair.
+     * @param {RepairAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const repair = await prisma.repair.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: RepairAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of Repairs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairCountArgs} args - Arguments to filter Repairs to count.
+     * @example
+     * // Count the number of Repairs
+     * const count = await prisma.repair.count({
+     *   where: {
+     *     // ... the filter for the Repairs we want to count
+     *   }
+     * })
+    **/
+    count<T extends RepairCountArgs>(
+      args?: Subset<T, RepairCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RepairCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Repair.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RepairAggregateArgs>(args: Subset<T, RepairAggregateArgs>): Prisma.PrismaPromise<GetRepairAggregateType<T>>
+
+    /**
+     * Group by Repair.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RepairGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RepairGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RepairGroupByArgs['orderBy'] }
+        : { orderBy?: RepairGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RepairGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRepairGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Repair model
+   */
+  readonly fields: RepairFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Repair.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RepairClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Repair model
+   */
+  interface RepairFieldRefs {
+    readonly id: FieldRef<"Repair", 'String'>
+    readonly images: FieldRef<"Repair", 'String[]'>
+    readonly name: FieldRef<"Repair", 'String'>
+    readonly description: FieldRef<"Repair", 'String'>
+    readonly published: FieldRef<"Repair", 'Boolean'>
+    readonly enName: FieldRef<"Repair", 'String'>
+    readonly enDescription: FieldRef<"Repair", 'String'>
+    readonly metadata: FieldRef<"Repair", 'String'>
+    readonly order: FieldRef<"Repair", 'Int'>
+    readonly createdAt: FieldRef<"Repair", 'DateTime'>
+    readonly updatedAt: FieldRef<"Repair", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Repair findUnique
+   */
+  export type RepairFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter, which Repair to fetch.
+     */
+    where: RepairWhereUniqueInput
+  }
+
+  /**
+   * Repair findUniqueOrThrow
+   */
+  export type RepairFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter, which Repair to fetch.
+     */
+    where: RepairWhereUniqueInput
+  }
+
+  /**
+   * Repair findFirst
+   */
+  export type RepairFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter, which Repair to fetch.
+     */
+    where?: RepairWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Repairs to fetch.
+     */
+    orderBy?: RepairOrderByWithRelationInput | RepairOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Repairs.
+     */
+    cursor?: RepairWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Repairs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Repairs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Repairs.
+     */
+    distinct?: RepairScalarFieldEnum | RepairScalarFieldEnum[]
+  }
+
+  /**
+   * Repair findFirstOrThrow
+   */
+  export type RepairFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter, which Repair to fetch.
+     */
+    where?: RepairWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Repairs to fetch.
+     */
+    orderBy?: RepairOrderByWithRelationInput | RepairOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Repairs.
+     */
+    cursor?: RepairWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Repairs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Repairs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Repairs.
+     */
+    distinct?: RepairScalarFieldEnum | RepairScalarFieldEnum[]
+  }
+
+  /**
+   * Repair findMany
+   */
+  export type RepairFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter, which Repairs to fetch.
+     */
+    where?: RepairWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Repairs to fetch.
+     */
+    orderBy?: RepairOrderByWithRelationInput | RepairOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Repairs.
+     */
+    cursor?: RepairWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Repairs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Repairs.
+     */
+    skip?: number
+    distinct?: RepairScalarFieldEnum | RepairScalarFieldEnum[]
+  }
+
+  /**
+   * Repair create
+   */
+  export type RepairCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Repair.
+     */
+    data: XOR<RepairCreateInput, RepairUncheckedCreateInput>
+  }
+
+  /**
+   * Repair createMany
+   */
+  export type RepairCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Repairs.
+     */
+    data: RepairCreateManyInput | RepairCreateManyInput[]
+  }
+
+  /**
+   * Repair update
+   */
+  export type RepairUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Repair.
+     */
+    data: XOR<RepairUpdateInput, RepairUncheckedUpdateInput>
+    /**
+     * Choose, which Repair to update.
+     */
+    where: RepairWhereUniqueInput
+  }
+
+  /**
+   * Repair updateMany
+   */
+  export type RepairUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Repairs.
+     */
+    data: XOR<RepairUpdateManyMutationInput, RepairUncheckedUpdateManyInput>
+    /**
+     * Filter which Repairs to update
+     */
+    where?: RepairWhereInput
+    /**
+     * Limit how many Repairs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Repair upsert
+   */
+  export type RepairUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Repair to update in case it exists.
+     */
+    where: RepairWhereUniqueInput
+    /**
+     * In case the Repair found by the `where` argument doesn't exist, create a new Repair with this data.
+     */
+    create: XOR<RepairCreateInput, RepairUncheckedCreateInput>
+    /**
+     * In case the Repair was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RepairUpdateInput, RepairUncheckedUpdateInput>
+  }
+
+  /**
+   * Repair delete
+   */
+  export type RepairDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+    /**
+     * Filter which Repair to delete.
+     */
+    where: RepairWhereUniqueInput
+  }
+
+  /**
+   * Repair deleteMany
+   */
+  export type RepairDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Repairs to delete
+     */
+    where?: RepairWhereInput
+    /**
+     * Limit how many Repairs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Repair findRaw
+   */
+  export type RepairFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Repair aggregateRaw
+   */
+  export type RepairAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * Repair without action
+   */
+  export type RepairDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Repair
+     */
+    select?: RepairSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Repair
+     */
+    omit?: RepairOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -7542,6 +8661,23 @@ export namespace Prisma {
   };
 
   export type RentalInstrumentScalarFieldEnum = (typeof RentalInstrumentScalarFieldEnum)[keyof typeof RentalInstrumentScalarFieldEnum]
+
+
+  export const RepairScalarFieldEnum: {
+    id: 'id',
+    images: 'images',
+    name: 'name',
+    description: 'description',
+    published: 'published',
+    enName: 'enName',
+    enDescription: 'enDescription',
+    metadata: 'metadata',
+    order: 'order',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type RepairScalarFieldEnum = (typeof RepairScalarFieldEnum)[keyof typeof RepairScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8151,6 +9287,90 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"RentalInstrument"> | Date | string
   }
 
+  export type RepairWhereInput = {
+    AND?: RepairWhereInput | RepairWhereInput[]
+    OR?: RepairWhereInput[]
+    NOT?: RepairWhereInput | RepairWhereInput[]
+    id?: StringFilter<"Repair"> | string
+    images?: StringNullableListFilter<"Repair">
+    name?: StringFilter<"Repair"> | string
+    description?: StringFilter<"Repair"> | string
+    published?: BoolFilter<"Repair"> | boolean
+    enName?: StringFilter<"Repair"> | string
+    enDescription?: StringFilter<"Repair"> | string
+    metadata?: StringNullableFilter<"Repair"> | string | null
+    order?: IntFilter<"Repair"> | number
+    createdAt?: DateTimeFilter<"Repair"> | Date | string
+    updatedAt?: DateTimeFilter<"Repair"> | Date | string
+  }
+
+  export type RepairOrderByWithRelationInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RepairWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RepairWhereInput | RepairWhereInput[]
+    OR?: RepairWhereInput[]
+    NOT?: RepairWhereInput | RepairWhereInput[]
+    images?: StringNullableListFilter<"Repair">
+    name?: StringFilter<"Repair"> | string
+    description?: StringFilter<"Repair"> | string
+    published?: BoolFilter<"Repair"> | boolean
+    enName?: StringFilter<"Repair"> | string
+    enDescription?: StringFilter<"Repair"> | string
+    metadata?: StringNullableFilter<"Repair"> | string | null
+    order?: IntFilter<"Repair"> | number
+    createdAt?: DateTimeFilter<"Repair"> | Date | string
+    updatedAt?: DateTimeFilter<"Repair"> | Date | string
+  }, "id">
+
+  export type RepairOrderByWithAggregationInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: RepairCountOrderByAggregateInput
+    _avg?: RepairAvgOrderByAggregateInput
+    _max?: RepairMaxOrderByAggregateInput
+    _min?: RepairMinOrderByAggregateInput
+    _sum?: RepairSumOrderByAggregateInput
+  }
+
+  export type RepairScalarWhereWithAggregatesInput = {
+    AND?: RepairScalarWhereWithAggregatesInput | RepairScalarWhereWithAggregatesInput[]
+    OR?: RepairScalarWhereWithAggregatesInput[]
+    NOT?: RepairScalarWhereWithAggregatesInput | RepairScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Repair"> | string
+    images?: StringNullableListFilter<"Repair">
+    name?: StringWithAggregatesFilter<"Repair"> | string
+    description?: StringWithAggregatesFilter<"Repair"> | string
+    published?: BoolWithAggregatesFilter<"Repair"> | boolean
+    enName?: StringWithAggregatesFilter<"Repair"> | string
+    enDescription?: StringWithAggregatesFilter<"Repair"> | string
+    metadata?: StringNullableWithAggregatesFilter<"Repair"> | string | null
+    order?: IntWithAggregatesFilter<"Repair"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Repair"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Repair"> | Date | string
+  }
+
   export type VisitorCreateInput = {
     id?: string
     count: number
@@ -8743,6 +9963,100 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RepairCreateInput = {
+    id?: string
+    images?: RepairCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    order?: number
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RepairUncheckedCreateInput = {
+    id?: string
+    images?: RepairCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    order?: number
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RepairUpdateInput = {
+    images?: RepairUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RepairUncheckedUpdateInput = {
+    images?: RepairUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RepairCreateManyInput = {
+    id?: string
+    images?: RepairCreateimagesInput | string[]
+    name: string
+    description: string
+    published: boolean
+    enName: string
+    enDescription: string
+    metadata?: string | null
+    order?: number
+    createdAt: Date | string
+    updatedAt: Date | string
+  }
+
+  export type RepairUpdateManyMutationInput = {
+    images?: RepairUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RepairUncheckedUpdateManyInput = {
+    images?: RepairUpdateimagesInput | string[]
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    published?: BoolFieldUpdateOperationsInput | boolean
+    enName?: StringFieldUpdateOperationsInput | string
+    enDescription?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -9174,6 +10488,54 @@ export namespace Prisma {
     order?: SortOrder
   }
 
+  export type RepairCountOrderByAggregateInput = {
+    id?: SortOrder
+    images?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RepairAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type RepairMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RepairMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    published?: SortOrder
+    enName?: SortOrder
+    enDescription?: SortOrder
+    metadata?: SortOrder
+    order?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type RepairSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -9222,6 +10584,15 @@ export namespace Prisma {
   }
 
   export type RentalInstrumentUpdateimagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type RepairCreateimagesInput = {
+    set: string[]
+  }
+
+  export type RepairUpdateimagesInput = {
     set?: string[]
     push?: string | string[]
   }

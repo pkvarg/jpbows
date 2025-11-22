@@ -201,6 +201,20 @@ exports.Prisma.RentalInstrumentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RepairScalarFieldEnum = {
+  id: 'id',
+  images: 'images',
+  name: 'name',
+  description: 'description',
+  published: 'published',
+  enName: 'enName',
+  enDescription: 'enDescription',
+  metadata: 'metadata',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -218,7 +232,8 @@ exports.Prisma.ModelName = {
   Bass: 'Bass',
   Slider: 'Slider',
   Blog: 'Blog',
-  RentalInstrument: 'RentalInstrument'
+  RentalInstrument: 'RentalInstrument',
+  Repair: 'Repair'
 };
 
 /**

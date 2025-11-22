@@ -107,7 +107,7 @@ export default function SliderManager() {
         const formData = new FormData()
         formData.append('file', imageFile)
 
-        const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+        const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
 
         const response = await fetch(apiUrl, {
           method: 'POST',

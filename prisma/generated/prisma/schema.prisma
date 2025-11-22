@@ -101,3 +101,17 @@ model RentalInstrument {
   createdAt     DateTime
   updatedAt     DateTime
 }
+
+model Repair {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  images        String[]
+  name          String
+  description   String
+  published     Boolean
+  enName        String
+  enDescription String
+  metadata      String?
+  order         Int      @default(999)
+  createdAt     DateTime
+  updatedAt     DateTime
+}

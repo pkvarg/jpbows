@@ -12,8 +12,7 @@ export default function VisitorCounter() {
   const [countEmails, setCountEmails] = useState(0)
   const [lastVisit, setLastVisit] = useState('')
 
-  const apiUrl = 'https://hono-api.pictusweb.com/api/stats/jpbows'
-  //const apiUrl = 'http://localhost:3013/api/stats/jpbows'
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/stats/jpbows`
 
   useEffect(() => {
     const getStats = async () => {

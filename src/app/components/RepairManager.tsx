@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState, useRef, ChangeEvent } from 'react'
 
-interface RentalInstrumentFormData {
+interface RepairFormData {
   name: string
   enName: string
   description: string
@@ -11,10 +11,9 @@ interface RentalInstrumentFormData {
   images: string[]
   published: boolean
   metadata: string
-  status: 'available' | 'rented' | 'maintenance'
 }
 
-interface RentalInstrument {
+interface Repair {
   id: string
   images: string[]
   name: string
@@ -23,14 +22,13 @@ interface RentalInstrument {
   enDescription: string
   published: boolean
   metadata: string
-  status: 'available' | 'rented' | 'maintenance'
   order: number
   createdAt: Date
   updatedAt: Date
 }
 
-export default function RentalInstrumentManager() {
-  const [formData, setFormData] = useState<RentalInstrumentFormData>({
+export default function RepairManager() {
+  const [formData, setFormData] = useState<RepairFormData>({
     name: '',
     enName: '',
     description: '',
@@ -38,13 +36,12 @@ export default function RentalInstrumentManager() {
     images: [],
     published: false,
     metadata: '',
-    status: 'available',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
-  const [rentalInstruments, setRentalInstruments] = useState<RentalInstrument[]>([])
+  const [repairs, setRepairs] = useState<Repair[]>([])
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [imagePreviews, setImagePreviews] = useState<string[]>([])
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
@@ -59,7 +56,6 @@ export default function RentalInstrumentManager() {
       images: [],
       published: false,
       metadata: '',
-      status: 'available',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -203,17 +199,24 @@ export default function RentalInstrumentManager() {
           formData.append('file', file)
 
           const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
+          console.log('Upload API URL:', apiUrl)
+          console.log('Uploading file:', file.name, 'Size:', file.size)
 
           const response = await fetch(apiUrl, {
             method: 'POST',
             body: formData,
           })
 
+          console.log('Upload response status:', response.status)
+
           if (!response.ok) {
-            throw new Error('Failed to upload image')
+            const errorText = await response.text()
+            console.error('Upload failed:', errorText)
+            throw new Error(`Failed to upload image: ${response.status} ${errorText}`)
           }
 
           const data = await response.json()
+          console.log('Upload successful, image URL:', data.imageUrl)
           return data.imageUrl
         })
 
@@ -222,11 +225,9 @@ export default function RentalInstrumentManager() {
       }
 
       // Get the highest order number and add 1 for new items
-      const maxOrder = editingId
-        ? undefined
-        : Math.max(0, ...rentalInstruments.map((r) => r.order)) + 1
+      const maxOrder = editingId ? undefined : Math.max(0, ...repairs.map((r) => r.order)) + 1
 
-      const rentalInstrumentData = {
+      const repairData = {
         name: formData.name,
         enName: formData.enName,
         description: formData.description,
@@ -234,12 +235,11 @@ export default function RentalInstrumentManager() {
         images: uploadedImageUrls,
         published: formData.published,
         metadata: formData.metadata,
-        status: formData.status,
         ...(maxOrder !== undefined && { order: maxOrder }),
       }
 
       // Determine if we're creating or updating
-      const url = editingId ? `/api/rental-instruments/${editingId}` : '/api/rental-instruments'
+      const url = editingId ? `/api/repairs/${editingId}` : '/api/repairs'
       const method = editingId ? 'PUT' : 'POST'
 
       const response = await fetch(url, {
@@ -247,25 +247,23 @@ export default function RentalInstrumentManager() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(rentalInstrumentData),
+        body: JSON.stringify(repairData),
       })
 
       if (!response.ok) {
-        throw new Error(`Failed to ${editingId ? 'update' : 'create'} rental instrument`)
+        throw new Error(`Failed to ${editingId ? 'update' : 'create'} repair`)
       }
 
-      const resultRentalInstrument = await response.json()
+      const resultRepair = await response.json()
 
       if (editingId) {
-        // Update rental instruments list with edited item
-        setRentalInstruments(
-          rentalInstruments.map((item) => (item.id === editingId ? resultRentalInstrument : item)),
-        )
-        setSuccessMessage('Rental instrument updated successfully!')
+        // Update repairs list with edited item
+        setRepairs(repairs.map((item) => (item.id === editingId ? resultRepair : item)))
+        setSuccessMessage('Oprava úspešne upravená!')
       } else {
-        // Add new rental instrument to list
-        setRentalInstruments([...rentalInstruments, resultRentalInstrument])
-        setSuccessMessage('Rental instrument created successfully!')
+        // Add new repair to list
+        setRepairs([...repairs, resultRepair])
+        setSuccessMessage('Oprava úspešne vytvorená!')
       }
 
       // Reset the form
@@ -277,19 +275,19 @@ export default function RentalInstrumentManager() {
     }
   }
 
-  const fetchRentalInstruments = async () => {
+  const fetchRepairs = async () => {
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch('/api/rental-instruments')
+      const response = await fetch('/api/repairs')
 
       if (!response.ok) {
-        throw new Error('Failed to fetch rental instruments')
+        throw new Error('Failed to fetch repairs')
       }
 
       const data = await response.json()
-      setRentalInstruments(data)
+      setRepairs(data)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred')
     } finally {
@@ -297,41 +295,40 @@ export default function RentalInstrumentManager() {
     }
   }
 
-  const handleEdit = (rentalInstrument: RentalInstrument) => {
+  const handleEdit = (repair: Repair) => {
     setFormData({
-      name: rentalInstrument.name,
-      enName: rentalInstrument.enName || '',
-      description: rentalInstrument.description,
-      enDescription: rentalInstrument.enDescription || '',
-      images: rentalInstrument.images || [],
-      published: rentalInstrument.published || false,
-      metadata: rentalInstrument.metadata || '',
-      status: rentalInstrument.status || 'available',
+      name: repair.name,
+      enName: repair.enName || '',
+      description: repair.description,
+      enDescription: repair.enDescription || '',
+      images: repair.images || [],
+      published: repair.published || false,
+      metadata: repair.metadata || '',
     })
-    setEditingId(rentalInstrument.id)
-    setImagePreviews(rentalInstrument.images || [])
+    setEditingId(repair.id)
+    setImagePreviews(repair.images || [])
     setImageFiles([])
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this rental instrument?')) return
+    if (!confirm('Naozaj chcete vymazať túto opravu?')) return
 
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(`/api/rental-instruments/${id}`, {
+      const response = await fetch(`/api/repairs/${id}`, {
         method: 'DELETE',
       })
 
       if (!response.ok) {
-        throw new Error('Failed to delete rental instrument')
+        throw new Error('Failed to delete repair')
       }
 
-      // Remove from rental instruments list
-      setRentalInstruments(rentalInstruments.filter((item) => item.id !== id))
-      setSuccessMessage('Rental instrument deleted successfully!')
+      // Remove from repairs list
+      setRepairs(repairs.filter((item) => item.id !== id))
+      setSuccessMessage('Oprava úspešne vymazaná!')
 
       // Reset form if we were editing the deleted item
       if (editingId === id) {
@@ -363,32 +360,29 @@ export default function RentalInstrumentManager() {
     }
 
     // Create new array with updated order
-    const updatedRentalInstruments = [...rentalInstruments]
-    const [draggedItem] = updatedRentalInstruments.splice(draggedIndex, 1)
-    updatedRentalInstruments.splice(dropIndex, 0, draggedItem)
+    const updatedRepairs = [...repairs]
+    const [draggedItem] = updatedRepairs.splice(draggedIndex, 1)
+    updatedRepairs.splice(dropIndex, 0, draggedItem)
 
     // Update order values for all items
-    const rentalInstrumentsWithNewOrder = updatedRentalInstruments.map((item, index) => ({
+    const repairsWithNewOrder = updatedRepairs.map((item, index) => ({
       ...item,
       order: index + 1,
     }))
 
     // Optimistically update UI
-    setRentalInstruments(rentalInstrumentsWithNewOrder)
+    setRepairs(repairsWithNewOrder)
     setDraggedIndex(null)
 
     // Send update to server
     try {
-      const response = await fetch('/api/rental-instruments/reorder', {
+      const response = await fetch('/api/repairs/reorder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          rentalInstruments: rentalInstrumentsWithNewOrder.map((r) => ({
-            id: r.id,
-            order: r.order,
-          })),
+          repairs: repairsWithNewOrder.map((r) => ({ id: r.id, order: r.order })),
         }),
       })
 
@@ -396,12 +390,12 @@ export default function RentalInstrumentManager() {
         throw new Error('Failed to update order')
       }
 
-      setSuccessMessage('Order updated successfully!')
+      setSuccessMessage('Poradie úspešne upravené!')
       setTimeout(() => setSuccessMessage(null), 3000)
     } catch {
-      setError('Failed to update order. Please refresh the page.')
+      setError('Nepodarilo sa upraviť poradie. Prosím obnovte stránku.')
       // Revert on error
-      fetchRentalInstruments()
+      fetchRepairs()
     }
   }
 
@@ -412,7 +406,7 @@ export default function RentalInstrumentManager() {
   return (
     <div className="px-6 py-6 border rounded-lg shadow-md max-w-2xl mx-auto text-black">
       <h2 className="text-xl text-white font-bold mb-4">
-        {editingId ? 'Upraviť nástroj na prenájom' : 'Vytvoriť nástroj na prenájom'}
+        {editingId ? 'Upraviť opravu' : 'Vytvoriť opravu'}
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -573,24 +567,6 @@ export default function RentalInstrumentManager() {
         </div>
 
         <div>
-          <label htmlFor="status" className="block text-sm font-medium text-gray-400">
-            Stav
-          </label>
-          <select
-            id="status"
-            name="status"
-            value={formData.status}
-            onChange={handleInputChange}
-            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
-          >
-            <option value="available">Dostupný</option>
-            <option value="rented">Prenajatý</option>
-            <option value="maintenance">Údržba</option>
-          </select>
-          <p className="text-xs text-gray-500 mt-1">Stav dostupnosti nástroja</p>
-        </div>
-
-        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -612,7 +588,7 @@ export default function RentalInstrumentManager() {
             disabled={loading}
             className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50"
           >
-            {loading ? 'Ukladám...' : editingId ? 'Upraviť nástroj' : 'Vytvoriť nástroj'}
+            {loading ? 'Ukladám...' : editingId ? 'Upraviť opravu' : 'Vytvoriť opravu'}
           </button>
 
           {editingId && (
@@ -641,24 +617,24 @@ export default function RentalInstrumentManager() {
 
       <div className="mt-6">
         <button
-          onClick={fetchRentalInstruments}
+          onClick={fetchRepairs}
           disabled={loading}
           className="w-full bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded disabled:opacity-50"
         >
-          {loading ? 'Načítavam...' : 'Všetky nástroje na prenájom'}
+          {loading ? 'Načítavam...' : 'Všetky opravy'}
         </button>
 
-        {rentalInstruments.length > 0 && (
+        {repairs.length > 0 && (
           <div className="mt-4 space-y-3">
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
-              Všetky nástroje na prenájom ({rentalInstruments.length})
+              Všetky opravy ({repairs.length})
             </h3>
             <p className="text-sm text-gray-400 mb-2">
-              💡 Presuňte nástroje ťahaním pre zmenu poradia zobrazenia
+              💡 Presuňte opravy ťahaním pre zmenu poradia zobrazenia
             </p>
 
-            {/* Sort rental instruments: by order first, then by creation date */}
-            {[...rentalInstruments]
+            {/* Sort repairs: by order first, then by creation date */}
+            {[...repairs]
               .sort((a, b) => {
                 // First sort by order (ascending - lower numbers first)
                 if (a.order !== b.order) {
@@ -667,16 +643,16 @@ export default function RentalInstrumentManager() {
                 // Then sort by creation date (newest first)
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
               })
-              .map((rentalInstrument, index) => (
+              .map((repair, index) => (
                 <div
-                  key={rentalInstrument.id}
+                  key={repair.id}
                   draggable
                   onDragStart={() => handleDragStart(index)}
                   onDragOver={handleDragOver}
                   onDrop={() => handleDrop(index)}
                   onDragEnd={handleDragEnd}
                   className={`p-4 border-2 rounded-lg transition-all duration-200 cursor-move hover:shadow-lg ${
-                    rentalInstrument.published
+                    repair.published
                       ? 'border-green-500 bg-green-50/5'
                       : 'border-red-400 bg-red-50/5'
                   } ${draggedIndex === index ? 'opacity-50' : ''}`}
@@ -684,45 +660,28 @@ export default function RentalInstrumentManager() {
                   {/* Header with title and status badges */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h4 className="font-bold text-xl text-white mb-1">{rentalInstrument.name}</h4>
-                      {rentalInstrument.enName && (
-                        <h5 className="text-md text-gray-300 italic">{rentalInstrument.enName}</h5>
+                      <h4 className="font-bold text-xl text-white mb-1">{repair.name}</h4>
+                      {repair.enName && (
+                        <h5 className="text-md text-gray-300 italic">{repair.enName}</h5>
                       )}
                     </div>
                     <div className="flex flex-col gap-2 items-end">
                       {/* Published Status - Most Prominent */}
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-bold ${
-                          rentalInstrument.published
-                            ? 'bg-green-600 text-white'
-                            : 'bg-red-600 text-white'
+                          repair.published ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
                         }`}
                       >
-                        {rentalInstrument.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
+                        {repair.published ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
                       </span>
 
                       {/* Additional badges */}
                       <div className="flex gap-2">
                         <span className="px-2 py-1 rounded bg-purple-600 text-white text-xs font-bold">
-                          #{rentalInstrument.order}
-                        </span>
-                        <span
-                          className={`px-2 py-1 rounded text-white text-xs font-medium ${
-                            rentalInstrument.status === 'available'
-                              ? 'bg-green-600'
-                              : rentalInstrument.status === 'rented'
-                              ? 'bg-orange-600'
-                              : 'bg-gray-600'
-                          }`}
-                        >
-                          {rentalInstrument.status === 'available'
-                            ? 'DOSTUPNÝ'
-                            : rentalInstrument.status === 'rented'
-                            ? 'PRENAJATÝ'
-                            : 'ÚDRŽBA'}
+                          #{repair.order}
                         </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
-                          {new Date(rentalInstrument.createdAt).toLocaleDateString('sk-SK')}
+                          {new Date(repair.createdAt).toLocaleDateString('sk-SK')}
                         </span>
                       </div>
                     </div>
@@ -730,29 +689,27 @@ export default function RentalInstrumentManager() {
 
                   {/* Content */}
                   <div className="mb-3">
-                    <p className="text-white mb-2">{rentalInstrument.description}</p>
-                    {rentalInstrument.enDescription && (
-                      <p className="text-gray-300 italic text-sm">
-                        {rentalInstrument.enDescription}
-                      </p>
+                    <p className="text-white mb-2">{repair.description}</p>
+                    {repair.enDescription && (
+                      <p className="text-gray-300 italic text-sm">{repair.enDescription}</p>
                     )}
                   </div>
 
                   {/* Images */}
-                  {rentalInstrument.images && rentalInstrument.images.length > 0 && (
+                  {repair.images && repair.images.length > 0 && (
                     <div className="mb-4">
                       <p className="text-sm text-gray-400 mb-2">
-                        Obrázky ({rentalInstrument.images.length}):
+                        Obrázky ({repair.images.length}):
                       </p>
                       <div className="flex gap-2 overflow-x-auto pb-2">
-                        {rentalInstrument.images.map((imageUrl, index) => (
+                        {repair.images.map((imageUrl, index) => (
                           <div
                             key={index}
                             className="relative h-24 w-24 flex-shrink-0 border-2 border-gray-600 rounded"
                           >
                             <Image
                               src={imageUrl}
-                              alt={`${rentalInstrument.name} - ${index + 1}`}
+                              alt={`${repair.name} - ${index + 1}`}
                               width={96}
                               height={96}
                               style={{ objectFit: 'cover' }}
@@ -767,13 +724,13 @@ export default function RentalInstrumentManager() {
                   {/* Action buttons */}
                   <div className="flex gap-2 pt-2 border-t border-gray-600">
                     <button
-                      onClick={() => handleEdit(rentalInstrument)}
+                      onClick={() => handleEdit(repair)}
                       className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 px-4 rounded font-medium transition-colors"
                     >
                       ✏️ Upraviť
                     </button>
                     <button
-                      onClick={() => handleDelete(rentalInstrument.id)}
+                      onClick={() => handleDelete(repair.id)}
                       className="flex-1 bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded font-medium transition-colors"
                     >
                       🗑️ Vymazať

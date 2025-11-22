@@ -218,8 +218,7 @@ export default function BassManager() {
           const formData = new FormData()
           formData.append('file', file)
 
-          const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
-          //const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+          const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
 
           const response = await fetch(apiUrl, {
             method: 'POST',
@@ -239,7 +238,7 @@ export default function BassManager() {
       }
 
       // Get the highest order number and add 1 for new items
-      const maxOrder = editingId ? undefined : Math.max(0, ...basses.map(b => b.order)) + 1
+      const maxOrder = editingId ? undefined : Math.max(0, ...basses.map((b) => b.order)) + 1
 
       const bassData = {
         name: formData.name,
@@ -406,7 +405,7 @@ export default function BassManager() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          basses: bassesWithNewOrder.map(b => ({ id: b.id, order: b.order })),
+          basses: bassesWithNewOrder.map((b) => ({ id: b.id, order: b.order })),
         }),
       })
 
@@ -798,7 +797,9 @@ export default function BassManager() {
                             bass.availability === 'available' ? 'bg-green-600' : 'bg-red-600'
                           }`}
                         >
-                          {bass.availability === 'available' ? 'DOSTUPNÝ' : 'PREDANÝ - NA OBJEDNÁVKU'}
+                          {bass.availability === 'available'
+                            ? 'DOSTUPNÝ'
+                            : 'PREDANÝ - NA OBJEDNÁVKU'}
                         </span>
                         <span className="px-2 py-1 rounded bg-gray-700 text-gray-300 text-xs">
                           {new Date(bass.createdAt).toLocaleDateString('sk-SK')}

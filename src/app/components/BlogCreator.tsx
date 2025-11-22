@@ -142,8 +142,7 @@ export default function BlogCreator() {
         const uploadFormData = new FormData()
         uploadFormData.append('file', imageFile)
 
-        const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
-        // const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+        const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
 
         const response = await fetch(apiUrl, {
           method: 'POST',
@@ -740,12 +739,12 @@ export default function BlogCreator() {
           {loading ? 'Načítavam...' : 'Všetky blogy'}
         </button>
 
-{blogs.length > 0 && (
+        {blogs.length > 0 && (
           <div className="mt-4 space-y-6">
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
               Všetky blogy ({blogs.length})
             </h3>
-            
+
             {/* Sort blogs: active/published first, then by creation date */}
             {[...blogs]
               .sort((a, b) => {
@@ -757,30 +756,30 @@ export default function BlogCreator() {
                 return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
               })
               .map((blog) => (
-                <div 
-                  key={blog.id} 
+                <div
+                  key={blog.id}
                   className={`p-4 border-2 rounded-lg transition-all duration-200 ${
-                    blog.active 
-                      ? 'border-green-500 bg-green-50/5' 
-                      : 'border-red-400 bg-red-50/5'
+                    blog.active ? 'border-green-500 bg-green-50/5' : 'border-red-400 bg-red-50/5'
                   }`}
                 >
                   {/* Header with title and status badges */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <h4 className="font-bold text-xl text-white mb-1">{blog.title}</h4>
-                      {blog.enTitle && <h5 className="text-md text-gray-300 italic">{blog.enTitle}</h5>}
+                      {blog.enTitle && (
+                        <h5 className="text-md text-gray-300 italic">{blog.enTitle}</h5>
+                      )}
                     </div>
                     <div className="flex flex-col gap-2 items-end">
                       {/* Published Status - Most Prominent */}
-                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                        blog.active 
-                          ? 'bg-green-600 text-white' 
-                          : 'bg-red-600 text-white'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-bold ${
+                          blog.active ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+                        }`}
+                      >
                         {blog.active ? '✓ PUBLIKOVANÝ' : '✗ NEPUBLIKOVANÝ'}
                       </span>
-                      
+
                       {/* Additional badges */}
                       <div className="flex gap-2">
                         <span className="px-2 py-1 rounded bg-blue-600 text-white text-xs">

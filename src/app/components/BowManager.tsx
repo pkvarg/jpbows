@@ -218,8 +218,7 @@ export default function BowManager() {
           const formData = new FormData()
           formData.append('file', file)
 
-          const apiUrl = 'https://hono-api.pictusweb.com/api/upload/jpbows'
-          //const apiUrl = 'http://localhost:3013/api/upload/jpbows'
+          const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
 
           const response = await fetch(apiUrl, {
             method: 'POST',
