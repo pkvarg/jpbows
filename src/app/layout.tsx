@@ -28,6 +28,28 @@ const poiretOne = Poiret_One({
 export const metadata: Metadata = {
   title: 'bow4bass',
   description: 'Double Basses and bows.',
+  openGraph: {
+    title: 'bow4bass',
+    description: 'Double Basses and bows.',
+    url: 'https://bow4bass.com',
+    siteName: 'bow4bass',
+    images: [
+      {
+        url: 'https://bow4bass.com/bow4bass.webp',
+        width: 1200,
+        height: 630,
+        alt: 'bow4bass - Double Basses and bows',
+      },
+    ],
+    locale: 'sk_SK',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'bow4bass',
+    description: 'Double Basses and bows.',
+    images: ['https://bow4bass.com/bow4bass.webp'],
+  },
 }
 
 export async function generateStaticParams() {
