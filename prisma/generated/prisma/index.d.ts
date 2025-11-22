@@ -5450,8 +5450,18 @@ export namespace Prisma {
 
   export type AggregateBlog = {
     _count: BlogCountAggregateOutputType | null
+    _avg: BlogAvgAggregateOutputType | null
+    _sum: BlogSumAggregateOutputType | null
     _min: BlogMinAggregateOutputType | null
     _max: BlogMaxAggregateOutputType | null
+  }
+
+  export type BlogAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type BlogSumAggregateOutputType = {
+    order: number | null
   }
 
   export type BlogMinAggregateOutputType = {
@@ -5468,6 +5478,7 @@ export namespace Prisma {
     enBlogtext: string | null
     active: boolean | null
     metadata: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5486,6 +5497,7 @@ export namespace Prisma {
     enBlogtext: string | null
     active: boolean | null
     metadata: string | null
+    order: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5504,11 +5516,20 @@ export namespace Prisma {
     enBlogtext: number
     active: number
     metadata: number
+    order: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
+
+  export type BlogAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type BlogSumAggregateInputType = {
+    order?: true
+  }
 
   export type BlogMinAggregateInputType = {
     id?: true
@@ -5524,6 +5545,7 @@ export namespace Prisma {
     enBlogtext?: true
     active?: true
     metadata?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5542,6 +5564,7 @@ export namespace Prisma {
     enBlogtext?: true
     active?: true
     metadata?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5560,6 +5583,7 @@ export namespace Prisma {
     enBlogtext?: true
     active?: true
     metadata?: true
+    order?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5603,6 +5627,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: BlogAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BlogSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: BlogMinAggregateInputType
@@ -5633,6 +5669,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BlogCountAggregateInputType | true
+    _avg?: BlogAvgAggregateInputType
+    _sum?: BlogSumAggregateInputType
     _min?: BlogMinAggregateInputType
     _max?: BlogMaxAggregateInputType
   }
@@ -5651,9 +5689,12 @@ export namespace Prisma {
     enBlogtext: string
     active: boolean
     metadata: string | null
+    order: number
     createdAt: Date
     updatedAt: Date
     _count: BlogCountAggregateOutputType | null
+    _avg: BlogAvgAggregateOutputType | null
+    _sum: BlogSumAggregateOutputType | null
     _min: BlogMinAggregateOutputType | null
     _max: BlogMaxAggregateOutputType | null
   }
@@ -5686,6 +5727,7 @@ export namespace Prisma {
     enBlogtext?: boolean
     active?: boolean
     metadata?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["blog"]>
@@ -5706,11 +5748,12 @@ export namespace Prisma {
     enBlogtext?: boolean
     active?: boolean
     metadata?: boolean
+    order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "title" | "subtitle" | "description" | "blogtext" | "template" | "enTitle" | "enSubtitle" | "enDescription" | "enBlogtext" | "active" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
+  export type BlogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "title" | "subtitle" | "description" | "blogtext" | "template" | "enTitle" | "enSubtitle" | "enDescription" | "enBlogtext" | "active" | "metadata" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["blog"]>
 
   export type $BlogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Blog"
@@ -5729,6 +5772,7 @@ export namespace Prisma {
       enBlogtext: string
       active: boolean
       metadata: string | null
+      order: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["blog"]>
@@ -6136,6 +6180,7 @@ export namespace Prisma {
     readonly enBlogtext: FieldRef<"Blog", 'String'>
     readonly active: FieldRef<"Blog", 'Boolean'>
     readonly metadata: FieldRef<"Blog", 'String'>
+    readonly order: FieldRef<"Blog", 'Int'>
     readonly createdAt: FieldRef<"Blog", 'DateTime'>
     readonly updatedAt: FieldRef<"Blog", 'DateTime'>
   }
@@ -8638,6 +8683,7 @@ export namespace Prisma {
     enBlogtext: 'enBlogtext',
     active: 'active',
     metadata: 'metadata',
+    order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -9113,6 +9159,7 @@ export namespace Prisma {
     enBlogtext?: StringFilter<"Blog"> | string
     active?: BoolFilter<"Blog"> | boolean
     metadata?: StringNullableFilter<"Blog"> | string | null
+    order?: IntFilter<"Blog"> | number
     createdAt?: DateTimeFilter<"Blog"> | Date | string
     updatedAt?: DateTimeFilter<"Blog"> | Date | string
   }
@@ -9131,6 +9178,7 @@ export namespace Prisma {
     enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -9152,6 +9200,7 @@ export namespace Prisma {
     enBlogtext?: StringFilter<"Blog"> | string
     active?: BoolFilter<"Blog"> | boolean
     metadata?: StringNullableFilter<"Blog"> | string | null
+    order?: IntFilter<"Blog"> | number
     createdAt?: DateTimeFilter<"Blog"> | Date | string
     updatedAt?: DateTimeFilter<"Blog"> | Date | string
   }, "id">
@@ -9170,11 +9219,14 @@ export namespace Prisma {
     enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: BlogCountOrderByAggregateInput
+    _avg?: BlogAvgOrderByAggregateInput
     _max?: BlogMaxOrderByAggregateInput
     _min?: BlogMinOrderByAggregateInput
+    _sum?: BlogSumOrderByAggregateInput
   }
 
   export type BlogScalarWhereWithAggregatesInput = {
@@ -9194,6 +9246,7 @@ export namespace Prisma {
     enBlogtext?: StringWithAggregatesFilter<"Blog"> | string
     active?: BoolWithAggregatesFilter<"Blog"> | boolean
     metadata?: StringNullableWithAggregatesFilter<"Blog"> | string | null
+    order?: IntWithAggregatesFilter<"Blog"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Blog"> | Date | string
   }
@@ -9754,6 +9807,7 @@ export namespace Prisma {
     enBlogtext: string
     active: boolean
     metadata?: string | null
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -9772,6 +9826,7 @@ export namespace Prisma {
     enBlogtext: string
     active: boolean
     metadata?: string | null
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -9789,6 +9844,7 @@ export namespace Prisma {
     enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9806,6 +9862,7 @@ export namespace Prisma {
     enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9824,6 +9881,7 @@ export namespace Prisma {
     enBlogtext: string
     active: boolean
     metadata?: string | null
+    order?: number
     createdAt: Date | string
     updatedAt: Date | string
   }
@@ -9841,6 +9899,7 @@ export namespace Prisma {
     enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9858,6 +9917,7 @@ export namespace Prisma {
     enBlogtext?: StringFieldUpdateOperationsInput | string
     active?: BoolFieldUpdateOperationsInput | boolean
     metadata?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10397,8 +10457,13 @@ export namespace Prisma {
     enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BlogAvgOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type BlogMaxOrderByAggregateInput = {
@@ -10415,6 +10480,7 @@ export namespace Prisma {
     enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -10433,8 +10499,13 @@ export namespace Prisma {
     enBlogtext?: SortOrder
     active?: SortOrder
     metadata?: SortOrder
+    order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BlogSumOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type RentalInstrumentCountOrderByAggregateInput = {

@@ -114,6 +114,13 @@ const Navbar = () => {
               >
                 {t('navRentalInstruments')}
               </Link>
+              {/* <Link
+                href={'/blog'}
+                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                onClick={handleLinkClick}
+              >
+                Blog
+              </Link> */}
               <Link
                 href={'/about-me'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"

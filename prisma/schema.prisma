@@ -84,6 +84,7 @@ model Blog {
   enBlogtext String
   active Boolean
   metadata String?
+  order Int @default(999)
   createdAt DateTime
   updatedAt DateTime
 }

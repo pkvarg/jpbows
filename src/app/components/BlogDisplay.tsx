@@ -139,11 +139,11 @@ export default function BlogDisplay({ blogId }: BlogDisplayProps) {
         <h1 className="text-3xl font-bold text-gray-800 mb-2">{content.title}</h1>
         <h2 className="text-xl text-gray-600 mb-6">{content.subtitle}</h2>
 
-        <div className="bg-gray-100 p-4 rounded-lg mb-6">
-          <p className="text-gray-700 italic">{content.description}</p>
+        <div className="bg-gray-100 p-4 rounded-lg mb-6 text-xl">
+          <p className="text-black italic font-bold">{content.description}</p>
         </div>
 
-        <div className="prose max-w-none text-gray-800">
+        <div className="prose max-w-none text-gray-800 text-xl">
           {content.blogtext.split('\n').map((paragraph, idx) => (
             <p key={idx} className="mb-4">
               {paragraph}

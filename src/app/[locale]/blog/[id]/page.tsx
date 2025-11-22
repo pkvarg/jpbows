@@ -106,22 +106,31 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
+          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
+            {isEnglish ? 'Loading blog...' : 'Načítavam blog...'}
+          </p>
+        </div>
       </div>
     )
   }
 
   if (error || !blog) {
     return (
-      <div className="max-w-md mx-auto mt-10 p-6 bg-red-50 rounded-lg border border-red-200">
-        <h1 className="text-xl font-semibold text-red-700 mb-2">{isEnglish ? 'Error' : 'Chyba'}</h1>
-        <p className="text-red-600">
-          {error || (isEnglish ? 'Blog not found' : 'Blog nebol nájdený')}
-        </p>
-        <Link href="/blog" className="inline-block mt-4 text-blue-600 hover:underline">
-          {isEnglish ? 'Back to blogs' : 'Späť na blogy'}
-        </Link>
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-4">
+          <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">
+            {error || (isEnglish ? 'Blog not found' : 'Blog nebol nájdený')}
+          </p>
+          <Link
+            href="/blog"
+            className="inline-block bg-[#e80e19] hover:bg-[#2f0000] text-white py-2 px-6 rounded transition-colors duration-300"
+          >
+            {isEnglish ? 'Back to blogs' : 'Späť na blogy'}
+          </Link>
+        </div>
       </div>
     )
   }
@@ -153,13 +162,13 @@ export default function BlogPostPage() {
         </div>
 
         <h1 className="text-3xl font-bold text-gray-800 mb-2">{content.title}</h1>
-        <h2 className="text-xl text-gray-600 mb-6">{content.subtitle}</h2>
+        <h2 className="text-xl text-black mb-6">{content.subtitle}</h2>
 
-        <div className="bg-gray-100 p-4 rounded-lg mb-6">
-          <p className="text-gray-700 italic">{content.description}</p>
+        <div className="bg-gray-100 p-4 rounded-lg mb-6 text-xl">
+          <p className="text-black">{content.description}</p>
         </div>
 
-        <div className="prose max-w-none text-gray-800">
+        <div className="prose max-w-none text-gray-800 text-xl">
           {content.blogtext.split('\n').map((paragraph, idx) => (
             <p key={idx} className="mb-4">
               {paragraph}
@@ -250,10 +259,13 @@ export default function BlogPostPage() {
   )
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
-      <div className="container mx-auto py-10 px-4">
+    <div className="min-h-screen bg-[#fefefe]">
+      <div className="max-w-6xl mx-auto py-10 px-4">
         <div className="mb-4">
-          <Link href="/blog" className="text-white hover:underline flex items-center gap-2">
+          <Link
+            href="/blog"
+            className="text-[#e80e19] hover:text-[#2f0000] flex items-center gap-2 font-medium transition-colors duration-300"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"

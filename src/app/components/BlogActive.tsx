@@ -45,7 +45,7 @@ export default function BlogPage() {
 
         const data = await response.json()
 
-        // Filter to include only active blogs
+        // Filter to include only active blogs (order is preserved from API)
         const activeBlogs = data.filter((blog: Blog) => blog.active)
         setBlogs(activeBlogs)
       } catch (err) {
@@ -101,32 +101,42 @@ export default function BlogPage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
+          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">
+            {isEnglish ? 'Loading blogs...' : 'Načítavam blogy...'}
+          </p>
+        </div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="max-w-md mx-auto mt-10 p-6 bg-red-50 rounded-lg border border-red-200">
-        <h1 className="text-xl font-semibold text-red-700 mb-2">{isEnglish ? 'Error' : 'Chyba'}</h1>
-        <p className="text-red-600">{error}</p>
+      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
+        </div>
       </div>
     )
   }
 
   if (blogs.length === 0) {
     return (
-      <div className="max-w-md mx-auto mt-10 p-6 bg-gray-50 rounded-lg border border-gray-200 text-center">
-        <h1 className="text-xl font-semibold text-gray-700 mb-2">
-          {isEnglish ? 'No Blogs' : 'Žiadne blogy'}
-        </h1>
-        <p className="text-gray-600">
-          {isEnglish
-            ? 'There are currently no published blogs available.'
-            : 'Momentálne nie sú k dispozícii žiadne publikované blogy.'}
-        </p>
+      <div className="min-h-screen bg-[#fefefe]">
+        <div className="relative py-12 px-4 text-center">
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
+              {isEnglish ? 'Blog' : 'Blog'}
+            </h1>
+            <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
+              {isEnglish
+                ? 'There are currently no published blogs available.'
+                : 'Momentálne nie sú k dispozícii žiadne publikované blogy.'}
+            </p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -135,9 +145,9 @@ export default function BlogPage() {
   const ClassicBlogCard = ({ blog }: { blog: Blog }) => {
     const content = getBlogContent(blog)
     return (
-      <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+      <div className="bg-white rounded-lg shadow-sm hover:shadow-md overflow-hidden transition-all duration-300 flex flex-col h-full">
         {blog.imageUrl && (
-          <div className="relative h-48 w-full">
+          <div className="relative h-48 w-full flex-shrink-0">
             <Image
               src={blog.imageUrl}
               alt={content.title}
@@ -147,13 +157,15 @@ export default function BlogPage() {
             />
           </div>
         )}
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-grow">
           <div className="text-sm text-gray-500 mb-2">{formatDate(blog.createdAt)}</div>
-          <h2 className="text-xl font-bold text-gray-800 mb-2">{content.title}</h2>
-          <p className="text-gray-600 mb-4">{truncateText(content.description, 120)}</p>
+          <h2 className="text-xl font-semibold text-[#e80e19] mb-2">{content.title}</h2>
+          <p className="text-[#2f0000] mb-4 leading-relaxed text-xl flex-grow">
+            {truncateText(content.description, 120)}
+          </p>
           <Link
             href={`/blog/${blog.id}`}
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition-colors duration-300"
+            className="inline-block bg-[#e80e19] hover:bg-[#2f0000] text-white py-2 px-4 rounded transition-colors duration-300 font-bold mt-auto self-start"
           >
             {isEnglish ? 'Read More' : 'Čítať viac'}
           </Link>
@@ -165,13 +177,13 @@ export default function BlogPage() {
   const ModernBlogCard = ({ blog }: { blog: Blog }) => {
     const content = getBlogContent(blog)
     return (
-      <div className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-gray-100">
-        <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-4 text-white">
+      <div className="bg-white rounded-lg shadow-sm hover:shadow-md overflow-hidden transition-all duration-300 border border-gray-100 flex flex-col h-full">
+        <div className="bg-gradient-to-r from-[#e80e19] to-[#2f0000] p-4 text-white flex-shrink-0">
           <div className="text-sm opacity-80 mb-1">{formatDate(blog.createdAt)}</div>
           <h2 className="text-xl font-bold">{content.title}</h2>
         </div>
-        <div className="p-5">
-          <div className="flex gap-4">
+        <div className="p-5 flex-grow flex flex-col">
+          <div className="flex gap-4 flex-grow">
             {blog.imageUrl && (
               <div className="relative h-24 w-24 flex-shrink-0 rounded overflow-hidden">
                 <Image
@@ -183,11 +195,13 @@ export default function BlogPage() {
                 />
               </div>
             )}
-            <div>
-              <p className="text-gray-600 mb-3">{truncateText(content.description, 100)}</p>
+            <div className="flex flex-col flex-grow">
+              <p className="text-[#2f0000] mb-3 leading-relaxed flex-grow">
+                {truncateText(content.description, 100)}
+              </p>
               <Link
                 href={`/blog/${blog.id}`}
-                className="inline-block bg-purple-600 hover:bg-purple-700 text-white py-1 px-4 rounded-full text-sm transition-colors duration-300"
+                className="inline-block bg-[#e80e19] hover:bg-[#2f0000] text-white py-1 px-4 rounded-full text-sm transition-colors duration-300 self-start"
               >
                 {isEnglish ? 'Read Article →' : 'Čítať článok →'}
               </Link>
@@ -201,13 +215,15 @@ export default function BlogPage() {
   const MinimalBlogCard = ({ blog }: { blog: Blog }) => {
     const content = getBlogContent(blog)
     return (
-      <div className="bg-gray-50 p-6 border-l-4 border-gray-300 hover:border-gray-800 transition-all duration-300">
+      <div className="bg-white p-6 border-l-4 border-gray-300 hover:border-[#e80e19] transition-all duration-300 shadow-sm flex flex-col h-full">
         <div className="text-sm text-gray-400 mb-2">{formatDate(blog.createdAt)}</div>
-        <h2 className="text-xl font-light text-gray-800 mb-2">{content.title}</h2>
-        <p className="text-gray-600 mb-4 text-sm">{truncateText(content.description, 140)}</p>
+        <h2 className="text-xl font-semibold text-[#e80e19] mb-2">{content.title}</h2>
+        <p className="text-[#2f0000] mb-4 text-sm leading-relaxed flex-grow">
+          {truncateText(content.description, 140)}
+        </p>
         <Link
           href={`/blog/${blog.id}`}
-          className="text-gray-800 hover:text-gray-600 font-medium transition-colors duration-300"
+          className="text-[#e80e19] hover:text-[#2f0000] font-medium transition-colors duration-300 mt-auto self-start"
         >
           {isEnglish ? 'Read Article →' : 'Čítať článok →'}
         </Link>
@@ -229,21 +245,27 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 via-slate-900 to-black">
-      <div className="container mx-auto py-10 px-4">
-        <h1 className="text-3xl font-bold text-center mb-2 text-white">
-          {isEnglish ? 'Blog' : 'Blog'}
-        </h1>
-        <p className="text-gray-300 text-center mb-10">
-          {isEnglish
-            ? 'Latest posts and interesting content'
-            : 'Najnovšie príspevky a zaujímavosti'}
-        </p>
+    <div className="min-h-screen bg-[#fefefe]">
+      {/* Header Section */}
+      <div className="relative py-12 px-4 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
+            {isEnglish ? 'Blog' : 'Blog'}
+          </h1>
+          <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
+            {isEnglish
+              ? 'Latest posts and interesting content'
+              : 'Najnovšie príspevky a zaujímavosti'}
+          </p>
+        </div>
+      </div>
 
+      {/* Blog Content */}
+      <div className="max-w-6xl mx-auto pb-12 px-4">
         {/* Featured blog - most recent one */}
         {blogs.length > 0 && (
           <div className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 text-white">
+            <h2 className="text-2xl font-bold mb-6 text-[#e80e19]">
               {isEnglish ? 'Latest Post' : 'Najnovší príspevok'}
             </h2>
             <div className="max-w-4xl mx-auto">{getBlogCard(blogs[0])}</div>
@@ -252,12 +274,14 @@ export default function BlogPage() {
 
         {/* All other blogs */}
         <div className="mb-10">
-          <h2 className="text-2xl font-bold mb-6 text-white">
+          <h2 className="text-2xl font-bold mb-6 text-[#e80e19]">
             {isEnglish ? 'All Posts' : 'Všetky príspevky'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
             {blogs.map((blog) => (
-              <div key={blog.id}>{getBlogCard(blog)}</div>
+              <div key={blog.id} className="flex">
+                {getBlogCard(blog)}
+              </div>
             ))}
           </div>
         </div>

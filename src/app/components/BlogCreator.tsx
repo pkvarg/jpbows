@@ -35,6 +35,7 @@ interface Blog {
   active: boolean
   template: BlogTemplate
   metadata: string
+  order: number
   createdAt: Date
   updatedAt: Date
 }
@@ -63,6 +64,7 @@ export default function BlogCreator() {
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [previewTemplate, setPreviewTemplate] = useState<boolean>(false)
   const [previewLanguage, setPreviewLanguage] = useState<'sk' | 'en'>('sk')
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const resetForm = () => {
@@ -288,6 +290,56 @@ export default function BlogCreator() {
     setPreviewTemplate(!previewTemplate)
   }
 
+  // Drag and drop handlers for reordering
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index)
+  }
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    if (draggedIndex === null || draggedIndex === index) return
+
+    const newBlogs = [...blogs]
+    const draggedBlog = newBlogs[draggedIndex]
+    newBlogs.splice(draggedIndex, 1)
+    newBlogs.splice(index, 0, draggedBlog)
+
+    setBlogs(newBlogs)
+    setDraggedIndex(index)
+  }
+
+  const handleDragEnd = async () => {
+    if (draggedIndex === null) return
+
+    // Update order in database
+    const blogsWithNewOrder = blogs.map((blog, index) => ({
+      id: blog.id,
+      order: index,
+    }))
+
+    try {
+      const response = await fetch('/api/blogs/reorder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ blogs: blogsWithNewOrder }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to update blog order')
+      }
+
+      // Update local state with new order values
+      setBlogs(blogs.map((blog, index) => ({ ...blog, order: index })))
+    } catch (error) {
+      console.error('Error updating blog order:', error)
+      setError('Failed to update blog order')
+    }
+
+    setDraggedIndex(null)
+  }
+
   // Function to truncate text for preview
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) return text
@@ -337,11 +389,11 @@ export default function BlogCreator() {
           <h1 className="text-3xl font-bold text-gray-800 mb-2">{content.title}</h1>
           <h2 className="text-xl text-gray-600 mb-6">{content.subtitle}</h2>
 
-          <div className="bg-gray-100 p-4 rounded-lg mb-6">
-            <p className="text-gray-700 italic">{content.description}</p>
+          <div className="bg-gray-100 p-4 rounded-lg mb-6 text-xl">
+            <p className="text-black italic font-bold">{content.description}</p>
           </div>
 
-          <div className="prose max-w-none text-gray-800">
+          <div className="prose max-w-none text-gray-800 text-xl">
             {content.blogtext.split('\n').map((paragraph, idx) => (
               <p key={idx} className="mb-4">
                 {paragraph}
@@ -744,31 +796,35 @@ export default function BlogCreator() {
             <h3 className="text-xl font-bold text-yellow-500 border-b border-yellow-500 pb-2">
               Všetky blogy ({blogs.length})
             </h3>
+            <p className="text-sm text-gray-400 mb-4">
+              ℹ️ Pretiahnite blogy na zmenu poradia zobrazenia
+            </p>
 
-            {/* Sort blogs: active/published first, then by creation date */}
-            {[...blogs]
-              .sort((a, b) => {
-                // First sort by active status (active items first)
-                if (a.active !== b.active) {
-                  return b.active ? 1 : -1
-                }
-                // Then sort by creation date (newest first)
-                return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-              })
-              .map((blog) => (
+            {/* Display blogs in current order */}
+            {blogs.map((blog, index) => (
                 <div
                   key={blog.id}
-                  className={`p-4 border-2 rounded-lg transition-all duration-200 ${
+                  draggable
+                  onDragStart={() => handleDragStart(index)}
+                  onDragOver={(e) => handleDragOver(e, index)}
+                  onDragEnd={handleDragEnd}
+                  className={`p-4 border-2 rounded-lg transition-all duration-200 cursor-move ${
                     blog.active ? 'border-green-500 bg-green-50/5' : 'border-red-400 bg-red-50/5'
-                  }`}
+                  } ${draggedIndex === index ? 'opacity-50' : ''}`}
                 >
                   {/* Header with title and status badges */}
                   <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h4 className="font-bold text-xl text-white mb-1">{blog.title}</h4>
-                      {blog.enTitle && (
-                        <h5 className="text-md text-gray-300 italic">{blog.enTitle}</h5>
-                      )}
+                    <div className="flex items-start gap-3">
+                      {/* Order indicator */}
+                      <div className="flex-shrink-0 w-8 h-8 bg-yellow-500 text-black font-bold rounded-full flex items-center justify-center text-sm">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xl text-white mb-1">{blog.title}</h4>
+                        {blog.enTitle && (
+                          <h5 className="text-md text-gray-300 italic">{blog.enTitle}</h5>
+                        )}
+                      </div>
                     </div>
                     <div className="flex flex-col gap-2 items-end">
                       {/* Published Status - Most Prominent */}

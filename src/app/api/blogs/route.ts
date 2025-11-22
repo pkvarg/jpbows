@@ -9,6 +9,11 @@ export async function POST(request: NextRequest) {
     // Parse request body
     const body = await request.json()
 
+    // Get the highest order number for new blogs
+    const maxOrder = body.order ?? (await prisma.blog.findMany({
+      select: { order: true },
+    }).then(blogs => Math.max(0, ...blogs.map(b => b.order)) + 1))
+
     // Create blog using your singleton prisma client
     const blog = await prisma.blog.create({
       data: {
@@ -24,6 +29,7 @@ export async function POST(request: NextRequest) {
         active: body.active,
         metadata: body.metadata,
         template: body.template || 'classic', // Default to classic if not provided
+        order: maxOrder,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -51,10 +57,10 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    // Fetch all blogs
+    // Fetch all blogs ordered by order field
     const blogs = await prisma.blog.findMany({
       orderBy: {
-        createdAt: 'desc', // Most recent blogs first
+        order: 'asc', // Ordered by custom order field
       },
     })
 

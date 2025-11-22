@@ -182,6 +182,7 @@ exports.Prisma.BlogScalarFieldEnum = {
   enBlogtext: 'enBlogtext',
   active: 'active',
   metadata: 'metadata',
+  order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
