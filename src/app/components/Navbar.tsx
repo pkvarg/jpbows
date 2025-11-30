@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import LangSwitcher from './LangSwitcher'
 
@@ -18,8 +18,6 @@ const Navbar = () => {
   })
 
   const router = useRouter()
-  const pathname = usePathname()
-  const isEnglish = pathname.includes('/en/')
 
   // Fetch instrument counts
   useEffect(() => {
@@ -147,35 +145,35 @@ const Navbar = () => {
                       className="block px-4 py-2 hover:bg-gray-100 text-lg"
                       onClick={handleLinkClick}
                     >
-                      {isEnglish ? 'Double Basses' : 'Kontrabasy'} ({instrumentCounts.bass})
+                      {t('navInstrumentsBass')} ({instrumentCounts.bass})
                     </Link>
                     <Link
                       href="/bass?type=violone"
                       className="block px-4 py-2 hover:bg-gray-100 text-lg"
                       onClick={handleLinkClick}
                     >
-                      Violone ({instrumentCounts.violone})
+                      {t('navInstrumentsViolone')} ({instrumentCounts.violone})
                     </Link>
                     <Link
                       href="/bass?type=gamba"
                       className="block px-4 py-2 hover:bg-gray-100 text-lg"
                       onClick={handleLinkClick}
                     >
-                      Viola da Gamba ({instrumentCounts.gamba})
+                      {t('navInstrumentsGamba')} ({instrumentCounts.gamba})
                     </Link>
                     <Link
                       href="/bass?type=cello"
                       className="block px-4 py-2 hover:bg-gray-100 text-lg"
                       onClick={handleLinkClick}
                     >
-                      {isEnglish ? 'Cellos' : 'Violončelá'} ({instrumentCounts.cello})
+                      {t('navInstrumentsCello')} ({instrumentCounts.cello})
                     </Link>
                     <Link
                       href="/bass"
                       className="block px-4 py-2 hover:bg-gray-100 text-lg font-bold border-t border-gray-200"
                       onClick={handleLinkClick}
                     >
-                      {isEnglish ? 'All' : 'Všetky'} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
+                      {t('navInstrumentsAll')} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
                     </Link>
                   </div>
                 )}
