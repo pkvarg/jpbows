@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -9,12 +9,42 @@ import LangSwitcher from './LangSwitcher'
 const Navbar = () => {
   const t = useTranslations('Home')
   const [navbar, setNavbar] = useState(false)
+  const [bassDropdown, setBassDropdown] = useState(false)
+  const [instrumentCounts, setInstrumentCounts] = useState({
+    bass: 0,
+    violone: 0,
+    gamba: 0,
+    cello: 0,
+  })
 
   const router = useRouter()
+
+  // Fetch instrument counts
+  useEffect(() => {
+    const fetchInstrumentCounts = async () => {
+      try {
+        const response = await fetch('/api/basses')
+        if (response.ok) {
+          const basses: Array<{ instrumentType: string; published: boolean }> = await response.json()
+          const counts = {
+            bass: basses.filter((b) => b.instrumentType === 'bass' && b.published).length,
+            violone: basses.filter((b) => b.instrumentType === 'violone' && b.published).length,
+            gamba: basses.filter((b) => b.instrumentType === 'gamba' && b.published).length,
+            cello: basses.filter((b) => b.instrumentType === 'cello' && b.published).length,
+          }
+          setInstrumentCounts(counts)
+        }
+      } catch (error) {
+        console.error('Error fetching instrument counts:', error)
+      }
+    }
+    fetchInstrumentCounts()
+  }, [])
 
   // Function to close everything when a link is clicked
   const handleLinkClick = () => {
     setNavbar(false)
+    setBassDropdown(false)
   }
 
   return (
@@ -100,13 +130,54 @@ const Navbar = () => {
                 {t('navServiceRepairs')}
               </Link>
 
-              <Link
-                href={'/bass'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                {t('navInstruments')}
-              </Link>
+              {/* Bass instruments dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setBassDropdown(!bassDropdown)}
+                  className="cursor-pointer hover:text-[#2f0000] block py-2 w-full text-left"
+                >
+                  {t('navInstruments')} ▾
+                </button>
+                {bassDropdown && (
+                  <div className="md:absolute relative md:left-0 md:mt-0 md:w-48 md:bg-white md:shadow-lg md:rounded-md md:border md:border-gray-200 z-50">
+                    <Link
+                      href="/bass?type=bass"
+                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      onClick={handleLinkClick}
+                    >
+                      Bass ({instrumentCounts.bass})
+                    </Link>
+                    <Link
+                      href="/bass?type=violone"
+                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      onClick={handleLinkClick}
+                    >
+                      Violone ({instrumentCounts.violone})
+                    </Link>
+                    <Link
+                      href="/bass?type=gamba"
+                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      onClick={handleLinkClick}
+                    >
+                      Gamba ({instrumentCounts.gamba})
+                    </Link>
+                    <Link
+                      href="/bass?type=cello"
+                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      onClick={handleLinkClick}
+                    >
+                      Cello ({instrumentCounts.cello})
+                    </Link>
+                    <Link
+                      href="/bass"
+                      className="block px-4 py-2 hover:bg-gray-100 text-lg font-bold border-t border-gray-200"
+                      onClick={handleLinkClick}
+                    >
+                      Všetky ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
+                    </Link>
+                  </div>
+                )}
+              </div>
               <Link
                 href={'/rent'}
                 className="cursor-pointer hover:text-[#2f0000] block py-2"

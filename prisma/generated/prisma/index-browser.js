@@ -152,6 +152,7 @@ exports.Prisma.BassScalarFieldEnum = {
   priceEnglish: 'priceEnglish',
   videoUrl: 'videoUrl',
   availability: 'availability',
+  instrumentType: 'instrumentType',
   order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

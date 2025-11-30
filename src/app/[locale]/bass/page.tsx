@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 interface Bass {
@@ -18,6 +18,7 @@ interface Bass {
   new: boolean
   videoUrl: string
   availability: 'available' | 'sold'
+  instrumentType: 'bass' | 'violone' | 'gamba' | 'cello'
   order: number
   createdAt: string
   updatedAt: string
@@ -388,18 +389,15 @@ const Bass = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const instrumentType = searchParams.get('type') as 'bass' | 'violone' | 'gamba' | 'cello' | null
 
   console.log('basses', basses)
 
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    fetchBasses()
-  }, [])
-
-  const fetchBasses = async () => {
+  const fetchBasses = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch('/api/basses')
@@ -409,8 +407,13 @@ const Bass = () => {
       }
 
       const data = await response.json()
-      // Filter only published basses - no language filtering needed now
-      const filteredBasses = data.filter((bass: Bass) => bass.published)
+      // Filter only published basses and by instrument type if specified
+      let filteredBasses = data.filter((bass: Bass) => bass.published)
+
+      // Filter by instrument type if specified in URL
+      if (instrumentType) {
+        filteredBasses = filteredBasses.filter((bass: Bass) => bass.instrumentType === instrumentType)
+      }
 
       // Sort by order (ascending - lower numbers first)
       const sortedBasses = filteredBasses.sort((a: Bass, b: Bass) => {
@@ -427,7 +430,11 @@ const Bass = () => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [instrumentType])
+
+  useEffect(() => {
+    fetchBasses()
+  }, [fetchBasses])
 
   if (loading) {
     return (
@@ -458,13 +465,25 @@ const Bass = () => {
     )
   }
 
+  // Get instrument type label
+  const getInstrumentTypeLabel = () => {
+    if (!instrumentType) return isEnglish ? 'All Instruments' : 'Všetky nástroje'
+    const labels: Record<string, { en: string; sk: string }> = {
+      bass: { en: 'Double Basses', sk: 'Kontrabasy' },
+      violone: { en: 'Violones', sk: 'Violone' },
+      gamba: { en: 'Gambas', sk: 'Gamby' },
+      cello: { en: 'Cellos', sk: 'Violončelá' }
+    }
+    return isEnglish ? labels[instrumentType]?.en : labels[instrumentType]?.sk
+  }
+
   return (
     <div className="min-h-screen bg-[#fefefe]">
       {/* Header Section */}
       <div className="relative py-12 px-4 text-center">
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
-            {isEnglish ? 'Instruments' : 'Nástroje'}
+            {getInstrumentTypeLabel()}
           </h1>
           <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
             {isEnglish

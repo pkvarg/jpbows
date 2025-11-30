@@ -16,6 +16,7 @@ interface BassFormData {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  instrumentType: 'bass' | 'violone' | 'gamba' | 'cello'
 }
 
 interface Bass {
@@ -32,6 +33,7 @@ interface Bass {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  instrumentType: 'bass' | 'violone' | 'gamba' | 'cello'
   order: number
   createdAt: Date
   updatedAt: Date
@@ -51,6 +53,7 @@ export default function BassManager() {
     metadata: '',
     videoUrl: '',
     availability: 'available',
+    instrumentType: 'bass',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -76,6 +79,7 @@ export default function BassManager() {
       metadata: '',
       videoUrl: '',
       availability: 'available',
+      instrumentType: 'bass',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -253,6 +257,7 @@ export default function BassManager() {
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
         availability: formData.availability,
+        instrumentType: formData.instrumentType,
         ...(maxOrder !== undefined && { order: maxOrder }),
       }
 
@@ -327,6 +332,7 @@ export default function BassManager() {
       metadata: bass.metadata || '',
       videoUrl: bass.videoUrl || '',
       availability: bass.availability || 'available',
+      instrumentType: bass.instrumentType || 'bass',
     })
     setEditingId(bass.id)
     setImagePreviews(bass.images || [])
@@ -676,6 +682,25 @@ export default function BassManager() {
         </div>
 
         <div>
+          <label htmlFor="instrumentType" className="block text-sm font-medium text-gray-400">
+            Typ nástroja
+          </label>
+          <select
+            id="instrumentType"
+            name="instrumentType"
+            value={formData.instrumentType}
+            onChange={handleInputChange}
+            className="mt-1 block w-full border border-gray-300 text-white rounded-md shadow-sm p-2"
+          >
+            <option value="bass">Bass</option>
+            <option value="violone">Violone</option>
+            <option value="gamba">Gamba</option>
+            <option value="cello">Cello</option>
+          </select>
+          <p className="text-xs text-gray-500 mt-1">Typ sláčikového nástroja</p>
+        </div>
+
+        <div>
           <label htmlFor="metadata" className="block text-sm font-medium text-gray-400">
             Metadata
           </label>
@@ -786,6 +811,9 @@ export default function BassManager() {
                       <div className="flex gap-2">
                         <span className="px-2 py-1 rounded bg-purple-600 text-white text-xs font-bold">
                           #{bass.order}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-yellow-600 text-white text-xs font-bold uppercase">
+                          {bass.instrumentType}
                         </span>
                         {bass.new && (
                           <span className="px-2 py-1 rounded bg-blue-600 text-white text-xs">

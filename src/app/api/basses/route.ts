@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
         priceEnglish: body.priceEnglish || '',
         videoUrl: body.videoUrl || '',
         availability: body.availability || 'available',
+        instrumentType: body.instrumentType || 'bass',
         order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),

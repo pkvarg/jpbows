@@ -40,22 +40,23 @@ model Bows {
 }
 
 model Bass {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  images        String[]
-  name          String
-  description   String
-  published     Boolean
-  enName        String
-  enDescription String
-  new           Boolean
-  metadata      String?
-  price         String
-  priceEnglish  String?
-  videoUrl      String?
-  availability  String   @default("available")
-  order         Int      @default(999)
-  createdAt     DateTime
-  updatedAt     DateTime
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  images         String[]
+  name           String
+  description    String
+  published      Boolean
+  enName         String
+  enDescription  String
+  new            Boolean
+  metadata       String?
+  price          String
+  priceEnglish   String?
+  videoUrl       String?
+  availability   String   @default("available")
+  instrumentType String   @default("bass")
+  order          Int      @default(999)
+  createdAt      DateTime
+  updatedAt      DateTime
 }
 
 model Slider {
