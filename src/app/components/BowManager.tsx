@@ -557,7 +557,7 @@ export default function BowManager() {
               <p className="text-sm text-gray-500 mb-1">
                 Náhľad ({imagePreviews.length} obrázkov):
               </p>
-              <div className="grid grid-cols-3 gap-2 h-[200px]">
+              <div className="grid grid-cols-3 gap-2 max-h-[400px] overflow-y-auto border border-gray-600 p-2 rounded">
                 {imagePreviews.map((preview, index) => (
                   <div key={index} className="relative group">
                     <div className="relative h-24 w-24 border">
