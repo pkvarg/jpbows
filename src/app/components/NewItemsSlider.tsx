@@ -13,6 +13,7 @@ interface BassData {
   enDescription: string
   images: string[]
   price: string
+  priceEnglish?: string
   published: boolean
   new: boolean
   metadata?: string
@@ -28,6 +29,7 @@ interface BowData {
   enDescription: string
   images: string[]
   price: string
+  priceEnglish?: string
   published: boolean
   new: boolean
   metadata?: string
@@ -43,6 +45,7 @@ interface Product {
   enDescription: string
   images: string[]
   price: string
+  priceEnglish?: string
   type: 'bass' | 'bow'
 }
 
@@ -229,7 +232,9 @@ const NewItemsSlider = () => {
 
                 {currentProduct.price && (
                   <p className="text-2xl font-semibold text-[#2f0000] mb-8">
-                    {currentProduct.price}
+                    {isEnglish && currentProduct.priceEnglish
+                      ? currentProduct.priceEnglish
+                      : currentProduct.price}
                   </p>
                 )}
 
