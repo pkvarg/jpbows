@@ -140,7 +140,7 @@ export default function ReviewManager() {
   const removePhoto = () => {
     setImageFile(null)
     setImagePreview(null)
-    setFormData(prev => ({ ...prev, photo: '' }))
+    setFormData((prev) => ({ ...prev, photo: '' }))
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
@@ -296,6 +296,7 @@ export default function ReviewManager() {
               type="text"
               name="customerDescription"
               value={formData.customerDescription}
+              placeholder="kontrabasista..."
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               required
@@ -310,6 +311,7 @@ export default function ReviewManager() {
               type="text"
               name="customerDescription2"
               value={formData.customerDescription2}
+              placeholder="majiteľ modelu..."
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -322,6 +324,7 @@ export default function ReviewManager() {
               type="text"
               name="customerDescriptionEnglish"
               value={formData.customerDescriptionEnglish}
+              placeholder="double bass player..."
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
@@ -334,6 +337,7 @@ export default function ReviewManager() {
               type="text"
               name="customerDescription2English"
               value={formData.customerDescription2English}
+              placeholder="owner of model..."
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
             />
