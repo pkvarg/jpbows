@@ -119,7 +119,8 @@ const ImageModal = ({
                       index === currentIndex ? 'w-6' : ''
                     }`}
                     style={{
-                      backgroundColor: index === currentIndex ? '#E80D19' : 'rgba(232, 13, 25, 0.5)'
+                      backgroundColor:
+                        index === currentIndex ? '#E80D19' : 'rgba(232, 13, 25, 0.5)',
                     }}
                   />
                 ))}
@@ -392,8 +393,6 @@ const Bass = () => {
   const searchParams = useSearchParams()
   const instrumentType = searchParams.get('type') as 'bass' | 'violone' | 'gamba' | 'cello' | null
 
-  console.log('basses', basses)
-
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
@@ -412,7 +411,9 @@ const Bass = () => {
 
       // Filter by instrument type if specified in URL
       if (instrumentType) {
-        filteredBasses = filteredBasses.filter((bass: Bass) => bass.instrumentType === instrumentType)
+        filteredBasses = filteredBasses.filter(
+          (bass: Bass) => bass.instrumentType === instrumentType,
+        )
       }
 
       // Sort by order (ascending - lower numbers first)
@@ -472,7 +473,7 @@ const Bass = () => {
       bass: { en: 'Double Basses', sk: 'Kontrabasy' },
       violone: { en: 'Violones', sk: 'Violone' },
       gamba: { en: 'Gambas', sk: 'Gamby' },
-      cello: { en: 'Cellos', sk: 'Violončelá' }
+      cello: { en: 'Cellos', sk: 'Violončelá' },
     }
     return isEnglish ? labels[instrumentType]?.en : labels[instrumentType]?.sk
   }

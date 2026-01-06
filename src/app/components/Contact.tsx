@@ -75,8 +75,6 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   // Type assertion needed since params can contain various types
   const locale = typeof params.locale === 'string' ? params.locale : 'sk'
 
-  console.log('lcl', locale)
-
   // Anti-spam: Content validation function
   const isSpamContent = (text: string): boolean => {
     if (!text || text.trim().length < 3) return true
@@ -141,7 +139,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   const logBotAttempt = async (
     detectionType: string,
     detectionDetails: string,
-    timeSpent?: number
+    timeSpent?: number,
   ) => {
     try {
       await fetch('/api/bot-log', {
@@ -177,8 +175,6 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           'Content-Type': 'application/json',
         },
       })
-
-      //console.log('data bots', data)
     } catch (error) {
       console.error('Error increasing bots:', error)
     }
@@ -193,7 +189,6 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
           'Content-Type': 'application/json',
         },
       })
-      //console.log('data email', data)
     } catch (error) {
       console.error('Error increasing emails:', error)
     }
@@ -222,11 +217,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
     // Anti-spam Check 1: Honeypot field
     if (honeypot !== '') {
       const timeSpent = Date.now() - formStartTime
-      await logBotAttempt(
-        'honeypot',
-        `Honeypot field filled with value: "${honeypot}"`,
-        timeSpent
-      )
+      await logBotAttempt('honeypot', `Honeypot field filled with value: "${honeypot}"`, timeSpent)
       setMessage(contactError)
       setName('')
       setEmail('')
@@ -243,7 +234,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       await logBotAttempt(
         'time-based',
         `Form submitted too quickly: ${timeSpent}ms (minimum: 3000ms)`,
-        timeSpent
+        timeSpent,
       )
       setMessage(contactError)
       setName('')
@@ -258,11 +249,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
     // Anti-spam Check 3: Content validation
     if (isSpamContent(name) || isSpamContent(mailMessage)) {
       const spamReason = isSpamContent(name) ? 'name field' : 'message field'
-      await logBotAttempt(
-        'content-validation',
-        `Spam content detected in ${spamReason}`,
-        timeSpent
-      )
+      await logBotAttempt('content-validation', `Spam content detected in ${spamReason}`, timeSpent)
       setMessage(contactError)
       setName('')
       setEmail('')
@@ -278,7 +265,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       await logBotAttempt(
         'rate-limit',
         'Rate limit exceeded: More than 3 submissions in 1 hour',
-        timeSpent
+        timeSpent,
       )
       setMessage(contactError)
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
@@ -290,7 +277,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       await logBotAttempt(
         'honeypot-legacy',
         'Legacy honeypot password fields were modified',
-        timeSpent
+        timeSpent,
       )
       setMessage(contactError)
       setName('')
@@ -438,7 +425,10 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     />
 
                     {/* Anti-spam: Honeypot field - hidden with CSS, bots will fill it */}
-                    <div style={{ position: 'absolute', left: '-9999px', opacity: 0 }} aria-hidden="true">
+                    <div
+                      style={{ position: 'absolute', left: '-9999px', opacity: 0 }}
+                      aria-hidden="true"
+                    >
                       <label htmlFor="website_url">Website</label>
                       <input
                         type="text"

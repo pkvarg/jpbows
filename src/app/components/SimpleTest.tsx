@@ -25,7 +25,6 @@ export default function SimpleTest() {
         throw new Error(data.error?.message || 'Failed to test connection')
       }
 
-      console.log('type of data', typeof data)
       setResult(data)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred')

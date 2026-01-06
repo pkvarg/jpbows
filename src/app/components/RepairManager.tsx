@@ -199,15 +199,11 @@ export default function RepairManager() {
           formData.append('file', file)
 
           const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
-          console.log('Upload API URL:', apiUrl)
-          console.log('Uploading file:', file.name, 'Size:', file.size)
 
           const response = await fetch(apiUrl, {
             method: 'POST',
             body: formData,
           })
-
-          console.log('Upload response status:', response.status)
 
           if (!response.ok) {
             const errorText = await response.text()
@@ -216,7 +212,7 @@ export default function RepairManager() {
           }
 
           const data = await response.json()
-          console.log('Upload successful, image URL:', data.imageUrl)
+
           return data.imageUrl
         })
 

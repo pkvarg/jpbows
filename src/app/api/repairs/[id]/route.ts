@@ -27,8 +27,6 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<Re
     const resolvedParams = await params
     const id = resolvedParams.id
 
-    console.log('id', id)
-
     // Check if repair exists first
     const existingRepair = await db.repair.findUnique({
       where: { id },
@@ -88,7 +86,10 @@ export async function POST(request: NextRequest) {
 }
 
 // DELETE a repair by id
-export async function DELETE(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<ResolvedParams> },
+) {
   try {
     const resolvedParams = await params
     const id = resolvedParams.id

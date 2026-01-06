@@ -56,8 +56,7 @@ export async function GET() {
       orderBy: { order: 'asc' },
     })
 
-    // Debug: Log the order values
-    console.log('Basses order:', basses.map(b => ({ name: b.name, order: b.order })))
+  
 
     // Return successful response
     return NextResponse.json(basses)

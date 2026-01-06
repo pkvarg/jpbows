@@ -66,14 +66,12 @@ const FileUpload = () => {
         body: formData,
       })
 
-      // console.log('response', response)
-
       if (!response.ok) {
         throw new Error('Nepodarilo sa nahrať súbor')
       }
 
       const data = await response.json()
-      // console.log('data', data)
+
       setSuccessMessage('Súbor bol úspešne nahraný!')
       setUploadedFileUrl(data.imageUrl)
 
