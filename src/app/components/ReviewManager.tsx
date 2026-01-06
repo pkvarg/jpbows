@@ -290,7 +290,7 @@ export default function ReviewManager() {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Customer Description. 1 (Slovak)
+              Customer Description 1 (Slovak)
             </label>
             <input
               type="text"
