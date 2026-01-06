@@ -117,3 +117,20 @@ model Repair {
   createdAt     DateTime
   updatedAt     DateTime
 }
+
+model Review {
+  id                          String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName                String
+  customerDescription         String
+  customerDescription2        String?
+  customerDescriptionEnglish  String?
+  customerDescription2English String?
+  reviewText                  String
+  reviewTextEnglish           String
+  photo                       String
+  active                      Boolean
+  reviewOriginLink            String
+  reviewType                  String   @default("bows")
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @updatedAt
+}

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import ReviewsDisplay from '@/app/components/ReviewsDisplay'
 
 interface Bow {
   id: string
@@ -455,6 +456,9 @@ const Bow = () => {
           </div>
         )}
       </div>
+
+      {/* Reviews Section */}
+      <ReviewsDisplay filterType="bows" />
     </div>
   )
 }

@@ -23,6 +23,7 @@ const Admin = async () => {
             <Link href={`/admin/repairs`}>Repairs</Link>
             {/* <Link href={`/admin/slider`}>Sliders</Link> */}
             <Link href={`/admin/blog`}>Blogs</Link>
+            <Link href={`/admin/reviews`}>Reviews</Link>
             <Link
               href="https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/share/PdxeXPCaZrZhF1ko/jpbows.pictusweb.com"
               target="_blank"

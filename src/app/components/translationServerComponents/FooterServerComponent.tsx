@@ -11,6 +11,7 @@ const FooterServerComponent = () => {
     disagree: t('cookiesDisagree'),
     about: t('headerAbout'),
     tradeRules: t('tradeRules'),
+    reviews: t('reviews'),
   }
   return <Footer translations={footerTranslations} />
 }

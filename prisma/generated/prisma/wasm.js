@@ -217,6 +217,23 @@ exports.Prisma.RepairScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  customerName: 'customerName',
+  customerDescription: 'customerDescription',
+  customerDescription2: 'customerDescription2',
+  customerDescriptionEnglish: 'customerDescriptionEnglish',
+  customerDescription2English: 'customerDescription2English',
+  reviewText: 'reviewText',
+  reviewTextEnglish: 'reviewTextEnglish',
+  photo: 'photo',
+  active: 'active',
+  reviewOriginLink: 'reviewOriginLink',
+  reviewType: 'reviewType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -235,7 +252,8 @@ exports.Prisma.ModelName = {
   Slider: 'Slider',
   Blog: 'Blog',
   RentalInstrument: 'RentalInstrument',
-  Repair: 'Repair'
+  Repair: 'Repair',
+  Review: 'Review'
 };
 
 /**

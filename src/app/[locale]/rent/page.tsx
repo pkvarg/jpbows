@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import ReviewsDisplay from '@/app/components/ReviewsDisplay'
 //import { useTranslations } from 'next-intl'
 
 interface RentalInstrument {
@@ -450,6 +451,9 @@ const Rent = () => {
           </div>
         )}
       </div>
+
+      {/* Reviews Section */}
+      <ReviewsDisplay filterType="rental" />
     </div>
   )
 }

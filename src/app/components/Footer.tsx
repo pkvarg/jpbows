@@ -13,11 +13,12 @@ interface TranslationProps {
     disagree: string
     tradeRules: string
     about: string
+    reviews?: string
   }
 }
 
 const Footer: FC<TranslationProps> = ({ translations }) => {
-  const { cookies, agree, disagree, tradeRules, about } = translations
+  const { cookies, agree, disagree, tradeRules, about, reviews } = translations
 
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/visitors/jpbows/increase`
 
@@ -135,6 +136,12 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
                 href={`/trade-rules`}
               >
                 {tradeRules}
+              </Link>
+              <Link
+                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
+                href={`/reviews`}
+              >
+                {reviews || 'Reviews'}
               </Link>
             </div>
 

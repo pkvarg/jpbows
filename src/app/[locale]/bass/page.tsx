@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
+import ReviewsDisplay from '@/app/components/ReviewsDisplay'
 
 interface Bass {
   id: string
@@ -512,6 +513,9 @@ const Bass = () => {
           </div>
         )}
       </div>
+
+      {/* Reviews Section */}
+      <ReviewsDisplay filterType="instruments" />
     </div>
   )
 }
