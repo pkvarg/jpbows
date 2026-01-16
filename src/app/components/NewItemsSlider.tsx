@@ -174,11 +174,11 @@ const NewItemsSlider = () => {
       : currentProduct.description
 
   return (
-    <section className="bg-[#fefefe] py-16 relative overflow-hidden">
+    <section className="bg-[#fefefe] pb-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#e80e19]  mb-4">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#e80e19]  mb-4">
             {isEnglish ? 'New Items' : 'Novinky'}
           </h2>
         </div>

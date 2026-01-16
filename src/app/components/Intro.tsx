@@ -20,7 +20,7 @@ const Intro = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#fefefe] py-20">
+    <div className="relative min-h-screen bg-[#fefefe] py-12 lg:py-20">
       <div className="container mx-auto px-6 mt-16">
         <motion.div
           className="text-center space-y-12"
@@ -49,6 +49,15 @@ const Intro = () => {
             <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">
               {t('introSectionInstrumentsText')}
             </p>
+            <div className="aspect-video w-full pt-4 lg:pt-8">
+              <iframe
+                src={`https://www.youtube.com/embed/C7-gOvQDhzM`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>
