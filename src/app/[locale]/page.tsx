@@ -4,7 +4,7 @@ import NewItemsSlider from '../components/NewItemsSlider'
 
 export default function Home() {
   return (
-    <div className="bg-[#fefefe]">
+    <div className="bg-[#0f0b06]">
       <Hero />
       <Intro />
       <NewItemsSlider />

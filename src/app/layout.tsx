@@ -1,8 +1,5 @@
 import type { Metadata } from 'next'
-//import { Geist, Geist_Mono } from 'next/font/google'
-// import { Great_Vibes } from 'next/font/google'
-import { Poiret_One } from 'next/font/google'
-// import { Dancing_Script } from 'next/font/google'
+import { Poiret_One, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { NextIntlClientProvider } from 'next-intl'
 import NavbarServer from './components/translationServerComponents/NavbarServer'
@@ -14,16 +11,12 @@ const poiretOne = Poiret_One({
   subsets: ['latin'],
 })
 
-// const greatVibes = Great_Vibes({
-//   variable: '--font-great-vibes',
-//   weight: ['400'],
-//   subsets: ['latin'],
-// })
-// const dancingScript = Dancing_Script({
-//   variable: '--font-dancing-script',
-//   weight: ['400', '500', '600', '700'],
-//   subsets: ['latin'],
-// })
+const playfairDisplay = Playfair_Display({
+  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: 'bow4bass',
@@ -65,7 +58,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang={(await params).lang}>
-      <body className={`${poiretOne.variable} font-sans antialiased`}>
+      <body className={`${poiretOne.variable} ${playfairDisplay.variable} font-sans antialiased`}>
         <NextIntlClientProvider>
           <NavbarServer />
           {children}

@@ -1,8 +1,5 @@
 'use client'
 import React, { FC } from 'react'
-//import { motion } from 'framer-motion'
-//import { footerVariants } from '@/lib/motion'
-//import { useParams } from 'next/navigation'
 import { Link } from '@/i18n/routing'
 import CookieConsent from 'react-cookie-consent'
 
@@ -52,170 +49,132 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
   }
 
   return (
-    <div style={{ background: '#fefefe' }}>
+    <div className="bg-[#0f0b06] border-t border-[#c9903a]/20">
       <CookieConsent
         location="bottom"
         style={{
-          background: '#fefefe',
-          color: '#2f0000',
+          background: '#1c1510',
+          color: '#f5f0e8',
           fontSize: '17px',
           textAlign: 'start',
-          fontFamily: 'var(--font-poiret-one), sans-serif',
-          fontWeight: '800',
+          fontFamily: 'var(--font-playfair), serif',
           padding: '16px 24px',
-          boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 -4px 12px rgba(0, 0, 0, 0.3)',
           border: 'none',
-          borderTop: '1px solid rgba(47, 0, 0, 0.1)',
+          borderTop: '1px solid rgba(201, 144, 58, 0.2)',
         }}
         buttonStyle={{
           background: '#e80e19',
-          color: '#fefefe',
-          fontSize: '17px',
-          fontWeight: '800',
-          padding: '8px 20px',
-          borderRadius: '6px',
+          color: '#f5f0e8',
+          fontSize: '16px',
+          padding: '8px 24px',
+          borderRadius: '0px',
           border: 'none',
           cursor: 'pointer',
-          fontFamily: 'var(--font-poiret-one), sans-serif',
+          fontFamily: 'var(--font-playfair), serif',
           transition: 'background-color 0.2s ease',
         }}
         buttonText={agree}
         expires={365}
         enableDeclineButton
-        onDecline={() => {
-          incrementCount()
-        }}
+        onDecline={() => { incrementCount() }}
         declineButtonStyle={{
           background: 'transparent',
-          color: '#2f0000',
-          fontSize: '17px',
-          fontWeight: '800',
-          padding: '8px 20px',
-          borderRadius: '6px',
-          border: '1px solid rgba(47, 0, 0, 0.2)',
+          color: '#c4b8a8',
+          fontSize: '16px',
+          padding: '8px 24px',
+          borderRadius: '0px',
+          border: '1px solid rgba(201, 144, 58, 0.25)',
           cursor: 'pointer',
-          fontFamily: 'var(--font-poiret-one), sans-serif',
+          fontFamily: 'var(--font-playfair), serif',
           marginRight: '12px',
           transition: 'all 0.2s ease',
         }}
         declineButtonText={disagree}
-        onAccept={() => {
-          incrementCount()
-          loadUmamiScript()
-        }}
+        onAccept={() => { incrementCount(); loadUmamiScript() }}
       >
         {cookies}
       </CookieConsent>
-      {/* <motion.footer variants={footerVariants} initial="hidden" whileInView="show"> */}
-      <div className={`flex flex-col gap-4`}>
-        <div className="mb-[10px] h-[2px] bg-white opacity-10" />
-        <div className="flex flex-col text-[20px] font-light" style={{ color: '#0a0a0a' }}>
-          <div className="flex lg:flex-row flex-col items-center justify-between flex-wrap gap-4 mx-4 lg:mx-12">
-            <div className="flex lg:flex-row flex-col gap-2 justify-center items-center text-center">
-              <h4 className="flex-nowrap" style={{ color: '#0e1528' }}>
-                Copyright &copy; {Date().substring(11, 15)}
-              </h4>
-              <h4 style={{ color: '#0e1528' }}>bow4bass</h4>
-            </div>
 
-            <div className="flex flex-col gap-2 justify-center items-center text-center">
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/about`}
-              >
-                {about}
-              </Link>
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/gdpr`}
-              >
-                GDPR
-              </Link>
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/trade-rules`}
-              >
-                {tradeRules}
-              </Link>
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/reviews`}
-              >
-                {reviews || 'Reviews'}
-              </Link>
-            </div>
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16">
 
-            <div className="flex flex-col gap-2 justify-center items-center text-center">
-              <Link
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href={`/bivaj-art`}
-              >
-                Bivaj Art
-              </Link>
-            </div>
+        {/* Top row */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-14">
 
-            <div className="flex flex-col gap-2 justify-center items-center text-center">
-              <a
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href="https://www.slovakdoublebassclub.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Slovak Double Bass Club
-              </a>
-              <a
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors"
-                href="https://www.bassband.sk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                BassBand
-              </a>
-              {/* <a
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors flex items-center gap-1"
-                href="https://www.facebook.com/groups/424063780943330"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                Slovak Double Bass Club
-              </a>
-              <a
-                className="text-[#0e1528] hover:text-[#e80e19] transition-colors flex items-center gap-1"
-                href="https://www.facebook.com/bassbandsk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                BassBand
-              </a> */}
-            </div>
-
-            <p className="font-normal text-center" style={{ color: '#0e1528' }}>
-              Phone: +421 905 338 081
-              <br />
-              <a href="mailto:info@bow4bass.com">email: info@bow4bass.com</a>
-            </p>
-          </div>
-          <div className="flex justify-center items-center mt-4">
-            <a
-              href="https://www.pictusweb.sk"
-              target="_blank"
-              rel="noreferrer"
-              className="text-[17.5px] tracking-widest"
-              style={{ color: '#0e1528' }}
+          {/* Brand */}
+          <div className="lg:col-span-1 flex flex-col gap-4">
+            <h2
+              className="text-[#e80e19] text-3xl font-bold italic"
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              &#60;&#47;&#62; Pictusweb Development
+              bow4bass
+            </h2>
+            <p className="text-[#c4b8a8] text-base leading-relaxed" style={{ fontFamily: 'var(--font-playfair)' }}>
+              +421 905 338 081
+            </p>
+            <a
+              href="mailto:info@bow4bass.com"
+              className="text-[#c4b8a8] text-base hover:text-[#e8b86d] transition-colors"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+            >
+              info@bow4bass.com
             </a>
           </div>
+
+          {/* Pages */}
+          <div className="flex flex-col gap-3">
+            <span className="text-[#e8b86d] text-sm tracking-[0.2em] uppercase mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Pages
+            </span>
+            <Link className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="/about" style={{ fontFamily: 'var(--font-playfair)' }}>
+              {about}
+            </Link>
+            <Link className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="/gdpr" style={{ fontFamily: 'var(--font-playfair)' }}>
+              GDPR
+            </Link>
+            <Link className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="/trade-rules" style={{ fontFamily: 'var(--font-playfair)' }}>
+              {tradeRules}
+            </Link>
+            <Link className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="/reviews" style={{ fontFamily: 'var(--font-playfair)' }}>
+              {reviews || 'Reviews'}
+            </Link>
+          </div>
+
+          {/* Partners */}
+          <div className="flex flex-col gap-3">
+            <span className="text-[#e8b86d] text-sm tracking-[0.2em] uppercase mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Partners
+            </span>
+            <Link className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="/bivaj-art" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Bivaj Art
+            </Link>
+            <a className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="https://www.slovakdoublebassclub.com" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Slovak Double Bass Club
+            </a>
+            <a className="text-[#f5f0e8] text-base hover:text-[#e8b86d] transition-colors" href="https://www.bassband.sk" target="_blank" rel="noopener noreferrer" style={{ fontFamily: 'var(--font-playfair)' }}>
+              BassBand
+            </a>
+          </div>
+
         </div>
+
+        {/* Bottom row */}
+        <div className="border-t border-[#c9903a]/15 pt-8 flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-[#c4b8a8] text-sm" style={{ fontFamily: 'var(--font-playfair)' }}>
+            &copy; {Date().substring(11, 15)} bow4bass. All rights reserved.
+          </p>
+          <a
+            href="https://www.pictusweb.sk"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#c4b8a8]/40 text-sm tracking-widest hover:text-[#c4b8a8] transition-colors"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            &#60;&#47;&#62; Pictusweb Development
+          </a>
+        </div>
+
       </div>
-      {/* </motion.footer> */}
-      <div className="bg:hero-gradient h-10"></div>
     </div>
   )
 }

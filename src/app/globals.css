@@ -1,25 +1,47 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #fefefe;
-  --foreground: #fefefe;
+  --background: #0f0b06;
+  --foreground: #f5f0e8;
+  --accent: #e80e19;
+  --amber: #c9903a;
+  --surface: #1c1510;
+  --muted: #8a7b6a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-amber: var(--amber);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
   --font-sans: var(--font-poiret-one);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #fefefe;
-    --foreground: #0a0a0a;
-  }
+  --font-playfair: var(--font-playfair);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-poiret-one);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes expandWidth {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
 }

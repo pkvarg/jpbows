@@ -10,6 +10,7 @@ const Navbar = () => {
   const t = useTranslations('Home')
   const [navbar, setNavbar] = useState(false)
   const [bassDropdown, setBassDropdown] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [instrumentCounts, setInstrumentCounts] = useState({
     bass: 0,
     violone: 0,
@@ -18,6 +19,16 @@ const Navbar = () => {
   })
 
   const router = useRouter()
+
+  // Scroll detection for transparent → dark transition
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Fetch instrument counts
   useEffect(() => {
@@ -48,9 +59,15 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="text-2xl lg:text-xl font-semibold leading-tight text-[#e80e19]">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#0f0b06]/95 backdrop-blur-md shadow-lg shadow-black/20'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
-        <div className="mb-0 lg:mb-2">
+        <div className="mb-0 lg:mb-0">
           <div className="flex items-center justify-between py-3 md:block md:py-4">
             <div
               onClick={() => router.push('/')}
@@ -63,22 +80,22 @@ const Navbar = () => {
                 height={900}
                 className="w-[40px]"
               />
-              {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
-              {/* <h1 className="leading-[22.5px] text-4xl text-[#e80e19]">bow4bass</h1>  */}
-              <h1 className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19] italic">
+              <h1
+                className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19] italic"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
                 bow4bass
               </h1>
             </div>
             <div className="md:hidden">
               <button
-                className="rounded-md p-2 outline-none focus:border focus:border-gray-400"
-                style={{ color: '#0e1528' }}
+                className="rounded-md p-2 outline-none focus:border focus:border-[#c9903a]/30"
                 onClick={() => setNavbar(!navbar)}
               >
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
+                    className="h-10 w-10 text-[#f5f0e8]"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -91,7 +108,7 @@ const Navbar = () => {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
+                    className="h-10 w-10 text-[#f5f0e8]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -111,20 +128,23 @@ const Navbar = () => {
         <div>
           <div
             className={`mt-8 flex-1 lg:justify-self-center pb-3 md:mt-0 md:block md:pb-0 ${
-              navbar ? 'block h-[80vh] overflow-y-auto' : 'hidden'
+              navbar ? 'block h-[80vh] overflow-y-auto bg-[#0f0b06] md:bg-transparent' : 'hidden'
             }`}
           >
-            <ul className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
+            <ul
+              className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0 text-xl lg:text-lg font-semibold px-4 md:px-0"
+              style={{ fontFamily: 'var(--font-poiret-one)' }}
+            >
               <Link
                 href={'/bows'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 tracking-wide"
                 onClick={handleLinkClick}
               >
                 {t('navBows')}
               </Link>
               <Link
                 href={'/repairs'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 tracking-wide"
                 onClick={handleLinkClick}
               >
                 {t('navServiceRepairs')}
@@ -134,43 +154,43 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setBassDropdown(!bassDropdown)}
-                  className="cursor-pointer hover:text-[#2f0000] block py-2 w-full text-left"
+                  className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 w-full text-left tracking-wide"
                 >
                   {t('navInstruments')} ▾
                 </button>
                 {bassDropdown && (
-                  <div className="md:absolute relative md:left-0 md:mt-0 md:w-56 md:bg-white md:shadow-lg md:rounded-md md:border md:border-gray-200 z-50">
+                  <div className="md:absolute relative md:left-0 md:mt-0 md:w-56 bg-[#1c1510] md:border md:border-[#c9903a]/20 z-50">
                     <Link
                       href="/bass?type=bass"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      className="block px-4 py-2 text-[#f5f0e8] hover:text-[#e80e19] hover:bg-[#c9903a]/5 transition-colors text-lg"
                       onClick={handleLinkClick}
                     >
                       {t('navInstrumentsBass')} ({instrumentCounts.bass})
                     </Link>
                     <Link
                       href="/bass?type=violone"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      className="block px-4 py-2 text-[#f5f0e8] hover:text-[#e80e19] hover:bg-[#c9903a]/5 transition-colors text-lg"
                       onClick={handleLinkClick}
                     >
                       {t('navInstrumentsViolone')} ({instrumentCounts.violone})
                     </Link>
                     <Link
                       href="/bass?type=gamba"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      className="block px-4 py-2 text-[#f5f0e8] hover:text-[#e80e19] hover:bg-[#c9903a]/5 transition-colors text-lg"
                       onClick={handleLinkClick}
                     >
                       {t('navInstrumentsGamba')} ({instrumentCounts.gamba})
                     </Link>
                     <Link
                       href="/bass?type=cello"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
+                      className="block px-4 py-2 text-[#f5f0e8] hover:text-[#e80e19] hover:bg-[#c9903a]/5 transition-colors text-lg"
                       onClick={handleLinkClick}
                     >
                       {t('navInstrumentsCello')} ({instrumentCounts.cello})
                     </Link>
                     <Link
                       href="/bass"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg font-bold border-t border-gray-200"
+                      className="block px-4 py-2 text-[#f5f0e8] hover:text-[#e80e19] hover:bg-[#c9903a]/5 transition-colors text-lg font-bold border-t border-[#c9903a]/15"
                       onClick={handleLinkClick}
                     >
                       {t('navInstrumentsAll')} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
@@ -180,21 +200,14 @@ const Navbar = () => {
               </div>
               <Link
                 href={'/rent'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 tracking-wide"
                 onClick={handleLinkClick}
               >
                 {t('navRentalInstruments')}
               </Link>
-              {/* <Link
-                href={'/blog'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                Blog
-              </Link> */}
               <Link
                 href={'/about-me'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 tracking-wide"
                 onClick={handleLinkClick}
               >
                 {t('navAboutMe')}
@@ -202,7 +215,7 @@ const Navbar = () => {
 
               <Link
                 href={'/contact'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
+                className="cursor-pointer text-[#f5f0e8] hover:text-[#e80e19] transition-colors block py-2 tracking-wide"
                 onClick={handleLinkClick}
               >
                 {t('navContact')}

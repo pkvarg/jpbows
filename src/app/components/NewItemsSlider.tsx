@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { Link } from '@/i18n/routing'
 import { usePathname } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface BassData {
   id: string
@@ -149,10 +150,10 @@ const NewItemsSlider = () => {
 
   if (loading) {
     return (
-      <div className="bg-[#fefefe] py-16">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="bg-[#0f0b06] py-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
           <div className="h-96 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#2f0000]"></div>
+            <div className="animate-spin rounded-full h-10 w-10 border-t border-b border-[#c9903a]"></div>
           </div>
         </div>
       </div>
@@ -174,148 +175,174 @@ const NewItemsSlider = () => {
       : currentProduct.description
 
   return (
-    <section className="bg-[#fefefe] pb-16 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Section Title */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-[#e80e19]  mb-4">
-            {isEnglish ? 'New Items' : 'Novinky'}
+    <section className="bg-[#0f0b06] py-24 lg:py-32 relative overflow-hidden">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#1c1510_0%,_transparent_60%)] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
+
+        {/* Section header */}
+        <div className="flex items-center gap-6 mb-28">
+          <div className="h-px flex-1 bg-[#c9903a]/20" />
+          <h2
+            className="text-[#c9903a] tracking-[0.25em] text-sm lg:text-base uppercase"
+            style={{ fontFamily: 'var(--font-poiret-one)' }}
+          >
+            {isEnglish ? 'New Arrivals' : 'Novinky'}
           </h2>
+          <div className="h-px flex-1 bg-[#c9903a]/20" />
         </div>
 
-        {/* Slider Container */}
-        <div className="relative">
-          <div className="bg-[#fefefe] rounded-2xl border border-[#2f0000]/20 overflow-hidden">
-            <div className="flex flex-col lg:flex-row">
-              {/* Image Section */}
-              <div className="lg:w-1/2 relative h-96 lg:h-[500px]">
+        {/* Slider card */}
+        <div className="border border-[#c9903a]/15 bg-[#1c1510] relative">
+          <div className="flex flex-col lg:flex-row min-h-[480px]">
+
+            {/* Image panel */}
+            <div className="lg:w-1/2 relative h-72 lg:h-auto bg-[#0f0b06]">
+              <AnimatePresence mode="wait">
                 {currentProduct.images.length > 0 ? (
-                  <div className="relative h-full group">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0"
+                  >
                     <Image
                       src={currentProduct.images[0]}
                       alt={displayName}
                       fill
-                      className="object-contain p-8"
+                      className="object-contain p-8 lg:p-12"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                  </div>
+                  </motion.div>
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-[#2f0000]/10">
-                    <svg
-                      className="w-20 h-20 text-[#2f0000]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-[#8a7b6a] text-xs tracking-widest uppercase" style={{ fontFamily: 'var(--font-poiret-one)' }}>
+                      No image
+                    </span>
                   </div>
                 )}
-              </div>
+              </AnimatePresence>
+            </div>
 
-              {/* Content Section */}
-              <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center mt-16">
-                <h3 className="text-xl lg:text-3xl font-semibold text-[#2f0000] hover:text-[#e6c78c] transition-colors mb-4">
-                  {displayName}
-                </h3>
+            {/* Content panel */}
+            <div className="lg:w-1/2 p-8 lg:p-14 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-[#c9903a]/15">
+              {/* Category badge */}
+              <span
+                className="text-[#c9903a] tracking-[0.25em] text-sm uppercase mb-6"
+                style={{ fontFamily: 'var(--font-poiret-one)' }}
+              >
+                {currentProduct.type === 'bass'
+                  ? (isEnglish ? 'Instrument' : 'N\u00E1stroj')
+                  : (isEnglish ? 'Bow' : 'Sl\u00E1\u010Dik')}
+              </span>
 
-                <div className="text-lg tracking-wider font-semibold text-[#2f0000] leading-relaxed mb-6 line-clamp-3">
-                  {displayDescription.split(/(?<=[.!?])\s+/).map((sentence, index) => (
-                    <div key={index}>{sentence}</div>
-                  ))}
-                </div>
-
-                {currentProduct.price && (
-                  <p className="text-2xl font-semibold text-[#2f0000] mb-8">
-                    {isEnglish && currentProduct.priceEnglish
-                      ? currentProduct.priceEnglish
-                      : currentProduct.price}
-                  </p>
-                )}
-
-                <Link
-                  href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
-                  className="inline-flex items-center px-6 py-3 bg-[#e80e19]  hover:bg-white hover:text-[#2f0000] hover:border-1 hover:border-black text-white font-normal rounded-lg transition-all duration-200 self-start group text-2xl w-full lg:w-auto justify-center text-center"
+              {/* Name */}
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={`name-${currentIndex}`}
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -16 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-[#f5f0e8] text-2xl lg:text-3xl font-semibold italic mb-4 leading-snug"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
                 >
-                  {isEnglish ? 'View Gallery' : 'Do galérie'}
-                  <svg
-                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
-              </div>
+                  {displayName}
+                </motion.h3>
+              </AnimatePresence>
+
+              {/* Red divider */}
+              <div className="w-8 h-0.5 bg-[#e80e19] mb-6" />
+
+              {/* Description */}
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={`desc-${currentIndex}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="text-[#c4b8a8] text-lg lg:text-xl leading-relaxed mb-8 line-clamp-4"
+                  style={{ fontFamily: 'var(--font-poiret-one)' }}
+                >
+                  {displayDescription}
+                </motion.p>
+              </AnimatePresence>
+
+              {/* Price */}
+              {currentProduct.price && (
+                <p
+                  className="text-[#c9903a] text-xl lg:text-2xl font-semibold mb-8"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
+                >
+                  {isEnglish && currentProduct.priceEnglish
+                    ? currentProduct.priceEnglish
+                    : currentProduct.price}
+                </p>
+              )}
+
+              {/* CTA */}
+              <Link
+                href={currentProduct.type === 'bass' ? `/bass` : `/bows`}
+                className="group inline-flex items-center gap-3 border border-[#e80e19] text-[#f5f0e8] px-8 py-3 text-sm tracking-[0.2em] uppercase hover:bg-[#e80e19] transition-all duration-300 self-start"
+                style={{ fontFamily: 'var(--font-poiret-one)' }}
+              >
+                {isEnglish ? 'View Gallery' : 'Do gal\u00E9rie'}
+                <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation arrows */}
           {products.length > 1 && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2  hover:bg-[#2f0000] hover:text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 border border-[#c9903a]/30 text-[#c9903a] hover:border-[#c9903a] hover:text-[#f5f0e8] flex items-center justify-center transition-all duration-200"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2  hover:bg-[#2f0000] hover:text-white p-3 rounded-full transition-all border border-[#2f0000]/50"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 border border-[#c9903a]/30 text-[#c9903a] hover:border-[#c9903a] hover:text-[#f5f0e8] flex items-center justify-center transition-all duration-200"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </>
           )}
+        </div>
 
-          {/* Dots Indicator */}
-          {products.length > 1 && (
-            <div className="flex justify-center gap-2 mt-6">
+        {/* Dots + counter */}
+        {products.length > 1 && (
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <span className="text-[#8a7b6a] text-xs tracking-widest" style={{ fontFamily: 'var(--font-poiret-one)' }}>
+              {String(currentIndex + 1).padStart(2, '0')}
+            </span>
+            <div className="flex gap-2">
               {products.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`transition-all duration-300 ${
                     index === currentIndex
-                      ? 'w-8 h-2 bg-[#2f0000]'
-                      : 'w-2 h-2 bg-[#2f0000]/60 hover:bg-[#2f0000]/80'
-                  } rounded-full`}
+                      ? 'w-6 h-0.5 bg-[#e80e19]'
+                      : 'w-2 h-0.5 bg-[#8a7b6a]/40 hover:bg-[#8a7b6a]'
+                  }`}
                 />
               ))}
             </div>
-          )}
-        </div>
-
-        {/* Product Counter */}
-        {products.length > 1 && (
-          <div className="text-center mt-4 text-[#2f0000]">
-            {currentIndex + 1} {isEnglish ? 'of' : 'z'} {products.length}
+            <span className="text-[#8a7b6a] text-xs tracking-widest" style={{ fontFamily: 'var(--font-poiret-one)' }}>
+              {String(products.length).padStart(2, '0')}
+            </span>
           </div>
         )}
       </div>
