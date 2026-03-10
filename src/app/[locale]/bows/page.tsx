@@ -461,11 +461,49 @@ const Bow = () => {
             <p className="text-[#9b8f84] text-lg lg:text-xl" style={{fontFamily:'var(--font-cormorant)'}}>{t('bowsEmpty')}</p>
           </div>
         ) : (
-          <div className="space-y-8">
-            {bows.map((bow) => (
-              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-            ))}
-          </div>
+          <>
+            {(() => {
+              const jpBows = bows.filter((b) => b.name.includes('JP'))
+              const otherBows = bows.filter((b) => !b.name.includes('JP'))
+              return (
+                <>
+                  {jpBows.length > 0 && (
+                    <div className="mb-16">
+                      <div className="flex items-center gap-6 mb-8">
+                        <div className="w-8 h-0.5 bg-[#e80e19]" />
+                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                          JP Modely
+                        </h2>
+                        <div className="h-px flex-1 bg-[#e0d8ce]" />
+                      </div>
+                      <div className="space-y-8">
+                        {jpBows.map((bow) => (
+                          <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {otherBows.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-6 mb-8">
+                        <div className="w-8 h-0.5 bg-[#e80e19]" />
+                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                          {isEnglish ? 'Other Bows' : 'Ostatné sláčiky'}
+                        </h2>
+                        <div className="h-px flex-1 bg-[#e0d8ce]" />
+                      </div>
+                      <div className="space-y-8">
+                        {otherBows.map((bow) => (
+                          <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )
+            })()}
+          </>
         )}
       </div>
 

@@ -446,7 +446,7 @@ const Bass = () => {
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
           <p className="text-[#3d3228] mt-4 text-base lg:text-lg" style={{fontFamily:'var(--font-cormorant)'}}>
-            {isEnglish ? 'Loading double basses...' : 'Nacitavam nastroje...'}
+            {isEnglish ? 'Loading double basses...' : 'Načítavam nástroje...'}
           </p>
         </div>
       </div>
@@ -463,7 +463,7 @@ const Bass = () => {
             className="bg-[#e80e19] text-white px-8 py-3 tracking-[0.15em] uppercase font-bold hover:bg-[#1c1208] transition-colors duration-200"
             style={{fontFamily:'var(--font-poiret-one)'}}
           >
-            {isEnglish ? 'Try again' : 'Skusit znova'}
+            {isEnglish ? 'Try again' : 'Skúsiť znova'}
           </button>
         </div>
       </div>
@@ -472,12 +472,12 @@ const Bass = () => {
 
   // Get instrument type label
   const getInstrumentTypeLabel = () => {
-    if (!instrumentType) return isEnglish ? 'All Instruments' : 'Vsetky nastroje'
+    if (!instrumentType) return isEnglish ? 'All Instruments' : 'Všetky nástroje'
     const labels: Record<string, { en: string; sk: string }> = {
       bass: { en: 'Double Basses', sk: 'Kontrabasy' },
       violone: { en: 'Violones', sk: 'Violone' },
       gamba: { en: 'Gambas', sk: 'Gamby' },
-      cello: { en: 'Cellos', sk: 'Violoncela' },
+      cello: { en: 'Cellos', sk: 'Violončelá' },
     }
     return isEnglish ? labels[instrumentType]?.en : labels[instrumentType]?.sk
   }
@@ -512,15 +512,55 @@ const Bass = () => {
             <p className="text-[#9b8f84] text-lg lg:text-xl" style={{fontFamily:'var(--font-cormorant)'}}>
               {isEnglish
                 ? 'No double basses are currently available.'
-                : 'Ziadne nastroje nie su momentalne k dispozicii.'}
+                : 'Žiadne nástroje nie sú momentálne k dispozícii.'}
             </p>
           </div>
         ) : (
-          <div className="space-y-8">
-            {basses.map((bass) => (
-              <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-            ))}
-          </div>
+          <>
+            {/* Bivaj Art Luthiery Section */}
+            {(() => {
+              const bivajBasses = basses.filter((b) => b.description.includes('Bivaj Art'))
+              const otherBasses = basses.filter((b) => !b.description.includes('Bivaj Art'))
+              return (
+                <>
+                  {bivajBasses.length > 0 && (
+                    <div className="mb-16">
+                      <div className="flex items-center gap-6 mb-8">
+                        <div className="w-8 h-0.5 bg-[#e80e19]" />
+                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                          Bivaj Art Luthiery
+                        </h2>
+                        <div className="h-px flex-1 bg-[#e0d8ce]" />
+                      </div>
+                      <div className="space-y-8">
+                        {bivajBasses.map((bass) => (
+                          <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Other Instruments Section */}
+                  {otherBasses.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-6 mb-8">
+                        <div className="w-8 h-0.5 bg-[#e80e19]" />
+                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                          {isEnglish ? 'Other Instruments' : 'Ostatné nástroje'}
+                        </h2>
+                        <div className="h-px flex-1 bg-[#e0d8ce]" />
+                      </div>
+                      <div className="space-y-8">
+                        {otherBasses.map((bass) => (
+                          <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )
+            })()}
+          </>
         )}
       </div>
 

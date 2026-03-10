@@ -43,7 +43,7 @@ const Hero = () => {
               className="text-[#8b6914] tracking-[0.3em] text-sm lg:text-base uppercase"
               style={{ fontFamily: 'var(--font-poiret-one)' }}
             >
-              {isEnglish ? 'Handcrafted Bows \u00B7 Slovakia' : 'Ru\u010Dn\u00E1 v\u00FDroba sl\u00E1\u010Dikov \u00B7 Slovensko'}
+              {isEnglish ? 'Handcrafted Bows' : 'Ručná výroba sláčikov'}
             </span>
           </motion.div>
 
@@ -74,7 +74,7 @@ const Hero = () => {
           >
             {isEnglish
               ? 'Master-crafted double bass bows and instruments from the heart of Slovakia.'
-              : 'Majstrovsk\u00E1 v\u00FDroba sl\u00E1\u010Dikov a hudobn\u00FDch n\u00E1strojov zo Slovenska.'}
+              : 'Majstrovská výroba sláčikov, predaj a prenájom hudobných nástrojov.'}
           </motion.p>
 
           {/* CTAs */}
