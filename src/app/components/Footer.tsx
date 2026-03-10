@@ -19,7 +19,7 @@ interface TranslationProps {
 }
 
 const Footer: FC<TranslationProps> = ({ translations }) => {
-  const { cookies, agree, disagree, tradeRules, about, reviews, footerAtelier, footerCraftsmanship, footerMusicScene, footerContact } = translations
+  const { cookies, agree, disagree, tradeRules, reviews, footerAtelier, footerCraftsmanship, footerMusicScene, footerContact } = translations
 
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/visitors/jpbows/increase`
 

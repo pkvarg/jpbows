@@ -38,7 +38,7 @@ export default function VisitorCounter() {
     }
 
     getStats()
-  }, [])
+  }, [apiUrl])
 
   return (
     <div className="p-6 border rounded-lg shadow-md max-w-md mx-auto">
