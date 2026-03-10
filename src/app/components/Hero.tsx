@@ -73,7 +73,7 @@ const Hero = () => {
             style={{ fontFamily: 'var(--font-cormorant)' }}
           >
             {isEnglish
-              ? 'Master-crafted double bass bows and instruments from the heart of Slovakia.'
+              ? 'Master bow-making, sale and rental of musical instruments.'
               : 'Majstrovská výroba sláčikov, predaj a prenájom hudobných nástrojov.'}
           </motion.p>
 
