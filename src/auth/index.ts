@@ -40,6 +40,9 @@ const authOptions: NextAuthConfig = {
 
   basePath: BASE_PATH,
   secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: '/signin',
+  },
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions)

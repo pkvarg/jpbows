@@ -57,167 +57,182 @@ const About_Me = () => {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#fefefe] overflow-hidden">
+    <div className="relative min-h-screen bg-[#faf8f5] overflow-hidden">
       {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 py-16 lg:py-24">
-        <motion.div
-          className="max-w-6xl mx-auto"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {/* Section Title */}
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl lg:text-5xl font-bold text-center text-[#e80e19] mb-16"
+      <div className="relative z-10 pt-32 pb-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
           >
-            {t('aboutMeTitle')}
-          </motion.h2>
+            {/* Section Title */}
+            <motion.div variants={fadeInUp}>
+              <div className="flex items-center gap-6 mb-16">
+                <div className="w-8 h-0.5 bg-[#e80e19]" />
+                <span style={{fontFamily:'var(--font-poiret-one)',color:'#8b6914',letterSpacing:'0.3em',fontSize:'14px',textTransform:'uppercase'}}>
+                  {t('aboutMeTitle')}
+                </span>
+                <div className="h-px flex-1 bg-[#e0d8ce]" />
+              </div>
+            </motion.div>
 
-          <motion.div variants={fadeInUp} className="space-y-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider text-center">
-              {t('aboutMeName')}
-            </h3>
+            <motion.div variants={fadeInUp} className="space-y-8 max-w-4xl mx-auto">
+              <h3 className="text-3xl lg:text-4xl italic text-[#1c1208] tracking-wider text-center" style={{fontFamily:'var(--font-cormorant)'}}>
+                {t('aboutMeName')}
+              </h3>
 
-            <motion.div variants={fadeInUp} className="text-[#2f0000] leading-relaxed">
-              <motion.div
-                variants={imageAnimation}
-                className="hidden lg:float-left lg:mr-12 lg:mb-8 lg:block"
-              >
-                <Image
-                  src="/g4.webp"
-                  alt="Ján Prievozník"
-                  width={300}
-                  height={300}
-                  className="w-[300px] h-[350px] object-cover rounded-2xl shadow-lg"
-                />
-              </motion.div>
-
-              <div className="space-y-6 text-center lg:text-justify">
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara1')}</p>
-
+              <motion.div variants={fadeInUp} className="text-[#3d3228] leading-relaxed">
                 <motion.div
                   variants={imageAnimation}
-                  className="lg:hidden flex justify-center my-8"
+                  className="hidden lg:float-left lg:mr-12 lg:mb-8 lg:block"
                 >
                   <Image
                     src="/g4.webp"
-                    alt="Ján Prievozník"
+                    alt="Jan Prievoznik"
                     width={300}
                     height={300}
-                    className="w-[250px] h-[300px] object-cover rounded-2xl shadow-lg"
+                    className="w-[300px] h-[350px] object-cover border border-[#e0d8ce] shadow-lg"
                   />
                 </motion.div>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara2')}</p>
+                <div className="space-y-6 text-center lg:text-justify">
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara1')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara3')}</p>
+                  <motion.div
+                    variants={imageAnimation}
+                    className="lg:hidden flex justify-center my-8"
+                  >
+                    <Image
+                      src="/g4.webp"
+                      alt="Jan Prievoznik"
+                      width={300}
+                      height={300}
+                      className="w-[250px] h-[300px] object-cover border border-[#e0d8ce] shadow-lg"
+                    />
+                  </motion.div>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara4')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara2')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara5')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara3')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara6')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara4')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara7')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara5')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara8')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara6')}</p>
 
-                <p className="text-2xl leading-relaxed font-bold">{t('aboutMePara9')}</p>
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara7')}</p>
+
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara8')}</p>
+
+                  <p className="text-lg lg:text-xl leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>{t('aboutMePara9')}</p>
+                </div>
+
+                <div className="clear-left"></div>
+              </motion.div>
+            </motion.div>
+
+            {/* Gallery Section */}
+            <motion.div variants={fadeInUp} className="mt-20">
+              {/* Gallery Header */}
+              <div className="flex items-center gap-6 mb-12">
+                <div className="w-8 h-0.5 bg-[#e80e19]" />
+                <span style={{fontFamily:'var(--font-poiret-one)',color:'#8b6914',letterSpacing:'0.3em',fontSize:'14px',textTransform:'uppercase'}}>
+                  {t('galleryTitle')}
+                </span>
+                <div className="h-px flex-1 bg-[#e0d8ce]" />
               </div>
 
-              <div className="clear-left"></div>
+              {/* Image Gallery */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {/* Vertical images g1-g4 */}
+                {[1, 2, 3, 4].map((num, idx) => (
+                  <motion.div
+                    key={num}
+                    variants={imageAnimation}
+                    onClick={() => openLightbox(idx)}
+                    className="relative overflow-hidden border border-[#e0d8ce] shadow-xl hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+                  >
+                    <Image
+                      src={`/g${num}.webp`}
+                      alt={`${t('galleryImageAlt')} ${num}`}
+                      width={400}
+                      height={600}
+                      className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity duration-300" />
+                  </motion.div>
+                ))}
+
+                {/* Horizontal images g5-g6 - span 2 columns each on desktop */}
+                {[5, 6].map((num, idx) => (
+                  <motion.div
+                    key={num}
+                    variants={imageAnimation}
+                    onClick={() => openLightbox(idx + 3)}
+                    className="relative overflow-hidden border border-[#e0d8ce] shadow-xl hover:shadow-2xl transition-shadow duration-300 md:col-span-2 cursor-pointer"
+                  >
+                    <Image
+                      src={`/g${num}.webp`}
+                      alt={`${t('galleryImageAlt')} ${num}`}
+                      width={800}
+                      height={400}
+                      className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity duration-300" />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Video Section */}
+              <div className="mt-16">
+                {/* Videos Header */}
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="w-8 h-0.5 bg-[#e80e19]" />
+                  <span style={{fontFamily:'var(--font-poiret-one)',color:'#8b6914',letterSpacing:'0.3em',fontSize:'14px',textTransform:'uppercase'}}>
+                    {t('videosTitle')}
+                  </span>
+                  <div className="h-px flex-1 bg-[#e0d8ce]" />
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                  {/* Video 1 */}
+                  <motion.div
+                    variants={imageAnimation}
+                    className="relative overflow-hidden border border-[#e0d8ce] shadow-xl"
+                  >
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/NLlnsnvpjjA"
+                        title="YouTube video 1"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Video 2 */}
+                  <motion.div
+                    variants={imageAnimation}
+                    className="relative overflow-hidden border border-[#e0d8ce] shadow-xl"
+                  >
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/E47SbwkXUxI"
+                        title="YouTube video 2"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
-
-          {/* Gallery Section */}
-          <motion.div variants={fadeInUp} className="mt-20">
-            <h3 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider text-center mb-12">
-              {t('galleryTitle')}
-            </h3>
-
-            {/* Image Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {/* Vertical images g1-g3 */}
-              {[1, 2, 3, 4].map((num, idx) => (
-                <motion.div
-                  key={num}
-                  variants={imageAnimation}
-                  onClick={() => openLightbox(idx)}
-                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
-                >
-                  <Image
-                    src={`/g${num}.webp`}
-                    alt={`${t('galleryImageAlt')} ${num}`}
-                    width={400}
-                    height={600}
-                    className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity duration-300" />
-                </motion.div>
-              ))}
-
-              {/* Horizontal images g4-g5 - span 2 columns each on desktop */}
-              {[5, 6].map((num, idx) => (
-                <motion.div
-                  key={num}
-                  variants={imageAnimation}
-                  onClick={() => openLightbox(idx + 3)}
-                  className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 md:col-span-2 cursor-pointer"
-                >
-                  <Image
-                    src={`/g${num}.webp`}
-                    alt={`${t('galleryImageAlt')} ${num}`}
-                    width={800}
-                    height={400}
-                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black opacity-0 hover:opacity-20 transition-opacity duration-300" />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Video Section */}
-            <div className="mt-16">
-              <h4 className="text-2xl lg:text-3xl font-semibold text-[#e80e19] text-center mb-8">
-                {t('videosTitle')}
-              </h4>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {/* Video 1 */}
-                <motion.div
-                  variants={imageAnimation}
-                  className="relative overflow-hidden rounded-2xl shadow-xl"
-                >
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                      src="https://www.youtube.com/embed/NLlnsnvpjjA"
-                      title="YouTube video 1"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </motion.div>
-
-                {/* Video 2 */}
-                <motion.div
-                  variants={imageAnimation}
-                  className="relative overflow-hidden rounded-2xl shadow-xl"
-                >
-                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                      src="https://www.youtube.com/embed/E47SbwkXUxI"
-                      title="YouTube video 2"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Lightbox Modal */}
@@ -235,12 +250,12 @@ const About_Me = () => {
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 z-50 text-white hover:text-[#e80d19] transition-colors"
+              className="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white hover:text-[#e80e19] transition-all"
               aria-label="Close"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-10 w-10"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -260,12 +275,12 @@ const About_Me = () => {
                 e.stopPropagation()
                 prevImage()
               }}
-              className="absolute left-4 z-50 text-white hover:text-[#e80d19] transition-colors"
+              className="absolute left-4 z-50 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white hover:text-[#e80e19] transition-all"
               aria-label="Previous"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12"
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -285,12 +300,12 @@ const About_Me = () => {
                 e.stopPropagation()
                 nextImage()
               }}
-              className="absolute right-4 z-50 text-white hover:text-[#e80d19] transition-colors"
+              className="absolute right-4 z-50 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white hover:text-[#e80e19] transition-all"
               aria-label="Next"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12"
+                className="h-8 w-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -319,7 +334,7 @@ const About_Me = () => {
                 alt={`${t('galleryImageAlt')} ${galleryImages[currentImageIndex]}`}
                 width={1920}
                 height={1080}
-                className="max-w-full max-h-full object-contain rounded-lg"
+                className="max-w-full max-h-full object-contain"
                 priority
               />
             </motion.div>

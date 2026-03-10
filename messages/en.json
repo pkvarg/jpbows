@@ -138,7 +138,12 @@
     "videosTitle": "Videos",
 
     "repairsTitle": "Service - Repairs",
-    "aboutCompanyTitle": "About the Company"
+    "aboutCompanyTitle": "About the Company",
+
+    "footerAtelier": "Atelier",
+    "footerCraftsmanship": "Partners",
+    "footerMusicScene": "Music Scene",
+    "footerContact": "Contact"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

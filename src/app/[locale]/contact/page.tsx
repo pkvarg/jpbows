@@ -28,7 +28,7 @@ const Contact = () => {
   }
 
   return (
-    <div>
+    <div className="bg-[#faf8f5] min-h-screen">
       {/* <PagesNavbarServer /> */}
       <ContactComponent translations={contactTranslations} />
     </div>

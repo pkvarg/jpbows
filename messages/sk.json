@@ -142,7 +142,12 @@
     "videosTitle": "Videá",
 
     "repairsTitle": "Servis - Opravy",
-    "aboutCompanyTitle": "O firme"
+    "aboutCompanyTitle": "O firme",
+
+    "footerAtelier": "Ateliér",
+    "footerCraftsmanship": "Partneri",
+    "footerMusicScene": "Hudobná scéna",
+    "footerContact": "Kontakt"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",

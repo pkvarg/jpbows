@@ -356,23 +356,24 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
   return (
     <>
-      <div className="scroll-mt-14" id="contact" style={{ background: '#fefefe' }}>
-        <div className="px-6 py-12 lg:px-[15%] text-[#2f0000]">
+      <div className="scroll-mt-14 bg-[#faf8f5]" id="contact">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12 pt-32 pb-16">
           {/* Section Header */}
-          <div className="relative mb-8 text-center">
-            <div className="max-w-3xl mx-auto">
-              <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
-                {contactTitle}
-              </h1>
-              <p className="text-xl lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
-                {contactSubtitle}
-              </p>
-            </div>
+          <div className="flex items-center gap-6 mb-16">
+            <div className="w-8 h-0.5 bg-[#e80e19]" />
+            <span style={{fontFamily:'var(--font-poiret-one)',color:'#8b6914',letterSpacing:'0.3em',fontSize:'14px',textTransform:'uppercase'}}>
+              {contactTitle}
+            </span>
+            <div className="h-px flex-1 bg-[#e0d8ce]" />
           </div>
 
-          {/* Contact Form Container */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8 font-sans">
+            <p className="text-xl lg:text-2xl text-[#3d3228] leading-relaxed mb-12 text-center" style={{fontFamily:'var(--font-cormorant)'}}>
+              {contactSubtitle}
+            </p>
+
+            {/* Contact Form Container */}
+            <div className="bg-[#faf8f5] border border-[#e0d8ce] p-8 lg:p-12">
               {/* Success/Error Messages */}
               <div className="mb-6">
                 {messageSuccess && <Message variant="success">{messageSuccess}</Message>}
@@ -382,11 +383,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                 {/* Personal Information Fields */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex flex-col">
-                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
+                    <label className="block mb-2" style={{fontFamily:'var(--font-poiret-one)',color:'#9b8f84',letterSpacing:'0.15em',fontSize:'12px',textTransform:'uppercase'}}>
                       {contactName}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
+                      className="bg-[#faf8f5] border border-[#e0d8ce] text-[#1c1208] px-4 py-3 w-full outline-none focus:border-[#e80e19] transition-colors text-lg"
+                      style={{fontFamily:'var(--font-cormorant)'}}
                       type="text"
                       name="user_name"
                       value={name}
@@ -397,11 +399,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   </div>
 
                   <div className="flex flex-col">
-                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
+                    <label className="block mb-2" style={{fontFamily:'var(--font-poiret-one)',color:'#9b8f84',letterSpacing:'0.15em',fontSize:'12px',textTransform:'uppercase'}}>
                       {contactEmail}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
+                      className="bg-[#faf8f5] border border-[#e0d8ce] text-[#1c1208] px-4 py-3 w-full outline-none focus:border-[#e80e19] transition-colors text-lg"
+                      style={{fontFamily:'var(--font-cormorant)'}}
                       type="email"
                       name="user_email"
                       value={email}
@@ -412,11 +415,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   </div>
 
                   <div className="flex flex-col md:col-span-2">
-                    <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
+                    <label className="block mb-2" style={{fontFamily:'var(--font-poiret-one)',color:'#9b8f84',letterSpacing:'0.15em',fontSize:'12px',textTransform:'uppercase'}}>
                       {contactPhone}
                     </label>
                     <input
-                      className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors"
+                      className="bg-[#faf8f5] border border-[#e0d8ce] text-[#1c1208] px-4 py-3 w-full outline-none focus:border-[#e80e19] transition-colors text-lg"
+                      style={{fontFamily:'var(--font-cormorant)'}}
                       type="text"
                       name="user_phone"
                       value={phone}
@@ -445,11 +449,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                 {/* Message Textarea */}
                 <div className="flex flex-col">
-                  <label className="text-base lg:text-xl text-[#2f0000] mb-2 font-semibold">
+                  <label className="block mb-2" style={{fontFamily:'var(--font-poiret-one)',color:'#9b8f84',letterSpacing:'0.15em',fontSize:'12px',textTransform:'uppercase'}}>
                     {contactMessage}
                   </label>
                   <textarea
-                    className="rounded-lg p-3 border border-[#2f0000]/20 focus:border-[#e80e19] focus:outline-none focus:ring-1 focus:ring-[#e80e19]/20 min-h-32 bg-[#fefefe] text-[#2f0000] text-base lg:text-xl transition-colors resize-none"
+                    className="bg-[#faf8f5] border border-[#e0d8ce] text-[#1c1208] px-4 py-3 w-full outline-none focus:border-[#e80e19] transition-colors text-lg min-h-32 resize-none"
+                    style={{fontFamily:'var(--font-cormorant)'}}
                     rows={5}
                     name="message"
                     value={mailMessage}
@@ -466,17 +471,18 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     type="checkbox"
                     onChange={handleCheckBox}
                     required
-                    className="w-5 h-5 mt-0.5 rounded border border-[#2f0000]/30 focus:ring-[#e80e19] checked:bg-[#e80e19] accent-[#e80e19]"
+                    className="w-5 h-5 mt-0.5 border border-[#e0d8ce] focus:ring-[#e80e19] accent-[#e80e19]"
                   />
                   <div>
                     <label
-                      className="text-base lg:text-xl cursor-pointer text-[#2f0000] font-medium"
+                      className="text-base lg:text-lg cursor-pointer text-[#3d3228]"
+                      style={{fontFamily:'var(--font-cormorant)'}}
                       htmlFor="flexCheckDefault"
                     >
                       {contactAgree}{' '}
                       <button
                         type="button"
-                        className="text-[#e80e19] underline hover:text-[#2f0000] transition-colors font-medium"
+                        className="text-[#e80e19] underline transition-colors"
                         onClick={(e) => toggleShowGdpr(e)}
                       >
                         {contactGdpr}
@@ -484,8 +490,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                     </label>
 
                     {showGdpr && (
-                      <div className="mt-3 p-3 bg-[#e80e19]/5 border-l-2 border-[#e80e19] rounded-md">
-                        <p className="text-base lg:text-xl leading-relaxed text-[#2f0000] font-medium">
+                      <div className="mt-3 bg-[#f0ece6] border-l-2 border-[#e80e19] p-4">
+                        <p className="text-base lg:text-lg leading-relaxed text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
                           {contactGdpr1}
                         </p>
                       </div>
@@ -509,7 +515,8 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                 {/* Submit Button */}
                 <button
-                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#2f0000] text-white py-3 px-6 rounded-lg font-medium text-base lg:text-xl transition-colors duration-200"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#1c1208] text-white px-10 py-4 text-base tracking-[0.15em] uppercase font-bold transition-all"
+                  style={{fontFamily:'var(--font-poiret-one)'}}
                   type="submit"
                   value="Send"
                 >
@@ -519,17 +526,17 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
               </form>
 
               {/* Contact Information */}
-              <div className="mt-8 pt-6 border-t border-[#2f0000]/10">
+              <div className="mt-8 pt-6 border-t border-[#e0d8ce]">
                 <div className="flex flex-col md:flex-row gap-6 justify-center text-center md:text-left">
                   <div className="flex items-center justify-center md:justify-start gap-2">
                     <MdEmail className="text-xl text-[#e80e19]" />
-                    <span className="text-base lg:text-xl text-[#2f0000] font-medium">
+                    <span className="text-lg text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
                       info@bow4bass.com
                     </span>
                   </div>
                   <div className="flex items-center justify-center md:justify-start gap-2">
                     <MdPhone className="text-xl text-[#e80e19]" />
-                    <span className="text-base lg:text-xl text-[#2f0000] font-medium">
+                    <span className="text-lg text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
                       +421 905 338 081
                     </span>
                   </div>

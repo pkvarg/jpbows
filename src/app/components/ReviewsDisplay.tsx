@@ -67,8 +67,8 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+      <div className="flex justify-center items-center py-24">
+        <div className="animate-spin h-12 w-12 border-t-2 border-b-2 border-[#e80e19]"></div>
       </div>
     )
   }
@@ -78,18 +78,35 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
   }
 
   return (
-    <div className="py-12">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          {locale === 'en' ? 'Customer Reviews' : 'Recenzie zákazníkov'}
-          {filterType && !showAll && (
-            <span className="text-xl ml-2 text-gray-600">- {getTypeLabel(filterType)}</span>
-          )}
-        </h2>
+    <div className="py-24 lg:py-32">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center gap-6 mb-8">
+          <div className="w-8 h-0.5 bg-[#e80e19]" />
+          <span
+            className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase whitespace-nowrap"
+            style={{ fontFamily: 'var(--font-poiret-one)' }}
+          >
+            {locale === 'en' ? 'Customer Reviews' : 'Recenzie zákazníkov'}
+          </span>
+          <div className="h-px flex-1 bg-[#e0d8ce]" />
+        </div>
+
+        {filterType && !showAll && (
+          <p
+            className="text-[#3d3228] text-lg mb-6"
+            style={{ fontFamily: 'var(--font-cormorant)' }}
+          >
+            — {getTypeLabel(filterType)}
+          </p>
+        )}
 
         {filterType && otherTypesExist && showAllLink && (
           <div className="text-center mb-6">
-            <button onClick={() => setShowAll(!showAll)} className="text-blue-600 hover:underline">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="text-[#e80e19] hover:text-[#8b6914] transition-colors tracking-[0.08em] uppercase font-semibold"
+              style={{ fontFamily: 'var(--font-cormorant)' }}
+            >
               {showAll
                 ? locale === 'en'
                   ? `Show only ${getTypeLabel(filterType)} reviews`
@@ -103,7 +120,7 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredReviews.map((review) => (
-            <div key={review.id} className="bg-white rounded-lg shadow-lg p-6">
+            <div key={review.id} className="bg-[#faf8f5] border border-[#e0d8ce] p-8">
               <div className="flex items-start gap-4 mb-4">
                 {review.photo && (
                   <Image
@@ -115,8 +132,16 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
                   />
                 )}
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg">{review.customerName}</h3>
-                  <p className="text-gray-600 text-sm">
+                  <h3
+                    className="text-[#1c1208] text-xl italic font-semibold"
+                    style={{ fontFamily: 'var(--font-cormorant)' }}
+                  >
+                    {review.customerName}
+                  </h3>
+                  <p
+                    className="text-[#9b8f84] text-base"
+                    style={{ fontFamily: 'var(--font-cormorant)' }}
+                  >
                     {locale === 'en' && review.customerDescriptionEnglish
                       ? review.customerDescriptionEnglish
                       : review.customerDescription}
@@ -128,15 +153,8 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
                   </p>
                   {!filterType && (
                     <span
-                      className={`inline-block px-2 py-1 text-xs rounded mt-1 ${
-                        review.reviewType === 'bows'
-                          ? 'bg-purple-100 text-purple-700'
-                          : review.reviewType === 'instruments'
-                          ? 'bg-blue-100 text-blue-700'
-                          : review.reviewType === 'repairs'
-                          ? 'bg-yellow-100 text-yellow-700'
-                          : 'bg-green-100 text-green-700'
-                      }`}
+                      className="inline-block bg-[#f0ece6] text-[#8b6914] px-3 py-1 text-xs tracking-[0.15em] uppercase mt-1"
+                      style={{ fontFamily: 'var(--font-poiret-one)' }}
                     >
                       {getTypeLabel(review.reviewType)}
                     </span>
@@ -144,8 +162,13 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
                 </div>
               </div>
 
+              <div className="w-8 h-0.5 bg-[#e80e19] mb-4" />
+
               <div className="mb-4">
-                <p className="text-gray-900 text-base font-medium leading-relaxed italic">
+                <p
+                  className="text-[#3d3228] text-lg lg:text-xl leading-relaxed italic"
+                  style={{ fontFamily: 'var(--font-cormorant)' }}
+                >
                   &quot;{locale === 'en' ? review.reviewTextEnglish : review.reviewText}&quot;
                 </p>
               </div>
@@ -155,7 +178,8 @@ export default function ReviewsDisplay({ filterType, showAllLink = true }: Revie
                   href={review.reviewOriginLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline text-sm flex items-center gap-1"
+                  className="text-[#e80e19] hover:text-[#8b6914] transition-colors text-base tracking-wide flex items-center gap-1"
+                  style={{ fontFamily: 'var(--font-cormorant)' }}
                 >
                   {locale === 'en' ? 'Google Review' : 'Recenzia Google'}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

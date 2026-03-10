@@ -12,6 +12,10 @@ const FooterServerComponent = () => {
     about: t('headerAbout'),
     tradeRules: t('tradeRules'),
     reviews: t('reviews'),
+    footerAtelier: t('footerAtelier'),
+    footerCraftsmanship: t('footerCraftsmanship'),
+    footerMusicScene: t('footerMusicScene'),
+    footerContact: t('footerContact'),
   }
   return <Footer translations={footerTranslations} />
 }

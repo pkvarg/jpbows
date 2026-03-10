@@ -48,169 +48,164 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="text-2xl lg:text-xl font-semibold leading-tight text-[#e80e19]">
-      <div className="mx-auto justify-between px-4 md:flex md:items-center md:px-8">
-        <div className="mb-0 lg:mb-2">
-          <div className="flex items-center justify-between py-3 md:block md:py-4">
-            <div
-              onClick={() => router.push('/')}
-              className="flex cursor-pointer flex-row items-center gap-4"
-            >
-              <Image
-                src="/b4b_logo9.png"
-                alt="bow4bass.com"
-                width={900}
-                height={900}
-                className="w-[40px]"
-              />
-              {/* <h1 className="leading-[22.5px]">bow4bass</h1> */}
-              {/* <h1 className="leading-[22.5px] text-4xl text-[#e80e19]">bow4bass</h1>  */}
-              <h1 className="text-3xl lg:text-3xl font-bold lg:font-semibold leading-tight text-[#e80e19] italic">
-                bow4bass
-              </h1>
-            </div>
-            <div className="md:hidden">
-              <button
-                className="rounded-md p-2 outline-none focus:border focus:border-gray-400"
-                style={{ color: '#0e1528' }}
-                onClick={() => setNavbar(!navbar)}
-              >
-                {navbar ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div
-            className={`mt-8 flex-1 lg:justify-self-center pb-3 md:mt-0 md:block md:pb-0 ${
-              navbar ? 'block h-[80vh] overflow-y-auto' : 'hidden'
-            }`}
+    <nav className="bg-[#faf8f5] border-b border-[#e0d8ce]">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between">
+        {/* Logo */}
+        <div
+          onClick={() => router.push('/')}
+          className="flex cursor-pointer items-center gap-3 py-4"
+        >
+          <Image
+            src="/b4b_logo9.png"
+            alt="bow4bass.com"
+            width={900}
+            height={900}
+            className="w-[36px]"
+          />
+          <h1
+            className="text-2xl lg:text-3xl text-[#e80e19] italic font-semibold leading-tight"
+            style={{ fontFamily: 'var(--font-cormorant)' }}
           >
-            <ul className="flex flex-col space-y-6 md:flex-row md:space-x-6 md:space-y-0">
-              <Link
-                href={'/bows'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                {t('navBows')}
-              </Link>
-              <Link
-                href={'/repairs'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                {t('navServiceRepairs')}
-              </Link>
+            bow4bass
+          </h1>
+        </div>
 
-              {/* Bass instruments dropdown */}
-              <div className="relative">
-                <button
-                  onClick={() => setBassDropdown(!bassDropdown)}
-                  className="cursor-pointer hover:text-[#2f0000] block py-2 w-full text-left"
-                >
-                  {t('navInstruments')} ▾
-                </button>
-                {bassDropdown && (
-                  <div className="md:absolute relative md:left-0 md:mt-0 md:w-56 md:bg-white md:shadow-lg md:rounded-md md:border md:border-gray-200 z-50">
-                    <Link
-                      href="/bass?type=bass"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
-                      onClick={handleLinkClick}
-                    >
-                      {t('navInstrumentsBass')} ({instrumentCounts.bass})
-                    </Link>
-                    <Link
-                      href="/bass?type=violone"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
-                      onClick={handleLinkClick}
-                    >
-                      {t('navInstrumentsViolone')} ({instrumentCounts.violone})
-                    </Link>
-                    <Link
-                      href="/bass?type=gamba"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
-                      onClick={handleLinkClick}
-                    >
-                      {t('navInstrumentsGamba')} ({instrumentCounts.gamba})
-                    </Link>
-                    <Link
-                      href="/bass?type=cello"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg"
-                      onClick={handleLinkClick}
-                    >
-                      {t('navInstrumentsCello')} ({instrumentCounts.cello})
-                    </Link>
-                    <Link
-                      href="/bass"
-                      className="block px-4 py-2 hover:bg-gray-100 text-lg font-bold border-t border-gray-200"
-                      onClick={handleLinkClick}
-                    >
-                      {t('navInstrumentsAll')} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
-                    </Link>
-                  </div>
-                )}
-              </div>
-              <Link
-                href={'/rent'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
+        {/* Mobile hamburger */}
+        <div className="md:hidden">
+          <button
+            className="rounded-md p-2 text-[#1c1208] outline-none focus:border focus:border-[#e0d8ce]"
+            onClick={() => setNavbar(!navbar)}
+          >
+            {navbar ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                {t('navRentalInstruments')}
-              </Link>
-              {/* <Link
-                href={'/blog'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
+                <path
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
               >
-                Blog
-              </Link> */}
-              <Link
-                href={'/about-me'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                {t('navAboutMe')}
-              </Link>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
 
-              <Link
-                href={'/contact'}
-                className="cursor-pointer hover:text-[#2f0000] block py-2"
-                onClick={handleLinkClick}
-              >
-                {t('navContact')}
-              </Link>
+        {/* Desktop nav + mobile expandable */}
+        <div
+          className={`absolute left-0 right-0 top-[64px] bg-[#faf8f5] border-b border-[#e0d8ce] md:border-0 md:static md:block md:bg-transparent z-50 ${
+            navbar ? 'block' : 'hidden'
+          }`}
+        >
+          <ul
+            className="flex flex-col space-y-4 px-6 py-6 md:flex-row md:items-center md:space-x-8 md:space-y-0 md:px-0 md:py-0"
+            style={{ fontFamily: 'var(--font-cormorant)' }}
+          >
+            <Link
+              href={'/bows'}
+              className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1"
+              onClick={handleLinkClick}
+            >
+              {t('navBows')}
+            </Link>
+            <Link
+              href={'/repairs'}
+              className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1"
+              onClick={handleLinkClick}
+            >
+              {t('navServiceRepairs')}
+            </Link>
 
-              <LangSwitcher />
-            </ul>
-          </div>
+            {/* Bass instruments dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setBassDropdown(!bassDropdown)}
+                className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1 w-full text-left cursor-pointer"
+              >
+                {t('navInstruments')} &#9662;
+              </button>
+              {bassDropdown && (
+                <div className="md:absolute relative md:left-0 md:mt-2 md:w-56 bg-[#faf8f5] border border-[#e0d8ce] z-50">
+                  <Link
+                    href="/bass?type=bass"
+                    className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base tracking-wide"
+                    onClick={handleLinkClick}
+                  >
+                    {t('navInstrumentsBass')} ({instrumentCounts.bass})
+                  </Link>
+                  <Link
+                    href="/bass?type=violone"
+                    className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base tracking-wide"
+                    onClick={handleLinkClick}
+                  >
+                    {t('navInstrumentsViolone')} ({instrumentCounts.violone})
+                  </Link>
+                  <Link
+                    href="/bass?type=gamba"
+                    className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base tracking-wide"
+                    onClick={handleLinkClick}
+                  >
+                    {t('navInstrumentsGamba')} ({instrumentCounts.gamba})
+                  </Link>
+                  <Link
+                    href="/bass?type=cello"
+                    className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base tracking-wide"
+                    onClick={handleLinkClick}
+                  >
+                    {t('navInstrumentsCello')} ({instrumentCounts.cello})
+                  </Link>
+                  <Link
+                    href="/bass"
+                    className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base font-bold border-t border-[#e0d8ce]"
+                    onClick={handleLinkClick}
+                  >
+                    {t('navInstrumentsAll')} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
+                  </Link>
+                </div>
+              )}
+            </div>
+            <Link
+              href={'/rent'}
+              className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1"
+              onClick={handleLinkClick}
+            >
+              {t('navRentalInstruments')}
+            </Link>
+            <Link
+              href={'/about-me'}
+              className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1"
+              onClick={handleLinkClick}
+            >
+              {t('navAboutMe')}
+            </Link>
+
+            <Link
+              href={'/contact'}
+              className="text-[#1c1208] hover:text-[#e80e19] transition-colors text-base lg:text-lg tracking-[0.08em] uppercase font-semibold block py-1"
+              onClick={handleLinkClick}
+            >
+              {t('navContact')}
+            </Link>
+
+            <LangSwitcher />
+          </ul>
         </div>
       </div>
     </nav>

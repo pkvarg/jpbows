@@ -80,7 +80,7 @@ const ImageModal = ({
                   e.stopPropagation()
                   onPrevious()
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#E80D19] p-3 rounded-full transition-all"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#e80e19] p-3 rounded-full transition-all"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -97,7 +97,7 @@ const ImageModal = ({
                   e.stopPropagation()
                   onNext()
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#E80D19] p-3 rounded-full transition-all"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-[#e80e19] p-3 rounded-full transition-all"
               >
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -118,7 +118,7 @@ const ImageModal = ({
                       index === currentIndex ? 'w-6' : ''
                     }`}
                     style={{
-                      backgroundColor: index === currentIndex ? '#E80D19' : 'rgba(232, 13, 25, 0.5)'
+                      backgroundColor: index === currentIndex ? '#e80e19' : 'rgba(232, 13, 25, 0.5)'
                     }}
                   />
                 ))}
@@ -156,7 +156,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
 
   return (
     <>
-      <div className="group relative bg-white mx-4 lg:mx-8 my-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+      <div className="group relative bg-[#faf8f5] border border-[#e0d8ce] my-6 overflow-hidden hover:shadow-lg transition-all duration-300">
         <div className="flex flex-col lg:flex-row">
           {/* Image Section */}
           <div className="w-full lg:w-1/2 relative">
@@ -187,7 +187,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                           e.stopPropagation()
                           previousImage()
                         }}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#1c1208] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
                         <svg
                           className="w-4 h-4"
@@ -209,7 +209,7 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                           e.stopPropagation()
                           nextImage()
                         }}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#2f0000] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-[#1c1208] p-1.5 rounded-full transition-all opacity-0 group-hover:opacity-100 shadow-sm"
                       >
                         <svg
                           className="w-4 h-4"
@@ -247,9 +247,9 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
                   )}
                 </>
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-[#fefefe]">
+                <div className="w-full h-full flex items-center justify-center bg-[#f0ece6]">
                   <svg
-                    className="w-12 h-12 text-[#2f0000]/30"
+                    className="w-12 h-12 text-[#9b8f84]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -267,28 +267,28 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
           </div>
 
           {/* Content Section */}
-          <div className="w-full lg:w-1/2 p-6 lg:p-8 flex flex-col justify-center">
+          <div className="w-full lg:w-1/2 p-8 lg:p-10 flex flex-col justify-center">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <h2 className="text-xl lg:text-2xl font-semibold text-[#e80e19] leading-tight">
+                <h2 className="text-xl lg:text-2xl text-[#1c1208] leading-tight italic" style={{fontFamily:'var(--font-cormorant)'}}>
                   {displayName}
                 </h2>
                 {bow.new && (
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                  <span className="inline-flex items-center px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase bg-[#8b6914] text-white" style={{fontFamily:'var(--font-poiret-one)'}}>
                     {isEnglish ? 'NEW' : 'NOVINKA'}
                   </span>
                 )}
               </div>
 
-              <div className="text-[#2f0000] text-base lg:text-lg leading-relaxed font-bold">
+              <div className="text-[#3d3228] text-base lg:text-lg leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>
                 {displayDescription.split(/(?<=[.!?])\s+/).map((sentence, index) => (
-                  <div key={index}>{sentence}</div>
+                  <div key={index} className="mb-1">{sentence}</div>
                 ))}
               </div>
 
               {(bow.price || bow.priceEnglish) && (
                 <div className="pt-2">
-                  <p className="text-xl lg:text-2xl font-semibold text-[#2f0000]">
+                  <p className="text-xl lg:text-2xl font-semibold text-[#1c1208]" style={{fontFamily:'var(--font-cormorant)'}}>
                     {isEnglish && bow.priceEnglish ? bow.priceEnglish : bow.price}
                   </p>
                 </div>
@@ -297,11 +297,12 @@ const BowItem = ({ bow, isEnglish }: { bow: Bow; isEnglish: boolean }) => {
               {/* Availability */}
               <div className="pt-2">
                 <span
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
+                  className={`inline-flex items-center px-4 py-1.5 text-xs font-bold tracking-[0.15em] uppercase ${
                     bow.availability === 'available'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
+                      ? 'bg-[#faf8f5] border border-[#8b6914] text-[#8b6914]'
+                      : 'bg-[#faf8f5] border border-[#e80e19] text-[#e80e19]'
                   }`}
+                  style={{fontFamily:'var(--font-poiret-one)'}}
                 >
                   {bow.availability === 'available'
                     ? t('availabilityAvailable')
@@ -374,10 +375,10 @@ const Bow = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#e80e19]"></div>
-          <p className="text-[#2f0000] mt-4 text-base lg:text-lg font-medium">{t('bowsLoading')}</p>
+          <p className="text-[#3d3228] mt-4 text-base lg:text-lg" style={{fontFamily:'var(--font-cormorant)'}}>{t('bowsLoading')}</p>
         </div>
       </div>
     )
@@ -385,14 +386,15 @@ const Bow = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#fefefe] flex items-center justify-center">
+      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-[#e80e19] text-lg lg:text-xl font-medium mb-4">{error}</p>
+          <p className="text-[#e80e19] text-lg lg:text-xl mb-6" style={{fontFamily:'var(--font-cormorant)'}}>{error}</p>
           <button
             onClick={fetchBows}
-            className="px-6 py-2 bg-[#e80e19] hover:bg-[#2f0000] text-white rounded-lg font-medium text-base transition-colors duration-200"
+            className="bg-[#e80e19] text-white px-8 py-3 tracking-[0.15em] uppercase font-bold hover:bg-[#1c1208] transition-colors duration-200"
+            style={{fontFamily:'var(--font-poiret-one)'}}
           >
-            {isEnglish ? 'Try again' : 'Skúsiť znova'}
+            {isEnglish ? 'Try again' : 'Skusit znova'}
           </button>
         </div>
       </div>
@@ -400,22 +402,30 @@ const Bow = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#fefefe]">
-      <div className="text-center space-y-12 mt-8 mx-4">
-        <div className="space-y-8 max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-semibold text-[#e80e19] tracking-wider">
-            {t('bowsTitle')}
-          </h2>
-          <div>
-            <p className="text-2xl leading-relaxed text-[#2f0000] font-bold">{t('bowsIntro1')}</p>
+    <div className="min-h-screen bg-[#faf8f5]">
+      {/* Hero Section */}
+      <div className="pt-32 pb-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <div className="flex items-center gap-6 mb-16">
+            <div className="w-8 h-0.5 bg-[#e80e19]" />
+            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+              {t('bowsTitle')}
+            </h2>
+            <div className="h-px flex-1 bg-[#e0d8ce]" />
+          </div>
+
+          <div className="max-w-3xl">
+            <p className="text-xl lg:text-2xl leading-relaxed text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
+              {t('bowsIntro1')}
+            </p>
 
             {isExpanded && (
               <>
-                <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
+                <p className="text-xl lg:text-2xl leading-relaxed text-[#3d3228] mt-8" style={{fontFamily:'var(--font-cormorant)'}}>
                   {t('bowsIntro2')}
                 </p>
 
-                <p className="text-2xl leading-relaxed text-[#2f0000] font-bold mt-8">
+                <p className="text-xl lg:text-2xl leading-relaxed text-[#3d3228] mt-8" style={{fontFamily:'var(--font-cormorant)'}}>
                   {t('bowsIntro3')}
                 </p>
               </>
@@ -423,30 +433,32 @@ const Bow = () => {
 
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-6 px-6 py-2 bg-[#e80e19] hover:bg-white hover:text-[#e80e19] hover:border-1 text-white rounded-lg font-bold text-2xl transition-colors duration-200 my-8 cursor-pointer"
+              className="mt-8 bg-[#e80e19] text-white px-8 py-3 tracking-[0.15em] uppercase font-bold hover:bg-[#1c1208] transition-colors duration-200 cursor-pointer"
+              style={{fontFamily:'var(--font-poiret-one)'}}
             >
               {isExpanded ? t('lessButton') : t('moreButton')}
             </button>
           </div>
         </div>
       </div>
-      {/* Header Section */}
-      <div className="relative py-12 px-4 text-center">
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="text-3xl lg:text-5xl font-bold text-[#e80e19] mb-3 tracking-wide">
+
+      {/* Catalog Header */}
+      <div className="bg-[#f0ece6] py-16">
+        <div className="max-w-6xl mx-auto px-6 lg:px-12">
+          <h1 className="text-3xl lg:text-5xl text-[#1c1208] italic leading-tight" style={{fontFamily:'var(--font-cormorant)'}}>
             {t('bowsTitle')}
           </h1>
-          <p className="text-lg lg:text-2xl font-bold text-[#2f0000] leading-relaxed">
+          <p className="text-lg lg:text-xl text-[#3d3228] mt-4 leading-relaxed" style={{fontFamily:'var(--font-cormorant)'}}>
             {t('bowsSubtitle')}
           </p>
         </div>
       </div>
 
       {/* Bows List */}
-      <div className="max-w-6xl mx-auto pb-12">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16">
         {bows.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-[#2f0000] text-lg lg:text-xl font-medium">{t('bowsEmpty')}</p>
+            <p className="text-[#9b8f84] text-lg lg:text-xl" style={{fontFamily:'var(--font-cormorant)'}}>{t('bowsEmpty')}</p>
           </div>
         ) : (
           <div className="space-y-8">

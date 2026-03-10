@@ -4,23 +4,9 @@ import React from 'react'
 import About_Me from '@/app/components/AboutMe'
 
 const AboutMe = () => {
-  // const fadeInUp = {
-  //   initial: { opacity: 0, y: 60 },
-  //   animate: { opacity: 1, y: 0 },
-  //   transition: { duration: 0.8, ease: 'easeOut' },
-  // }
-
-  // const staggerContainer = {
-  //   animate: {
-  //     transition: {
-  //       staggerChildren: 0.3,
-  //     },
-  //   },
-  // }
-
   return (
-    <div className="relative min-h-screen bg-[#fefefe]">
-      <div className="container mx-auto px-6">
+    <div className="relative min-h-screen bg-[#faf8f5]">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <About_Me />
       </div>
     </div>
