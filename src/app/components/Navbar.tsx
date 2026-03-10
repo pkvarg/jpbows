@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import LangSwitcher from './LangSwitcher'
 
@@ -16,8 +15,6 @@ const Navbar = () => {
     gamba: 0,
     cello: 0,
   })
-
-  const router = useRouter()
 
   // Fetch instrument counts
   useEffect(() => {
@@ -51,9 +48,9 @@ const Navbar = () => {
     <nav className="bg-[#faf8f5] border-b border-[#e0d8ce]">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <div
-          onClick={() => router.push('/')}
-          className="flex cursor-pointer items-center gap-3 py-4"
+        <Link
+          href="/"
+          className="flex items-center gap-3 py-4"
         >
           <Image
             src="/b4b_logo9.png"
@@ -68,7 +65,7 @@ const Navbar = () => {
           >
             bow4bass
           </h1>
-        </div>
+        </Link>
 
         {/* Mobile hamburger */}
         <div className="md:hidden">
