@@ -472,7 +472,7 @@ const Bow = () => {
                       <div className="flex items-center gap-6 mb-8">
                         <div className="w-8 h-0.5 bg-[#e80e19]" />
                         <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                          JP Modely
+                          {isEnglish ? 'JP Models' : 'JP Modely'}
                         </h2>
                         <div className="h-px flex-1 bg-[#e0d8ce]" />
                       </div>

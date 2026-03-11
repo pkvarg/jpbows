@@ -22,7 +22,8 @@ const Navbar = () => {
       try {
         const response = await fetch('/api/basses')
         if (response.ok) {
-          const basses: Array<{ instrumentType: string; published: boolean }> = await response.json()
+          const basses: Array<{ instrumentType: string; published: boolean }> =
+            await response.json()
           const counts = {
             bass: basses.filter((b) => b.instrumentType === 'bass' && b.published).length,
             violone: basses.filter((b) => b.instrumentType === 'violone' && b.published).length,
@@ -46,12 +47,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#faf8f5] border-b border-[#e0d8ce]">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between">
+      <div className="max-w-9xl mx-auto px-4 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-3 py-4"
-        >
+        <Link href="/" className="flex items-center gap-3 py-4">
           <Image
             src="/b4b_logo9.png"
             alt="bow4bass.com"
@@ -95,11 +93,7 @@ const Navbar = () => {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
@@ -173,7 +167,12 @@ const Navbar = () => {
                     className="block px-5 py-2.5 text-[#1c1208] hover:text-[#e80e19] hover:bg-[#f0ece6] transition-colors text-base font-bold border-t border-[#e0d8ce]"
                     onClick={handleLinkClick}
                   >
-                    {t('navInstrumentsAll')} ({instrumentCounts.bass + instrumentCounts.violone + instrumentCounts.gamba + instrumentCounts.cello})
+                    {t('navInstrumentsAll')} (
+                    {instrumentCounts.bass +
+                      instrumentCounts.violone +
+                      instrumentCounts.gamba +
+                      instrumentCounts.cello}
+                    )
                   </Link>
                 </div>
               )}
