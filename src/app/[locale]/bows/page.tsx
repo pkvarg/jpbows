@@ -498,49 +498,11 @@ const Bow = () => {
                     </div>
                   )}
 
-                  {activeFilter === 'all' ? (
-                    <>
-                      {jpBows.length > 0 && (
-                        <div className="mb-16">
-                          <div className="flex items-center gap-6 mb-8">
-                            <div className="w-8 h-0.5 bg-[#e80e19]" />
-                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                              {isEnglish ? 'JP Models' : 'JP Modely'}
-                            </h2>
-                            <div className="h-px flex-1 bg-[#e0d8ce]" />
-                          </div>
-                          <div className="space-y-8">
-                            {jpBows.map((bow) => (
-                              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {otherBows.length > 0 && (
-                        <div>
-                          <div className="flex items-center gap-6 mb-8">
-                            <div className="w-8 h-0.5 bg-[#e80e19]" />
-                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                              {isEnglish ? 'Master Bows' : 'Majstrovské sláčiky'}
-                            </h2>
-                            <div className="h-px flex-1 bg-[#e0d8ce]" />
-                          </div>
-                          <div className="space-y-8">
-                            {otherBows.map((bow) => (
-                              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <div className="space-y-8">
-                      {displayedBows.map((bow) => (
-                        <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-                      ))}
-                    </div>
-                  )}
+                  <div className="space-y-8">
+                    {displayedBows.map((bow) => (
+                      <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                    ))}
+                  </div>
                 </>
               )
             })()}

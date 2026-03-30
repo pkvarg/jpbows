@@ -397,6 +397,11 @@ const Bass = () => {
   const searchParams = useSearchParams()
   const instrumentType = searchParams.get('type') as 'bass' | 'violone' | 'gamba' | 'cello' | null
 
+  // Reset filter when instrument type changes
+  useEffect(() => {
+    setActiveFilter('all')
+  }, [instrumentType])
+
   // Determine if we're on the English version based on URL
   const isEnglish = pathname.includes('/en/')
 
@@ -553,49 +558,11 @@ const Bass = () => {
                     </div>
                   )}
 
-                  {activeFilter === 'all' ? (
-                    <>
-                      {bivajBasses.length > 0 && (
-                        <div className="mb-16">
-                          <div className="flex items-center gap-6 mb-8">
-                            <div className="w-8 h-0.5 bg-[#e80e19]" />
-                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                              Bivaj Art Luthiery
-                            </h2>
-                            <div className="h-px flex-1 bg-[#e0d8ce]" />
-                          </div>
-                          <div className="space-y-8">
-                            {bivajBasses.map((bass) => (
-                              <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {otherBasses.length > 0 && (
-                        <div>
-                          <div className="flex items-center gap-6 mb-8">
-                            <div className="w-8 h-0.5 bg-[#e80e19]" />
-                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                              {isEnglish ? 'Other Masters' : 'Iní majstri'}
-                            </h2>
-                            <div className="h-px flex-1 bg-[#e0d8ce]" />
-                          </div>
-                          <div className="space-y-8">
-                            {otherBasses.map((bass) => (
-                              <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <div className="space-y-8">
-                      {displayedBasses.map((bass) => (
-                        <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-                      ))}
-                    </div>
-                  )}
+                  <div className="space-y-8">
+                    {displayedBasses.map((bass) => (
+                      <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                    ))}
+                  </div>
                 </>
               )
             })()}
