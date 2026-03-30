@@ -479,8 +479,8 @@ const Bow = () => {
                     <div className="flex flex-wrap gap-3 mb-12">
                       {([
                         { key: 'all' as const, label: `${isEnglish ? 'All' : 'Všetky'} (${bows.length})` },
-                        { key: 'jp' as const, label: `${isEnglish ? 'JP Models' : 'JP Modely'} (${jpBows.length})` },
-                        { key: 'masters' as const, label: `${isEnglish ? 'Master Bows' : 'Majstrovské sláčiky'} (${otherBows.length})` },
+                        { key: 'jp' as const, label: `${isEnglish ? 'JP bows' : 'JP sláčiky'} (${jpBows.length})` },
+                        { key: 'masters' as const, label: `${isEnglish ? 'Other bows' : 'Ostatné sláčiky'} (${otherBows.length})` },
                       ]).map((tab) => (
                         <button
                           key={tab.key}
