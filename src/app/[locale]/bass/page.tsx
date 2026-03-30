@@ -392,6 +392,7 @@ const Bass = () => {
   const [basses, setBasses] = useState<Bass[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [activeFilter, setActiveFilter] = useState<'all' | 'bivaj' | 'masters'>('all')
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const instrumentType = searchParams.get('type') as 'bass' | 'violone' | 'gamba' | 'cello' | null
@@ -517,44 +518,82 @@ const Bass = () => {
           </div>
         ) : (
           <>
-            {/* Bivaj Art Luthiery Section */}
             {(() => {
               const bivajBasses = basses.filter((b) => b.description.includes('Bivaj Art'))
               const otherBasses = basses.filter((b) => !b.description.includes('Bivaj Art'))
+              const hasMasters = otherBasses.length > 0
+
+              const displayedBasses = activeFilter === 'bivaj' ? bivajBasses
+                : activeFilter === 'masters' ? otherBasses
+                : basses
+
               return (
                 <>
-                  {bivajBasses.length > 0 && (
-                    <div className="mb-16">
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="w-8 h-0.5 bg-[#e80e19]" />
-                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                          Bivaj Art Luthiery
-                        </h2>
-                        <div className="h-px flex-1 bg-[#e0d8ce]" />
-                      </div>
-                      <div className="space-y-8">
-                        {bivajBasses.map((bass) => (
-                          <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-                        ))}
-                      </div>
+                  {/* Filter Tabs — only show when there are masters products */}
+                  {hasMasters && (
+                    <div className="flex flex-wrap gap-3 mb-12">
+                      {([
+                        { key: 'all' as const, label: `${isEnglish ? 'All' : 'Všetky'} (${basses.length})` },
+                        { key: 'bivaj' as const, label: `Bivaj Art Luthiery (${bivajBasses.length})` },
+                        { key: 'masters' as const, label: `${isEnglish ? 'Other Masters' : 'Iní majstri'} (${otherBasses.length})` },
+                      ]).map((tab) => (
+                        <button
+                          key={tab.key}
+                          onClick={() => setActiveFilter(tab.key)}
+                          className={`px-6 py-2.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-200 border ${
+                            activeFilter === tab.key
+                              ? 'bg-[#8b6914] text-white border-[#8b6914]'
+                              : 'bg-[#faf8f5] text-[#1c1208] border-[#e0d8ce] hover:border-[#8b6914] hover:text-[#8b6914]'
+                          }`}
+                          style={{fontFamily:'var(--font-poiret-one)', borderRadius: '9999px'}}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
                     </div>
                   )}
 
-                  {/* Other Instruments Section */}
-                  {otherBasses.length > 0 && (
-                    <div>
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="w-8 h-0.5 bg-[#e80e19]" />
-                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                          {isEnglish ? 'Other Instruments' : 'Ostatné nástroje'}
-                        </h2>
-                        <div className="h-px flex-1 bg-[#e0d8ce]" />
-                      </div>
-                      <div className="space-y-8">
-                        {otherBasses.map((bass) => (
-                          <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
-                        ))}
-                      </div>
+                  {activeFilter === 'all' ? (
+                    <>
+                      {bivajBasses.length > 0 && (
+                        <div className="mb-16">
+                          <div className="flex items-center gap-6 mb-8">
+                            <div className="w-8 h-0.5 bg-[#e80e19]" />
+                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                              Bivaj Art Luthiery
+                            </h2>
+                            <div className="h-px flex-1 bg-[#e0d8ce]" />
+                          </div>
+                          <div className="space-y-8">
+                            {bivajBasses.map((bass) => (
+                              <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {otherBasses.length > 0 && (
+                        <div>
+                          <div className="flex items-center gap-6 mb-8">
+                            <div className="w-8 h-0.5 bg-[#e80e19]" />
+                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                              {isEnglish ? 'Other Masters' : 'Iní majstri'}
+                            </h2>
+                            <div className="h-px flex-1 bg-[#e0d8ce]" />
+                          </div>
+                          <div className="space-y-8">
+                            {otherBasses.map((bass) => (
+                              <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="space-y-8">
+                      {displayedBasses.map((bass) => (
+                        <BassItem key={bass.id} bass={bass} isEnglish={isEnglish} />
+                      ))}
                     </div>
                   )}
                 </>

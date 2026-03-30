@@ -334,6 +334,7 @@ const Bow = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isExpanded, setIsExpanded] = useState(false)
+  const [activeFilter, setActiveFilter] = useState<'all' | 'jp' | 'masters'>('all')
   const pathname = usePathname()
 
   // Determine if we're on the English version based on URL
@@ -465,39 +466,79 @@ const Bow = () => {
             {(() => {
               const jpBows = bows.filter((b) => b.name.includes('JP'))
               const otherBows = bows.filter((b) => !b.name.includes('JP'))
+              const hasMasters = otherBows.length > 0
+
+              const displayedBows = activeFilter === 'jp' ? jpBows
+                : activeFilter === 'masters' ? otherBows
+                : bows
+
               return (
                 <>
-                  {jpBows.length > 0 && (
-                    <div className="mb-16">
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="w-8 h-0.5 bg-[#e80e19]" />
-                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                          {isEnglish ? 'JP Models' : 'JP Modely'}
-                        </h2>
-                        <div className="h-px flex-1 bg-[#e0d8ce]" />
-                      </div>
-                      <div className="space-y-8">
-                        {jpBows.map((bow) => (
-                          <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-                        ))}
-                      </div>
+                  {/* Filter Tabs — only show when there are masters products */}
+                  {hasMasters && (
+                    <div className="flex flex-wrap gap-3 mb-12">
+                      {([
+                        { key: 'all' as const, label: `${isEnglish ? 'All' : 'Všetky'} (${bows.length})` },
+                        { key: 'jp' as const, label: `${isEnglish ? 'JP Models' : 'JP Modely'} (${jpBows.length})` },
+                        { key: 'masters' as const, label: `${isEnglish ? 'Master Bows' : 'Majstrovské sláčiky'} (${otherBows.length})` },
+                      ]).map((tab) => (
+                        <button
+                          key={tab.key}
+                          onClick={() => setActiveFilter(tab.key)}
+                          className={`px-6 py-2.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-200 border ${
+                            activeFilter === tab.key
+                              ? 'bg-[#8b6914] text-white border-[#8b6914]'
+                              : 'bg-[#faf8f5] text-[#1c1208] border-[#e0d8ce] hover:border-[#8b6914] hover:text-[#8b6914]'
+                          }`}
+                          style={{fontFamily:'var(--font-poiret-one)', borderRadius: '9999px'}}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
                     </div>
                   )}
 
-                  {otherBows.length > 0 && (
-                    <div>
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="w-8 h-0.5 bg-[#e80e19]" />
-                        <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
-                          {isEnglish ? 'Other Bows' : 'Ostatné sláčiky'}
-                        </h2>
-                        <div className="h-px flex-1 bg-[#e0d8ce]" />
-                      </div>
-                      <div className="space-y-8">
-                        {otherBows.map((bow) => (
-                          <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
-                        ))}
-                      </div>
+                  {activeFilter === 'all' ? (
+                    <>
+                      {jpBows.length > 0 && (
+                        <div className="mb-16">
+                          <div className="flex items-center gap-6 mb-8">
+                            <div className="w-8 h-0.5 bg-[#e80e19]" />
+                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                              {isEnglish ? 'JP Models' : 'JP Modely'}
+                            </h2>
+                            <div className="h-px flex-1 bg-[#e0d8ce]" />
+                          </div>
+                          <div className="space-y-8">
+                            {jpBows.map((bow) => (
+                              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {otherBows.length > 0 && (
+                        <div>
+                          <div className="flex items-center gap-6 mb-8">
+                            <div className="w-8 h-0.5 bg-[#e80e19]" />
+                            <h2 className="text-[#8b6914] tracking-[0.3em] text-base lg:text-lg uppercase" style={{fontFamily:'var(--font-poiret-one)'}}>
+                              {isEnglish ? 'Master Bows' : 'Majstrovské sláčiky'}
+                            </h2>
+                            <div className="h-px flex-1 bg-[#e0d8ce]" />
+                          </div>
+                          <div className="space-y-8">
+                            {otherBows.map((bow) => (
+                              <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div className="space-y-8">
+                      {displayedBows.map((bow) => (
+                        <BowItem key={bow.id} bow={bow} isEnglish={isEnglish} />
+                      ))}
                     </div>
                   )}
                 </>
