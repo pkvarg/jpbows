@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useRef, ChangeEvent } from 'react'
+import { uploadImage, MAX_UPLOAD_BYTES } from '@/lib/uploadImage'
 
 // Blog template options
 type BlogTemplate = 'classic' | 'modern' | 'minimal'
@@ -77,13 +78,13 @@ export default function BlogCreator() {
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => { const { name, checked } = e.target; setFormData((prev) => ({ ...prev, [name]: checked })) }
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => { const file = e.target.files?.[0]; if (!file) return; if (!file.type.startsWith('image/')) { setError('Please upload an image file'); return }; const reader = new FileReader(); reader.onloadend = () => { setImagePreview(reader.result as string) }; reader.readAsDataURL(file); setImageFile(file) }
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => { const file = e.target.files?.[0]; if (!file) return; if (!file.type.startsWith('image/')) { setError('Prosím, nahrajte súbor s obrázkom'); return }; if (file.size > MAX_UPLOAD_BYTES) { setError(`Súbor je príliš veľký (${(file.size / (1024 * 1024)).toFixed(1)} MB). Maximum je ${(MAX_UPLOAD_BYTES / (1024 * 1024)).toFixed(0)} MB.`); return }; const reader = new FileReader(); reader.onloadend = () => { setImagePreview(reader.result as string) }; reader.readAsDataURL(file); setImageFile(file) }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); setLoading(true); setError(null); setSuccessMessage(null)
     try {
       let finalImageUrl = formData.imageUrl
-      if (imageFile) { const uploadFormData = new FormData(); uploadFormData.append('file', imageFile); const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`; const response = await fetch(apiUrl, { method: 'POST', body: uploadFormData }); if (!response.ok) { throw new Error('Failed to upload image') }; const data = await response.json(); finalImageUrl = data.imageUrl }
+      if (imageFile) { const { imageUrl } = await uploadImage(imageFile); finalImageUrl = imageUrl }
       const blogData = { title: formData.title, enTitle: formData.enTitle, subtitle: formData.subtitle, enSubtitle: formData.enSubtitle, description: formData.description, enDescription: formData.enDescription, blogtext: formData.blogtext, enBlogtext: formData.enBlogtext, imageUrl: finalImageUrl, active: formData.active, template: formData.template, metadata: formData.metadata }
       const url = editingId ? `/api/blogs/${editingId}` : '/api/blogs'; const method = editingId ? 'PUT' : 'POST'
       const response = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(blogData) })

@@ -3,6 +3,7 @@ import { useState, useRef, ChangeEvent } from 'react'
 import { Link } from '@/i18n/routing'
 import React from 'react'
 import Image from 'next/image'
+import { uploadImage, MAX_UPLOAD_BYTES } from '@/lib/uploadImage'
 
 const FileUpload = () => {
   const [loading, setLoading] = useState<boolean>(false)
@@ -34,6 +35,13 @@ const FileUpload = () => {
       return
     }
 
+    if (selectedFile.size > MAX_UPLOAD_BYTES) {
+      setError(
+        `Súbor je príliš veľký (${(selectedFile.size / (1024 * 1024)).toFixed(1)} MB). Maximum je ${(MAX_UPLOAD_BYTES / (1024 * 1024)).toFixed(0)} MB.`,
+      )
+      return
+    }
+
     setFile(selectedFile)
     setError(null)
 
@@ -55,25 +63,11 @@ const FileUpload = () => {
     setError(null)
     setSuccessMessage(null)
 
-    const formData = new FormData()
-    formData.append('file', file)
-
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
-
     try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (!response.ok) {
-        throw new Error('Nepodarilo sa nahrat subor')
-      }
-
-      const data = await response.json()
+      const { imageUrl } = await uploadImage(file)
 
       setSuccessMessage('Subor bol uspesne nahrany!')
-      setUploadedFileUrl(data.imageUrl)
+      setUploadedFileUrl(imageUrl)
 
       // Reset the file input but keep the success message and URL
       setFile(null)

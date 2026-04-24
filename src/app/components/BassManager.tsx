@@ -2,6 +2,13 @@
 
 import Image from 'next/image'
 import { useState, useRef, ChangeEvent } from 'react'
+import {
+  uploadImage,
+  uploadImagesBatch,
+  MAX_UPLOAD_BYTES,
+  type BatchUploadItem,
+} from '@/lib/uploadImage'
+import UploadProgressList from '@/app/components/UploadProgressList'
 
 interface BassFormData {
   name: string
@@ -62,6 +69,7 @@ export default function BassManager() {
   const [basses, setBasses] = useState<Bass[]>([])
   const [imageFiles, setImageFiles] = useState<File[]>([])
   const [imagePreviews, setImagePreviews] = useState<string[]>([])
+  const [uploadProgress, setUploadProgress] = useState<BatchUploadItem[]>([])
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -83,6 +91,7 @@ export default function BassManager() {
     })
     setImageFiles([])
     setImagePreviews([])
+    setUploadProgress([])
     setEditingId(null)
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
@@ -105,7 +114,15 @@ export default function BassManager() {
 
     const invalidFiles = files.filter((file) => !file.type.startsWith('image/'))
     if (invalidFiles.length > 0) {
-      setError('Please upload only image files')
+      setError('Prosím, nahrajte iba obrázky')
+      return
+    }
+
+    const tooLarge = files.filter((file) => file.size > MAX_UPLOAD_BYTES)
+    if (tooLarge.length > 0) {
+      setError(
+        `${tooLarge.length} súbor(ov) presahuje limit ${(MAX_UPLOAD_BYTES / (1024 * 1024)).toFixed(0)} MB: ${tooLarge.map((f) => f.name).join(', ')}`,
+      )
       return
     }
 
@@ -127,12 +144,14 @@ export default function BassManager() {
     Promise.all(fileReaders).then(() => {
       setImageFiles((prevFiles) => [...prevFiles, ...files])
       setImagePreviews((prevPreviews) => [...prevPreviews, ...newPreviews])
+      setUploadProgress([])
     })
   }
 
   const removeImage = (index: number) => {
     setImageFiles((prevFiles) => prevFiles.filter((_, i) => i !== index))
     setImagePreviews((prevPreviews) => prevPreviews.filter((_, i) => i !== index))
+    setUploadProgress([])
 
     if (editingId && index < formData.images.length) {
       setFormData((prev) => ({
@@ -208,27 +227,24 @@ export default function BassManager() {
       let uploadedImageUrls: string[] = [...formData.images]
 
       if (imageFiles.length > 0) {
-        const uploadPromises = imageFiles.map(async (file) => {
-          const formData = new FormData()
-          formData.append('file', file)
-
-          const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
-
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            body: formData,
-          })
-
-          if (!response.ok) {
-            throw new Error('Failed to upload image')
-          }
-
-          const data = await response.json()
-          return data.imageUrl
-        })
-
-        const newImageUrls = await Promise.all(uploadPromises)
-        uploadedImageUrls = [...uploadedImageUrls, ...newImageUrls]
+        const alreadyUploaded =
+          uploadProgress.length === imageFiles.length &&
+          uploadProgress.every((p) => p.status === 'success')
+        const results = alreadyUploaded
+          ? uploadProgress
+          : await uploadImagesBatch(imageFiles, setUploadProgress)
+        const failed = results.filter((r) => r.status === 'failed')
+        if (failed.length > 0) {
+          setError(
+            `${failed.length} z ${results.length} obrázkov sa nepodarilo nahrať. Skúste znova nižšie a potom odošlite.`,
+          )
+          setLoading(false)
+          return
+        }
+        uploadedImageUrls = [
+          ...uploadedImageUrls,
+          ...results.map((r) => r.imageUrl).filter((u): u is string => Boolean(u)),
+        ]
       }
 
       const maxOrder = editingId ? undefined : Math.max(0, ...basses.map((b) => b.order)) + 1
@@ -351,6 +367,35 @@ export default function BassManager() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const retryFailedUploads = async () => {
+    setError(null)
+    setLoading(true)
+    const current = [...uploadProgress]
+    await Promise.all(
+      current.map(async (item, idx) => {
+        if (item.status !== 'failed') return
+        current[idx] = { ...item, status: 'uploading', error: undefined }
+        setUploadProgress([...current])
+        try {
+          const { imageUrl } = await uploadImage(item.file)
+          current[idx] = { ...current[idx], status: 'success', imageUrl }
+        } catch (err) {
+          current[idx] = {
+            ...current[idx],
+            status: 'failed',
+            error: err instanceof Error ? err.message : 'Neznáma chyba',
+          }
+        }
+        setUploadProgress([...current])
+      }),
+    )
+    const stillFailed = current.filter((c) => c.status === 'failed')
+    if (stillFailed.length > 0) {
+      setError(`${stillFailed.length} obrázkov sa stále nepodarilo nahrať.`)
+    }
+    setLoading(false)
   }
 
   const cancelEdit = () => {
@@ -492,6 +537,8 @@ export default function BassManager() {
               </div>
             </div>
           )}
+
+          <UploadProgressList items={uploadProgress} onRetry={retryFailedUploads} isBusy={loading} />
         </div>
 
         <div>

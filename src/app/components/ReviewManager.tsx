@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useRef, ChangeEvent, useEffect } from 'react'
+import { uploadImage, MAX_UPLOAD_BYTES } from '@/lib/uploadImage'
 
 interface ReviewFormData {
   customerName: string
@@ -85,17 +86,10 @@ export default function ReviewManager() {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; if (!file) return
-    if (!file.type.startsWith('image/')) { setError('Please upload only image files'); return }
+    if (!file.type.startsWith('image/')) { setError('Prosím, nahrajte súbor s obrázkom'); return }
+    if (file.size > MAX_UPLOAD_BYTES) { setError(`Súbor je príliš veľký (${(file.size / (1024 * 1024)).toFixed(1)} MB). Maximum je ${(MAX_UPLOAD_BYTES / (1024 * 1024)).toFixed(0)} MB.`); return }
     setImageFile(file)
     const reader = new FileReader(); reader.onloadend = () => { setImagePreview(reader.result as string) }; reader.readAsDataURL(file)
-  }
-
-  const uploadImage = async (file: File): Promise<string> => {
-    const formData = new FormData(); formData.append('file', file)
-    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
-    const response = await fetch(apiUrl, { method: 'POST', body: formData })
-    if (!response.ok) throw new Error('Image upload failed')
-    const { imageUrl } = await response.json(); return imageUrl
   }
 
   const removePhoto = () => {
@@ -107,7 +101,7 @@ export default function ReviewManager() {
     e.preventDefault(); setLoading(true); setError(null); setSuccessMessage(null)
     try {
       let photoUrl = formData.photo
-      if (imageFile) { photoUrl = await uploadImage(imageFile) }
+      if (imageFile) { photoUrl = (await uploadImage(imageFile)).imageUrl }
       const url = editingId ? `/api/reviews/${editingId}` : '/api/reviews'; const method = editingId ? 'PUT' : 'POST'
       const reviewData = { ...formData, photo: photoUrl, customerDescription2: formData.customerDescription2 || undefined, customerDescriptionEnglish: formData.customerDescriptionEnglish || undefined, customerDescription2English: formData.customerDescription2English || undefined }
       const response = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(reviewData) })
