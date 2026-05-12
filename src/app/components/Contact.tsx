@@ -57,6 +57,7 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   const [showGdpr, setShowGdpr] = useState(false)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Anti-spam: Time-based validation
   const [formStartTime, setFormStartTime] = useState<number>(0)
@@ -203,6 +204,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sendEmail = async (e: any) => {
     e.preventDefault()
+
+    // Guard against double-submission while a request is in flight
+    if (isSubmitting) return
+    setIsSubmitting(true)
+
+    try {
 
     const origin = 'JPBOWS'
     const subjectTranslations = {
@@ -351,6 +358,9 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
         const element = document.getElementById('contact')
         element?.scrollIntoView({ behavior: 'smooth' })
       }
+    }
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -515,10 +525,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
 
                 {/* Submit Button */}
                 <button
-                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#1c1208] text-white px-10 py-4 text-base tracking-[0.15em] uppercase font-bold transition-all"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#e80e19] hover:bg-[#1c1208] text-white px-10 py-4 text-base tracking-[0.15em] uppercase font-bold transition-all disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-[#e80e19]"
                   style={{fontFamily:'var(--font-poiret-one)'}}
                   type="submit"
                   value="Send"
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
                 >
                   <MdSend className="text-xl" />
                   {contactSend}
