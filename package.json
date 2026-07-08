@@ -2,6 +2,11 @@
   "name": "jpbows",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
   "scripts": {
     "dev": "next dev --turbopack -p 4004",
     "build": "npx prisma generate && next build",
@@ -35,5 +40,11 @@
     "prisma": "^6.6.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "prisma"
+    ]
   }
 }
