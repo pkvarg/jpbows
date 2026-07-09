@@ -125,7 +125,7 @@ const Admin = async () => {
 
           {/* Analytics - external link */}
           <a
-            href="https://umami-p00gs00gwcwo00s4k4c4kgg8.pictusweb.com/share/PdxeXPCaZrZhF1ko/jpbows.pictusweb.com"
+            href="https://analytics.pictusweb.com/share/PdxeXPCaZrZhF1ko/jpbows.pictusweb.com"
             target="_blank"
             rel="noopener noreferrer"
             className="group block bg-[#1a1510] border border-[#2a2018] p-8 hover:border-[#8b6914] hover:bg-[#1c1208] transition-all duration-300"
