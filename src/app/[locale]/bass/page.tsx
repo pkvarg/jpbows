@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import ReviewsDisplay from '@/app/components/ReviewsDisplay'
+import YouTubeEmbed from '@/app/components/YouTubeEmbed'
 
 interface Bass {
   id: string
@@ -332,14 +333,7 @@ const BassItem = ({ bass, isEnglish }: { bass: Bass; isEnglish: boolean }) => {
 
                       if (videoId) {
                         return (
-                          <iframe
-                            src={`https://www.youtube.com/embed/${videoId}`}
-                            title={`${displayName} Video`}
-                            className="w-full h-full"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
+                          <YouTubeEmbed videoId={videoId} title={`${displayName} Video`} />
                         )
                       } else {
                         // For non-YouTube URLs, show a link

@@ -2,23 +2,18 @@
   "Home": {
     "title": "SK NextJS i18n",
     "headerTitle": "...",
-
     "headerAbout": "O nás",
     "tradeRules": "Obchodné podmienky",
     "reviews": "Recenzie",
     "headerContact": "Kontakt",
     "headerGdpr": "GDPR",
     "home": "Domov",
-
     "heroTitle1": "...",
     "heroTitle2": "...",
-
-    "cookiesText": "Táto stránka používa len nevyhnutné cookies a anonymnú analytiku pre fungovanie webu.",
-    "cookiesAgree": "Pokračovať",
+    "cookiesText": "Na meranie návštevnosti používame len nástroj Umami – bez cookies, bez ukladania IP adresy a len s vaším súhlasom. Viac v časti",
+    "cookiesAgree": "Súhlasím",
     "cookiesDisagree": "Nesúhlasím",
-
     "back": "Naspäť",
-
     "contactMessageSuccess": "Správa úspešne odoslaná",
     "contactTitle": "Kontakt",
     "contactName": "Vaše Meno",
@@ -26,76 +21,17 @@
     "contactSubject": "Predmet",
     "contactPhone": "Telefón",
     "contactMessage": "Vaša správa",
-    "contactAgree": "Súhlasím so",
-    "contactGdpr": "spracovaním údajov",
-
     "contactSend": "Poslať",
     "contactError2": "Neodoslané! Napíšte nám na náš email, prosím.",
     "contactError": "Chyba! Napíšte nám na info@bow4bass.com, prosím.",
     "contactSuccess": "Vaša správa bola úspešne odoslaná",
-
     "contactPlaceholderName": "Vaše meno",
     "contactPlaceholderEmail": "vas@email.com",
     "contactPlaceholderPhone": "+421 XXX XXX XXX",
     "contactPlaceholderMessage": "Vaša správa...",
     "contactSubtitle": "Kontaktujte nás s akýmikoľvek otázkami",
-
-    "contactGdpr1": "Vami poskytnuté údaje neuchovávame v žiadnej databáze.",
-    "contactGdpr2": "Email bude použitý len na odpoveď na Vašu správu.",
-
-    "gdprTitle": "ZÁSADY SPRACOVÁVANIA OSOBNÝCH ÚDAJOV",
-    "gdprIntro": "Ochranu osobných údajov berieme vážne. Je pre nás dôležité, aby vaše osobné údaje boli v bezpečí. Všetky osobné údaje, ktoré sú získavané počas vašej návštevy na našej stránke bow4bass.com sú spracovávané v súlade so zákonom o ochrane osobných údajov ako aj v súlade s platnou európskou legislatívou. Od 25.05.2018, vrátane, sú vaše osobné údaje spracovávané v súlade s NARIADENÍM EURÓPSKEHO PARLAMENTU A RADY (EÚ) 2016/679 z 27. apríla 2016 o ochrane fyzických osôb pri spracúvaní osobných údajov a o voľnom pohybe takýchto údajov, ktorým sa ruší smernica 95/46/ES (všeobecné nariadenie o ochrane údajov = GDPR) a v súlade so zákonom č. 18/2018 Z. z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov v znení platnom a účinnom od 25.05.2018.",
-
-    "gdprWhatMeansTitle": "Čo to pre vás a vaše osobné údaje znamená?",
-    "gdprWhatMeansText": "Vaším osobným údajom je akákoľvek informácia, ktorá sa vás týka a na základe ktorej ste pre nás ako fyzická osoba určiteľným subjektom. Nastáva to v takých prípadoch, keď vás môžeme priamo alebo nepriamo identifikovať, najmä na základe všeobecne použiteľného identifikátora alebo iného identifikátora, ako je napríklad meno, priezvisko, identifikačné číslo, lokalizačné údaje alebo online identifikátor. Medzi osobné údaje teda spadajú najmä kontaktné údaje fyzickej osoby, jeho IP adresa, môžu nimi byť informácie o využívaní služieb alebo o činnostiach a preferenciách fyzickej osoby.",
-
-    "gdprDataCollectedTitle": "Aké údaje teda uchovávame?",
-    "gdprDataCollectedText": "Počas vašej návštevy našich stránok zaznamenávame IP adresu, ktorú vám pridelil váš poskytovateľ internetu, z akých stránok ste navštívili našu stránku, ako dlho ste na našej stránke, ktoré konkrétne podstránky si prezeráte a pod. Tieto informácie sú považované za osobný údaj, keďže ide o Váš online identifikátor, a preto s týmto údajom nakladáme so zvýšenou starostlivosťou.",
-
-    "gdprCookiesTitle": "Cookies a sledovanie",
-    "gdprCookiesIntro": "Táto webstránka používa nasledujúce typy cookies a technológií:",
-    "gdprCookiesEssentialTitle": "1. Nevyhnutné cookies",
-    "gdprCookiesEssentialText": "Tieto cookies sú potrebné pre základné fungovanie webu a nemožno ich vypnúť:\n- Uloženie Vášho súhlasu s cookies (CookieConsent) - 365 dní\n- Funkčnosť kontaktného formulára",
-    "gdprCookiesAnalyticsTitle": "2. Analytické cookies (voliteľné)",
-    "gdprCookiesAnalyticsText": "S Vaším súhlasom používame vlastný analytický nástroj Umami na:\n- Meranie návštevnosti stránky\n- Analýzu správania návštevníkov (anonymne)\n- Zlepšenie používateľského zážitku",
-
-    "gdprCookiesNotUsedTitle": "3. Čo nepoužívame",
-    "gdprCookiesNotUsedText": "Nepoužívame:\n- Marketingové cookies\n- Reklamné cookies tretích strán\n- Cookies sociálnych sietí\n- Sledovacie cookies tretích strán",
-    "gdprCookiesManagementTitle": "Správa súhlasu",
-    "gdprCookiesManagementText": "Váš súhlas s analytickými cookies môžete kedykoľvek zmeniť:\n- Vymazaním údajov prehliadača\n- Kontaktovaním nás na email\n- Pri návšteve stránky sa banner zobrazí znovu po vymazaní cookies",
-    "gdprCookiesVisitorsTitle": "Návštevnosť",
-    "gdprCookiesVisitorsText": "Základné počítadlo návštevnosti funguje bez cookies a zaznamenáva len celkový počet návštev bez identifikácie jednotlivých používateľov.",
-
-    "gdprOtherDataTitle": "Ďalšie osobné údaje",
-    "gdprOtherDataText": "Vaše osobné údaje zadávate dobrovoľne iba do kontaktného formulára na našej stránke. Uchovávame tieto osobné údaje: e-mailová adresa, meno a tel. číslo, ak sa ho rozhodnete uviesť. Vaše osobné údaje sú používané na bližšie konkretizované účely v týchto zásadách, a to len v nevyhnutnom rozsahu.",
-
-    "gdprPurposesTitle": "Na čo tieto informácie o vás používame (účely)? A na akom právnom základe?",
-    "gdprPurposesText": "Prevádzkovateľom na účely spracovania osobných údajov je spoločnosť Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovensko, IČO: 53 075 471, zodpovedná osoba: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. K zberu osobných údajov dochádza na webstránke bow4bass.com meno, priezvisko, email - komunikácia so zákazníkom o dopytoch na hudobné nástroje, odpovede na otázky, poskytovanie informácií o dostupnosti nástrojov = právnym základom pre spracovanie týchto osobných údajov je oprávnený záujem poskytovateľa služieb; mobilné číslo - za účelom rýchlejšej komunikácie ohľadom dostupnosti nástrojov = právnym základom je oprávnený záujem prevádzkovateľa poskytovať kvalitnú zákaznícku podporu.",
-
-    "gdprRetentionTitle": "Doba uchovávania údajov",
-    "gdprRetentionText": "Osobné údaje sa u prevádzkovateľa uchovávajú na uvedené účely po dobu 2 rokov od poslednej komunikácie, pokým svoj súhlas neodvoláte alebo pokiaľ nie sme zákonnou povinnosťou viazaní váš údaj ďalej archivovať.",
-
-    "gdprSecurityTitle": "Bezpečnosť",
-    "gdprSecurityText": "Ak by náhodou boli naše systémy napadnuté hackerským útokom, či inak by bol náš systém napadnutý a vznikla by čo i len hrozba úniku dát, budete do 72 hodín informovaní našou podporou o prijatých opatreniach a zároveň v tej istej lehote budeme komunikovať aj s dozorným orgánom v oblasti ochrany osobných údajov v SR - s Úradom na ochranu osobných údajov.",
-
-    "gdprRightsTitle": "Vaše práva",
-    "gdprRightsText": "Ako dotknutá osoba máte právo byť informovaný o údajoch prevádzkovateľa. Prevádzkovateľom je spoločnosť Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovensko, IČO: 53 075 471, zodpovedná osoba: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. Máte právo na prístup k údajom, ktoré o vás spracúvame, právo na opravu poskytnutých údajov, právo na vymazanie poskytnutých údajov a právo odvolať súhlas so spracúvaním osobných údajov.",
-
-    "gdprContactTitle": "Kontaktné údaje:",
-    "gdprContactText": "Pre všetky otázky týkajúce sa ochrany osobných údajov nás môžete kontaktovať prostredníctvom kontaktného formulára na našej stránke.",
-
-    "gdprProcessorsTitle": "Sprostredkovatelia (príjemcovia údajov)",
-    "gdprProcessorsText": "Hosting a technické služby nám poskytujú tieto spoločnosti:",
-
-    "gdprThirdPartyTitle": "Odkazy tretích strán",
-    "gdprThirdPartyText": "Niekedy na našich stránkach odkazujeme na služby a produkty tretích strán. Webstránky týchto tretích strán majú vlastné podmienky ochrany osobných údajov a sú nezávislé na našich. Z toho dôvodu nenesieme žiadnu právnu zodpovednosť za obsah a aktivity týchto tretích strán.",
-
-    "gdprNoSharingTitle": "Neposkytujeme Vaše údaje tretím stranám",
-    "gdprNoSharingText": "Nepredávame, neobchodujeme ani žiadnym iným spôsobom neposkytujeme vaše osobné údaje tretím stranám. Odovzdanie Vašich osobných údajov štátnym organizáciám je len na základe zákona alebo právoplatných úradných či súdnych rozhodnutí v súlade s právnymi predpismi Slovenskej republiky. Tieto podmienky sú platné od 1.1.2024.",
-
     "availabilityAvailable": "Dostupný",
     "availabilitySold": "Predaný - na objednávku",
-
     "navBows": "Sláčiky",
     "navServiceRepairs": "Servis / opravy",
     "navInstruments": "Nástroje",
@@ -107,7 +43,6 @@
     "navRentalInstruments": "Prenájom nástrojov",
     "navAboutMe": "O mne",
     "navContact": "Kontakt",
-
     "bowsTitle": "Sláčiky",
     "bowsIntro1": "Sláčik ako neoddeliteľná súčasť nástroja a hry na \"sláčikový hudobný nástroj\" je azda najdôležitejším elementom pri tvorbe tónu, umeleckej interpretácii a zdrojom neuveriteľných artikulačných možností. Toto azda vystihuje najviac moju životnú filozofiu v hre na dobové či moderné nástroje od violone, barokového kontrabasu, kontrabasu tzv. viedenského ladenia či moderných nástrojov –orchestrálnych a sólových. V mojej bohatej orchestrálnej, komornej a sólovej praxi som si čoraz viac uvedomoval potrebu a dôležitosť sláčika a to bol aj impulz, prečo som sa začal viac do hľbky zaoberať jeho špecifikami a následnou výrobou a servisom sláčikov.",
     "bowsIntro2": "Ako hráč na prakticky všetky basové nástroje od baroka až po súčastnosť si uvedomujem obrovskú rôznorodosť, farebnú škálu (zvukovú) ako i neuveriteľné možnosti a využitie sláčika naprieč hudobnými štýlmi, použitia v orchestrálnej, komornej či sólovej hre a pod. V neposlednom rade pohnútkou prečo sa viac do hľbky venovať sláčikom, bola potreba spraviť si \"servis\" a jeho údržbu, vymeniť vlasy, vyčistiť a vedieť ho správne a účelne použiť a udržať sláčik v správnej a zdravej kondícii.",
@@ -117,14 +52,12 @@
     "bowsLoading": "Načítavam sláčiky...",
     "moreButton": "Viac",
     "lessButton": "Menej",
-
     "introSectionBowsTitle": "Sláčiky",
     "introSectionBowsText": "Exkluzívne kontrabasové sláčiky, kópie podľa dochovaných originálov a nákresov obdobia baroka, klasicizmu a raného romantizmu.",
     "introSectionRepairsTitle": "Rekonštrukcie a opravy",
     "introSectionRepairsText": "Rekonštrukcie a opravy sláčikov. Prineste svoj starý, poškodený či znehodnotený sláčik a ja mu pri rešpektovaní jeho originálnych \"proporcií\" a pôvodného využitia vdýchnem nový život.",
     "introSectionInstrumentsTitle": "Nástroje",
     "introSectionInstrumentsText": "Hľadáte nový nástroj? Prídte si vybrať svoj nový nástroj z dieľne \"Bivaj Art Luthery\". Ide o majstrovské nástroje z dielne Ferenca Vajaia a Istvana Biróa. Pri rešpektovaní tradičných postupov, prvotriedneho materiálu a poctivej práce títo majstri produkujú prvotriedne majstrovské nástroje rôznych foriem od tradičných Talianskych a Francúzskych modelov, cez Viedenské modely nástrojov až po variácie tvarov. Nástroje si môžete vybrať podľa vlastných požiadaviek či vkusu, povrchovej úpravy, prísť si ich vyskúšať a na základe vašich preferencií bude nástroj nastavený. Na nástroje sa vzťahuje doživotná záruka.",
-
     "aboutMeTitle": "O mne",
     "aboutMeName": "Ján Prievozník",
     "aboutMePara1": "Študoval na súkromnom konzervatóriu Dezidera Kardoša v Topoľčanoch, Cirkevnom konzervatóriu v Bratislave a na Akadémii umení v Banskej Bystrici (ped. vedenie Ján Krigovský). Ako kontrabasista pôsobil v orchestroch Štátnej opery v Banskej Bystrici, v orchestri Slovenského národného divadla a v Symfonickom orchestri Slovenského rozhlasu - SOSR.",
@@ -136,18 +69,19 @@
     "aboutMePara7": "Od roku 2000 je lektorom na Letnej škole barokní hudby v Holešove (ČR). Ako pedagóg kontrabasu pôsobil na Cirkevnom konzervatóriu v Bratislave, Hudobnej a umeleckej akadémii Jána Albrechta v Banskej Štiavnici. Od roku 2004 pôsobí ako pedagóg kontrabasu na Súkromnom konzervatóriu v Nitre.",
     "aboutMePara8": "Ako sólista sa predstavil so Štátnym orchestrom Žilina, Musicou Aeternou a Slovenskou filharmóniou. V roku 2022 vydal svoje profilové CD \"Contrabasso/ Violone in Presbourg\".",
     "aboutMePara9": "V roku 2010 založil spolu so svojim pedagógom a priateľom Jánom Krigovským Slovenský kontrabasový klub – Slovak Double Bass Club, ktorý za posledných 14 rokov zorganizoval niekoľko medzinárodných podujatí ako napr.: kontrabasové kurzy a koncerty – BASS FEST+ (14 ročníkov), hudobný festival \"Musica Perennis Iuventutis\" (10 ročníkov), SLOVAKIA DOUBLE BASS COMPETITION (3 ročníky) a mnohé ďalšie.",
-
     "galleryTitle": "Galéria",
     "galleryImageAlt": "Galéria obrázok",
     "videosTitle": "Videá",
-
     "repairsTitle": "Servis - Opravy",
     "aboutCompanyTitle": "O firme",
-
     "footerAtelier": "Ateliér",
     "footerCraftsmanship": "Partneri",
     "footerMusicScene": "Hudobná scéna",
-    "footerContact": "Kontakt"
+    "footerContact": "Kontakt",
+    "cookieSettings": "Nastavenia cookies",
+    "footerCompanyInfo": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, IČO: 53 075 471, zapísaná v OR Okresného súdu Trnava, odd. Sro, vl. č. 46734/T",
+    "contactPrivacyNote": "Údaje z formulára použijeme len na odpoveď na váš dopyt a uchováme ich 2 roky. Viac v",
+    "contactPrivacyLink": "Zásadách ochrany osobných údajov"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",
@@ -158,5 +92,65 @@
     "conclusion": "Či už ste sólista alebo orchestrálny hudobník, nástroj Bivaj ponúka vynikajúci tón, remeselo a nadčasový charakter, skutočne jedinečné dielo.",
     "more": "Viac",
     "less": "Menej"
+  },
+  "Legal": {
+    "backToContact": "Kontaktovať nás",
+    "privacyTitle": "Zásady ochrany osobných údajov",
+    "privacySubtitle": "Účinné od 08.10.2026",
+    "privacyControllerTitle": "1. Prevádzkovateľ",
+    "privacyControllerText": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, Slovenská republika\nIČO: 53 075 471\nZapísaná v Obchodnom registri Okresného súdu Trnava, oddiel: Sro, vložka č. 46734/T\nKonateľ: Mgr. art. Ján Prievozník\nE-mail: info@bow4bass.com, telefón: +421 905 338 081\n\nV týchto zásadách vysvetľujeme, aké osobné údaje spracúvame na webe bow4bass.com a pri predaji, servise a prenájme nástrojov, prečo, na akom právnom základe, komu ich poskytujeme, ako dlho ich uchovávame a aké máte práva (Nariadenie (EÚ) 2016/679 – GDPR a zákon č. 18/2018 Z. z.). Zodpovednú osobu (DPO) sme nevymenovali, pretože nám to GDPR neukladá. S otázkami o ochrane údajov sa obracajte na info@bow4bass.com.",
+    "privacyContactFormTitle": "2. Kontaktný formulár a e-mailové dopyty",
+    "privacyContactFormText": "Údaje: meno, e-mail, telefón (ak ho uvediete) a text správy.\nÚčel: odpovedať na váš dopyt, pripraviť ponuku nástroja, sláčika alebo servisu.\nPrávny základ: opatrenia pred uzavretím zmluvy na vašu žiadosť (čl. 6 ods. 1 písm. b) GDPR); pri všeobecných otázkach náš oprávnený záujem odpovedať na správy (čl. 6 ods. 1 písm. f) GDPR). Na odoslanie formulára nepotrebujeme váš súhlas.\nSpráva z formulára sa doručí e-mailom do našej schránky info@bow4bass.com; v databáze webu ju neukladáme.\nDoba uchovávania: 2 roky od poslednej komunikácie. Ak z dopytu vznikne objednávka, údaje ďalej spracúvame podľa časti 3.",
+    "privacyCustomersTitle": "3. Zákazníci – predaj, servis a prenájom nástrojov",
+    "privacyCustomersText": "Údaje: meno a priezvisko, adresa doručenia, e-mail, telefón, fakturačné údaje, údaje o objednávke, platbe, reklamácii, servise alebo prenájme.\nÚčel: uzavretie a plnenie zmluvy, doručenie, fakturácia, vybavenie reklamácie.\nPrávny základ: plnenie zmluvy (čl. 6 ods. 1 písm. b) GDPR); vedenie účtovníctva ako zákonná povinnosť (čl. 6 ods. 1 písm. c) GDPR).\nDoba uchovávania: počas trvania zmluvy a záručnej doby a 4 roky po nich (premlčacia lehota); účtovné doklady 10 rokov podľa zákona č. 431/2002 Z. z. o účtovníctve.",
+    "privacyReviewsTitle": "4. Recenzie zákazníkov",
+    "privacyReviewsText": "Meno, popis (napr. nástroj alebo profesiu), fotografiu a text recenzie zverejňujeme na stránke Recenzie len s vaším súhlasom (čl. 6 ods. 1 písm. a) GDPR). Súhlas môžete kedykoľvek odvolať e-mailom na info@bow4bass.com – recenziu potom bez zbytočného odkladu odstránime. Recenzie sú uložené v databáze webu počas zverejnenia.",
+    "privacyCookiesTitle": "5. Cookies a meranie návštevnosti",
+    "privacyCookiesText": "Nevyhnutné (bez súhlasu):\n- CookieConsent – zapamätá si vašu voľbu v lište cookies, 365 dní\n- NEXT_LOCALE – zapamätá si zvolený jazyk webu\n- záznam o čase odoslania kontaktného formulára v prehliadači (localStorage) – ochrana pred spamom\n- prihlasovacie cookies administrácie – len pre správcu webu\n\nAnalytika (len s vaším súhlasom):\n- Umami – nástroj na meranie návštevnosti, ktorý pre nás prevádzkuje Pictusweb s.r.o. na vlastnom serveri (analytics.pictusweb.com). Nepoužíva cookies, neukladá vašu IP adresu a nevytvára profil návštevníka; vidíme len súhrnné štatistiky. Spustí sa až po kliknutí na „Súhlasím“.\n\nNepoužívame marketingové ani reklamné cookies, Google Analytics, sledovacie pixely ani pluginy sociálnych sietí. Písma sú súčasťou webu, nenačítavajú sa od Google.\n\nZmena súhlasu: kliknite na „Nastavenia cookies“ v pätičke webu – lišta sa zobrazí znova a súhlas môžete odvolať rovnako jednoducho, ako ste ho udelili.\n\nPočítadlo návštev: pri prvej voľbe v lište cookies zvýšime celkový počet návštev o jednu; neukladáme pri tom žiadny údaj o vás.\n\nPrávny základ: pri nevyhnutných technológiách § 109 ods. 8 zákona č. 452/2021 Z. z. a náš oprávnený záujem na fungovaní webu; pri analytike váš súhlas.",
+    "privacyYoutubeTitle": "6. Videá z YouTube",
+    "privacyYoutubeText": "Videá na webe sú uložené na YouTube (Google Ireland Ltd. / Google LLC). Kým nekliknete na „Prehrať video“, žiadne spojenie s YouTube sa nenadviaže. Po kliknutí sa video načíta z youtube-nocookie.com a Google získa vašu IP adresu a technické údaje prehliadača a môže uložiť vlastné cookies. Za toto spracúvanie zodpovedá Google ako samostatný prevádzkovateľ podľa svojich zásad ochrany súkromia (policies.google.com/privacy).",
+    "privacySecurityLogsTitle": "7. Bezpečnostné záznamy",
+    "privacySecurityLogsText": "Ak kontaktný formulár vyhodnotí odoslanie ako automatizovaný spam, do záznamov servera sa zapíše IP adresa, údaje o prehliadači a obsah formulára. Robíme to na ochranu webu pred zneužitím (oprávnený záujem, čl. 6 ods. 1 písm. f) GDPR). Záznamy servera sa uchovávajú podľa nastavení poskytovateľa hostingu, spravidla najviac niekoľko týždňov.",
+    "privacyRecipientsTitle": "8. Príjemcovia a sprostredkovatelia",
+    "privacyRecipientsText": "Vaše údaje nepredávame. Poskytujeme ich len v nevyhnutnom rozsahu:\n- Pictusweb s.r.o., Nábrežná 4895/42, 940 02 Nové Zámky – vývoj, správa a prevádzka webu vrátane hostingu, doručovania správ z kontaktného formulára a merania návštevnosti\n- Cloudflare, Inc. (USA) – DNS, ochrana pred útokmi a doručovanie webu; spracúva IP adresu a technické údaje každej požiadavky\n- MongoDB, Inc. (MongoDB Atlas) – databáza obsahu webu vrátane recenzií\n- Hostinger / Titan Mail – e-mailová schránka info@bow4bass.com\n\nĎalej údaje dostávajú: prepravca (pri zasielaní nástroja), naša banka (platby prevodom) a účtovník (vedenie účtovníctva). Google ako samostatný prevádzkovateľ len vtedy, ak spustíte video z YouTube (časť 6).",
+    "privacyTransfersTitle": "9. Prenos údajov mimo EÚ",
+    "privacyTransfersText": "Niektorí príjemcovia (Cloudflare, MongoDB, Titan Mail, Google) sú spoločnosti so sídlom alebo materskou spoločnosťou v USA, preto môže dôjsť k prenosu údajov do USA. Prenos sa uskutočňuje len s primeranými zárukami podľa kapitoly V GDPR – na základe certifikácie podľa rámca EÚ – USA na ochranu osobných údajov (EU-U.S. Data Privacy Framework), ak ňou príjemca disponuje, alebo na základe štandardných zmluvných doložiek schválených Európskou komisiou (čl. 46 GDPR).",
+    "privacyRetentionTitle": "10. Prehľad dôb uchovávania",
+    "privacyRetentionText": "- Dopyty z formulára a e-mailu: 2 roky od poslednej komunikácie\n- Objednávky, servis, prenájom, reklamácie: trvanie zmluvy a záruky + 4 roky\n- Účtovné doklady: 10 rokov\n- Recenzie: do odvolania súhlasu\n- Analytika Umami: len súhrnné štatistiky bez osobných údajov\n- Záznamy servera: podľa poskytovateľa hostingu, spravidla niekoľko týždňov\nPo uplynutí doby uchovávania údaje vymažeme alebo anonymizujeme.",
+    "privacyRightsTitle": "11. Vaše práva",
+    "privacyRightsText": "Máte právo:\n- na prístup k svojim údajom a ich kópiu (čl. 15 GDPR),\n- na opravu nesprávnych údajov (čl. 16),\n- na vymazanie (čl. 17), ak údaje už nepotrebujeme alebo ich spracúvame nezákonne,\n- na obmedzenie spracúvania (čl. 18),\n- na prenosnosť údajov poskytnutých na základe zmluvy alebo súhlasu (čl. 20),\n- namietať proti spracúvaniu na základe oprávneného záujmu (čl. 21),\n- kedykoľvek odvolať súhlas; odvolanie nemá vplyv na zákonnosť spracúvania pred ním.\nŽiadosť pošlite na info@bow4bass.com. Odpovieme bez zbytočného odkladu, najneskôr do 1 mesiaca.\nAk sa domnievate, že vaše údaje spracúvame nezákonne, môžete podať návrh na začatie konania na Úrad na ochranu osobných údajov SR, Hraničná 12, 820 07 Bratislava 27, www.dataprotection.gov.sk.",
+    "privacySecurityTitle": "12. Bezpečnosť",
+    "privacySecurityText": "Údaje chránime primeranými technickými a organizačnými opatreniami: šifrované spojenie (HTTPS), prístup len pre oprávnené osoby a ochrana formulára pred zneužitím. Ak dôjde k porušeniu ochrany osobných údajov, ktoré môže viesť k riziku pre vaše práva, oznámime ho Úradu na ochranu osobných údajov do 72 hodín a pri vysokom riziku bez zbytočného odkladu informujeme aj vás.",
+    "privacyChangesTitle": "13. Zmeny zásad",
+    "privacyChangesText": "Zásady aktualizujeme pri zmene nástrojov, príjemcov alebo účelov spracúvania. Aktuálne znenie je vždy na tejto stránke. Toto znenie je účinné od 08.10.2026.",
+    "termsEyebrow": "Podmienky",
+    "termsTitle": "Všeobecné obchodné podmienky",
+    "termsSubtitle": "Ján Prievozník s. r. o. | IČO: 53 075 471 | Účinné od 08.10.2026",
+    "termsSection1Title": "1. Predávajúci a rozsah podmienok",
+    "termsSection1Text": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, Slovenská republika\nIČO: 53 075 471\nZapísaná v Obchodnom registri Okresného súdu Trnava, oddiel: Sro, vložka č. 46734/T\nKonateľ: Mgr. art. Ján Prievozník\nE-mail: info@bow4bass.com, telefón: +421 905 338 081\n\nTieto všeobecné obchodné podmienky (VOP) upravujú predaj hudobných nástrojov a sláčikov, ich výrobu na mieru, servis, opravy a prenájom medzi predávajúcim a kupujúcim. Ak sa strany písomne dohodnú inak (napr. v potvrdení objednávky), má táto dohoda prednosť.",
+    "termsSection2Title": "2. Definície",
+    "termsSection2Text": "Spotrebiteľ – fyzická osoba, ktorá pri uzatváraní a plnení zmluvy nekoná v rámci svojej podnikateľskej činnosti alebo povolania.\nPodnikateľ – kupujúci, ktorý nakupuje v rámci svojej podnikateľskej činnosti; vzťahy s ním sa riadia Obchodným zákonníkom.\nNástroj na mieru – nástroj alebo sláčik vyrobený alebo upravený podľa špecifikácií kupujúceho.",
+    "termsSection3Title": "3. Objednávka a uzavretie zmluvy",
+    "termsSection3Text": "Kupujúci môže objednať nástroj, sláčik alebo službu cez kontaktný formulár, e-mailom alebo osobne. Predávajúci pošle potvrdenie objednávky e-mailom s popisom tovaru alebo služby, celkovou cenou, spôsobom platby a termínom dodania. Zmluva je uzavretá odoslaním tohto potvrdenia. Pred uzavretím zmluvy so spotrebiteľom poskytne predávajúci informácie podľa zákona č. 108/2024 Z. z. o ochrane spotrebiteľa. Zmluva sa uzatvára v slovenskom alebo anglickom jazyku.",
+    "termsSection4Title": "4. Ceny a platby",
+    "termsSection4Text": "Ceny sa stanovujú individuálne podľa materiálu, práce a špecifikácií a sú uvedené v potvrdení objednávky ako konečné ceny.\nPri nástroji na mieru je splatná záloha 50 % z celkovej ceny; zvyšok pri prevzatí alebo pred odoslaním nástroja.\nSpôsoby platby: bankový prevod, hotovosť pri osobnom odbere.",
+    "termsSection5Title": "5. Dodanie a preprava",
+    "termsSection5Text": "Termín dodania je uvedený v potvrdení objednávky. Nástroj si môžete osobne prevziať v dielni po predchádzajúcej dohode alebo vám ho zašleme kuriérom v špeciálnom balení, poistený na plnú hodnotu. Náklady na dopravu hradí kupujúci; ich výšku oznámime pred odoslaním. Nebezpečenstvo poškodenia prechádza na kupujúceho prevzatím zásielky.",
+    "termsSection6Title": "6. Vyskúšanie nástrojov a skúšobná doba",
+    "termsSection6Text": "Nástroje si môžete po dohode vyskúšať v našej dielni a pred prevzatím ich nastavíme podľa vašich preferencií.\nPri hotových nástrojoch (nie na mieru) poskytujeme dobrovoľne 14-dňovú skúšobnú dobu aj pri osobnom nákupe; vrátený nástroj musí byť v pôvodnom stave bez poškodenia. Skúšobná doba neobmedzuje zákonné práva spotrebiteľa podľa časti 7.",
+    "termsSection7Title": "7. Odstúpenie od zmluvy (spotrebiteľ)",
+    "termsSection7Text": "Spotrebiteľ, ktorý uzavrel zmluvu na diaľku (e-mailom, cez formulár alebo telefonicky), má právo odstúpiť od zmluvy bez uvedenia dôvodu do 14 dní od prevzatia tovaru, pri službách do 14 dní od uzavretia zmluvy, podľa zákona č. 108/2024 Z. z.\nOdstúpenie pošlite e-mailom na info@bow4bass.com alebo poštou na adresu predávajúceho; vzorový formulár na odstúpenie vám na požiadanie zašleme.\nTovar vráťte do 14 dní od odstúpenia nepoškodený; priame náklady na vrátenie hradí spotrebiteľ. Predávajúci vráti všetky platby vrátane nákladov na doručenie (v najlacnejšej ponúkanej forme) do 14 dní od doručenia odstúpenia, nie však skôr, ako mu bude tovar vrátený alebo preukázané jeho odoslanie. Spotrebiteľ zodpovedá za zníženie hodnoty tovaru v dôsledku zaobchádzania nad rámec potrebného na zistenie jeho vlastností.\nPrávo na odstúpenie sa nevzťahuje na nástroje na mieru vyrobené podľa špecifikácií spotrebiteľa a na služby (napr. opravu), ktoré boli s jeho výslovným súhlasom úplne poskytnuté.\nPodnikateľ nemá zákonné právo odstúpiť od zmluvy bez uvedenia dôvodu.",
+    "termsSection8Title": "8. Zodpovednosť za vady a záruka",
+    "termsSection8Text": "Spotrebiteľ má práva zo zodpovednosti za vady počas 24 mesiacov od prevzatia tovaru podľa Občianskeho zákonníka a zákona č. 108/2024 Z. z. Pri podnikateľoch je záručná doba 12 mesiacov.\nZáručný list ani iný doklad nie je podmienkou uplatnenia práv – stačí preukázať kúpu (napr. potvrdením objednávky alebo faktúrou).\nZa vadu sa nepovažuje bežné opotrebenie ani poškodenie spôsobené nesprávnym zaobchádzaním, vlhkosťou, extrémnymi teplotami, priamym slnkom, potom, ohňom, mechanickým poškodením alebo zásahom neoprávnenej osoby.",
+    "termsSection9Title": "9. Reklamácie",
+    "termsSection9Text": "Reklamáciu uplatníte e-mailom na info@bow4bass.com, poštou na adresu Sadová 1034/19, 922 03 Vrbové alebo osobne v dielni po dohode. Prijatie reklamácie vám potvrdíme a reklamáciu vybavíme bez zbytočného odkladu, najneskôr do 30 dní od jej uplatnenia, a to opravou, výmenou, primeranou zľavou alebo vrátením peňazí podľa povahy vady a zákona. O vybavení vás informujeme písomne.",
+    "termsSection10Title": "10. Servis, opravy a prenájom",
+    "termsSection10Text": "Vykonávame údržbu, opravy a rekonštrukcie nástrojov aj od iných výrobcov; rozsah, cenu a termín opravy potvrdíme pred jej začatím.\nPri prenájme nástroja dohodneme dobu prenájmu, cenu, prípadnú kauciu a podmienky pri poškodení alebo strate v písomnej zmluve o prenájme.",
+    "termsSection11Title": "11. Ochrana osobných údajov",
+    "termsSection11Text": "Osobné údaje spracúvame podľa Nariadenia (EÚ) 2016/679 (GDPR) a zákona č. 18/2018 Z. z. Podrobnosti nájdete v Zásadách ochrany osobných údajov na stránke bow4bass.com/gdpr.",
+    "termsSection12Title": "12. Riešenie sporov",
+    "termsSection12Text": "Ak spotrebiteľ nie je spokojný s vybavením reklamácie alebo sa domnieva, že predávajúci porušil jeho práva, môže sa obrátiť na predávajúceho so žiadosťou o nápravu. Ak ju predávajúci zamietne alebo na ňu neodpovie do 30 dní, spotrebiteľ môže podať návrh na začatie alternatívneho riešenia sporu Slovenskej obchodnej inšpekcii, Bajkalská 21/A, 827 99 Bratislava, www.soi.sk, alebo inému subjektu alternatívneho riešenia sporov podľa zákona č. 391/2015 Z. z.\nDozor vykonáva Slovenská obchodná inšpekcia, Inšpektorát SOI pre Trnavský kraj. Ostatné spory rozhodujú príslušné súdy Slovenskej republiky.",
+    "termsSection13Title": "13. Záverečné ustanovenia",
+    "termsSection13Text": "VOP sa riadia právom Slovenskej republiky, najmä zákonom č. 40/1964 Zb. (Občiansky zákonník), zákonom č. 513/1991 Zb. (Obchodný zákonník), zákonom č. 108/2024 Z. z. o ochrane spotrebiteľa a zákonom č. 22/2004 Z. z. o elektronickom obchode. Predávajúci môže VOP zmeniť; na zmluvy uzavreté pred zmenou sa použije znenie platné v čase ich uzavretia. Pri rozdiele medzi jazykovými verziami má prednosť slovenská verzia. Tieto VOP sú účinné od 08.10.2026."
   }
 }

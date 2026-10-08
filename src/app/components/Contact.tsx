@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect, FC } from 'react'
 import Message from './Message'
 import { MdEmail, MdPhone, MdSend } from 'react-icons/md'
 import { useParams } from 'next/navigation'
+import { Link } from '@/i18n/routing'
 
 interface TranslationProps {
   translations: {
@@ -11,14 +12,12 @@ interface TranslationProps {
     contactEmail: string
     contactPhone: string
     contactMessage: string
-    contactAgree: string
-    contactGdpr: string
+    contactPrivacyNote: string
+    contactPrivacyLink: string
     contactSend: string
     //contactError2: string
     contactError: string
     contactSuccess: string
-    contactGdpr1: string
-    //contactGdpr2: string
     contactPlaceholderName: string
     contactPlaceholderEmail: string
     contactPlaceholderPhone: string
@@ -34,14 +33,12 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
     contactEmail,
     contactPhone,
     contactMessage,
-    contactAgree,
-    contactGdpr,
+    contactPrivacyNote,
+    contactPrivacyLink,
     contactSend,
     //contactError2,
     contactError,
     contactSuccess,
-    contactGdpr1,
-    //contactGdpr2,
     contactPlaceholderName,
     contactPlaceholderEmail,
     contactPlaceholderPhone,
@@ -52,9 +49,6 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
   const [messageSuccess, setMessageSuccess] = useState<string | null>(null)
   const [email, setEmail] = useState('')
   const [mailMessage, setMailMessage] = useState('')
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [checkBox, setCheckBox] = useState<boolean>(false)
-  const [showGdpr, setShowGdpr] = useState(false)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -126,15 +120,6 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
       console.error('Rate limit check error:', error)
       return true
     }
-  }
-
-  const toggleShowGdpr = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    setShowGdpr((prev) => !prev)
-  }
-
-  const handleCheckBox = () => {
-    setCheckBox((current) => !current)
   }
 
   const logBotAttempt = async (
@@ -474,40 +459,14 @@ const ContactComponent: FC<TranslationProps> = ({ translations }) => {
                   ></textarea>
                 </div>
 
-                {/* GDPR Checkbox */}
-                <div className="flex items-start space-x-3">
-                  <input
-                    id="flexCheckDefault"
-                    type="checkbox"
-                    onChange={handleCheckBox}
-                    required
-                    className="w-5 h-5 mt-0.5 border border-[#e0d8ce] focus:ring-[#e80e19] accent-[#e80e19]"
-                  />
-                  <div>
-                    <label
-                      className="text-base lg:text-lg cursor-pointer text-[#3d3228]"
-                      style={{fontFamily:'var(--font-cormorant)'}}
-                      htmlFor="flexCheckDefault"
-                    >
-                      {contactAgree}{' '}
-                      <button
-                        type="button"
-                        className="text-[#e80e19] underline transition-colors"
-                        onClick={(e) => toggleShowGdpr(e)}
-                      >
-                        {contactGdpr}
-                      </button>
-                    </label>
-
-                    {showGdpr && (
-                      <div className="mt-3 bg-[#f0ece6] border-l-2 border-[#e80e19] p-4">
-                        <p className="text-base lg:text-lg leading-relaxed text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
-                          {contactGdpr1}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                {/* Privacy notice */}
+                <p className="text-base leading-relaxed text-[#3d3228]" style={{fontFamily:'var(--font-cormorant)'}}>
+                  {contactPrivacyNote}{' '}
+                  <Link href="/gdpr#contact-form" className="text-[#e80e19] underline">
+                    {contactPrivacyLink}
+                  </Link>
+                  .
+                </p>
 
                 {/* Hidden Fields */}
                 <input

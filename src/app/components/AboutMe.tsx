@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import YouTubeEmbed from './YouTubeEmbed'
 
 const About_Me = () => {
   const t = useTranslations('Home')
@@ -203,12 +204,10 @@ const About_Me = () => {
                     className="relative overflow-hidden border border-[#e0d8ce] shadow-xl"
                   >
                     <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/NLlnsnvpjjA"
+                      <YouTubeEmbed
+                        videoId="NLlnsnvpjjA"
                         title="YouTube video 1"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                        className="absolute top-0 left-0 w-full h-full"
                       />
                     </div>
                   </motion.div>
@@ -219,12 +218,10 @@ const About_Me = () => {
                     className="relative overflow-hidden border border-[#e0d8ce] shadow-xl"
                   >
                     <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/E47SbwkXUxI"
+                      <YouTubeEmbed
+                        videoId="E47SbwkXUxI"
                         title="YouTube video 2"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                        className="absolute top-0 left-0 w-full h-full"
                       />
                     </div>
                   </motion.div>

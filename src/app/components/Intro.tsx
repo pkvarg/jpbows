@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
+import YouTubeEmbed from './YouTubeEmbed'
 
 const pillars = [{ num: '01' }, { num: '02' }, { num: '03' }]
 
@@ -93,13 +94,7 @@ const Intro = () => {
           </div>
           <div className="border border-[#e0d8ce]">
             <div className="aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/C7-gOvQDhzM"
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              <YouTubeEmbed videoId="C7-gOvQDhzM" title="bow4bass video" />
             </div>
           </div>
         </motion.div>

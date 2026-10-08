@@ -1,7 +1,7 @@
 'use client'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Link } from '@/i18n/routing'
-import CookieConsent from 'react-cookie-consent'
+import CookieConsent, { getCookieConsentValue } from 'react-cookie-consent'
 
 interface TranslationProps {
   translations: {
@@ -15,11 +15,14 @@ interface TranslationProps {
     footerCraftsmanship?: string
     footerMusicScene?: string
     footerContact?: string
+    cookieSettings: string
+    companyInfo: string
   }
 }
 
 const Footer: FC<TranslationProps> = ({ translations }) => {
-  const { cookies, agree, disagree, tradeRules, reviews, footerAtelier, footerCraftsmanship, footerMusicScene, footerContact } = translations
+  const { cookies, agree, disagree, tradeRules, reviews, footerAtelier, footerCraftsmanship, footerMusicScene, footerContact, cookieSettings, companyInfo } = translations
+  const [bannerVisible, setBannerVisible] = useState<'byCookieValue' | 'show' | 'hidden'>('byCookieValue')
 
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/visitors/jpbows/increase`
 
@@ -52,9 +55,41 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
     }
   }
 
+  // Umami honours `umami.disabled`, so a withdrawn consent stops tracking at once.
+  const setAnalytics = (granted: boolean) => {
+    try {
+      if (granted) {
+        localStorage.removeItem('umami.disabled')
+      } else {
+        localStorage.setItem('umami.disabled', '1')
+      }
+    } catch {
+      // storage unavailable — the banner simply shows again next visit
+    }
+    if (granted) {
+      loadUmamiScript()
+    }
+  }
+
+  // Consent given on an earlier visit: load analytics on every page load.
+  useEffect(() => {
+    if (getCookieConsentValue() === 'true') {
+      loadUmamiScript()
+    }
+  }, [])
+
+  const decide = (granted: boolean) => {
+    if (bannerVisible === 'byCookieValue') {
+      incrementCount()
+    }
+    setAnalytics(granted)
+    setBannerVisible('hidden')
+  }
+
   return (
     <div className="bg-[#f0ece6] border-t border-[#e0d8ce]">
       <CookieConsent
+        visible={bannerVisible}
         location="bottom"
         style={{
           background: '#faf8f5',
@@ -89,9 +124,7 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
         buttonText={agree}
         expires={365}
         enableDeclineButton
-        onDecline={() => {
-          incrementCount()
-        }}
+        onDecline={() => decide(false)}
         declineButtonStyle={{
           background: 'transparent',
           color: '#9b8f84',
@@ -109,12 +142,12 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
           WebkitTextStroke: '0.3px currentColor',
         }}
         declineButtonText={disagree}
-        onAccept={() => {
-          incrementCount()
-          loadUmamiScript()
-        }}
+        onAccept={() => decide(true)}
       >
-        {cookies}
+        {cookies}{' '}
+        <Link href="/gdpr#cookies" className="underline text-[#e80e19]">
+          GDPR
+        </Link>
       </CookieConsent>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
@@ -238,9 +271,22 @@ const Footer: FC<TranslationProps> = ({ translations }) => {
 
         {/* Bottom bar */}
         <div className="border-t border-[#e0d8ce] mt-16 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-[#9b8f84] text-sm" style={{ fontFamily: 'var(--font-poiret-one)' }}>
-            Copyright &copy; {new Date().getFullYear()} bow4bass
-          </span>
+          <div className="flex flex-col gap-1 text-center sm:text-left">
+            <span className="text-[#9b8f84] text-sm" style={{ fontFamily: 'var(--font-poiret-one)' }}>
+              Copyright &copy; {new Date().getFullYear()} bow4bass
+            </span>
+            <span className="text-[#9b8f84] text-xs" style={{ fontFamily: 'var(--font-poiret-one)' }}>
+              {companyInfo}
+            </span>
+            <button
+              type="button"
+              onClick={() => setBannerVisible('show')}
+              className="text-[#9b8f84] text-sm hover:text-[#1c1208] transition-colors underline self-center sm:self-start"
+              style={{ fontFamily: 'var(--font-poiret-one)' }}
+            >
+              {cookieSettings}
+            </button>
+          </div>
           <a
             href="https://www.pictusweb.sk"
             target="_blank"

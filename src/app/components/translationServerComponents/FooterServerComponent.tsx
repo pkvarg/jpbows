@@ -16,6 +16,8 @@ const FooterServerComponent = () => {
     footerCraftsmanship: t('footerCraftsmanship'),
     footerMusicScene: t('footerMusicScene'),
     footerContact: t('footerContact'),
+    cookieSettings: t('cookieSettings'),
+    companyInfo: t('footerCompanyInfo'),
   }
   return <Footer translations={footerTranslations} />
 }

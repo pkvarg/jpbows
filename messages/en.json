@@ -8,13 +8,10 @@
     "headerContact": "Contact",
     "headerGdpr": "GDPR",
     "home": "Home",
-
-    "cookiesText": "This page uses only essential cookies and anonymous analytics necessary for the website's functionality.",
-    "cookiesAgree": "Continue",
+    "cookiesText": "We measure visits only with Umami – no cookies, no stored IP addresses, and only with your consent. More in our",
+    "cookiesAgree": "Accept",
     "cookiesDisagree": "Decline",
-
     "back": "Back",
-
     "contactMessageSuccess": "Message sent successfully",
     "contactTitle": "Contact",
     "contactName": "Name",
@@ -22,76 +19,17 @@
     "contactEmail": "Your e-mail",
     "contactPhone": "Phone",
     "contactMessage": "Your message",
-    "contactAgree": "I agree to",
-    "contactGdpr": "process my data",
-
     "contactSend": "Send",
     "contactError2": "Not sent! Contact via our email, please.",
     "contactError": "Error! Write to info@bow4bass.com, please.",
     "contactSuccess": "Message successfully sent",
-
     "contactPlaceholderName": "Your name",
     "contactPlaceholderEmail": "your@email.com",
     "contactPlaceholderPhone": "+421 XXX XXX XXX",
     "contactPlaceholderMessage": "Your message...",
     "contactSubtitle": "Get in touch with us for any inquiries",
-
-    "contactGdpr1": "We do not store the data provided by you in any database.",
-    "contactGdpr2": "The email will only be used to respond to your message.",
-
-    "gdprTitle": "PERSONAL DATA PROCESSING POLICY",
-    "gdprIntro": "We take the protection of personal data seriously. It is important to us that your personal data is secure. All personal data obtained during your visit to our bow4bass.com website is processed in accordance with the personal data protection law as well as in accordance with applicable European legislation. From 25.05.2018, inclusive, your personal data is processed in accordance with REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation = GDPR) and in accordance with Act No. 18/2018 Coll. on personal data protection and on amendments to certain acts as amended in force from 25.05.2018.",
-
-    "gdprWhatMeansTitle": "What does this mean for you and your personal data?",
-    "gdprWhatMeansText": "Your personal data is any information that relates to you and on the basis of which you are identifiable to us as a natural person. This occurs in cases where we can identify you directly or indirectly, in particular on the basis of a generally applicable identifier or other identifier, such as name, surname, identification number, location data or online identifier. Personal data therefore includes in particular contact details of a natural person, their IP address, may be information about the use of services or about activities and preferences of a natural person.",
-
-    "gdprDataCollectedTitle": "What data do we store?",
-    "gdprDataCollectedText": "During your visit to our website, we record the IP address assigned to you by your internet provider, from which websites you visited our site, how long you stayed on our site, which specific subpages you view, and more. This information is considered personal data as it is your online identifier, and therefore we handle this data with increased care.",
-
-    "gdprCookiesTitle": "Cookies and tracking",
-    "gdprCookiesIntro": "This website uses the following types of cookies and technologies:",
-    "gdprCookiesEssentialTitle": "1. Essential cookies",
-    "gdprCookiesEssentialText": "These cookies are necessary for the basic functioning of the website and cannot be disabled:\n- Storage of your cookie consent (CookieConsent) - 365 days\n- Contact form functionality",
-    "gdprCookiesAnalyticsTitle": "2. Analytics cookies (optional)",
-    "gdprCookiesAnalyticsText": "With your consent, we use our own Umami analytics tool for:\n- Measuring website traffic\n- Analyzing visitor behavior (anonymously)\n- Improving user experience",
-
-    "gdprCookiesNotUsedTitle": "3. What we do not use",
-    "gdprCookiesNotUsedText": "We do not use:\n- Marketing cookies\n- Third-party advertising cookies\n- Social media cookies\n- Third-party tracking cookies",
-    "gdprCookiesManagementTitle": "Consent management",
-    "gdprCookiesManagementText": "You can change your consent to analytics cookies at any time:\n- By clearing browser data\n- By contacting us via email\n- The banner will appear again after clearing cookies when visiting the site",
-    "gdprCookiesVisitorsTitle": "Website traffic",
-    "gdprCookiesVisitorsText": "Basic traffic counter works without cookies and records only the total number of visits without identifying individual users.",
-
-    "gdprOtherDataTitle": "Other personal data",
-    "gdprOtherDataText": "You provide your personal data voluntarily only through the contact form on our website. We store these personal data: email address, name and phone number, if you choose to provide it. Your personal data is used for the more specifically defined purposes in these policies, and only to the necessary extent.",
-
-    "gdprPurposesTitle": "What do we use this information about you for (purposes)? And on what legal basis?",
-    "gdprPurposesText": "The controller for the purposes of personal data processing is Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovakia, Business ID: 53 075 471, responsible person: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. Personal data collection occurs on the website bow4bass.com name, surname, email - communication with customers about musical instrument inquiries, answering questions, providing information about instrument availability = the legal basis for processing this personal data is the legitimate interest of the service provider; mobile number - for faster communication regarding instrument availability = the legal basis is the controller's legitimate interest in providing quality customer support.",
-
-    "gdprRetentionTitle": "Data retention period",
-    "gdprRetentionText": "Personal data is stored by the controller for the stated purposes for a period of 2 years from the last communication, unless you withdraw your consent or unless we are legally obligated to archive your data further.",
-
-    "gdprSecurityTitle": "Security",
-    "gdprSecurityText": "If our systems were to be attacked by a hacker attack, or if our system were otherwise attacked and there was even a threat of data breach, you will be informed within 72 hours by our support about the measures taken and at the same time within the same period we will communicate with the supervisory authority in the field of personal data protection in the Slovak Republic - with the Office for Personal Data Protection.",
-
-    "gdprRightsTitle": "Your rights",
-    "gdprRightsText": "As a data subject, you have the right to be informed about the controller's data. The controller is Ján Prievozník s.r.o., Sadová 1034/19, Vrbové 922 03, Slovakia, Business ID: 53 075 471, responsible person: Mgr.Art. Ján Prievozník, email: info@bow4bass.com. You have the right to access the data we process about you, the right to correct provided data, the right to delete provided data and the right to withdraw consent to personal data processing.",
-
-    "gdprContactTitle": "Contact details:",
-    "gdprContactText": "For all questions regarding personal data protection, you can contact us through the contact form on our website.",
-
-    "gdprProcessorsTitle": "Processors (data recipients)",
-    "gdprProcessorsText": "Hosting and technical services are provided to us by these companies:",
-
-    "gdprThirdPartyTitle": "Third party links",
-    "gdprThirdPartyText": "Sometimes on our website we refer to third party services and products. These third party websites have their own personal data protection policies and are independent of ours. Therefore, we bear no legal responsibility for the content and activities of these third parties.",
-
-    "gdprNoSharingTitle": "We do not provide your data to third parties",
-    "gdprNoSharingText": "We do not sell, trade or otherwise provide your personal data to third parties. Transfer of your personal data to state organizations is only based on law or valid official or court decisions in accordance with the legal regulations of the Slovak Republic. These conditions are valid from 1.1.2024.",
-
     "availabilityAvailable": "Available",
     "availabilitySold": "Sold - On demand",
-
     "navBows": "Bows",
     "navServiceRepairs": "Service / Repairs",
     "navInstruments": "Instruments",
@@ -103,7 +41,6 @@
     "navRentalInstruments": "Rental Instruments",
     "navAboutMe": "About Me",
     "navContact": "Contact",
-
     "bowsTitle": "Bows",
     "bowsIntro1": "The bow as an inseparable part of the instrument and playing a \"bowed musical instrument\" is perhaps the most important element in tone production, artistic interpretation and a source of incredible articulation possibilities. This perhaps best captures my life philosophy in playing historical or modern instruments from violone, baroque double bass, double bass in the so-called Viennese tuning to modern instruments - orchestral and solo. In my rich orchestral, chamber and solo practice, I became more and more aware of the need and importance of the bow, and that was the impulse why I started to deal more deeply with its specifics and subsequent production and service of bows.",
     "bowsIntro2": "As a player of practically all bass instruments from the Baroque to the present, I am aware of the enormous diversity, color palette (sound) as well as the incredible possibilities and use of the bow across musical styles, use in orchestral, chamber or solo playing, etc. Last but not least, the reason for devoting myself more deeply to bows was the need to do \"service\" and its maintenance, replace hairs, clean and know how to use it correctly and purposefully and keep the bow in proper and healthy condition.",
@@ -113,14 +50,12 @@
     "bowsLoading": "Loading bows...",
     "moreButton": "More",
     "lessButton": "Less",
-
     "introSectionBowsTitle": "Bows",
     "introSectionBowsText": "Exclusive double bass bows, copies according to preserved originals and drawings from the Baroque, Classical and early Romantic periods.",
     "introSectionRepairsTitle": "Reconstructions and Repairs",
     "introSectionRepairsText": "Bow reconstructions and repairs. Bring your old, damaged or degraded bow and I will breathe new life into it while respecting its original \"proportions\" and intended use.",
     "introSectionInstrumentsTitle": "Instruments",
     "introSectionInstrumentsText": "Looking for a new instrument? Come and choose your new instrument from the workshop \"Bivaj Art Luthery\". These are master instruments from the workshop of Ferenc Vajai and István Bíró. While respecting traditional procedures, first-class material and honest work, these masters produce first-class master instruments of various forms from traditional Italian and French models, through Viennese models of instruments to shape variations. You can choose instruments according to your own requirements or taste, surface treatment, come and try them and the instrument will be adjusted according to your preferences. The instruments come with a lifetime warranty.",
-
     "aboutMeTitle": "About Me",
     "aboutMeName": "Ján Prievozník",
     "aboutMePara1": "He studied at the Private Conservatory of Dezider Kardoš in Topoľčany, the Church Conservatory in Bratislava, and at the Academy of Arts in Banská Bystrica (under the pedagogical guidance of Ján Krigovský). As a double bassist, he worked in the orchestras of the State Opera in Banská Bystrica, in the Slovak National Theatre orchestra, and in the Slovak Radio Symphony Orchestra - SOSR.",
@@ -132,18 +67,19 @@
     "aboutMePara7": "Since 2000, he has been a lecturer at the Summer School of Baroque Music in Holešov (Czech Republic). As a double bass teacher, he worked at the Church Conservatory in Bratislava, the Musical and Art Academy of Ján Albrecht in Banská Štiavnica. Since 2004, he has been working as a double bass teacher at the Private Conservatory in Nitra.",
     "aboutMePara8": "As a soloist, he has performed with the State Orchestra Žilina, Musica Aeterna and the Slovak Philharmonic. In 2022, he released his profile CD \"Contrabasso/Violone in Presbourg\".",
     "aboutMePara9": "In 2010, together with his teacher and friend Ján Krigovský, he founded the Slovak Double Bass Club, which over the past 14 years has organized several international events such as: double bass courses and concerts – BASS FEST+ (14 editions), music festival \"Musica Perennis Iuventutis\" (10 editions), SLOVAKIA DOUBLE BASS COMPETITION (3 editions) and many others.",
-
     "galleryTitle": "Gallery",
     "galleryImageAlt": "Gallery image",
     "videosTitle": "Videos",
-
     "repairsTitle": "Service - Repairs",
     "aboutCompanyTitle": "About the Company",
-
     "footerAtelier": "Atelier",
     "footerCraftsmanship": "Partners",
     "footerMusicScene": "Music Scene",
-    "footerContact": "Contact"
+    "footerContact": "Contact",
+    "cookieSettings": "Cookie settings",
+    "footerCompanyInfo": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, Slovakia, Company ID: 53 075 471, Commercial Register of the District Court Trnava, section Sro, file 46734/T",
+    "contactPrivacyNote": "We use the form data only to reply to your enquiry and keep it for 2 years. More in our",
+    "contactPrivacyLink": "Privacy Policy"
   },
   "BivajArt": {
     "title": "Bivaj Art Luthery",
@@ -154,5 +90,65 @@
     "conclusion": "Whether you're a soloist or orchestral performer, a Bivaj instrument offers superior tone, craftsmanship, and timeless character, a true one-of-a-kind creation.",
     "more": "More",
     "less": "Less"
+  },
+  "Legal": {
+    "backToContact": "Contact us",
+    "privacyTitle": "Privacy Policy",
+    "privacySubtitle": "Effective from 08.10.2026",
+    "privacyControllerTitle": "1. Controller",
+    "privacyControllerText": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, Slovak Republic\nCompany ID (IČO): 53 075 471\nRegistered in the Commercial Register of the District Court Trnava, section: Sro, file no. 46734/T\nManaging director: Mgr. art. Ján Prievozník\nEmail: info@bow4bass.com, phone: +421 905 338 081\n\nThis policy explains which personal data we process on bow4bass.com and when selling, servicing and renting instruments, why, on what legal basis, who receives it, how long we keep it and what rights you have (Regulation (EU) 2016/679 – GDPR and Slovak Act No. 18/2018 Coll.). We have not appointed a Data Protection Officer as GDPR does not require it for us. Please send data protection questions to info@bow4bass.com. The Slovak version is authoritative.",
+    "privacyContactFormTitle": "2. Contact form and email enquiries",
+    "privacyContactFormText": "Data: name, email, phone (if provided) and message text.\nPurpose: to answer your enquiry and prepare an offer for an instrument, bow or service.\nLegal basis: steps taken at your request before entering into a contract (Art. 6(1)(b) GDPR); for general questions our legitimate interest in answering messages (Art. 6(1)(f) GDPR). We do not need your consent to process the form.\nThe form message is delivered by email to our mailbox info@bow4bass.com; it is not stored in the website database.\nRetention: 2 years from the last communication. If the enquiry leads to an order, we process the data as described in section 3.",
+    "privacyCustomersTitle": "3. Customers – sales, service and rental of instruments",
+    "privacyCustomersText": "Data: name, delivery address, email, phone, billing details, details of the order, payment, complaint, service or rental.\nPurpose: concluding and performing the contract, delivery, invoicing, handling complaints.\nLegal basis: performance of a contract (Art. 6(1)(b) GDPR); bookkeeping as a legal obligation (Art. 6(1)(c) GDPR).\nRetention: for the duration of the contract and warranty and 4 years afterwards (limitation period); accounting documents 10 years under Act No. 431/2002 Coll. on accounting.",
+    "privacyReviewsTitle": "4. Customer reviews",
+    "privacyReviewsText": "We publish a name, description (e.g. instrument or profession), photo and review text on the Reviews page only with your consent (Art. 6(1)(a) GDPR). You can withdraw consent at any time by emailing info@bow4bass.com – we will then remove the review without undue delay. Reviews are stored in the website database while published.",
+    "privacyCookiesTitle": "5. Cookies and analytics",
+    "privacyCookiesText": "Strictly necessary (no consent needed):\n- CookieConsent – remembers your choice in the cookie bar, 365 days\n- NEXT_LOCALE – remembers the selected website language\n- time of contact form submissions stored in your browser (localStorage) – spam protection\n- administration sign-in cookies – only for the website administrator\n\nAnalytics (only with your consent):\n- Umami – a visit-measurement tool run for us by Pictusweb s.r.o. on its own server (analytics.pictusweb.com). It does not use cookies, does not store your IP address and does not build visitor profiles; we only see aggregate statistics. It starts only after you click \"Accept\".\n\nWe do not use marketing or advertising cookies, Google Analytics, tracking pixels or social media plugins. Fonts are part of the website and are not loaded from Google.\n\nChanging your choice: click \"Cookie settings\" in the website footer – the bar appears again and you can withdraw consent as easily as you gave it.\n\nVisit counter: on your first choice in the cookie bar we increase the total visit count by one; no data about you is stored.\n\nLegal basis: for necessary technologies Section 109(8) of Act No. 452/2021 Coll. and our legitimate interest in running the website; for analytics your consent.",
+    "privacyYoutubeTitle": "6. YouTube videos",
+    "privacyYoutubeText": "Videos on this website are hosted on YouTube (Google Ireland Ltd. / Google LLC). No connection to YouTube is made until you click \"Play video\". After the click the video loads from youtube-nocookie.com and Google receives your IP address and technical browser data and may store its own cookies. Google is responsible for this processing as an independent controller under its privacy policy (policies.google.com/privacy).",
+    "privacySecurityLogsTitle": "7. Security logs",
+    "privacySecurityLogsText": "If the contact form classifies a submission as automated spam, the IP address, browser details and form content are written to the server logs. We do this to protect the website against abuse (legitimate interest, Art. 6(1)(f) GDPR). Server logs are kept according to the hosting provider's settings, usually no more than a few weeks.",
+    "privacyRecipientsTitle": "8. Recipients and processors",
+    "privacyRecipientsText": "We do not sell your data. We share it only to the extent necessary:\n- Pictusweb s.r.o., Nábrežná 4895/42, 940 02 Nové Zámky, Slovakia – development, administration and operation of the website, including hosting, delivery of contact form messages and visit measurement\n- Cloudflare, Inc. (USA) – DNS, attack protection and website delivery; processes the IP address and technical data of every request\n- MongoDB, Inc. (MongoDB Atlas) – website content database, including reviews\n- Hostinger / Titan Mail – the info@bow4bass.com mailbox\n\nData is also received by: the carrier (when an instrument is shipped), our bank (bank transfers) and our accountant (bookkeeping). Google receives data as an independent controller only if you play a YouTube video (section 6).",
+    "privacyTransfersTitle": "9. Transfers outside the EU",
+    "privacyTransfersText": "Some recipients (Cloudflare, MongoDB, Titan Mail, Google) are based in the USA or have a US parent company, so data may be transferred to the USA. Transfers take place only with appropriate safeguards under Chapter V GDPR – based on certification under the EU-U.S. Data Privacy Framework where the recipient holds it, or on standard contractual clauses approved by the European Commission (Art. 46 GDPR).",
+    "privacyRetentionTitle": "10. Retention overview",
+    "privacyRetentionText": "- Form and email enquiries: 2 years from the last communication\n- Orders, service, rental, complaints: duration of the contract and warranty + 4 years\n- Accounting documents: 10 years\n- Reviews: until consent is withdrawn\n- Umami analytics: aggregate statistics only, no personal data\n- Server logs: per the hosting provider, usually a few weeks\nAfter the retention period we delete or anonymise the data.",
+    "privacyRightsTitle": "11. Your rights",
+    "privacyRightsText": "You have the right to:\n- access your data and get a copy (Art. 15 GDPR),\n- rectification of inaccurate data (Art. 16),\n- erasure (Art. 17) where we no longer need the data or process it unlawfully,\n- restriction of processing (Art. 18),\n- portability of data provided under a contract or consent (Art. 20),\n- object to processing based on legitimate interest (Art. 21),\n- withdraw consent at any time; this does not affect the lawfulness of processing before withdrawal.\nSend requests to info@bow4bass.com. We will respond without undue delay and within 1 month at the latest.\nIf you believe we process your data unlawfully, you can lodge a complaint with the Office for Personal Data Protection of the Slovak Republic, Hraničná 12, 820 07 Bratislava 27, www.dataprotection.gov.sk, or with the supervisory authority in your EU country.",
+    "privacySecurityTitle": "12. Security",
+    "privacySecurityText": "We protect data with appropriate technical and organisational measures: encrypted connection (HTTPS), access limited to authorised persons and abuse protection on the form. If a personal data breach occurs that may pose a risk to your rights, we will notify the Office for Personal Data Protection within 72 hours and, where the risk is high, inform you without undue delay.",
+    "privacyChangesTitle": "13. Changes to this policy",
+    "privacyChangesText": "We update this policy when tools, recipients or purposes change. The current version is always on this page. This version is effective from 08.10.2026.",
+    "termsEyebrow": "Terms",
+    "termsTitle": "General Terms and Conditions",
+    "termsSubtitle": "Ján Prievozník s. r. o. | Company ID: 53 075 471 | Effective from 08.10.2026",
+    "termsSection1Title": "1. Seller and scope",
+    "termsSection1Text": "Ján Prievozník s. r. o., Sadová 1034/19, 922 03 Vrbové, Slovak Republic\nCompany ID (IČO): 53 075 471\nRegistered in the Commercial Register of the District Court Trnava, section: Sro, file no. 46734/T\nManaging director: Mgr. art. Ján Prievozník\nEmail: info@bow4bass.com, phone: +421 905 338 081\n\nThese General Terms and Conditions (GTC) govern the sale of musical instruments and bows, custom-made instruments, service, repairs and rental between the seller and the buyer. Where the parties agree otherwise in writing (e.g. in the order confirmation), that agreement prevails. The Slovak version of these GTC is authoritative.",
+    "termsSection2Title": "2. Definitions",
+    "termsSection2Text": "Consumer – a natural person who, when concluding and performing the contract, does not act within their business or profession.\nBusiness – a buyer purchasing within their business activity; relations with them are governed by the Slovak Commercial Code.\nCustom-made instrument – an instrument or bow made or adapted to the buyer's specifications.",
+    "termsSection3Title": "3. Orders and conclusion of the contract",
+    "termsSection3Text": "The buyer can order an instrument, bow or service via the contact form, by email or in person. The seller sends an order confirmation by email describing the goods or service, the total price, payment method and delivery date. The contract is concluded when this confirmation is sent. Before concluding a contract with a consumer, the seller provides the information required by Slovak Act No. 108/2024 Coll. on consumer protection. Contracts are concluded in Slovak or English.",
+    "termsSection4Title": "4. Prices and payment",
+    "termsSection4Text": "Prices are set individually according to materials, work and specifications and are stated in the order confirmation as final prices.\nFor custom-made instruments an advance payment of 50 % of the total price is due; the remainder on collection or before shipping.\nPayment methods: bank transfer, cash on personal collection.",
+    "termsSection5Title": "5. Delivery and shipping",
+    "termsSection5Text": "The delivery date is stated in the order confirmation. You can collect the instrument in person at the workshop by appointment, or we ship it by courier in special packaging, insured for its full value. Shipping costs are paid by the buyer; we tell you the amount before shipping. The risk of damage passes to the buyer on receipt of the shipment.",
+    "termsSection6Title": "6. Trying instruments and trial period",
+    "termsSection6Text": "You can try instruments at our workshop by appointment, and we adjust them to your preferences before handover.\nFor ready-made (not custom) instruments we voluntarily offer a 14-day trial period, also for purchases made in person; the returned instrument must be in its original condition without damage. The trial period does not limit the consumer's statutory rights under section 7.",
+    "termsSection7Title": "7. Withdrawal from the contract (consumers)",
+    "termsSection7Text": "A consumer who concluded the contract at a distance (by email, via the form or by phone) may withdraw without giving a reason within 14 days of receiving the goods, or for services within 14 days of concluding the contract, under Slovak Act No. 108/2024 Coll.\nSend the withdrawal by email to info@bow4bass.com or by post to the seller's address; we will send you a model withdrawal form on request.\nReturn the goods undamaged within 14 days of withdrawal; the consumer pays the direct cost of returning them. The seller refunds all payments, including delivery costs (for the cheapest delivery option offered), within 14 days of receiving the withdrawal, but not before the goods have been returned or proof of their dispatch provided. The consumer is liable for any reduction in the value of the goods resulting from handling beyond what is necessary to establish their characteristics.\nThe right of withdrawal does not apply to custom-made instruments made to the consumer's specifications or to services (e.g. repairs) fully performed with the consumer's express consent.\nA business has no statutory right to withdraw without giving a reason.",
+    "termsSection8Title": "8. Liability for defects and warranty",
+    "termsSection8Text": "Consumers have rights for defects for 24 months from receipt of the goods under the Slovak Civil Code and Act No. 108/2024 Coll. For businesses the warranty period is 12 months.\nA warranty card or other document is not a condition for exercising these rights – proof of purchase (e.g. the order confirmation or invoice) is sufficient.\nNormal wear and tear and damage caused by improper handling, humidity, extreme temperatures, direct sunlight, sweat, fire, mechanical damage or work by unauthorised persons are not defects.",
+    "termsSection9Title": "9. Complaints",
+    "termsSection9Text": "You can file a complaint by email to info@bow4bass.com, by post to Sadová 1034/19, 922 03 Vrbové, Slovakia, or in person at the workshop by appointment. We confirm receipt of the complaint and resolve it without undue delay, within 30 days at the latest, by repair, replacement, a reasonable discount or a refund depending on the nature of the defect and the law. We inform you of the outcome in writing.",
+    "termsSection10Title": "10. Service, repairs and rental",
+    "termsSection10Text": "We maintain, repair and restore instruments, including those by other makers; we confirm the scope, price and date of a repair before starting.\nFor instrument rental, the rental period, price, any deposit and the conditions in case of damage or loss are agreed in a written rental agreement.",
+    "termsSection11Title": "11. Personal data protection",
+    "termsSection11Text": "We process personal data in accordance with Regulation (EU) 2016/679 (GDPR) and Slovak Act No. 18/2018 Coll. Details are in the Privacy Policy at bow4bass.com/gdpr.",
+    "termsSection12Title": "12. Dispute resolution",
+    "termsSection12Text": "If a consumer is not satisfied with how a complaint was handled or believes the seller has violated their rights, they may ask the seller for redress. If the seller rejects the request or does not respond within 30 days, the consumer may submit a proposal for alternative dispute resolution to the Slovak Trade Inspection, Bajkalská 21/A, 827 99 Bratislava, www.soi.sk, or another ADR body under Slovak Act No. 391/2015 Coll.\nSupervision is carried out by the Slovak Trade Inspection, Inspectorate for the Trnava Region. Other disputes are decided by the competent courts of the Slovak Republic.",
+    "termsSection13Title": "13. Final provisions",
+    "termsSection13Text": "These GTC are governed by Slovak law, in particular Act No. 40/1964 Coll. (Civil Code), Act No. 513/1991 Coll. (Commercial Code), Act No. 108/2024 Coll. on consumer protection and Act No. 22/2004 Coll. on electronic commerce. The seller may amend these GTC; contracts concluded before an amendment are governed by the version in force when they were concluded. In case of differences between language versions, the Slovak version prevails. These GTC are effective from 08.10.2026."
   }
 }
