@@ -1,8 +1,12 @@
 // app/api/repairs/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 export async function POST(request: NextRequest) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     // Parse request body
     const body = await request.json()

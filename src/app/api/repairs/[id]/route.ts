@@ -1,6 +1,7 @@
 // app/api/repairs/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 interface ResolvedParams {
   id: string
@@ -22,6 +23,9 @@ export async function GET() {
 
 // EDIT a repair by id
 export async function PUT(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
     const resolvedParams = await params
@@ -60,6 +64,9 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<Re
 
 // POST create new repair
 export async function POST(request: NextRequest) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
 
@@ -90,6 +97,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<ResolvedParams> },
 ) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const resolvedParams = await params
     const id = resolvedParams.id

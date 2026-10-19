@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 interface ReviewCreateData {
   customerName: string
@@ -18,6 +19,9 @@ interface ReviewCreateData {
 }
 
 export async function POST(request: NextRequest) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
 

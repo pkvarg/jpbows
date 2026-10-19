@@ -1,6 +1,7 @@
 // app/api/sliders/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '../../../../../prisma/generated/prisma'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 const prisma = new PrismaClient()
 
@@ -30,6 +31,9 @@ export async function GET(request: NextRequest, { params }: { params: any }) {
 // Update a slider
 // eslint-disable-next-line
 export async function PUT(request: NextRequest, { params }: { params: any }) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
 
@@ -62,6 +66,9 @@ export async function PUT(request: NextRequest, { params }: { params: any }) {
 // Delete a slider
 // eslint-disable-next-line
 export async function DELETE(request: NextRequest, { params }: { params: any }) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   const { id } = await params
 
   try {

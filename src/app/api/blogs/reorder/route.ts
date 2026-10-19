@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '../../../../../prisma/generated/prisma'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 const prisma = new PrismaClient()
 
 export async function POST(request: NextRequest) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
     const { blogs } = body

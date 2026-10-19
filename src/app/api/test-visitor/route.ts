@@ -1,8 +1,12 @@
 // app/api/test-visitor/route.ts
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '../../../../prisma/generated/prisma'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 export async function POST() {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     // Test MongoDB connection with a simple query
     const prisma = new PrismaClient()

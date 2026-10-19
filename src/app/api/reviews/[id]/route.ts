@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 interface ResolvedParams {
   id: string
@@ -41,6 +42,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<Re
 }
 
 export async function PUT(request: NextRequest, { params }: { params: Promise<ResolvedParams> }) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const body = await request.json()
     const resolvedParams = await params
@@ -93,6 +97,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<ResolvedParams> },
 ) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     const resolvedParams = await params
     const id = resolvedParams.id

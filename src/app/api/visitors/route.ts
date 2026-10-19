@@ -1,6 +1,7 @@
 // app/api/visitors/route.ts
 import { NextResponse, NextRequest } from 'next/server'
 import { PrismaClient } from '../../../../prisma/generated/prisma'
+import { requireAdmin } from '@/lib/requireAdmin'
 
 const prisma = new PrismaClient()
 
@@ -42,6 +43,9 @@ export async function GET() {
 
 // create needed at setup
 export async function POST(request: NextRequest) {
+  const denied = await requireAdmin()
+  if (denied) return denied
+
   try {
     // Parse the request body
     const body = await request.json()
