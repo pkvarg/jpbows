@@ -35,6 +35,7 @@ model Bows {
   priceEnglish String?
   videoUrl String?
   availability String @default("available")
+  category String?
   order Int @default(999)
   createdAt DateTime
   updatedAt DateTime

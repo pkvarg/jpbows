@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import ReviewsDisplay from '@/app/components/ReviewsDisplay'
+import { BOW_CATEGORIES, BOW_CATEGORY_LABELS, bowCategory, type BowCategory } from '@/lib/bowCategory'
 
 interface Bow {
   id: string
@@ -18,6 +19,7 @@ interface Bow {
   published: boolean
   new: boolean
   availability: 'available' | 'sold'
+  category?: string | null
   order: number
   createdAt: string
   updatedAt: string
@@ -334,7 +336,7 @@ const Bow = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isExpanded, setIsExpanded] = useState(false)
-  const [activeFilter, setActiveFilter] = useState<'all' | 'jp' | 'masters'>('all')
+  const [activeFilter, setActiveFilter] = useState<BowCategory | 'all'>('all')
   const pathname = usePathname()
 
   // Determine if we're on the English version based on URL
@@ -464,24 +466,26 @@ const Bow = () => {
         ) : (
           <>
             {(() => {
-              const jpBows = bows.filter((b) => b.name.includes('JP'))
-              const otherBows = bows.filter((b) => !b.name.includes('JP'))
-              const hasMasters = otherBows.length > 0
+              const counts = Object.fromEntries(
+                BOW_CATEGORIES.map((c) => [c, bows.filter((b) => bowCategory(b) === c).length]),
+              ) as Record<BowCategory, number>
+              const usedCategories = BOW_CATEGORIES.filter((c) => counts[c] > 0)
 
-              const displayedBows = activeFilter === 'jp' ? jpBows
-                : activeFilter === 'masters' ? otherBows
-                : bows
+              const displayedBows =
+                activeFilter === 'all' ? bows : bows.filter((b) => bowCategory(b) === activeFilter)
 
               return (
                 <>
-                  {/* Filter Tabs — only show when there are masters products */}
-                  {hasMasters && (
+                  {/* Filter Tabs — only when bows span more than one category */}
+                  {usedCategories.length > 1 && (
                     <div className="flex flex-wrap gap-3 mb-12">
-                      {([
+                      {[
                         { key: 'all' as const, label: `${isEnglish ? 'All' : 'Všetky'} (${bows.length})` },
-                        { key: 'jp' as const, label: `${isEnglish ? 'JP bows' : 'JP sláčiky'} (${jpBows.length})` },
-                        { key: 'masters' as const, label: `${isEnglish ? 'Other bows' : 'Ostatné sláčiky'} (${otherBows.length})` },
-                      ]).map((tab) => (
+                        ...usedCategories.map((c) => ({
+                          key: c,
+                          label: `${BOW_CATEGORY_LABELS[c][isEnglish ? 'en' : 'sk']} (${counts[c]})`,
+                        })),
+                      ].map((tab) => (
                         <button
                           key={tab.key}
                           onClick={() => setActiveFilter(tab.key)}

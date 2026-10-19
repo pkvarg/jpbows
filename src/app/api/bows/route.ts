@@ -1,6 +1,7 @@
 // app/api/products/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/db/db'
+import { isBowCategory } from '@/lib/bowCategory'
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,6 +23,7 @@ export async function POST(request: NextRequest) {
         priceEnglish: body.priceEnglish || '',
         videoUrl: body.videoUrl || '',
         availability: body.availability || 'available',
+        category: isBowCategory(body.category) ? body.category : null,
         order: body.order ?? 999,
         createdAt: new Date(),
         updatedAt: new Date(),

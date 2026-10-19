@@ -9,6 +9,7 @@ import {
   type BatchUploadItem,
 } from '@/lib/uploadImage'
 import UploadProgressList from '@/app/components/UploadProgressList'
+import { BOW_CATEGORIES, BOW_CATEGORY_LABELS, bowCategory, type BowCategory } from '@/lib/bowCategory'
 
 interface BowFormData {
   name: string
@@ -23,6 +24,7 @@ interface BowFormData {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  category: BowCategory
 }
 
 interface Bow {
@@ -39,6 +41,7 @@ interface Bow {
   metadata: string
   videoUrl: string
   availability: 'available' | 'sold'
+  category?: string | null
   order: number
   createdAt: Date
   updatedAt: Date
@@ -58,6 +61,7 @@ export default function BowManager() {
     metadata: '',
     videoUrl: '',
     availability: 'available',
+    category: 'jp-double-bass',
   })
   const [editingId, setEditingId] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
@@ -84,6 +88,7 @@ export default function BowManager() {
       metadata: '',
       videoUrl: '',
       availability: 'available',
+      category: 'jp-double-bass',
     })
     setImageFiles([])
     setImagePreviews([])
@@ -269,6 +274,7 @@ export default function BowManager() {
         metadata: formData.metadata,
         videoUrl: formData.videoUrl,
         availability: formData.availability,
+        category: formData.category,
         ...(maxOrder !== undefined && { order: maxOrder }),
       }
 
@@ -343,6 +349,7 @@ export default function BowManager() {
       metadata: bow.metadata || '',
       videoUrl: bow.videoUrl || '',
       availability: bow.availability || 'available',
+      category: bowCategory(bow),
     })
     setEditingId(bow.id)
     setImagePreviews(bow.images || [])
@@ -750,6 +757,29 @@ export default function BowManager() {
         </div>
 
         <div>
+          <label htmlFor="category" className="block mb-2" style={{ fontFamily: 'var(--font-poiret-one)', color: '#9b8f84', letterSpacing: '0.15em', fontSize: '11px', textTransform: 'uppercase' }}>
+            Kategoria
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={formData.category}
+            onChange={handleInputChange}
+            className="block w-full px-4 py-3 outline-none transition-colors"
+            style={{ background: '#0f0d0a', border: '1px solid #2a2018', color: '#faf8f5' }}
+            onFocus={(e) => e.target.style.borderColor = '#e80e19'}
+            onBlur={(e) => e.target.style.borderColor = '#2a2018'}
+          >
+            {BOW_CATEGORIES.map((category) => (
+              <option key={category} value={category}>
+                {BOW_CATEGORY_LABELS[category].admin}
+              </option>
+            ))}
+          </select>
+          <p className="text-xs mt-1" style={{ color: '#9b8f84' }}>V ktorej zalozke sa slacik zobrazi na webe</p>
+        </div>
+
+        <div>
           <label htmlFor="metadata" className="block mb-2" style={{ fontFamily: 'var(--font-poiret-one)', color: '#9b8f84', letterSpacing: '0.15em', fontSize: '11px', textTransform: 'uppercase' }}>
             Metadata
           </label>
@@ -886,6 +916,14 @@ export default function BowManager() {
                           }}
                         >
                           {bow.availability === 'available' ? 'DOSTUPNY' : 'PREDANY'}
+                        </span>
+                        <span
+                          className="px-2 py-1 text-xs font-medium uppercase"
+                          style={{ background: '#2a2018', color: '#c4b49a' }}
+                          title={bow.category ? undefined : 'Odvodene z nazvu - ulozi sa pri najblizsej uprave'}
+                        >
+                          {BOW_CATEGORY_LABELS[bowCategory(bow)].admin}
+                          {!bow.category && ' (auto)'}
                         </span>
                         <span className="px-2 py-1 text-xs" style={{ background: '#2a2018', color: '#9b8f84' }}>
                           {new Date(bow.createdAt).toLocaleDateString('sk-SK')}

@@ -2437,6 +2437,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    category: string | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2455,6 +2456,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string | null
+    category: string | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -2474,6 +2476,7 @@ export namespace Prisma {
     priceEnglish: number
     videoUrl: number
     availability: number
+    category: number
     order: number
     createdAt: number
     updatedAt: number
@@ -2502,6 +2505,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    category?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -2520,6 +2524,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    category?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -2539,6 +2544,7 @@ export namespace Prisma {
     priceEnglish?: true
     videoUrl?: true
     availability?: true
+    category?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -2645,6 +2651,7 @@ export namespace Prisma {
     priceEnglish: string | null
     videoUrl: string | null
     availability: string
+    category: string | null
     order: number
     createdAt: Date
     updatedAt: Date
@@ -2683,6 +2690,7 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    category?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2704,12 +2712,13 @@ export namespace Prisma {
     priceEnglish?: boolean
     videoUrl?: boolean
     availability?: boolean
+    category?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
+  export type BowsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "images" | "name" | "description" | "published" | "enName" | "enDescription" | "new" | "metadata" | "price" | "priceEnglish" | "videoUrl" | "availability" | "category" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["bows"]>
 
   export type $BowsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Bows"
@@ -2728,6 +2737,7 @@ export namespace Prisma {
       priceEnglish: string | null
       videoUrl: string | null
       availability: string
+      category: string | null
       order: number
       createdAt: Date
       updatedAt: Date
@@ -3136,6 +3146,7 @@ export namespace Prisma {
     readonly priceEnglish: FieldRef<"Bows", 'String'>
     readonly videoUrl: FieldRef<"Bows", 'String'>
     readonly availability: FieldRef<"Bows", 'String'>
+    readonly category: FieldRef<"Bows", 'String'>
     readonly order: FieldRef<"Bows", 'Int'>
     readonly createdAt: FieldRef<"Bows", 'DateTime'>
     readonly updatedAt: FieldRef<"Bows", 'DateTime'>
@@ -9758,6 +9769,7 @@ export namespace Prisma {
     priceEnglish: 'priceEnglish',
     videoUrl: 'videoUrl',
     availability: 'availability',
+    category: 'category',
     order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -10028,6 +10040,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bows"> | string | null
     videoUrl?: StringNullableFilter<"Bows"> | string | null
     availability?: StringFilter<"Bows"> | string
+    category?: StringNullableFilter<"Bows"> | string | null
     order?: IntFilter<"Bows"> | number
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
@@ -10047,6 +10060,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    category?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10069,6 +10083,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableFilter<"Bows"> | string | null
     videoUrl?: StringNullableFilter<"Bows"> | string | null
     availability?: StringFilter<"Bows"> | string
+    category?: StringNullableFilter<"Bows"> | string | null
     order?: IntFilter<"Bows"> | number
     createdAt?: DateTimeFilter<"Bows"> | Date | string
     updatedAt?: DateTimeFilter<"Bows"> | Date | string
@@ -10088,6 +10103,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    category?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -10115,6 +10131,7 @@ export namespace Prisma {
     priceEnglish?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     videoUrl?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     availability?: StringWithAggregatesFilter<"Bows"> | string
+    category?: StringNullableWithAggregatesFilter<"Bows"> | string | null
     order?: IntWithAggregatesFilter<"Bows"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Bows"> | Date | string
@@ -10732,6 +10749,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    category?: string | null
     order?: number
     createdAt: Date | string
     updatedAt: Date | string
@@ -10751,6 +10769,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    category?: string | null
     order?: number
     createdAt: Date | string
     updatedAt: Date | string
@@ -10769,6 +10788,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10787,6 +10807,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10806,6 +10827,7 @@ export namespace Prisma {
     priceEnglish?: string | null
     videoUrl?: string | null
     availability?: string
+    category?: string | null
     order?: number
     createdAt: Date | string
     updatedAt: Date | string
@@ -10824,6 +10846,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10842,6 +10865,7 @@ export namespace Prisma {
     priceEnglish?: NullableStringFieldUpdateOperationsInput | string | null
     videoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     availability?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11649,6 +11673,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    category?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -11671,6 +11696,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    category?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -11689,6 +11715,7 @@ export namespace Prisma {
     priceEnglish?: SortOrder
     videoUrl?: SortOrder
     availability?: SortOrder
+    category?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
