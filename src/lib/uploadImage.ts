@@ -28,6 +28,37 @@ export type UploadImageResult = { imageUrl: string }
 
 const formatMb = (bytes: number) => `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 
+// One token covers a whole batch; a new one is fetched shortly before it expires.
+let tokenRequest: Promise<{ token: string; expiresAt: number }> | null = null
+
+const requestUploadToken = async (filename: string) => {
+  const response = await fetch('/api/upload-token', { method: 'POST' })
+  if (!response.ok) {
+    throw new UploadError({
+      kind: 'server',
+      filename,
+      status: response.status,
+      message:
+        response.status === 401
+          ? 'Prihlásenie vypršalo. Prihláste sa znova a nahrajte obrázky ešte raz.'
+          : `Nepodarilo sa získať povolenie na nahrávanie (HTTP ${response.status}).`,
+    })
+  }
+  return (await response.json()) as { token: string; expiresAt: number }
+}
+
+const getUploadToken = async (filename: string): Promise<string> => {
+  const current = tokenRequest ? await tokenRequest.catch(() => null) : null
+  if (current && current.expiresAt - 60_000 > Date.now()) return current.token
+  tokenRequest = requestUploadToken(filename)
+  try {
+    return (await tokenRequest).token
+  } catch (err) {
+    tokenRequest = null
+    throw err
+  }
+}
+
 export async function uploadImage(file: File): Promise<UploadImageResult> {
   if (file.size > MAX_UPLOAD_BYTES) {
     throw new UploadError({
@@ -41,10 +72,15 @@ export async function uploadImage(file: File): Promise<UploadImageResult> {
   formData.append('file', file)
 
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/upload/jpbows`
+  const token = await getUploadToken(file.name)
 
   let response: Response
   try {
-    response = await fetch(apiUrl, { method: 'POST', body: formData })
+    response = await fetch(apiUrl, {
+      method: 'POST',
+      body: formData,
+      headers: { Authorization: `Bearer ${token}` },
+    })
   } catch {
     throw new UploadError({
       kind: 'network',
