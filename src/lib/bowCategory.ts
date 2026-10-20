@@ -4,7 +4,7 @@ export type BowCategory = (typeof BOW_CATEGORIES)[number]
 
 export const BOW_CATEGORY_LABELS: Record<BowCategory, { sk: string; en: string; admin: string }> = {
   'jp-double-bass': { sk: 'JP kontrabasové sláčiky', en: 'JP Double Bass Bows', admin: 'JP kontrabasove slaciky' },
-  'jp-violone': { sk: 'JP sláčiky na violone', en: 'JP Violone Bows', admin: 'JP slaciky na violone' },
+  'jp-violone': { sk: 'JP sláčiky na G violone', en: 'JP G Violone Bows', admin: 'JP slaciky na G violone' },
   other: { sk: 'Ostatné sláčiky', en: 'Other Bows', admin: 'Ostatne slaciky' },
 }
 
